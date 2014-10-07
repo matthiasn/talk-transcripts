@@ -4,7 +4,7 @@ For my last article, I listened to **[Rich Hickey's talk about Transducers](http
 
 There's really not a lot one could do about that on the side of the presenter. The audience will always be in one of the modes described above unless everything is already known. And given that each member of an audience has different knowledge sweetspots, there is not a lot to optimize. 
 
-But there's one thing that would help me immensely: a full transcript of the talk. With that, I'd watch the talk once and then mark the sections I want to read up upon in the transcript, probably with a good old marker. That way, it should be next to impossibly to miss anything crucial. At least for me, my marker hardly ever misses anything, and whenever thoughts go elsewhere, it is very easy to note my last position in the document and go back to this position later.
+But there's one thing that would help me immensely: a **full transcript of the talk**. With that, I'd watch the talk once and then mark the sections I want to read up upon in the transcript, probably with a good old marker. That way, it should be next to impossibly to miss anything crucial. At least for me, my marker hardly ever misses anything, and whenever thoughts go elsewhere, it is very easy to note my last position in the document and go back to this position later.
 
 Unfortunately, though, transcripts of talks that I could print usually just aren't there. Which makes me wonder what you do when you're a software engineer AND deaf. Particularly for the Transducers talk, there was plenty of information in there that I hadn't seen elsewhere. I don't think we as a community should exclude people just because of their hearing capability. In other words, I think these transcripts really should exists.
 
