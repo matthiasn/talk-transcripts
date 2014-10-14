@@ -1,4 +1,4 @@
-Transcript: **['Hammock Driven Development' by Rich Hickey (12/2012)](HammockDrivenDev/https://www.youtube.com/watch?v=f84n5oFoZBc)**
+Transcript: **[Hammock Driven Development - Rich Hickey (12/2012)](https://www.youtube.com/watch?v=f84n5oFoZBc)**
 
 # Step Away from the Computer or Hammock-driven Development
 

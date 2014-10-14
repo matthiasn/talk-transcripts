@@ -1,4 +1,4 @@
-Transcript: **['Reducers' by Rich Hickey (09/2012)](http://www.infoq.com/presentations/Clojure-Reducers)**
+Transcript: **[Reducers - Rich Hickey (09/2012)](http://www.infoq.com/presentations/Clojure-Reducers)**
 
 # Reducers
 

@@ -1,4 +1,4 @@
-Transcript: **['Transducers' by Rich Hickey (09/2014)](https://www.youtube.com/watch?v=6mTbuzafcII)**
+Transcript: **[Transducers - Rich Hickey (09/2014)](https://www.youtube.com/watch?v=6mTbuzafcII)**
 
 #Transducers 
 

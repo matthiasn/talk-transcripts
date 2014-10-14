@@ -1,4 +1,4 @@
-Transcript: **['How to Think about Parallel Programming: Not!' by Guy L. Steele Jr. (01/2011)](http://www.infoq.com/presentations/Thinking-Parallel-Programming)**
+Transcript: **[How to Think about Parallel Programming: Not! - Guy L. Steele Jr. (01/2011)](http://www.infoq.com/presentations/Thinking-Parallel-Programming)**
 
 # How to Think about Parallel Programming: Not!
 

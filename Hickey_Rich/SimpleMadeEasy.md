@@ -1,4 +1,4 @@
-Transcript: **['Simple Made Easy' by Rich Hickey (10/2011)](http://www.infoq.com/presentations/Simple-Made-Easy)**
+Transcript: **[Simple Made Easy - Rich Hickey (10/2011)](http://www.infoq.com/presentations/Simple-Made-Easy)**
 
 # Simple Made Easy
 

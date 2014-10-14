@@ -1,4 +1,4 @@
-Transcript: **['Clojure core.async Channels' by Rich Hickey (11/2013)](http://www.infoq.com/presentations/clojure-core-async)**
+Transcript: **[Clojure core.async Channels - Rich Hickey (11/2013)](http://www.infoq.com/presentations/clojure-core-async)**
 
 # Clojure core.async Channels
 
