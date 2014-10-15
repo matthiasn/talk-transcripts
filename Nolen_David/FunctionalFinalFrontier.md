@@ -1,7 +1,7 @@
 # The Functional Final Frontier
 
 * **Speaker: [David Nolen](http://swannodette.github.io/)**
-* **Conference: [Philadelphia Emerging Technologies for the Enterprise 2014](http://www.infoq.com/presentations/om-clojurescript-facebook-react) - Apr 2014**
+* **Conference: [Philadelphia Emerging Technologies for the Enterprise 2014](http://phillyemergingtech.com/2014/) - Apr 2014**
 * **Video: [http://www.infoq.com/presentations/om-clojurescript-facebook-react](http://www.infoq.com/presentations/om-clojurescript-facebook-react)**
 
 
