@@ -2,9 +2,11 @@ Transcript: **[Transducers - Rich Hickey (09/2014)](https://www.youtube.com/watc
 
 #Transducers 
 
+![0:00 Transducers](Transducers/00.00.00.jpg)
+
 ![0:03 What are They?](Transducers/00.00.03.jpg)
 
-Of course, everything is just some combination of the same ingredients, the shell's on the outside, [00:13] the top, whatever. I'm not claiming any novelty here, it's just another rearrangement of the same old stuff as usual. But you know, sometimes, the cheese on top, you know, tastes better than when it's inside.
+Of course, everything is just some combination of the same ingredients, the shell's on the outside, on the top, whatever. I'm not claiming any novelty here, it's just another rearrangement of the same old stuff as usual. But you know, sometimes, the cheese on top, you know, tastes better than when it's inside.
 
 ![00:28 What are They?](Transducers/00.00.28.jpg)
 
@@ -22,7 +24,7 @@ So, we made up words. Actually we didn’t make up a word. Again, this is actual
 
 So this is not a programming thing. This is a thing we do all the time in the real world; we don't call them transducers, we call them instructions. And so, we'll talk about this scenario through the course of this talk, which is, 'put the baggage on the plane'. That's the overall thing we're doing, but I have this transformation that I want you do to the baggage. I want you to, while you're doing it, while you are putting the baggage on the plane, break apart the pallets. We're going to have pallets, you know, big wooden things with a pile of luggage on it that's sort of shrink-wrapped. We're going to break them apart so now we have individual pieces of luggage. We want to smell each bag and see if it smells like food. If it smells like food, we don't want to put it on the plane. And then we want to take the bags and see if they are heavy. And we want to label them. That's what we have to do. We're talking to the luggage handlers, we say, "That's what you are going to do". And they all say, "Great, I can do that".
 
-![04:49 Conveyances, sources, sinks are irrelevant](Transducers/00.04.49.jpg)
+![04:59 Conveyances, sources, sinks are irrelevant](Transducers/00.04.59.jpg)
 
 One of the really important things about the way that was just said, and the way you talk to luggage handlers and your kids and anybody else you need to give instructions to, is that the conveyance and the sources and the sinks of that process are irrelevant. To the luggage handlers, get the bags on the conveyor belt or on a trolley? We didn't say. We don't care. In fact, we really don't want to care. We don't want to say to the luggage guys, "Today, there's going to be luggage on the trolley, do this to it and put it on another trolley". And tomorrow when we switch to conveyor belts, have them say, "We didn't know what to do". "It came on a conveyor belt and like, you didn't.. I have rules for trolleys". So the rules don't care. The instructions don't care. This is the real world.
 
@@ -38,6 +40,8 @@ Because map is a function from whatever, collection to collection or sequence to
 
 And in addition, we have all this in-between stuff. It is as if we said to the luggage guys, "Take everything off the trolley, right, and unbundle the pallet and put it on another trolley. And take it off that trolley. And see if it smells like food. And if it doesn't, put it on another trolley. And then take it off that trolley, and if it's heavy, put a label on it and put it on another trolley". This is what we're doing in programming. This is what we do all the time. And we wait for a sufficiently smart supervisor to come and like, say, "What are you guys doing?". So we don't want to do this anymore.
 
+![08:01 trolleys](Transducers/00.08.01.jpg)
+
 ![08:02 No reuse](Transducers/00.08.02.jpg)
 
 We don't have any reuse. Every time we do this, we end up writing a new thing. We write a new kind of stream, we have a new set of these functions. We invent.. rx, boom, there's a 100 functions. We were starting to do this in Clojure. We had channels and we are starting to write map and filter again. So, it's time to say, time out. Can we do this? Because there are two things that happened. One is, all the things we are doing are specific. And the other is, there's a potential inefficiency here. Maybe there's sufficiently smart compilers, and maybe for some context, they can make the intermediate stuff go away. Maybe they can’t. The problem is our initial statement really doesn't like what we normally do. It's not general, it's specific. We'll rely on something else to fix it.
@@ -46,11 +50,13 @@ We don't have any reuse. Every time we do this, we end up writing a new thing. W
 
 We also have this problem, when we are going to go from one kind of conveyance to another, and now all of a sudden, you know, map is from x to x. How do we fix this? And I know what everyone's thinking, of course. 
  
-![09:06 {map function definition}](Transducers/00.09.06.jpg)
+![09:06 {map in Scala}](Transducers/00.09.06.jpg)
 
 [laughter, applause]
 
 Yeah. So, that may fix some of this but in general it doesn't solve the problem. The problem is mostly about the fact that we are talking about the entire job. Those instructions, they were about the step. They weren't about the entire job. The entire job was around it. While are you doing this thing, here's what you going to do to the inputs. Here's how you are going to transform them while you're doing the bigger thing which could change. It could change from conveyor belts to trolleys and stuff like that.
+
+![09:43 Stop talking about the entire job](Transducers/00.09.43.jpg)
 
 So we want to just take a different approach. If we have something that's about the steps, we can build things that are about the whole jobs but not vice-versa. 
 
