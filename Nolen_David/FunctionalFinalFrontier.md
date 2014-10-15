@@ -258,7 +258,7 @@ Notice I didn't have to change anything about my actual application. This is jus
 
 [00:28:00 END OF DEMO]
 
-![00:28:00 demo](FinalFrontier/00.28:00.jpg)
+![00:28:00 demo](FinalFrontier/00.28.00.jpg)
 
 So we saw the demo.
 
@@ -340,7 +340,7 @@ So if you've seen iPython, iPython is like an extremely limited form of this bec
 
 Let me just - I guess I can show one other thing. There's like some graphs. It's pretty cool.
 
-[00:37:53END OF DEMO]
+[00:37:53 - END OF DEMO]
 
 ![00:37:53 Questions?](FinalFrontier/00.37.53.jpg)
 
