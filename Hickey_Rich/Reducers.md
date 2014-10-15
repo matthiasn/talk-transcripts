@@ -1,6 +1,8 @@
-Transcript: **[Reducers - Rich Hickey (09/2012)](http://www.infoq.com/presentations/Clojure-Reducers)**
-
 # Reducers
+
+* **Speaker: Rich Hickey**
+* **Conference: [QCon NY 2012](https://qconnewyork.com/2012/) - June 2012**
+* **Video: [http://www.infoq.com/presentations/Clojure-Reducers](http://www.infoq.com/presentations/Clojure-Reducers)**
 
 
 ![Intro Slide](Reducers/00m00s.jpg)
