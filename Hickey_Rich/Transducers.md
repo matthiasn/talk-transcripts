@@ -1,6 +1,8 @@
-Transcript: **[Transducers - Rich Hickey (09/2014)](https://www.youtube.com/watch?v=6mTbuzafcII)**
-
 #Transducers 
+
+* **Speaker: Rich Hickey**
+* **Conference: [Strange Loop 2014](http://thestrangeloop.com) - Sept 2014**
+* **Video: [https://www.youtube.com/watch?v=6mTbuzafcII](https://www.youtube.com/watch?v=6mTbuzafcII)**
 
 ![0:00 Transducers](Transducers/00.00.00.jpg)
 
