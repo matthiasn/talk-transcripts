@@ -4,8 +4,6 @@
 * **Conference: [Strange Loop 2010](http://thestrangeloop.com) - Oct 2010**
 * **Video: [http://www.infoq.com/presentations/Thinking-Parallel-Programming](http://www.infoq.com/presentations/Thinking-Parallel-Programming)**
 
-http://www.infoq.com/presentations/Thinking-Parallel-Programming
-
 ![00:00:00 Oracle](ParallelProg/00.00.00.jpg)
 
 I am here to talk about parallel programming or not. But before that, I wanted to show you the ugliest program I ever wrote. Here it is.
