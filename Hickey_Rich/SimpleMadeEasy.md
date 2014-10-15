@@ -1,6 +1,8 @@
-Transcript: **[Simple Made Easy - Rich Hickey (10/2011)](http://www.infoq.com/presentations/Simple-Made-Easy)**
-
 # Simple Made Easy
+
+* **Speaker: Rich Hickey**
+* **Conference: [Strange Loop 2011](http://thestrangeloop.com) - Sept 2011**
+* **Video: [http://www.infoq.com/presentations/Simple-Made-Easy](http://www.infoq.com/presentations/Simple-Made-Easy)**
 
 ![00:00:00 Simple Made Easy](SimpleMadeEasy/00.00.00.jpg)
 

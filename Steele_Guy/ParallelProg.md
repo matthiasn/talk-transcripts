@@ -1,6 +1,10 @@
-Transcript: **[How to Think about Parallel Programming: Not! - Guy L. Steele Jr. (01/2011)](http://www.infoq.com/presentations/Thinking-Parallel-Programming)**
-
 # How to Think about Parallel Programming: Not!
+
+* **Speaker: Guy Steele**
+* **Conference: [Strange Loop 2010](http://thestrangeloop.com) - Oct 2010**
+* **Video: [http://www.infoq.com/presentations/Thinking-Parallel-Programming](http://www.infoq.com/presentations/Thinking-Parallel-Programming)**
+
+http://www.infoq.com/presentations/Thinking-Parallel-Programming
 
 ![00:00:00 Oracle](ParallelProg/00.00.00.jpg)
 
