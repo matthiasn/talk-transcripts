@@ -1,6 +1,8 @@
-Transcript: **[Clojure core.async Channels - Rich Hickey (11/2013)](http://www.infoq.com/presentations/clojure-core-async)**
-
 # Clojure core.async Channels
+
+* **Speaker: Rich Hickey**
+* **Conference: [Strange Loop 2013](http://thestrangeloop.com) - Sept 2013**
+* **Video: [http://www.infoq.com/presentations/clojure-core-async](http://www.infoq.com/presentations/clojure-core-async)**
 
 ![00:00:00 Intro](CoreAsync/00.00.00.jpg)
 
