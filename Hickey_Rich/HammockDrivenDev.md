@@ -1,7 +1,7 @@
 # Step Away from the Computer or Hammock-driven Development
 
 * **Speaker: Rich Hickey**
-* **Conference: [Clojure/Conj 2012](http://clojure-conj.org) - Nov 2012**
+* **Conference: [Clojure/Conj 2010](http://clojure-conj.org) - Nov 2010**
 * **Video: [https://www.youtube.com/watch?v=f84n5oFoZBc](https://www.youtube.com/watch?v=f84n5oFoZBc)**
 
 ![Intro Slide](HammockDrivenDev/00m00s.jpg)
