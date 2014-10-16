@@ -3,6 +3,7 @@ Talks by Rich Hickey
 
 * **[Transducers (09/2014)](Transducers.md)**
 * **[Clojure core.async Channels (09/2013)](CoreAsync.md)**
-* **[Reducers (09/2012)](Reducers.md)**
-* **[Simple Made Easy (10/2011)](SimpleMadeEasy.md)**
-* **[Hammock Driven Development (12/2012)](HammockDrivenDev.md)**
+* **[The Language of the System (11/2012)](LanguageSystem.md)**
+* **[Reducers (06/2012)](Reducers.md)**
+* **[Simple Made Easy (9/2011)](SimpleMadeEasy.md)**
+* **[Hammock Driven Development (10/2010)](HammockDrivenDev.md)**
