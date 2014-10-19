@@ -2,7 +2,7 @@
 
 * **Speaker: Rich Hickey**
 * **Conference: [JaxConf 2012](http://jaxconf.com) - July 2012**
-* **Video: [https://www.youtube.com/watch?v=-6BsiVyC1kM(https://www.youtube.com/watch?v=-6BsiVyC1kM)**
+* **Video: [https://www.youtube.com/watch?v=-6BsiVyC1kM](https://www.youtube.com/watch?v=-6BsiVyC1kM)**
 
 
 So The Value of Values. Who here works in I.T.? Everybody, I think. Alright. What does it mean? What does it stand for, I.T.?
