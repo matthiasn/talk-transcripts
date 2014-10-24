@@ -2,6 +2,7 @@ Talks by Rich Hickey
 --------------------
 
 * **[Transducers (09/2014)](Transducers.md)**
+* **[Implementation details of core.async Channels (06/2014)](ImplementationDetails.md)**
 * **[Clojure core.async Channels (09/2013)](CoreAsync.md)**
 * **[The Language of the System (11/2012)](LanguageSystem.md)**
 * **[The Value of Values (07/2012)](ValueOfValues.md)**
