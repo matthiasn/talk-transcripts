@@ -378,7 +378,7 @@ This is Keith Emerson sitting in front of a Moog modular synthesizer back in the
 
 So I'll take a step back and say maybe some people do want to play choose-a-phone, but no one, I bet, wants to compose for a choose-a-phone ensemble.
 
-![00.31.10 Complex target](DesignCompositionPerformance/00.31.10
+![00.31.10 Complex target](DesignCompositionPerformance/00.31.10.jpg)
 
 Just imagine that you are sitting in front of an orchestra and everybody in the orchestra had one of these in front of them.
 
