@@ -8,7 +8,7 @@
 
 Hi. Thanks for coming. I'm very excited about this conference. It's always great, and I would like to thank the organizers for inviting me today to talk about design, composition and performance. So we start with a legal disclaimer prepared by lawyers.
 
-![00.00.18 Analogies](DesignCompositionPerformance/00.00.18.jpg) 
+![00.00.18 Analogies](DesignCompositionPerformance/00.00.18.jpg)
 
 We're going to have some fun with analogies today and, the cool thing about analogies is, they're as much fun when they're wrong as they are when they're right.
 
@@ -101,7 +101,7 @@ You're going to take apart requirements that are domain side - the system must d
 The first thing you have to do when you're trying to fix what's not working is to separate out what's the cause of this problem from what's the symptom of this problem. Somebody says my screen is black. You're not - I would say, okay, I know how to fix black screens and start typing because there's not a generic solution to the black screen problem yet.
 
 And then there are a whole bunch of requirements that are unstated, and these need to always be enumerated, if not taking it apart, but they need to be in mind at all times. Unstated requirements are the things that everybody wants the system to avoid, like I'd like a system that doesn't keep crashing, use up all the memory, cost too much to run, use too much energy, require a lot of manual effort, or the users will hate. And so the unstated requirements are often a set of things that your software is supposed to not do, not cause attributes it's not supposed to have, so we want those on the table.
- 
+
 ![00.06.42 Take apart time/order/flow](DesignCompositionPerformance/00.06.42.jpg)
 
 Other things, just completely different dimension of things we can take apart when we do design, which is time. Right? You can take apart the order of things, how things are going to flow from one to the other. You can break systems apart, so there's less direct calling. You can use queues to do that. You can support redundant activity with itempotent approaches. Commutation is a very important concept that's going to be more and more prevalent as we try to build systems that are highly distributed, which says I can make a system order-independent by supporting operations that are all commutative. Then I don't care how things come in. So it's a technique for breaking apart - I used to have this order dependency, and now I don't, so now I have two separate things I can talk about independently. And transactions are the opposite when you say I do need to know these things are going to happen together.
@@ -182,7 +182,7 @@ The first is you see fully orchestrated music. It's fully arranged. All the note
 
 ![00.16.12 Specificity and Scale - build slide](DesignCompositionPerformance/00.16.12.jpg)
 
-And then smaller compositions, you might have only a melody written out and the cord changes for, say, a song. We'll call it a song, but we're going to not talk about words today. And, in those compositions, you have a lot more latitude for performers because you're not saying you must play this note or this register on this instrument at this time, this loud. You just said this is the melody and have at it. So there's more responsibility for performers, so there's this whole spectrum.
+And then smaller compositions, you might have only a melody written out and the chord changes for, say, a song. We'll call it a song, but we're going to not talk about words today. And, in those compositions, you have a lot more latitude for performers because you're not saying you must play this note or this register on this instrument at this time, this loud. You just said this is the melody and have at it. So there's more responsibility for performers, so there's this whole spectrum.
 
 I think that when people push back against design, they're afraid of this first one because, again, back in the '80s we had this stuff, and people had plans that you would draw pictures and push buttons, and it would write programs. Maybe people still have those plans, but they're conducting them in secret.
 
@@ -240,11 +240,11 @@ Another thing that sort of crosses the lines in composition and performance in m
 
 ![00.21.55 Harmony - build slide](DesignCompositionPerformance/00.21.55.jpg)
 
-Again, we get this nice word for it, which is a cord or congruity - how do things line up?
+Again, we get this nice word for it, which is a chord or congruity - how do things line up?
 
 ![00.22.02 Harmony - build slide](DesignCompositionPerformance/00.22.02.jpg)
 
-Again, there's this lining up notion and the simultaneity associated with harmony. Right? So we have melody is sequential and harmony is parallel. Music did all this before we had computers. And so this is, how do things work together at the same time? If I played these three notes at the same time, what will happen? Or for Coltrane, if I played this note while these cord changes or this set of notes while these cord changes are happening, what will that be like? Bartok had to imagine, when the strings are doing this and the winds are doing that, what will it sound like all together.
+Again, there's this lining up notion and the simultaneity associated with harmony. Right? So we have melody is sequential and harmony is parallel. Music did all this before we had computers. And so this is, how do things work together at the same time? If I played these three notes at the same time, what will happen? Or for Coltrane, if I played this note while these chord changes or this set of notes while these chord changes are happening, what will that be like? Bartok had to imagine, when the strings are doing this and the winds are doing that, what will it sound like all together.
 
 ![00.22.38 Harmony - build slide](DesignCompositionPerformance/00.22.38.jpg)
 
@@ -256,7 +256,7 @@ And I'm going to contend that harmonic sensibility is a super critical design sk
 
 ![00.23.17 Bartok and Coltrane](DesignCompositionPerformance/00.23.17.jpg)
 
-So I think both Bartok and Coltrane are interesting, even though they're in completely different genres of music, in that they were both masters of harmony. 
+So I think both Bartok and Coltrane are interesting, even though they're in completely different genres of music, in that they were both masters of harmony.
 
 ![00.23.21 Bartok and Coltrane - build slide](DesignCompositionPerformance/00.23.21.jpg)
 
@@ -268,7 +268,7 @@ In fact, what was interesting about both of them was that they were students of 
 
 Bartok studied obviously the classical tradition, but his music was not compliant with those rules, and it's because he brought a whole bunch of influences in from studies he had done of folk music of Hungary. And what he studied in that music was the sonority that was possible in these tunes that didn't follow the classical rules, but they still worked. And so he pulled out what worked about that and wrote pieces that are hard to really recognize as being completely tonal, but they are tonal, and they're satisfyingly consonant as tonal music is, which is quite, quite astounding.
 
-Similarly, Coltrane invented whole new ways of doing reharmonization over cord changes that had that same sensibility about harmony.
+Similarly, Coltrane invented whole new ways of doing reharmonization over chord changes that had that same sensibility about harmony.
 
 ![00.24.41 Bartok and Coltrane - build slide](DesignCompositionPerformance/00.24.41.jpg)
 
@@ -360,12 +360,12 @@ And so, you know, is this something to fix? There are all kinds of limits, not j
 
 And there's a sense in which the players can overcome this. How many people here play piano? Right? So what do you do to deal with the fact that piano can't play the in between note? What do you have? You have grace notes and trills and mordents and stuff that give you all that sort of feel around the note thing.
 
-John Coltrane famously became so adept at the saxophone and had such physical prowess and muscle memory and combined it with this gargantuan knowledge of harmony that he could play these scales so fast that he could imply not only cords, but entire tonalities, superimpose entire tonalities over cord changes by just playing sheets of sound, is what they called it, over music. So it's not necessarily the case that the shortcomings of these things need to be fixed in an instrument. Right? There may need to be room for the performer to do it.
+John Coltrane famously became so adept at the saxophone and had such physical prowess and muscle memory and combined it with this gargantuan knowledge of harmony that he could play these scales so fast that he could imply not only chords, but entire tonalities, superimpose entire tonalities over chord changes by just playing sheets of sound, is what they called it, over music. So it's not necessarily the case that the shortcomings of these things need to be fixed in an instrument. Right? There may need to be room for the performer to do it.
 
 ![00.30.31 Choose-a-phone](DesignCompositionPerformance/00.30.31.jpg)
 
 And there's another good reason why we don't fix everything, which is that no one wants to play choose-a-phone. Right? No one wants to play an instrument that does everything. You could push here, and it makes a piano sound, and then it makes a drum sound, and then this happens and that happens.
- 
+
 ![00.30.45 -image-](DesignCompositionPerformance/00.30.45.jpg)
 
 So some people do want to play a choose-a-phone.
@@ -507,7 +507,7 @@ So it begs the question, right? What ratio of time should we have between planni
 ![00.39.29 Planning/Performance - build slide](DesignCompositionPerformance/00.39.29.jpg)
 
 But is that, like, the way other things work? No! How about for an orchestral musician? How much time do they spend practicing versus at the concert? Way more time. Way more time. And do they go and say, "I practiced at college, so I'm done practicing"? No.
- 
+
 ![00.39.50 Planning/Performance - build slide](DesignCompositionPerformance/00.39.50.jpg)
 
 Why do we think that we can do this? We went to college or wherever we learned, whatever, and then, like, we just, like, we're going to go, and we're going to do it every day. We just do it from here on. Went to school; we're done.
@@ -522,7 +522,7 @@ But there's a sense in which -
 
 [Audience laughter]
 
-There's a sense in which - I mean, it is sad. It is. It's actually sad. It's not sad as a joke - sad. It's actually sad. But there's a sense in which it's like, all right, well, this is all so - it's so different, right? Coltrane couldn't build a website in a day. I could. You know, I could do that. 
+There's a sense in which - I mean, it is sad. It is. It's actually sad. It's not sad as a joke - sad. It's actually sad. But there's a sense in which it's like, all right, well, this is all so - it's so different, right? Coltrane couldn't build a website in a day. I could. You know, I could do that.
 
 ![00.40.42 But… - build slide](DesignCompositionPerformance/00.40.42.jpg)
 
@@ -580,7 +580,7 @@ They came out with this analog synth and he helped them design it. And he really
 
 There are still knobs on the top, but a lot of the other stuff has been incorporated in the design that allows people to only work at the next level up. They do not need to care about what's inside this box.
 
-![00.46.38 no music today](DesignCompositionPerformance/00.46.38.jpg) 
+![00.46.38 no music today](DesignCompositionPerformance/00.46.38.jpg)
 
 And it's quite an important thing because, for him, he has different days. He has days when he's patching stuff together. Maybe he has days when he's playing his thing. And that's all fine, but days when he's soldering, he is not making music. And this is what happens to us.
 
@@ -669,7 +669,7 @@ Of course, when you're facing all these constraints, it seems like negative. I c
 ![00.52.22 Design is imagining - build slide](DesignCompositionPerformance/00.52.22.jpg)
 
 However, actually designing is about making decisions, which means you try to think up 100 times as many things as you actually use, way more things than you use.
- 
+
 ![00.52.26 Design is making decisions](DesignCompositionPerformance/00.52.26.jpg)
 
 You don't want to think of one thing and be like, okay, let's go do that. You want to think of ten things and then say this one is the one we want to do.
@@ -722,7 +722,7 @@ I think you want to find and choose languages and libraries that are like instru
 
 And in the end, pursue harmony in your own designs. Try to think about the nature of harmoniousness in software, what makes things work together, and apply that.
 
-![00.55.19 Rock on](DesignCompositionPerformance/00.55.19.jpg) 
+![00.55.19 Rock on](DesignCompositionPerformance/00.55.19.jpg)
 
 But thanks very much for listening, and I hope you enjoy the rest of the conference.
 
