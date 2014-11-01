@@ -417,7 +417,7 @@ Like, if you want merging, if you want branches, all these, like in a regular ap
 
 [Audience member: Just an easy question. What's a good place to go to learn more about immutable data structures and functional data structures?]
 
-So, sadly, there's not like a really great resource. There is actually a fairly good write-up by - yes, so Hyperion.com has - this guy wrote a very good sort of introductory explanation on how they work, and you don't - it doesn't assume any real knowledge about Clojure. It's just like what's the algorithm and how it's implemented.
+So, sadly, there's not like a really great resource. There is actually a fairly good write-up by - yes, so **[Hypirion.com](http://hypirion.com/musings/understanding-persistent-vector-pt-1)** has - this guy wrote a very good sort of introductory explanation on how they work, and you don't - it doesn't assume any real knowledge about Clojure. It's just like what's the algorithm and how it's implemented.
 
 I think there's one in the back. This is the last one, probably.
 
