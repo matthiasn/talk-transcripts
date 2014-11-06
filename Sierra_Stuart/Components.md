@@ -178,7 +178,7 @@ This customer's component is all about behavior. It basically represents a set o
 
 ![00.15.00 Domain Model - build slide](Components/00.15.00.jpg)
 
-So what this does primarily is encapsulate a set of related dependencies. So maybe I know, in my application, in order to deal with customers, to satisfy the services that I need for customers. I need access to the database, and I need to be able to send email. So I'll put those as fields in the customer's component. Now I could actually use a map here. It would work just as well, but I like giving things names, so I'll call it customers and use a record, but a map would work exactly the same way.
+So what this does primarily is encapsulate a set of related dependencies. So maybe I know, in my application, in order to deal with customers, to satisfy the services that I need for customers, I need access to the database, and I need to be able to send email. So I'll put those as fields in the customer's component. Now I could actually use a map here. It would work just as well, but I like giving things names, so I'll call it customers and use a record, but a map would work exactly the same way.
 
 ![00.15.29 Domain Model - build slide](Components/00.15.29.jpg)
 
@@ -202,7 +202,7 @@ Using just takes a component, which I've constructed using the default def recor
 
 ![00.17.15 Constructor with Dep. - build slide](Components/00.17.15.jpg)
 
-In particular, I am not passing the dependencies in the constructor function. This is another difference from what I described in Closure in the Large. All I'm going to do is declare my dependencies and they'll get filled in later.
+In particular, I am not passing the dependencies in the constructor function. This is another difference from what I described in Clojure in the Large. All I'm going to do is declare my dependencies and they'll get filled in later.
  
 ![00.17.34 Combining Components](Components/00.17.34.jpg)
 
@@ -226,9 +226,9 @@ So the system itself is responsible for managing the lifecycle of the components
 
 ![00.18.37 System](Components/00.18.37.jpg)
 
-So here's how it works. System map is just a function. It takes keys and values, and it returns an instance of this system map record that I've defined. Now remember, Clojure records are maps. They can have any arbitrary keys associated onto them, so I didn't need to say in advance that customers, DB, and email were going to be the keys in this system. That's just what I happened to put in it.
+So here's how it works. SystemMap is just a function. It takes keys and values, and it returns an instance of this system map record that I've defined. Now remember, Clojure records are maps. They can have any arbitrary keys associated onto them, so I didn't need to say in advance that customers, DB, and Email were going to be the keys in this system. That's just what I happened to put in it.
 
-The only difference with system map, the only thing that distinguishes it from an ordinary map is it has its own implementation of the lifecycle protocol built in. So a system knows how to start and stop itself.
+The only difference with SystemMap, the only thing that distinguishes it from an ordinary map is it has its own implementation of the lifecycle protocol built in. So a system knows how to start and stop itself.
 
 ![00.19.13 Starting a System](Components/00.19.13.jpg)
 
@@ -236,7 +236,7 @@ And, in particular, it knows how to do that by starting all of the components it
 
 ![00.19.25 Starting a System - build slide](Components/00.19.25.jpg)
 
-First, it's going to look at the components it contains and see what their dependencies are. It's going to read off that metadata that the using function added onto my records. So it sees that customers depends on DB and email, and it knows that it has things called DB and email.
+First, it's going to look at the components it contains and see what their dependencies are. It's going to read off that metadata that the using function added onto my records. So it sees that customers depends on DB and Email, and it knows that it has things called DB and email.
 
 ![00.19.44 Starting a System - build slide](Components/00.19.44.jpg)
 
@@ -252,11 +252,11 @@ Then it's going to call start on each component in order. It's going to step thr
 
 ![00.20.09 Starting a System - build slide](Components/00.20.09.jpg)
 
-When it gets to a component that has dependencies, like customers in this example, it's going to first associate its dependencies into it. Remember, records or maps, whichever these are, I can just assoc onto them, and I've declared that customers needs DB and email, so I'm going to assoc DB and email from the system into customers.
+When it gets to a component that has dependencies, like Customers in this example, it's going to first associate its dependencies into it. Remember, records or maps, whichever these are, I can just assoc onto them, and I've declared that customers needs DB and Email, so I'm going to assoc DB and Email from the system into Customers.
 
 ![00.20.35 Starting a System - build slide](Components/00.20.35.jpg)
 
-And once I've done that, then I can start customers, so I know that by the time I call component start on customers, DB and email have already been started and they've been assoced into customers.
+And once I've done that, then I can start Customers, so I know that by the time I call component start on Customers, DB and Email have already been started and they've been assoced into Customers.
 
 ![00.20.50 Starting a System - build slide](Components/00.20.50.jpg)
 
@@ -268,7 +268,7 @@ So we get all of these started components. Remember, each time we call start it 
 
 Stopping a system is the same procedure. It just goes in the reverse order. It goes from customers back up to the least dependent things in the system.
 
-So in -- this has allowed me to connect a component to its dependencies. I've basically injected email and DB into customers, finding them in the system.
+So in -- this has allowed me to connect a component to its dependencies. I've basically injected Email and DB into Customers, finding them in the system.
 
 ![00.21.45 Dependency Injection ](Components/00.21.45.jpg)
 
@@ -280,7 +280,7 @@ When we have immutable maps as our components, we can do something else. We can 
 
 ![00.22.55 Associative Injection - build slide](Components/00.22.55.jpg)
 
-Remember, a system is a record. A record is a map. I can assoc onto a map, so I can replace email and DB in my system with alternate implementations provided I do this before starting it.
+Remember, a system is a record. A record is a map. I can assoc onto a map, so I can replace Email and DB in my system with alternate implementations provided I do this before starting it.
 
 ![00.23.00 Associative Injection - build slide](Components/00.23.00.jpg)
 
@@ -288,7 +288,7 @@ Remember, everything is going to get connected together when I call start. So be
 
 ![00.23.20 Stub Service for Testing](Components/00.23.20.jpg)
 
-So just as an example, say I wanted a stub version of my email service for testing purposes. 
+So just as an example, say I wanted a stub version of my email service for testing purposes.
 
 ![00.23.25 Stub Service for Testing - build slide](Components/00.23.25.jpg)
 
@@ -318,7 +318,7 @@ So now when I get to actually testing the business logic, I want to test that cu
 
 ![00.25.48 Testing Business Logic - build slide](Components/00.25.48.jpg)
 
-I can start my test system that I create for this test alone, and I know it's not going to be affected by any other test in the system. I could even run my tests in parallel and they're not going to interfere with each other. So I just pull out the things that I want to look at. I pull out the customers component. I pull out the email component, which is my stub implementation, and then I can make a call to one component and verify the results in another.
+I can start my test system that I create for this test alone, and I know it's not going to be affected by any other test in the system. I could even run my tests in parallel and they're not going to interfere with each other. So I just pull out the things that I want to look at. I pull out the Customers component. I pull out the Email component, which is my stub implementation, and then I can make a call to one component and verify the results in another.
 
 ![00.26.12 Testing Business Logic - build slide](Components/00.26.12.jpg)
 
@@ -326,7 +326,7 @@ And because all of the dependencies get passed through the call chain, nothing i
 
 ![00.27.06 Var](Components/00.27.06.jpg)
 
-And the reason I like this is that pretty much the only other mechanism that I've seen commonly for doing this in Clojure for substituting in an alternate implementation operates at the level of individual vars. You can either use with redefs, which is global across your entire program, or binding, which is confined to a thread.
+And the reason I like this is that pretty much the only other mechanism that I've seen commonly for doing this in Clojure for substituting in an alternate implementation operates at the level of individual vars. You can either use with-redefs, which is global across your entire program, or binding, which is confined to a thread.
 
 ![00.27.30 Var - build slide](Components/00.27.30.jpg)
 
@@ -370,11 +370,11 @@ This routing table and this handler function are created by wrapping a bunch of 
 
 ![00.31.40 Inject Components](Components/00.31.40.jpg)
 
-But it turns out you can actually work around this fairly easily. I need to, instead of defining that route handler function statically, I need to provide a constructor function to build that function. Here I've called it make handler. And I've added an extra little piece of middleware that wraps that function in something that's just going to associate a component into the call chain. In this case, I'm assuming it's a ring request, and I'm going to associate a component called Web app into that request.
+But it turns out you can actually work around this fairly easily. I need to, instead of defining that route handler function statically, I need to provide a constructor function to build that function. Here I've called it make-handler. And I've added an extra little piece of middleware that wraps that function in something that's just going to associate a component into the call chain. In this case, I'm assuming it's a ring request, and I'm going to associate a component called web-app into that request.
 
 ![00.32.13 Inject Components - build slide](Components/00.32.13
 
-So this make handler function, I'll call it when I'm starting up the application to build up the handler function dynamically. And, at that point, it can close over a Web app component that I've constructed.
+So this make-handler function, I'll call it when I'm starting up the application to build up the handler function dynamically. And, at that point, it can close over a web-app component that I've constructed.
 
 ![00.32.28 Web Server Comp.](Components/00.32.28.jpg)
 
@@ -382,7 +382,7 @@ So then I might have a Web server component that uses jetty or netty or whatever
 
 ![00.32.36 Web Server Comp. - build slide](Components/00.32.36.jpg)
 
-And when I'm starting that, I will call the function that actually creates the route handler function that the server infrastructure is going to use. Now in this example, I have assumed there is one component called Web app, and it represents my entire Web application. It might end up depending on everything else, or it might not. But I could do it different ways.
+And when I'm starting that, I will call the function that actually creates the route handler function that the server infrastructure is going to use. Now in this example, I have assumed there is one component called web-app, and it represents my entire Web application. It might end up depending on everything else, or it might not. But I could do it different ways.
 
 This is very open. I could have a different component for each and every route in my application. That might make sense for an API type service. I could have different components for different subsets of routes in may application. Whatever I want to do, I just have to make sure they're available at the right point and inject them into the call stack.
 
@@ -406,11 +406,11 @@ Another thing I should mention is that systems are themselves components. They o
 
 So here's an example if you wanted to make your own lifecycle. I've seen some APIs in Java, for example, that define four lifecycle methods like init, start, stop, and destroy.
 
-Defining your own lifecycle is very easy. You just need to provide your own version of system map. You need to define your lifecycle functions, whether they're protocols or multi-methods and implement them on all your components, and then provide your own version of system map that calls them in the right way. 
+Defining your own lifecycle is very easy. You just need to provide your own version of SystemMap. You need to define your lifecycle functions, whether they're protocols or multi-methods and implement them on all your components, and then provide your own version of SystemMap that calls them in the right way.
 
 ![00.35.36 System Lifecycle - build slide](Components/00.35.36.jpg)
 
-And there you can make use of these two helpers: update system and update system reverse. This is how the component library I've written actually implements start and stop on systems. Update system just takes any arbitrary function you pass it and calls it on each component in dependency order while doing the associng in of dependencies at the same time. Update system reverse does the same thing. It just goes in reverse dependency order.
+And there you can make use of these two helpers: update-system and update-system-reverse. This is how the component library I've written actually implements start and stop on systems. update-system just takes any arbitrary function you pass it and calls it on each component in dependency order while doing the associng in of dependencies at the same time. update-system-reverse does the same thing. It just goes in reverse dependency order.
 
 ![00.36.06 Merging Systems](Components/00.36.06.jpg)
 
