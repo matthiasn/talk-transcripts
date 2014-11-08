@@ -372,7 +372,7 @@ This routing table and this handler function are created by wrapping a bunch of 
 
 But it turns out you can actually work around this fairly easily. I need to, instead of defining that route handler function statically, I need to provide a constructor function to build that function. Here I've called it make-handler. And I've added an extra little piece of middleware that wraps that function in something that's just going to associate a component into the call chain. In this case, I'm assuming it's a ring request, and I'm going to associate a component called web-app into that request.
 
-![00.32.13 Inject Components - build slide](Components/00.32.13
+![00.32.13 Inject Components - build slide](Components/00.32.13.jpg)
 
 So this make-handler function, I'll call it when I'm starting up the application to build up the handler function dynamically. And, at that point, it can close over a web-app component that I've constructed.
 
