@@ -40,7 +40,7 @@ So the question that sort of confronts us every time we start a Clojure project 
 
 ![00.02.33 Structure Built-In](Components/00.02.33.jpg)
 
-If you have an object oriented language like Java, and you need a thing, you need a fu, well, what do you do? You make a class. That's the only thing you can do. And a class has this structure built into it.
+If you have an object oriented language like Java, and you need a thing, you need a Foo, well, what do you do? You make a class. That's the only thing you can do. And a class has this structure built into it.
 
 ![00.02.48 Structure Built-In - build slide](Components/00.02.48.jpg)
 
