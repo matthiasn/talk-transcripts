@@ -198,7 +198,7 @@ Now when I construct this component, I'm going to add something new. I'm going t
 
 ![00.16.47 Constructor with Dep. - build slide](Components/00.16.47.jpg)
 
-`using` just takes a component, which I've constructed using the default def record map to record constructor, and a collection of keys. And those keys are the names of that component's dependency. Actually, all it's doing is adding some metadata onto the component. But I'm declaring that this component, customers, depends on something named :db and something named :email.
+`using` just takes a component, which I've constructed using the default def record map to record constructor, and a collection of keys. And those keys are the names of that component's dependency. Actually, all it's doing is adding some metadata onto the component. But I'm declaring that this component, Customers, depends on something named :db and something named :email.
 
 ![00.17.15 Constructor with Dep. - build slide](Components/00.17.15.jpg)
 
