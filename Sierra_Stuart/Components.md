@@ -198,7 +198,7 @@ Now when I construct this component, I'm going to add something new. I'm going t
 
 ![00.16.47 Constructor with Dep. - build slide](Components/00.16.47.jpg)
 
-`using` just takes a component, which I've constructed using the default def record map to record constructor, and a collection of keys. And those keys are the names of that component's dependency. Actually, all it's doing is adding some metadata onto the component. But I'm declaring that this component, customers, depends on something named DB and something named email.
+`using` just takes a component, which I've constructed using the default def record map to record constructor, and a collection of keys. And those keys are the names of that component's dependency. Actually, all it's doing is adding some metadata onto the component. But I'm declaring that this component, customers, depends on something named :db and something named :email.
 
 ![00.17.15 Constructor with Dep. - build slide](Components/00.17.15.jpg)
 
@@ -236,7 +236,7 @@ And, in particular, it knows how to do that by starting all of the components it
 
 ![00.19.25 Starting a System - build slide](Components/00.19.25.jpg)
 
-First, it's going to look at the components it contains and see what their dependencies are. It's going to read off that metadata that the using function added onto my records. So it sees that customers depends on DB and Email, and it knows that it has things called DB and email.
+First, it's going to look at the components it contains and see what their dependencies are. It's going to read off that metadata that the using function added onto my records. So it sees that customers depends on DB and Email, and it knows that it has things called :db and :email.
 
 ![00.19.44 Starting a System - build slide](Components/00.19.44.jpg)
 
