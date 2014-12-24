@@ -256,7 +256,7 @@ When it gets to a component that has dependencies, like Customers in this exampl
 
 ![00.20.35 Starting a System - build slide](Components/00.20.35.jpg)
 
-And once I've done that, then I can start Customers, so I know that by the time I call component start on Customers, DB and Email have already been started and they've been assoced into Customers.
+And once I've done that, then I can start Customers, so I know that by the time I call component start on Customers, DB and Email have already been started and they've been assoc'ed into Customers.
 
 ![00.20.50 Starting a System - build slide](Components/00.20.50.jpg)
 
