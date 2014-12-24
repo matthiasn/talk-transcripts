@@ -40,7 +40,7 @@ So the question that sort of confronts us every time we start a Clojure project 
 
 ![00.02.33 Structure Built-In](Components/00.02.33.jpg)
 
-If you have an object oriented language like Java, and you need a thing, you need a fu, well, what do you do? You make a class. That's the only thing you can do. And a class has this structure built into it.
+If you have an object oriented language like Java, and you need a thing, you need a `Foo`, well, what do you do? You make a class. That's the only thing you can do. And a class has this structure built into it.
 
 ![00.02.48 Structure Built-In - build slide](Components/00.02.48.jpg)
 
@@ -194,11 +194,11 @@ Then once it has them, it can invoke those components through their public APIs.
 
 ![00.16.37 Constructor with Dep.](Components/00.16.37.jpg)
 
-Now when I construct this component, I'm going to add something new. I'm going to use this function that's in my library called using.
+Now when I construct this component, I'm going to add something new. I'm going to use this function that's in my library called `using`.
 
 ![00.16.47 Constructor with Dep. - build slide](Components/00.16.47.jpg)
 
-Using just takes a component, which I've constructed using the default def record map to record constructor, and a collection of keys. And those keys are the names of that component's dependency. Actually, all it's doing is adding some metadata onto the component. But I'm declaring that this component, customers, depends on something named DB and something named email.
+`using` just takes a component, which I've constructed using the default def record map to record constructor, and a collection of keys. And those keys are the names of that component's dependency. Actually, all it's doing is adding some metadata onto the component. But I'm declaring that this component, Customers, depends on something named :db and something named :email.
 
 ![00.17.15 Constructor with Dep. - build slide](Components/00.17.15.jpg)
 
@@ -236,7 +236,7 @@ And, in particular, it knows how to do that by starting all of the components it
 
 ![00.19.25 Starting a System - build slide](Components/00.19.25.jpg)
 
-First, it's going to look at the components it contains and see what their dependencies are. It's going to read off that metadata that the using function added onto my records. So it sees that customers depends on DB and Email, and it knows that it has things called DB and email.
+First, it's going to look at the components it contains and see what their dependencies are. It's going to read off that metadata that the using function added onto my records. So it sees that customers depends on DB and Email, and it knows that it has things called :db and :email.
 
 ![00.19.44 Starting a System - build slide](Components/00.19.44.jpg)
 
@@ -256,7 +256,7 @@ When it gets to a component that has dependencies, like Customers in this exampl
 
 ![00.20.35 Starting a System - build slide](Components/00.20.35.jpg)
 
-And once I've done that, then I can start Customers, so I know that by the time I call component start on Customers, DB and Email have already been started and they've been assoced into Customers.
+And once I've done that, then I can start Customers, so I know that by the time I call component start on Customers, DB and Email have already been started and they've been assoc'ed into Customers.
 
 ![00.20.50 Starting a System - build slide](Components/00.20.50.jpg)
 
