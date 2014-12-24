@@ -194,7 +194,7 @@ Then once it has them, it can invoke those components through their public APIs.
 
 ![00.16.37 Constructor with Dep.](Components/00.16.37.jpg)
 
-Now when I construct this component, I'm going to add something new. I'm going to use this function that's in my library called using.
+Now when I construct this component, I'm going to add something new. I'm going to use this function that's in my library called `using`.
 
 ![00.16.47 Constructor with Dep. - build slide](Components/00.16.47.jpg)
 
