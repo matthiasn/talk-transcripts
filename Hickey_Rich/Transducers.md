@@ -82,7 +82,10 @@ Channels also take inputs. Somewhere inside channels is a little step function t
 
 ![16:03 Deriving Transducers](Transducers/00.16.03.jpg)
 
-So, as I said before, there's nothing new. Two papers I find useful to think about these things are these Lectures on Constructive Functional Programming which is a lot closer to the source of when people started thinking about folds and their relationships to lists. And the 2nd Graham Hutton paper served as a summary paper that sort of summarizes the current thinking at the time it was written. So they're both really good. But now I take you through 'how do we get to this point?'.
+So, as I said before, there's nothing new. Two papers I find useful to think about these things are these [Lectures on Constructive Functional Programming](http://www.cs.ox.ac.uk/files/3390/PRG69.pdf) which is a lot closer to the source of when people started thinking about folds and their relationships to lists. And the 2nd [Graham Hutton paper](http://www.cs.nott.ac.uk/~gmh/fold.pdf) served as a summary paper that sort of summarizes the current thinking at the time it was written. So they're both really good. But now I take you through 'how do we get to this point?'.
+
+* [Lectures on constructive functional programming](http://www.cs.ox.ac.uk/files/3390/PRG69.pdf) by R. S. Bird
+* [A tutorial on the universality of fold](http://www.cs.nott.ac.uk/~gmh/fold.pdf) by Graham Hutton
 
 ![16:37 Many list fns can be defined in terms of foldr](Transducers/00.16.37.jpg)
 
@@ -182,6 +185,8 @@ So this is the final example of filter returning a transducer. It takes a predic
 ![43:52 The Goal](Transducers/00.43.52.jpg)
 
 So this is what we're trying to accomplish. You define a set of transducers once. You define all your new cool stuff. So channels today, observables tomorrow, whatever the next day. You just make it accept transducers, and every specific implementation of these things, you get for free. And every recipe somebody creates, that's a composition of those transducing operations, works with your thing right away. That's what we want, right? We're going to take Perlis and just say it's even better. We want a hundred functions with no data structure.
+
+* in reference to "It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures." - [Alan Perlis](http://www.cs.yale.edu/homes/perlis-alan/quotes.html)
 
 ![44:27 Transducers](Transducers/00.44.27.jpg)
 
