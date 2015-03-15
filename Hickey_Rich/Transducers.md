@@ -82,7 +82,10 @@ Channels also take inputs. Somewhere inside channels is a little step function t
 
 ![16:03 Deriving Transducers](Transducers/00.16.03.jpg)
 
-So, as I said before, there's nothing new. Two papers I find useful to think about these things are these Lectures on Constructive Functional Programming which is a lot closer to the source of when people started thinking about folds and their relationships to lists. And the 2nd Graham Hutton paper served as a summary paper that sort of summarizes the current thinking at the time it was written. So they're both really good. But now I take you through 'how do we get to this point?'.
+So, as I said before, there's nothing new. Two papers I find useful to think about these things are these [Lectures on Constructive Functional Programming](http://www.cs.ox.ac.uk/files/3390/PRG69.pdf) which is a lot closer to the source of when people started thinking about folds and their relationships to lists. And the 2nd [Graham Hutton paper](http://www.cs.nott.ac.uk/~gmh/fold.pdf) served as a summary paper that sort of summarizes the current thinking at the time it was written. So they're both really good. But now I take you through 'how do we get to this point?'.
+
+* [Lectures on constructive functional programming](http://www.cs.ox.ac.uk/files/3390/PRG69.pdf) by R. S. Bird
+* [A tutorial on the universality of fold](http://www.cs.nott.ac.uk/~gmh/fold.pdf) by Graham Hutton
 
 ![16:37 Many list fns can be defined in terms of foldr](Transducers/00.16.37.jpg)
 
