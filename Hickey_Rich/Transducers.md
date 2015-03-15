@@ -186,6 +186,8 @@ So this is the final example of filter returning a transducer. It takes a predic
 
 So this is what we're trying to accomplish. You define a set of transducers once. You define all your new cool stuff. So channels today, observables tomorrow, whatever the next day. You just make it accept transducers, and every specific implementation of these things, you get for free. And every recipe somebody creates, that's a composition of those transducing operations, works with your thing right away. That's what we want, right? We're going to take Perlis and just say it's even better. We want a hundred functions with no data structure.
 
+* "It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures." - [Alan Perlis](http://www.cs.yale.edu/homes/perlis-alan/quotes.html)
+
 ![44:27 Transducers](Transducers/00.44.27.jpg)
 
 So, transducers are context independent. There's tremendous value in that. They're concrete re-reusable. So someone can make this and not how you're going to use it. That has tremendous value. It's much stronger than parametrization. Because you can flow it. They support early termination, completion. You can compose them just as easily as you can compose the other ones. They're efficient and tasty.
