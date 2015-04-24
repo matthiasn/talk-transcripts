@@ -38,7 +38,7 @@ So the hero of the talk today is Alfred North Whitehead. Right? He’s the famou
 
 <img src="AreWeThereYet/00.05.09.jpg" alt="00:05:09 Incidental complexity" id="slide-9">
 
-The complexity I want to talk about today is the incidental complexity. The complexity that arises from the way our tools work, from the ideas that embody our tools, from the ways our tools don’t work, from the ways our approaches don’t work. These things all become problems that we have to solve and we have a certain number of hours in the day we have to solve problems. Other problems you’re solving, the problems of the application domain or the problems you’ve set in front of yourself by choosing a particular language or tool or development strategy. So that’s incidental complexity. It’s coming along for the ride. It’s not part of the problem you’re trying to solve.
+The complexity I want to talk about today is the incidental complexity. The complexity that arises from the way our tools work, from the ideas that embody our tools, from the ways our tools don’t work, from the ways our approaches don’t work. These things all become problems that we have to solve and we have a certain number of hours in the day we have to solve problems. Are the problems you’re solving the problems of the application domain or the problems you’ve set in front of yourself by choosing a particular language or tool or development strategy? So that’s incidental complexity. It’s coming along for the ride. It’s not part of the problem you’re trying to solve.
 
 And it’s worse, I think. I mean, everybody knows when something is complex and you look at it, it says, “Arrr!!! Complex!” And everybody says, “Okay. Well I see that. That is scary. I know that’s a danger zone. I know I’m going to be careful with that.” The worst kind of incidental complexity is the kind that’s disguised as simplicity. “Look how easy this is! There’s no semicolons.” I don’t want to beat up on those semicolons. It’s just an easy way to say, “Look, at some superficial aspect of language I’m using, this seems easy, this seems familiar,” but is there incidental complexity hiding underneath it? 
 
@@ -61,7 +61,7 @@ So this looks really easy. Now, this is true. This is not just Java. This is eve
 
 <img src="AreWeThereYet/00.10.55.jpg" alt="00:10:55 Familiarity Hides Complexity" id="slide-12">
 
-So, this is kind of a little bit of a reiteration of the points I was making before. I think that because we’re so familiar with this, we’re absolutely, completely blind to it. Right? And when we choose languages or when people choose different languages, a lot of times, they make the decision on very superficial differences like the syntax or perhaps sort of this makes me feel good, expressivity differences, which I admit completely are real and valid, but they’re somewhat emotional. In the meantime, our systems are getting very, very hard to build, maintain and make correct. And in no small part, that’s due to this incidental of complexity. We can’t understand big programs. Right? We have these giant test suites, right? And we’ve run them every time we changed any little thing. Because we don’t know if we change something over here, that it’s not going to break something over there. And we can’t know. And I think for me, and I think for many people, we’re going to find concurrency just as the straw that breaks the camel’s back in this area.
+So, this is kind of a little bit of a reiteration of the points I was making before. I think that because we’re so familiar with this, we’re absolutely, completely blind to it. Right? And when we choose languages or when people choose different languages, a lot of times, they make the decision on very superficial differences like the syntax or perhaps sort of this makes me feel good, expressivity differences, which I admit completely are real and valid, but they’re somewhat emotional. In the meantime, our systems are getting very, very hard to build, maintain and make correct. And in no small part, that’s due to this incidental complexity. We can’t understand big programs. Right? We have these giant test suites, right? And we’ve run them every time we changed any little thing. Because we don’t know if we change something over here, that it’s not going to break something over there. And we can’t know. And I think for me, and I think for many people, we’re going to find concurrency just is the straw that breaks the camel’s back in this area.
 
 <img src="AreWeThereYet/00.12.08.jpg" alt="00:12:08 Civilization advances by extending…" id="slide-13">
 
@@ -71,7 +71,7 @@ So we’re programmers. We don’t use assembly language anymore. We have langua
 
 It ends up that they’re really not the best unit for that. The best unit for that are functions. And in particular, pure functions. Right? If you want something you do not have to worry about, you should love the pure function. The pure function takes immutable values. It does something with them. That stuff it does has no effect on the world and no connection on the rest of the outside world. Then it returns another immutable thing.
 
-So the entire scope of its activity is local. It has no notion of time. That’s going to become important later. But it’s definitely easy to understand. It’s easy to change. Right? There’s some signature. That’s the only thing about it. Anybody else knows, when we change the signature and when we change the insides, nobody cares. Pure functions are and should be the bricks that we use because they are the things we can use without worrying about them most readily. There are definitely huge benefits from doing this. I think you could easily do it in object-oriented languages, but people don’t.
+So the entire scope of its activity is local. It has no notion of time. That’s going to become important later. But it’s definitely easy to understand. It’s easy to change. Right? There’s some signature. That’s the only thing about it anybody else knows. When we change the insides, nobody cares. Pure functions are and should be the bricks that we use because they are the things we can use without worrying about them most readily. There are definitely huge benefits from doing this. I think you could easily do it in object-oriented languages, but people don’t.
 
 In contrast, objects and methods do not have this property. They do not have the “I don’t need to think about them” property. They definitely don’t. And we’re going to see why in a minute.
 
@@ -87,9 +87,9 @@ So maybe we haven’t seen the value of functions. I certainly don’t think we 
 
 <img src="AreWeThereYet/00.16.17.jpg" alt="00:16:17 OO and “Change”" id="slide-17">
 
-So, the first thing we should realize, that any program model is going to be – that tries to model the real world - is essentially going to be a simplistic thing. Okay? But again, there’s that beware of simplicity. Is this thing too simple to do the job correctly? Right? One of the problems with object-oriented time is that we talk about behavior and state and things like that really, really loosely. These terms are almost completely meaningless.
+So, the first thing we should realize, that any program model is going to be – that tries to model the real world - is essentially going to be a simplistic thing. Okay? But again, there’s that "beware of simplicity." Is this thing too simple to do the job correctly? Right? One of the problems with object-oriented time is that we talk about behavior and state and things like that really, really loosely. These terms are almost completely meaningless.
 
-And in addition, even though objects punitively are about process, there’s no notion, no concrete notion of time in objects. No more so than there are in functions. But at least functions aren’t pretending to play with time. Functions say there’s no time. Right? There’s my inputs and my outputs. I’m not pretending to deal with time. Objects are pretending to deal with time. And yet, our object systems don’t have any reified notion of time. There’s nothing you can talk about explicitly because most of them were born in the day when your program ruled the computer. You had a single monotonic execution flow and it just did what it wanted; do this, do that. There was a single universal process controlling everything.
+And in addition, even though objects putatively are about process, there’s no notion, no concrete notion of time in objects. No more so than there are in functions. But at least functions aren’t pretending to play with time. Functions say there’s no time. Right? There’s my inputs and my outputs. I’m not pretending to deal with time. Objects are pretending to deal with time. And yet, our object systems don’t have any reified notion of time. There’s nothing you can talk about explicitly because most of them were born in the day when your program ruled the computer. You had a single monotonic execution flow and it just did what it wanted; do this, do that. There was a single universal process controlling everything.
 
 Now that that’s no longer true, we try to use locks to restore that vision of the world. But that vision of the world was never correct. And you can tell in one key way because we still, even with all the locks and everything else, we still don’t really have a concrete representation we can use for perception. Can I look at something and see it be stable? Or memory. Can I remember that? Right? These objects are all live. They’re time bombs. Right? We have gotten this wrong. The object-oriented model has gotten time wrong.
 
@@ -103,7 +103,7 @@ So I have the hero of the day, Whitehead up here. Who, subsequent to doing all t
 
 <img src="AreWeThereYet/00.20.00.jpg" alt="00:20:00 “No man can cross the same river twice”" id="slide-19">
 
-So I’m going to explain that more, but this is a great quote. Right? “No man can ever cross the same river twice.” Because what’s a river? I mean, we love this idea of objects; like there’s this thing that changes. Right? There’s no river. Right? There’s water there at one point-in-time. And another point-in-time, there’s other water there. Right? River; it’s all in here. Okay?
+So I’m going to explain that more, but this is a great quote. Right? “No man can ever cross the same river twice.” Because what’s a river? I mean, we love this idea of objects; like there’s this thing that changes. Right? There’s no river. Right? There’s water there at one point-in-time. And another point-in-time, there’s other water there. Right? River; it’s all in here [the mind]. Okay?
 
 <img src="AreWeThereYet/00.20.27.jpg" alt="00:20:27 Oops!" id="slide-20">
 
@@ -191,7 +191,7 @@ So now, I’m going to put this up. I’ll put it up again later. This is a mode
 
 We will still probably organize our programs by identities. As long as you remember the slide from before; that the identity is a derived notion. It isn’t a thing that’s doing stuff. Right? It’s a derived concept we get from this process. We can still use identities to organize things because that’s going to be useful to us. Object Orientation has shown us that’s useful for us to understand processes.
 
-But, how do we get through these epochal, atomic, successive events? We use functions. Right? We take a function of the past, we produce the future. So the Fs on the top are pure functions. Right? They take the state of the universe or what’s the state of an identity at one point-in-time and produce the next one. What’s inside them is indivisible, imperceptible. It’s atomic. The functions are atomic.
+But, how do we get through these epochal, atomic, successive events? We use functions. Right? We take a function of the past, we produce the future. So the Fs on the top are pure functions. Right? They take the state of the universe or let's just say the state of an identity at one point-in-time and produce the next one. What’s inside them is indivisible, imperceptible. It’s atomic. The functions are atomic.
 
 And that’s the process of the world. Right? We say behavior in object-oriented systems. There really is a behavior that says, “Oh, I’m driving.” Right? I’m doing this, right? But when you get hit by lightning, who’s behaving? There’s no behavior. But there are processes in the world and they affect things. So those are those functions. Right?
 
@@ -380,7 +380,7 @@ That’s it. Thanks.
 
 Do we have time for questions? I know we’re running late. Okay. Any questions? Yes?
 
-[Audience member 1] So variation [imperceptible 01:04:46] has been given at every functional program language conference for the last 20 years and they’ve been wrong for 20 years. So why do you think that this thought will be wrong or not wrong?
+[Audience member 1] So a variation on this talk has been given at every functional program language conference for the last 20 years and they’ve been wrong for 20 years. So why do you think that this thought will be wrong or not wrong?
 
 [Rich Hickey] Well, I don’t know what those talks were, but from what I’ve seen, functional programming, in many respects, just tries to get time out of the way.
 
@@ -392,7 +392,7 @@ Do we have time for questions? I know we’re running late. Okay. Any questions?
 
 [Rich Hickey] I’m not advocating purely functional programming here at all. I’m saying there are programs. There are programs that are one of those boxes. Right? One transition from value to another. Right? That kind of program is a calculator. Right? Most programs have to deal with that; that progression of time. And that’s a hard problem. So I’m not trying to walk away from it. I’m trying to walk towards it.
 
-[Audience member 2] I think what you’re doing here is you’re recapitulating the early history of philosophy because it was Heraclitus that said everything flows so that you’re [imperceptible 05:44]. And then, it was Plato that followed and said no. And Parmenides also had said, “No, everything’s stable.” And that’s the function of community, saying there’s no such thing as change. And then, it was Aristotle that synthesized the two and figured out how to get the hybrid model, the multi-paradigm model, and integrated change with invariability with the concept of a substance. And that’s what I see you dealing with more in this.
+[Audience member 2] I think what you’re doing here is you’re recapitulating the early history of philosophy because it was Heraclitus that said everything flows so that's your object oriented thing. And then, it was Plato that followed and said no. And Parmenides also had said, “No, everything’s stable.” And that’s the function of community, saying there’s no such thing as change. And then, it was Aristotle that synthesized the two and figured out how to get the hybrid model, the multi-paradigm model, and integrated change with invariability with the concept of a substance. And that’s what I see you dealing with more in this.
 
 [Rich Hickey] Yeah. Well, I mean, read Whitehead. I mean, he really did that. He really did exactly what you’re saying. I’m just trying to program without going crazy.
 
@@ -400,7 +400,7 @@ Do we have time for questions? I know we’re running late. Okay. Any questions?
 
 [Rich Hickey] But I am inspired definitely by that, by those notions. That I think they’re really important for fixing the model we have. Yes?
 
-[Audience member 3] So, have you read a paper called “Time, Clocks, and the Ordering of Events in a Distributed System” by Lamport in ’78?
+[Audience member 3] So, have you read a paper called “[Time, Clocks, and the Ordering of Events in a Distributed System](http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf)” by Lamport in ’78?
 
 [Rich Hickey] Yes, I have. Yes.
 
