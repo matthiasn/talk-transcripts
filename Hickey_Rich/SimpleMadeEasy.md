@@ -18,7 +18,7 @@ This talk I hope seems deceptively obvious. One of the things that's great about
 
 ![00:01:00 Edsger W. Dijkstra quote](SimpleMadeEasy/00.01.00.jpg)
 
-So, I'll start with an appeal to authority. Simplicity is a prerequisite for reliability. I certainly agree with this. I don't agree with everything Dijkstra said, and I think he might have been very wrong about proof in particular. But I think he's right about this. We need build simple systems if we want to build good systems. I don't think we focus enough on that.
+So, I'll start with an appeal to authority. Simplicity is a prerequisite for reliability. I certainly agree with this. I don't agree with everything Dijkstra said, and I think he might have been very wrong about proof in particular. But I think he's right about this. We need to build simple systems if we want to build good systems. I don't think we focus enough on that.
 
 ![00:01:21 Word Origins](SimpleMadeEasy/00.01.21.jpg)
 
@@ -161,7 +161,7 @@ You have to think. You have to actually apply some simplicity work to the proble
 
 ![00:19:36 Easy Yet Complex?](SimpleMadeEasy/00.19.36.jpg)
 
-One of the problems I think we have is this conundrum that some things that are easy actually are complex. So let's look. There are a bunch of constructs that have complex artifacts that are very succinctly described. Right? Some of the things that are really dangerous to use are like so simple to describe. They're incredibly familiar, right? If you're coming from out of orientation, you're familiar with a lot of complex things. They're very much available. Right?
+One of the problems I think we have is this conundrum that some things that are easy actually are complex. So let's look. There are a bunch of constructs that have complex artifacts that are very succinctly described. Right? Some of the things that are really dangerous to use are like so simple to describe. They're incredibly familiar, right? If you're coming from object-orientation, you're familiar with a lot of complex things. They're very much available. Right?
 
 And they're easy to use. In fact, by all measures, conventional measures, you would look at them and say this is easy. Right? But we don't care about that. Right? Again, the user is not looking at our software, and they don't actually care very much about how good a time we had when we were writing it. Right? What they care about is what the program does, and if it works well, it will be related to whether or not the output of those constructs were simple. In other words, what complexity did they yield?
 
