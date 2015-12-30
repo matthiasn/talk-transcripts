@@ -44,7 +44,7 @@ And, similarly, they're very difficult to reason about or to control flow, and e
 
 And it makes everything difficult. It's difficult to see inside these things, to see which callbacks call, which handlers to monitor them. You know, on what thread are the callbacks going to be run, et cetera, et cetera, et cetera?
 
-And there have been, you know, various approaches to try to mitigate some of this with observables and Rx and things like that, but they only handle a very narrow set of cases, mostly, you know, filtering or making a stream like kind of approach to composable transformations on a single event chain. But if you really are trying to make a state machine that has multiple sources and syncs of events, you can't just get it out of something like, you know, filter and map composition primitives. 
+And there have been, you know, various approaches to try to mitigate some of this with observables and Rx and things like that, but they only handle a very narrow set of cases, mostly, you know, filtering or making a stream like kind of approach to composable transformations on a single event chain. But if you really are trying to make a state machine that has multiple sources and sinks of events, you can't just get it out of something like, you know, filter and map composition primitives. 
 
 ![00:05:55 Call Chains as Machines](CoreAsync/00.05.55.jpg)
 
