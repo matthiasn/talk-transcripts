@@ -6,7 +6,7 @@
 
 ![00.00.00 TBD](LanguageSystem/00.00.00.jpg)
 
-Thanks. This is the third conj in the first year of Clojure as being a public thing, and I couldn't be happier to see everybody here and a lot of good, old friends and new friends. And so excited about the vibrancy in the community and obviously the creativity of everybody involved, so congratulations on what you're accomplishing.
+Thanks. This is the third conj in the fifth year of Clojure as being a public thing, and I couldn't be happier to see everybody here and a lot of good, old friends and new friends. And so excited about the vibrancy in the community and obviously the creativity of everybody involved, so congratulations on what you're accomplishing.
 
 Now what I've been accomplishing is something I call TBD. And I'm a little bit frustrated because my thing leaked.
 
