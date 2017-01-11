@@ -438,7 +438,7 @@ Here we go. We have a bunch of children, young children being subjected to cello
 
 This is terrible. But it's what happens because what would happen if they had any of those other things that I just talked about? Who could ever learn to play cello? No one. No one would ever learn to play cello.
 
-There's this great article in the current issue of The Atlantic about sort of the tradeoffs, let's say, not the perils, but the tradeoffs involved in automation. And it's got a great line in it, which is that learning requires inefficiency. And it's quite important. And when I read it and was thinking about this talk, I felt like, wow, that's - it does go together.
+There's this great [article](https://www.theatlantic.com/magazine/archive/2013/11/the-great-forgetting/309516/) in the current issue of The Atlantic about sort of the tradeoffs, let's say, not the perils, but the tradeoffs involved in automation. And it's got a great line in it, which is that learning requires inefficiency. And it's quite important. And when I read it and was thinking about this talk, I felt like, wow, that's - it does go together.
 
 ![00.35.10 Players wanted](DesignCompositionPerformance/00.35.10.jpg)
 
