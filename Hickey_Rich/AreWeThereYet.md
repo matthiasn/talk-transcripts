@@ -269,7 +269,7 @@ So we just said we now know what the Vs are. They’re going to be these persist
 
 <img src="AreWeThereYet/00.47.11.jpg" alt="00:47:11 Time constructs" id="slide-40">
 
-So what does a time construct do? Its main job is to make sure that you have atomic succession of values. Okay? That’s its main purpose; that we go from one value to another, incorruptibly. And that there’s no in-between. Right? That’s what ethical means. Right?
+So what does a time construct do? Its main job is to make sure that you have atomic succession of values. Okay? That’s its main purpose; that we go from one value to another, incorruptibly. And that there’s no in-between. Right? That’s what epochal means. Right?
 
 The other thing that time construct has got to do is it’s got to provide some way for us to see the identity; to see the thing that it’s managing. It has to provide visibility. And again, it has to do that atomically. Right? Because what really happens is the baseball game, right? And there’s photons. And then, there’s a point-in-time and the photons are the same place the baseball game is. Then they go their own separate ways again. Right? So there was a moment there where those things could connect to each other, but what was represented was that snapshot. Again, a value at a point-in-time. So they need to provide that.
 
