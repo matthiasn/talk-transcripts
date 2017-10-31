@@ -258,7 +258,7 @@ And the libraries, the libraries are there. But not the inconsistency and typos,
 
 ![00.30.46 Clojure Design Objectives](EffectivePrograms/00.30.46.png)
 
-So fundamentally, what is Clojure about? Can we make programs out of simpler stuff? I mean, that's the problem after 18 years of using, like, C++ and Java, you're exhausted. How many people have been programming for 18 years? Ok. How many for more than 20 years? More than 25? Ok? Fewer than 5? Right (?), so that's really interesting to me. It may be an inditement (?) of Clojure as a beginner's language or may be that Clojure is the language for cranky, tired, old programmers.
+So fundamentally, what is Clojure about? Can we make programs out of simpler stuff? I mean, that's the problem after 18 years of using, like, C++ and Java, you're exhausted. How many people have been programming for 18 years? Ok. How many for more than 20 years? More than 25? Ok? Fewer than 5? Right (?), so that's really interesting to me. It may be an indictment of Clojure as a beginner's language or may be that Clojure is the language for cranky, tired, old programmers.
 
 [audience laughter and applause]
 
