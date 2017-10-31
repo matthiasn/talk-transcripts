@@ -1,7 +1,7 @@
 Talks by Rich Hickey
 --------------------
 
-* **[Effective Programs (10/2017)](EffectivePrograms.md.md)**
+* **[Effective Programs (10/2017)](EffectivePrograms.md)**
 * **[Inside Transducers (11/2014)](InsideTransducers.md)**
 * **[Transducers (09/2014)](Transducers.md)**
 * **[Implementation details of core.async Channels (06/2014)](ImplementationDetails.md)**
