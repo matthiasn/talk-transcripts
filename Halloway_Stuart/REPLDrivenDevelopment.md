@@ -4,12 +4,13 @@
 * **Date: June 2017**
 * **Video: [https://vimeo.com/223309989](https://vimeo.com/223309989)**
 
-[slide title: REPL-Driven Development
+```
+slide title: REPL-Driven Development
 
 brought to you by
 cognitect
 Stuart Halloway   Founder & President @ Cognitect
-]
+```
 
 So my name is Stuart Halloway.  I work at Cognitect, which is the
 company behind Clojure and ClojureScript and Datomic.  I want to talk
@@ -25,12 +26,13 @@ general, with it.
 
 [Time 0:00:50]
 
-[slide title: Plan
+```
+slide title: Plan
 
 Why REPL
 How REPL
 REPL-Driven Development
-]
+```
 
 So the basic structure of the evening is three pieces.
 
@@ -51,7 +53,8 @@ you are developing.
 
 [Time 0:01:28]
 
-[slide title: What is Clojure?
+```
+slide title: What is Clojure?
 
 "First and foremost, Clojure is dynamic"
 
@@ -64,7 +67,7 @@ you are developing.
     JVM Hosted
 
 https://clojure.org/about/dynamic
-]
+```
 
 So it is interesting.  If you go to look at the Clojure web site, and
 you look, this is the feature menu.
