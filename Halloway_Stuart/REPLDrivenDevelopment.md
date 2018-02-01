@@ -65,7 +65,6 @@ slide title: What is Clojure?
     Runtime Polymorphism
     Concurrent Programming
     JVM Hosted
-
 ```
 [https://clojure.org/about/dynamic](https://clojure.org/about/dynamic)
 
@@ -102,7 +101,6 @@ _Immediate feedback_ is important when learning a programming
 language.  The number one reason schools cite for moving away from
 Java as a teaching language is that other languages have a "REPL"
 and have far lower bars to an initial "Hello, world!" program.
-
 ```
 [http://openjdk.java.net/jeps/222](http://openjdk.java.net/jeps/222)
 
@@ -232,7 +230,6 @@ dependencies         new semantics     like programs
 testing              new semantics     (should be) like programs
 
 risks                classloaders confusing   <- yeah, that
-
 
 ```
 [http://openjdk.java.net/jeps/222](http://openjdk.java.net/jeps/222)
@@ -386,10 +383,9 @@ have things like Cursive.
 [Time 0:11:15]
 
 ```
-slide title: <no title>
+slide:
 
-Screen shot of Cursive development window.
-
+[Screen shot of Cursive development window.]
 ```
 [https://cursive-ide.com/userguide/navigation.html](https://cursive-ide.com/userguide/navigation.html)
 
@@ -941,7 +937,6 @@ slide title: Aim Small, Miss Small
 13 [4] => Broken! HaHa!
 14 [5] => :else
 15 [6] => 0
-
 ```
 [http://blog.cognitect.com/blog/2017/6/5/repl-debugging-no-stacktrace-required](http://blog.cognitect.com/blog/2017/6/5/repl-debugging-no-stacktrace-required)
 
@@ -990,8 +985,7 @@ doing
 
 [Time 0:32:17]
 
-```
-switches back to earlier "Make a Plan" slide]
+[switches back to earlier "Make a Plan" slide]
 
 is going off without a plan.
 
@@ -1541,8 +1535,6 @@ slide title: Datafication
 5   {:start-angle 225.0         <----- generic data
 6    :plot {:background-color :black}
 7    :series [{:color :black} {:color :yellow}]}))
-
-
 ```
 [https://hypirion.github.io/clj-xchart/examples](https://hypirion.github.io/clj-xchart/examples)
 
@@ -1576,7 +1568,6 @@ library.
 slide title: spec Something
 
 [figure that looks like examples of XChart library charts]
-
 ```
 [https://github.com/hyPiRion/clj-xchart](https://github.com/hyPiRion/clj-xchart)
 
@@ -1631,7 +1622,6 @@ with it.
 slide title: clj-xchart xy-series specviz
 
 [figure of something]
-
 ```
 [https://github.com/jebberjeb/specviz](https://github.com/jebberjeb/specviz)
 
@@ -1713,7 +1703,6 @@ slide title: "Discovered" Specs
 (defn axis-counts-match?
   [{:keys [x y error-bars]}]
   (and (= (count x) (count y) (count (or error-bars x)))))
-
 ```
 
 And you can discover information that was not present in the Java
