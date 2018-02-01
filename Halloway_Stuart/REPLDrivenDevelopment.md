@@ -66,8 +66,8 @@ slide title: What is Clojure?
     Concurrent Programming
     JVM Hosted
 
-https://clojure.org/about/dynamic
 ```
+[https://clojure.org/about/dynamic](https://clojure.org/about/dynamic)
 
 So it is interesting.  If you go to look at the Clojure web site, and
 you look, this is the feature menu.
@@ -95,15 +95,16 @@ incredible feedback loop.  So that is what we are talking about.
 
 [Time 0:02:40]
 
-[slide title: Team Java Agrees
+```
+slide title: Team Java Agrees
 
 _Immediate feedback_ is important when learning a programming
 language.  The number one reason schools cite for moving away from
 Java as a teaching language is that other languages have a "REPL"
 and have far lower bars to an initial "Hello, world!" program.
 
-http://openjdk.java.net/jeps/222
-]
+```
+[http://openjdk.java.net/jeps/222](http://openjdk.java.net/jeps/222)
 
 And of course everybody agrees.  If you go and look at the Java
 proposal for a shell in Java 9 -- it is coming in Java 9, right?
@@ -125,14 +126,15 @@ you.
 
 [Time 0:03:17]
 
-[slide title: Read, Eval, Print, Loop
+```
+slide title: Read, Eval, Print, Loop
 
 read: input stream -> data
 
 eval: data -> data
 
 print: data -> output stream
-]
+```
 
 So the REPL is a read, eval, print loop.
 
@@ -154,7 +156,8 @@ character states.
 
 [Time 0:04:06]
 
-[slide title: REPL Advantages
+```
+slide title: REPL Advantages
 
 Immediate interaction
 
@@ -165,7 +168,7 @@ Interact with running programs
 No "pour concrete" phase
 
   Copy code from a REPL dev session to your program, or vice versa
-]
+```
 
 And there are several advantages to this.  One of them is: you have
 this immediate interaction.  REPL development is faster than test
@@ -209,7 +212,8 @@ approaching things.
 
 [Time 0:05:49]
 
-[slide title: Shell vs. REPL
+```
+slide title: Shell vs. REPL
 
                      Shell             REPL
 
@@ -230,8 +234,8 @@ testing              new semantics     (should be) like programs
 risks                classloaders confusing   <- yeah, that
 
 
-http://openjdk.java.net/jeps/222
-]
+```
+[http://openjdk.java.net/jeps/222](http://openjdk.java.net/jeps/222)
 
 So it really is: the REPL comes first, and then there are other things
 built on top of it.  And you can really see this difference when you
@@ -295,7 +299,8 @@ whole JVM ecosystem.
 
 [Time 0:08:48]
 
-[slide title: Piling On
+```
+slide title: Piling On
 
 Tangible runtime
 
@@ -308,7 +313,7 @@ Extensible data: edn
 Integrated specification: clojure.spec
 
 Inline assembler: Java
-]
+```
 
 So on top of all that, though, the REPL has a lot more that
 distinguishes it from just a shell.
@@ -348,7 +353,8 @@ us."  And we are very thankful that they do.
 
 [Time 0:10:35]
 
-[slide title: Superstructure
+```
+slide title: Superstructure
 
 Paredit
 
@@ -357,7 +363,7 @@ Syntax coloring
 IDE integration
 
 Debugger
-]
+```
 
 On top of that, there is other stuff that people care about a lot.
 But this is not the phenomenon.  This is the epiphenomenon.  These
@@ -379,12 +385,13 @@ have things like Cursive.
 
 [Time 0:11:15]
 
-[slide title: <no title>
+```
+slide title: <no title>
 
 Screen shot of Cursive development window.
 
-https://cursive-ide.com/userguide/navigation.html
-]
+```
+[https://cursive-ide.com/userguide/navigation.html](https://cursive-ide.com/userguide/navigation.html)
 
 And so Cursive delivers a first class IDE experience, where first
 class is defined as the best that people have come to expect in the
@@ -397,10 +404,11 @@ That is not what this talk is about.
 
 [Time 0:11:49]
 
-[slide:
+```
+slide:
 
 How to Use the REPL
-]
+```
 
 So you can use the REPL from an IDE, but I really want to focus on
 using the REPL itself, and how this works at a lower level than IDEs.
@@ -408,7 +416,8 @@ using the REPL itself, and how this works at a lower level than IDEs.
 
 [Time 0:11:56]
 
-[slide title: Using the REPL
+```
+slide title: Using the REPL
 
 Hook into a REPL
 
@@ -421,7 +430,7 @@ Start more than one REPL
   Launch REPL at a point of interest
 
 Launch UI elements from a REPL
-]
+```
 
 And so I want to point out a couple of things.
 
@@ -464,7 +473,8 @@ would rather have the GUI elements be the sidecar.
 
 [Time 0:13:49]
 
-[slide title: Hook Into REPL
+```
+slide title: Hook Into REPL
 
  1 (defn oops
  2   [^Throwable x]
@@ -476,7 +486,7 @@ would rather have the GUI elements be the sidecar.
  8 (/ 1 0)
  9 An error occurred:  Divide by zero
 10 For complete details, (pp/pprint *e)
-]
+```
 
 So hooking into a REPL looks like this.  I am going to define a
 function called "oops".  "oops" takes an exception, and it prints out
@@ -519,13 +529,14 @@ Or something like that.
 
 [Time 0:15:52]
 
-[slide title: Socket REPL
+```
+slide title: Socket REPL
 
 1 (server/start-server {:port 9999
 2                       :name "socket-repl"
 3                       :accept 'clojure.server/repl})
 4 ;; then e.g. telnet to localhost 9999
-]
+```
 
 Socket REPL.  This is how easy it is to start the socket REPL.
 clojure.server and then call start-server.  Pass in a port and a name.
@@ -549,7 +560,8 @@ How many people have read "The Joy of Clojure"?  Excellent book.
 
 [Time 0:16:57]
 
-[slide title: REPL at Point of Interest
+```
+slide title: REPL at Point of Interest
 
  1 (defmacro break []
  2   `(clojure.main/repl
@@ -565,8 +577,8 @@ How many people have read "The Joy of Clojure"?  Excellent book.
 12
 13 (foo)
 
-https://github.com/joyofclojure/book-source/blob/b76ef15248dac88c7b1c77c2d461f3aa522a1461/first-edition/src/joy/breakpoint.clj
-]
+```
+[https://github.com/joyofclojure/book-source/blob/b76ef15248dac88c7b1c77c2d461f3aa522a1461/first-edition/src/joy/breakpoint.clj](https://github.com/joyofclojure/book-source/blob/b76ef15248dac88c7b1c77c2d461f3aa522a1461/first-edition/src/joy/breakpoint.clj)
 
 You may remember that they showed this little example of creating a
 REPL at a point of interest.  So here is a macro called "break".
@@ -596,14 +608,15 @@ make anything.  Nobody is stopping you at this point.
 
 [Time 0:18:26]
 
-[slide title: Launch UI From REPL
+```
+slide title: Launch UI From REPL
 
 1 (-> *e
 2     Throwable->map
 3     clojure.inspector/inspect-tree)
 
 [figure showing window created by inspect-tree call]
-]
+```
 
 You can also launch UI from the REPL.  So here at the REPL I am
 grabbing the most recent exception, using a very helpful little
@@ -633,7 +646,8 @@ things.
 
 [Time 0:19:46]
 
-[slide title: The Edges of the REPL
+```
+slide title: The Edges of the REPL
 
 Initialization
 
@@ -649,10 +663,9 @@ Exiting
 
 Use clojure.main/repl until you can't
 
-
-https://github.com/clojure/clojure/blob/master/src/clj/clojure/main.clj#L177-L269
+```
+[https://github.com/clojure/clojure/blob/master/src/clj/clojure/main.clj#L177-L269](https://github.com/clojure/clojure/blob/master/src/clj/clojure/main.clj#L177-L269)
 [link to source code of clojure.main/repl]
-]
 
 You need to understand that there are a couple of rules about being a
 REPL that go beyond read, eval, print, and loop.  There are not many.
@@ -743,7 +756,8 @@ weird.
 
 [Time 0:24:24]
 
-[slide title: Dynamic Development Examples
+```
+slide title: Dynamic Development Examples
 
 cloxp
 
@@ -752,13 +766,12 @@ KLIPSE
 Light Table
 
 Seesaw REPL tutorial
-]
-[links:
-cloxp - https://github.com/cloxp/cloxp-install
-KLIPSE - http://blog.klipse.tech/clojure/2016/03/17/klipse.html
-Light Table - http://lighttable.com
-Seesaw REPL tutorial - https://gist.github.com/daveray/1441520
-]
+```
+
+* cloxp - [https://github.com/cloxp/cloxp-install](https://github.com/cloxp/cloxp-install)
+* KLIPSE - [http://blog.klipse.tech/clojure/2016/03/17/klipse.html](http://blog.klipse.tech/clojure/2016/03/17/klipse.html)
+* Light Table - [http://lighttable.com](http://lighttable.com)
+* Seesaw REPL tutorial - [https://gist.github.com/daveray/1441520](https://gist.github.com/daveray/1441520)
 
 So to give you a couple of examples of things that you could play with
 to see the REPL.  These are all links.  I will drop the slides and
@@ -790,7 +803,8 @@ The mechanics of what it is like to manipulate a REPL.
 
 [Time 0:25:40]
 
-[slide title: REPL-Driven Development
+```
+slide title: REPL-Driven Development
 
 Make (revisit!) a plan
 
@@ -801,7 +815,7 @@ Save everything
 Promote proven things (accretion, relaxation, fixation)
 
 Visualize
-]
+```
 
 And now we are going to get to the super interesting part,
 potentially, which is: what are you going to do with it?  And so I am
@@ -857,7 +871,8 @@ name works.  You make a new name when you want to do that.
 
 [Time 0:28:17]
 
-[slide title: Make a Plan
+```
+slide title: Make a Plan
 
 Fast feedback loops support incremental development
 
@@ -871,7 +886,9 @@ Fast feedback loops support incremental development
 
 
 Debugging Too: https://www.youtube.com/watch?v=FihU5JxmnBg
-]
+```
+Debugging Too: [https://www.youtube.com/watch?v=FihU5JxmnBg](https://www.youtube.com/watch?v=FihU5JxmnBg)
+
 [YouTube link is to Stuart Halloway's talk "Debugging with the
 Scientific Method"]
 
@@ -906,7 +923,8 @@ easy to wander off at the REPL.  So don't.
 
 [Time 0:29:50]
 
-[slide title: Aim Small, Miss Small
+```
+slide title: Aim Small, Miss Small
 
  1 (defn foo
  2   [n]
@@ -924,8 +942,8 @@ easy to wander off at the REPL.  So don't.
 14 [5] => :else
 15 [6] => 0
 
-http://blog.cognitect.com/blog/2017/6/5/repl-debugging-no-stacktrace-required
-]
+```
+[http://blog.cognitect.com/blog/2017/6/5/repl-debugging-no-stacktrace-required](http://blog.cognitect.com/blog/2017/6/5/repl-debugging-no-stacktrace-required)
 
 So I did a blog post about this last week about this sort of "aim
 small, miss small" idea.  And somebody else in the Clojure community
@@ -972,7 +990,8 @@ doing
 
 [Time 0:32:17]
 
-[switches back to earlier "Make a Plan" slide]
+```
+switches back to earlier "Make a Plan" slide]
 
 is going off without a plan.
 
@@ -1003,7 +1022,8 @@ and making a mess.
 
 [Time 0:33:46]
 
-[slide title: Save Everything
+```
+slide title: Save Everything
 
 Don't type into a REPL
 
@@ -1012,7 +1032,7 @@ Don't type into a REPL
 Save into a file
 
   No organization required
-]
+```
 
 The next point is: save everything.
 
@@ -1081,7 +1101,8 @@ is a library of expressions, really.
 
 [Time 0:37:00]
 
-[slide title: Promote Proven Things
+```
+slide title: Promote Proven Things
 
 REPL "branch coverage"
 
@@ -1094,7 +1115,7 @@ Evolving
   Relax (require less)
 
   Fix
-]
+```
 
 And then: promote proven things.
 
@@ -1154,9 +1175,6 @@ development, but this is the talk that Rich gave at Conj last year,
 Spec-ulation, about being kind to consumers of your libraries.  Where
 kindness is about not making their programs stop working.
 
-[Rich Hickey talk "Spec-ulation":
-https://www.youtube.com/watch?v=oyLBGkS5ICk]
-
 And the way you make programs continue to work is: your functions can
 provide more.  So a function that used to give you "A" can give you "A
 and B".  That is not going to break your program, because you were
@@ -1210,10 +1228,11 @@ sometimes true.
 
 [Time 0:42:25]
 
-[slide title: Visualize
+```
+slide title: Visualize
 
 (this space intentionally blank)
-]
+```
 
 And then: visualize.  This space is blank.  We need better tools.  We
 need better data visualization tools.  And we need them to be a la
@@ -1240,7 +1259,8 @@ is possible, with sufficient elbow grease, to make it beautiful.
 
 [Time 0:43:25]
 
-[slide title: Calls to Action
+```
+slide title: Calls to Action
 
 Live at the REPL
 
@@ -1249,7 +1269,7 @@ Make Java better
 spec something
 
 Improve the docs
-]
+```
 
 So I would give you these calls to action, how to take the ideas from
 tonight and do something with them that will hopefully make your life,
@@ -1272,7 +1292,8 @@ And improve docs.
 
 [Time 0:44:10]
 
-[slide title: Live at the REPL
+```
+slide title: Live at the REPL
 
 Try the techniques shown here
 
@@ -1281,7 +1302,7 @@ Hook a REPL to provide assistance with a common problem
   enumerate the powers at your disposal
 
 Make a custom inspector
-]
+```
 
 So let us talk about each of these.  Live at the REPL.
 
@@ -1315,13 +1336,14 @@ No, we do not have to do it right now.
 
 [Time 0:45:23]
 
-[slide:
+```
+slide:
 
         Clojure:
 
 The Language for Expressivity
       on the JVM
-]
+```
 
 And then let us talk about making Java better.
 
@@ -1332,7 +1354,8 @@ I want to make here specifically is to Python.
 
 [Time 0:45:40]
 
-[slide title: Data Science
+```
+slide title: Data Science
 
 "Every time I need
 to quickly prototype
@@ -1344,7 +1367,7 @@ using Python."
 
 Grus, Joel (2015-04-14).  Data Science from Scratch: First Principles
 with Python
-]
+```
 
 This is kind of a cool book, Data Science from Scratch, that is about
 doing data science in Python.  And where the author is explaining the
@@ -1359,7 +1382,8 @@ And so it is worth asking:
 
 [Time 0:46:08]
 
-[slide title: Why We Love Python
+```
+slide title: Why We Love Python
 
 Python Can                  Clojure Can
 
@@ -1372,7 +1396,7 @@ lines and strings           edn
 comprehensions              transducers
 
                             spec
-]
+```
 
 Why do we love Python?
 
@@ -1428,7 +1452,8 @@ object-y.
 
 [Time 0:48:24]
 
-[slide title: Undo the Damage of BGFS
+```
+slide title: Undo the Damage of BGFS
 
 Builders, Getters, Fluent APIs, and Setters (BGFS)
 
@@ -1439,7 +1464,7 @@ Builders, Getters, Fluent APIs, and Setters (BGFS)
   turn a single moment in time into unnecessary stateful interactions
 
   unnecessarily specific
-]
+```
 
 So one of the things we can do as Clojure programmers is: undo the
 damage of this.
@@ -1461,7 +1486,8 @@ They are bad news for programming.
 
 [Time 0:49:13]
 
-[slide title: BGFS
+```
+slide title: BGFS
 
  7
  8    double[] yData = new double[] { 2.0, 1.0, 0.0 };         unnecessary
@@ -1480,8 +1506,8 @@ They are bad news for programming.
                 program!
             (could have been data)
 
-https://knowm.org/open-source/xchart/xchart-example-code/
-]
+```
+[https://knowm.org/open-source/xchart/xchart-example-code/](https://knowm.org/open-source/xchart/xchart-example-code/)
 
 And happily, we can take this and make it better.  So here is a nice
 little Java library called XChart.
@@ -1505,7 +1531,8 @@ And you can fix this.  And this now has an official name, as of today.
 
 [Time 0:50:03]
 
-[slide title: Datafication
+```
+slide title: Datafication
 
 1 (c/view
 2  (c/pie-chart    <------- functional constructor
@@ -1516,8 +1543,8 @@ And you can fix this.  And this now has an official name, as of today.
 7    :series [{:color :black} {:color :yellow}]}))
 
 
-https://hypirion.github.io/clj-xchart/examples
-]
+```
+[https://hypirion.github.io/clj-xchart/examples](https://hypirion.github.io/clj-xchart/examples)
 
 It is called datafication.  Datafication is when you take a program
 that is guilty of big gaffes.  It is full of builders and getters and
@@ -1545,12 +1572,13 @@ library.
 
 [Time 0:51:12]
 
-[slide title: spec Something
+```
+slide title: spec Something
 
 [figure that looks like examples of XChart library charts]
 
-https://github.com/hyPiRion/clj-xchart
-]
+```
+[https://github.com/hyPiRion/clj-xchart](https://github.com/hyPiRion/clj-xchart)
 
 The next thing is you can spec something.  So I spec'd clj-xchart,
 which is the wrapper on XChart.  So the last two slides had this chart
@@ -1563,7 +1591,8 @@ at them to sort of see what I had.
 
 [Time 0:51:41]
 
-[slide title: Why spec?
+```
+slide title: Why spec?
 
 More expressive than Java types
 
@@ -1574,7 +1603,7 @@ Better language integration
   generate data and tests
 
   generic data enables better tooling
-]
+```
 
 And why would I want to do this?  Well, spec is more expressive than
 Java types.  There are a ton of things you can say about the structure
@@ -1598,12 +1627,13 @@ with it.
 
 [Time 0:52:24]
 
-[slide title: clj-xchart xy-series specviz
+```
+slide title: clj-xchart xy-series specviz
 
 [figure of something]
 
-https://github.com/jebberjeb/specviz
-]
+```
+[https://github.com/jebberjeb/specviz](https://github.com/jebberjeb/specviz)
 
 So this is a little library called specviz.  So this is Jeb's library.
 Jeb Beach, who works with David and me.  So he wrote this little
@@ -1624,7 +1654,8 @@ in your head.
 
 [Time 0:53:13]
 
-[slide title: Example-Based Generators
+```
+slide title: Example-Based Generators
 
 (def generators
   {:com.hypirion.clj-xchart.specs.chart/title
@@ -1641,7 +1672,7 @@ in your head.
    ::sty/stroke #(s/gen ::sty/builtin-stroke)
    ::sty/font #(s/gen ::sty/builtin-font-set)
    ::sty/theme #(s/gen ::sty/builtin-theme)})
-]
+```
 
 You can also help with generating example data.  So when I was doing
 the specification exercise for XChart, there were several things that
@@ -1666,7 +1697,8 @@ useful domain data.
 
 [Time 0:54:17]
 
-[slide title: "Discovered" Specs
+```
+slide title: "Discovered" Specs
 
 (defmethod data-compatible-with-render-style? [:xy :area]
   [series]
@@ -1682,7 +1714,7 @@ useful domain data.
   [{:keys [x y error-bars]}]
   (and (= (count x) (count y) (count (or error-bars x)))))
 
-]
+```
 
 And you can discover information that was not present in the Java
 types.  So when I learned how to use XChart, one of the things I
@@ -1753,7 +1785,8 @@ level, and not being value checked.  So a bit creepy.
 
 [Time 0:57:52]
 
-[slide title: Write a Guide
+```
+slide title: Write a Guide
 
 Explore at the REPL
 
@@ -1762,7 +1795,8 @@ Spec to taste
 Help a Java programmer
 
 [screen shot of the top of page https://clojure.org/guides/spec ]
-]
+```
+[https://clojure.org/guides/spec](https://clojure.org/guides/spec)
 
 The last thing I want to mention is: write a guide.  I think that the
 reason that Clojure is not the language for data science on the JVM,
@@ -1796,10 +1830,11 @@ and helps people shepherd things through.
 
 [Time 0:59:20]
 
-[slide:
+```
+slide:
 
 cognitect.com
-]
+```
 
 So that is a set of thoughts about REPL driven development brought to
 you by Cognitect, my company, which flew me up here to evangelize
