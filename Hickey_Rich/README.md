@@ -2,6 +2,7 @@ Talks by Rich Hickey
 --------------------
 
 * **[Effective Programs (10/2017)](EffectivePrograms.md)**
+* **[Spec-ulation (12/2016)](Spec_ulation.md)**
 * **[Inside Transducers (11/2014)](InsideTransducers.md)**
 * **[Transducers (09/2014)](Transducers.md)**
 * **[Implementation details of core.async Channels (06/2014)](ImplementationDetails.md)**
