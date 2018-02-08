@@ -160,15 +160,8 @@ that when we make it better?
 
 ```
 slide title: Dependencies
-
-POM deps
-
-          +---------+
-          |   app   |
-          +---------+
-
-... TBD consider creating ASCII art for entire slide contents
 ```
+![0:05:40 Dependencies](Spec_ulation/dependencies.png)
 
 So we all know how we do change.  We use Maven, or something that
 drives Maven.  And we have artifacts, which are libraries.  And our
@@ -221,13 +214,8 @@ So what does your application actually need?
 
 ```
 slide title: Dependencies Redux
-
-POM deps
-
-ns requires/imports
-
-... TBD ASCII art would be nice
 ```
+![0:07:42 Dependencies Redux](Spec_ulation/dependencies-redux.png)
 
 And so we will look at this problem again, and we have expanded it a
 little bit.  So when we look inside each of those artifacts, what do
@@ -299,11 +287,8 @@ problem.
 
 ```
 slide title: Dependency Truth (code)
-
-POM deps
-
-... TBD ASCII art would be getting a bit busy for this figure
 ```
+![0:10:46 Dependency Truth (code)](Spec_ulation/dependency-truth-code.png)
 
 So what is the truth?  The truth is, you need better and better
 eyesight to solve this problem.  So we open it up a little bit more,
