@@ -890,9 +890,6 @@ In: [:user/y] val: 2 fails spec: :user/y at: [:user/y] predicate: float?
 val: #:user{:x 1, :y 2} fails spec: :user/m predicate: (contains? % :user/z)
 ```
 
-[TBD: the next slide doesn't come for about 13 minutes.  Would be good
-to add a time stamp every 3 to 5 minutes.]
-
 So let us look at something more involved.
 
 [Audience member: some question]
