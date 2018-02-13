@@ -11,6 +11,7 @@ Talks by Rich Hickey
 * **[Design, Composition and Performance (11/2013)](DesignCompositionPerformance.md)**
 * **[Clojure core.async Channels (09/2013)](CoreAsync.md)**
 * **[The Language of the System (11/2012)](LanguageSystem.md)**
+* **[Deconstructing the Database (11/2012)](DeconstructingTheDatabase.md)**
 * **[The Value of Values (07/2012)](ValueOfValues.md)**
 * **[Reducers (06/2012)](Reducers.md)**
 * **[Simple Made Easy (9/2011)](SimpleMadeEasy.md)**
