@@ -163,6 +163,9 @@ see what happens.
 
 [Time 0:06:23]
 
+```
+slide title: Anatomy
+```
 ![00.06.23 Anatomy](ImplementationDetails/00.06.23.jpg)
 
 So, what is inside a channel?  Well, when you use the channel API, you
@@ -638,6 +641,9 @@ which is again shared.
 
 [Time 0:26:26]
 
+```
+slide title: alt handlers
+```
 ![00.26.26 alt handlers - build slide](ImplementationDetails/00.26.26.jpg)
 
 So just to show you that.  So here are the handlers.  So there will be
@@ -842,8 +848,6 @@ but I do not believe he is allowed to do that.  So that is how it gets
 wired up.
 
 [Time 0:34:55]
-
-![00.34.55 Summary](ImplementationDetails/00.34.55.jpg)
 
 ```
 slide title: Summary
