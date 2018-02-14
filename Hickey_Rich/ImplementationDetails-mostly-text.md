@@ -16,8 +16,6 @@ All right; now to the task at hand.
 
 [Time 0:00:04]
 
-![00.00.04 Warning!](ImplementationDetails/00.00.04.jpg)
-
 ```
 slide title: Warning!
 
@@ -49,14 +47,11 @@ library.
 
 [Time 0:01:13]
 
-![00.01.13 The Problems](ImplementationDetails/00.01.13.jpg)
-
 ```
 slide title: The Problems
 
 + Single channel implementation
-+ For use from both dedicated threads and
-  go threads
++ For use from both dedicated threads and go threads
   simultaneously, on same channel
 + alt and atomicity
 + multi-read/write
@@ -98,22 +93,10 @@ only one thread in the JavaScript engine.
 
 [Time 0:03:02]
 
-![00.03.02 API](ImplementationDetails/00.03.02.jpg)
-
 ```
 slide title: API
-
-
-      >! ----                           ---> <!
-             \                         /
-     >!! ---- \                       / ---> <!!
-             \ \    -------------    / /
-              ---->    Channel    -----
-             / /    -------------    \ \
-    put! ---- /                       \ ---> take!
-             /                         \
-    alt! ----                           ---> alt!
 ```
+![00.03.02 API](ImplementationDetails/00.03.02.jpg)
 
 So, how many people are using core.async?  Yeah.  Love it.  And how
 many people have heard about it?  Right.  I am not actually going to
@@ -160,22 +143,10 @@ about today.
 
 [Time 0:05:37]
 
-![00.05.37 SPI](ImplementationDetails/00.05.37.jpg)
-
 ```
 slide title: SPI
-
-
-  >! ----                                                   ---> <!
-         \               --------------------              /
- >!! ---- \   +--------------+           +------------+   / ---> <!!
-         \ \  |  impl/put!   |           | impl/take! |  / /
-          --->|[val handler] |  Channel  | [handler]  |----
-         / /  |              |           |            |  \ \
-put! ---- /   +--------------+           +------------+   \ ---> take!
-         /               --------------------              \
-alt! ----                                                   ---> alt!
 ```
+![00.05.37 SPI](ImplementationDetails/00.05.37.jpg)
 
 So the service provider interface basically boils down all of the
 things you can do with either end of the channel to two things: the
@@ -226,8 +197,6 @@ channels.
 
 [Time 0:08:03]
 
-![00.08.03 Invariants](ImplementationDetails/00.08.03.jpg)
-
 ```
 slide title: Invariants
 
@@ -268,6 +237,10 @@ later.
 
 [Time 0:09:33]
 
+```
+slide title: put!
+```
+
 ![00.09.33 put!](ImplementationDetails/00.09.33.jpg)
 
 So what can happen?  What are the scenarios?  If we take this internal
@@ -304,6 +277,12 @@ see the red arrow here implies something I will talk more about later,
 which is: this is actually the only case of these scenarios where we
 are going to have that parking effect or blocking effect because we
 cannot finish this job right now.  There is nowhere to put this stuff.
+
+[Time 0:11:48]
+
+```
+slide title: put! - windowed buffers
+```
 
 ![00.11.48 put! - windowed buffers](ImplementationDetails/00.11.48.jpg)
 
@@ -348,6 +327,12 @@ as opposed to sort of saying later, "Wow, I wonder why this is not
 working?"  So both those cases, from the perspective of the person
 putting, they complete right away.
 
+[Time 0:14:06]
+
+```
+slide title: take!
+```
+
 ![00.14.06 take!](ImplementationDetails/00.14.06.jpg)
 
 All right, and I will take the other side.  Really, it is the same
@@ -384,8 +369,6 @@ of making this work.
 
 [Time 0:15:55]
 
-![00.15.55 close!](ImplementationDetails/00.15.55.jpg)
-
 ```
 slide title: close!
 
@@ -418,8 +401,6 @@ start getting nils back from your takes.  And all those puts that were
 pending, as they get consumed, they will complete.  But subsequent
 puts will also complete with this indicator saying: already closed.
 All right?
-
-![00.17.10 Queue Limits](ImplementationDetails/00.17.10.jpg)
 
 [Time 0:17:10]
 
@@ -465,8 +446,6 @@ memory assigned to the job.  So use buffers and use windowing policies
 to make sure you do not get into this scenario, but it is something
 you may have to tune around.
 
-![00.19.02 alt(s!!)](ImplementationDetails/00.19.02.jpg)
-
 [Time 0:19:02]
 
 ```
@@ -500,22 +479,14 @@ happening.
 
 [Time 0:20:12]
 
-![00.20.12 alt implications](ImplementationDetails/00.20.12.jpg)
-
 ```
 slide title: alt implications
 
 + registration of handlers is _not_ atomic
-+ completion might occur before
-  registrations are finished
-
++ completion might occur before registrations are finished
   or any time thereafter
-
-+ completion of one alternative must 'disable'
-  the others
-
++ completion of one alternative must 'disable' the others
   atomically
-
 + cleanup
 ```
 
@@ -547,8 +518,6 @@ to be some cleanup associated with this, and I will show you that in a
 second.
 
 [Time 0:21:41]
-
-![00.21.41 Handlers](ImplementationDetails/00.21.41.jpg)
 
 ```
 slide title: Handlers
@@ -598,8 +567,6 @@ lock.  It is something that the channel can lock.
 
 [Time 0:23:39]
 
-![00.23.39 take/put handlers](ImplementationDetails/00.23.39.jpg)
-
 ```
 slide title: take/put handlers
 
@@ -629,8 +596,6 @@ take and put.  Really, all of this SPI is about alt.
 
 [Time 0:24:49]
 
-![00.24.49 alt handlers](ImplementationDetails/00.24.49.jpg)
-
 ```
 slide title: alt handlers
 
@@ -642,8 +607,7 @@ slide title: alt handlers
   a boolean active? flag that starts true and
   makes one-time atomic transition
 
-+ commit transitions shared flag and returns
-  callback
++ commit transitions shared flag and returns callback
 
   must be called under lock
 ```
@@ -690,16 +654,13 @@ of the registration not being atomic.
 
 [Time 0:27:14]
 
-![00.27.14 alt concurrency](ImplementationDetails/00.27.14.jpg)
-
 ```
 slide title: alt concurrency
 
 + no global or multi-channel locking
 + but channel does multi-handler locking
   some ops commit both a put and take
-+ lock-ids used to ensure consistent lock
-  acquisition order
++ lock-ids used to ensure consistent lock acquisition order
 ```
 
 So the beautiful thing about doing it this way is you do not end up
@@ -748,14 +709,14 @@ deadlock.  So it is simple, but that is how it is done.
 
 [Time 0:29:44]
 
-![00.29.44 alt cleanup](ImplementationDetails/00.29.44.jpg)
-
 ```
 slide title: alt cleanup
 
 + 'disabled' handlers will still be in queues
 + channel ops purge
 ```
+
+![00.29.44 alt cleanup](ImplementationDetails/00.29.44.jpg)
 
 So, now we can get more of the truth of these diagrams.  So it ends up
 that - so what happens?  What happens if I just did an alt and
@@ -778,8 +739,6 @@ there is nothing for you to do, and they will just get purged
 automatically.  But they are in those queues until that happens.
 
 [Time 0:30:57]
-
-![00.30.57 SPI revisited](ImplementationDetails/00.30.57.jpg)
 
 ```
 slide title: SPI revisited
@@ -847,8 +806,6 @@ that.  And only in those two cases do you get the handlers running.
 
 [Time 0:33:22]
 
-![00.33.22 Wiring!/!!](ImplementationDetails/00.33.22.jpg)
-
 ```
 slide title: Wiring !/!!
 
@@ -894,6 +851,8 @@ slide title: Summary
 + You don't need to know any of this
 + But understanding the 'machine' can help
   you make good decision
+
+         [ Clojure logo ]
 ```
 
 [Audience laughter]
@@ -953,7 +912,7 @@ Okay.
 [Audience member: So what is the difference with all these workers
 consuming the same queue where they are all putting on the same
 channel?  Because if you reverse that, all these four consumers can
-just compete on taking on one channel [tbd]]
+just compete on taking on one channel TBD]
 
 There could be, but the beautiful thing is that, for that simplest
 scenario, that might work okay.
@@ -974,7 +933,7 @@ different ways.
 Other questions?  Yes.
 
 [Audience member: There is something I do not fully understand. Why
-does a global mutex or multi-channel mutex tbd]
+does a global mutex or multi-channel mutex TBD]
 
 Well, it would be easy.  That is for sure.  The question was: why
 wouldn't a global mutex be good enough?  It would be great.  I mean a
@@ -1025,7 +984,7 @@ Not by technical reasons, let us say.
 
 Hi.
 
-[Audience member: I was thinking about this tbd]
+[Audience member: I was thinking about this TBD]
 
 Yes
 
@@ -1035,7 +994,7 @@ No.
 
 [Audience member: There was 10,000 or 100,000 Googles.]
 
-[Audience member: Yeah.  I just wanted to know is it outcome or tbd]
+[Audience member: Yeah.  I just wanted to know is it outcome or TBD]
 
 No, no.  It should not be that.
 
@@ -1052,7 +1011,7 @@ Yeah.  I am not sure exactly what --
 Other questions?  Yes.
 
 [Audience member: Do you think that the buffer and queue sizes are
-useful metrics to monitor, or is that more like tbd]
+useful metrics to monitor, or is that more like TBD]
 
 No, they would be great to monitor, and it is definitely on the to-do
 list to add monitor ability of those things.  Yeah, you would.  It is
@@ -1060,7 +1019,7 @@ our intent to make the channels more evident so that you could look at
 them, so you can make decisions and get warnings and things like that.
 That is definitely an enhancement area.  Yes?
 
-[Audience member: tbd core.async?]
+[Audience member: TBD core.async?]
 
 That is hard to say.  Certainly the monitoring would be great.  I
 think there are some more nuance notions of channel buffer policies
@@ -1145,7 +1104,7 @@ watch this and be like, "Oh, my God. My macro!"
 
 [Audience laughter]
 
-[Audience member: What you were just describing sounds a bit like tbd]
+[Audience member: What you were just describing sounds a bit like TBD]
 
 No, no.  Uh-uh.
 
@@ -1184,7 +1143,7 @@ Clojure is not going to get continuations.
 [Audience laughter]
 
 [Audience member: Was there something planned for dynamic binding with
-regards to core.async?  There are a bunch of issues using those tbd]
+regards to core.async?  There are a bunch of issues using those TBD]
 
 With go?
 
@@ -1283,7 +1242,7 @@ No.
 
 [Audience laughter]
 
-[Audience member: tbd some time?]
+[Audience member: TBD some time?]
 
 What kind of monitoring do you want to do?
 
@@ -1331,7 +1290,7 @@ implement core.async?]
 
 Implementation options?
 
-[Audience member: tbd the design, like other options than the channels
+[Audience member: TBD the design, like other options than the channels
 and ...]
 
 Something other than CSP, or ...?
