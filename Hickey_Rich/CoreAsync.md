@@ -166,6 +166,8 @@ So the buffers themselves, again, normally we're unbuffered or, by default, we'r
 
 And then there are two flavors of buffers that will never block a writer because they've incorporated a policy about what to do when they're full. And one is a sliding buffer, which effectively walks across and drops the newest stuff, and a dropping buffer, which is, if you come to it with new stuff and it's full already, it just drops whatever you send. And they will never block the provider. 
 
+[ He said "drops the newest stuff" above, but the documentation string for sliding-buffer says "oldest elements in buffer will be dropped", so I think he meant to say "drops the oldest stuff". ]
+
 What we will not, we do not provide and will not provide are unbounded buffers. This is just a recipe for a broken program. It's just like, I don't feel like seeing this bug until later, so I'll make an unbounded buffer.
 
 [Laughter]
@@ -188,7 +190,7 @@ By default, it will be random. There's also a priority option that will let you 
 
 ![00:25:42 alt!/!!](CoreAsync/00.25.42.jpg)
 
-And then there's a macro that combines this function with cond, you know, with the logical branching. So basically you say alt, bang (alt!), which is not a functional. This is a macro. And you supply one or more sets of operations you want to attempt. Right? The whole set of operations is going to be tried sort of in parallel, and the first thing that's available to complete will be the result of the condition. So we have -- I think I have arrows here. Let's see. 
+And then there's a macro that combines this function with cond, you know, with the logical branching. So basically you say alt, bang (alt!), which is not a function now. This is a macro. And you supply one or more sets of operations you want to attempt. Right? The whole set of operations is going to be tried sort of in parallel, and the first thing that's available to complete will be the result of the condition. So we have -- I think I have arrows here. Let's see.
 
 ![00:26:12 alt!/!! - build slide](CoreAsync/00.26.12.jpg)
 
@@ -244,7 +246,7 @@ So what happens to your logic in the direct system? It's split up into tiny piec
 
 What happens on your callback? It directly calls your logic, which directly calls the output. It's all this big chain of fire, fire, fire, unless you manually introduce some more asynchrony. Right? It's synchronous. Right? Channels can be synchronous or not, right? We can set them up with no buffering and actually cause workflow and backpressure waiting, or we can add buffering and get some more asynchronous, asynchrony there. We still have choices in the logic itself, right?
 
-What's the airity of the callback to the callee? It's built in. It's like you gave them a piece of code to call. They call that code. It's the one-to-one. A button click calls the thing. On socket calls the whatever, right? It's end-to-end here, right, with asynchrony. How many people can feed this channel? As many as you want. How many people can consume it? As many as you want, so you can share the work. 
+What's the arity of the callback to the callee? It's built in. It's like you gave them a piece of code to call. They call that code. It's the one-to-one. A button click calls the thing. On socket calls the whatever, right? It's N-to-N here, right, with asynchrony. How many people can feed this channel? As many as you want. How many people can consume it? As many as you want, so you can share the work.
 
 You can have multiple sources. You can do routing. You can create these relationships dynamically. You can pass the channel to talk dynamically. This other stuff has got code. I made code, and the code has got like what to call up above, right? So that's all implicit.
 
