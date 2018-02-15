@@ -410,7 +410,7 @@ them?
 
 Because looking at other solutions to the same problem is _the_ number
 one way to get up to speed really quickly, and start working ahead of
-the best known solutions in this space.  Because what you will to have
+the best known solutions in this space.  Because what you will have
 to do then will just be an incremental step above what the last guy
 did.  But if you are ignoring what the last guy did, you are starting
 from scratch, so you definitely want to look around in the space.
@@ -588,7 +588,7 @@ this kind of work, so it is important to sort of do it.
 A lot of people will not get time to do this all day every day, or
 over the course of an entire week, but if you are going to get some
 focus time, define what that is.  Everybody knows about time-out time
-for little kids.  Well, programmers needs this focus time.  So, like
+for little kids.  Well, programmers need this focus time.  So, like
 little kids, they need to go sit on the hammock and have nobody bother
 them.
 
@@ -1003,7 +1003,7 @@ that it is probably good.
 And what I would hope from doing this whole process is that you gain
 confidence in it after you have seen it work for you.  So that you
 say, "You know what, I have never done this before but I really have
-to thought about it, and this solution I came up with overnight feels
+thought about it, and this solution I came up with overnight feels
 awesome, and wooh!  Let us go."
 
 It is important to look at what you did and to run it and see, and
