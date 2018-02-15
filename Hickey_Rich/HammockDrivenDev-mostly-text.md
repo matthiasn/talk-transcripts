@@ -4,6 +4,8 @@
 * **Conference: [Clojure/Conj 2010](http://clojure-conj.org) - Oct 2010**
 * **Video: [https://www.youtube.com/watch?v=f84n5oFoZBc](https://www.youtube.com/watch?v=f84n5oFoZBc)**
 
+![Intro Slide](HammockDrivenDev/00m00s.jpg)
+
 [Time 0:00:15]
 
 ```
@@ -11,8 +13,6 @@ slide title: Step Away from the Computer
 
             Rich Hickey
 ```
-
-![Intro Slide](HammockDrivenDev/00m00s.jpg)
 
 ![Step Away from the Computer](HammockDrivenDev/00m16s.jpg)
 
@@ -170,7 +170,7 @@ So now, you do not know what I am going to say next.
 
 [Audience laughter]
 
-It is awesome.  It is got this menu item for it.
+It is awesome.  It has got this menu item for it.
 
 No, definitely, absolutely, positively not.  The least expensive place
 to fix bugs is when you are designing your software.  Which everybody
@@ -349,7 +349,7 @@ problems?
 [Time 0:10:38]
 
 ```
-slide title: State the Probem
+slide title: State the Problem
 
 + Say it somehow
   + out loud in conversation
@@ -1116,7 +1116,7 @@ not be afraid" especially, "do not be afraid of being wrong."
 slide title: Summary
 
 + It's a rant!
-  + It doesn't have a summary
+  + it doesn't have a summary
 ```
 
 ![Summary](HammockDrivenDev/39m28s.jpg)
