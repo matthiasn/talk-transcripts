@@ -4,8 +4,6 @@
 * **Conference: [Clojure/Conj 2010](http://clojure-conj.org) - Oct 2010**
 * **Video: [https://www.youtube.com/watch?v=f84n5oFoZBc](https://www.youtube.com/watch?v=f84n5oFoZBc)**
 
-![Intro Slide](HammockDrivenDev/00m00s.jpg)
-
 [Time 0:00:15]
 
 ```
@@ -13,8 +11,6 @@ slide title: Step Away from the Computer
 
             Rich Hickey
 ```
-
-![Step Away from the Computer](HammockDrivenDev/00m16s.jpg)
 
 Hi.  As I said yesterday, I swapped the talks around so this is the
 more philosophical talk.  There are multiple titles.
@@ -24,8 +20,6 @@ more philosophical talk.  There are multiple titles.
 ```
 slide title: or, Hammock-driven Development
 ```
-
-![Hammock-driven Development](HammockDrivenDev/00m34s.jpg)
 
 I could not decide.  Some of them were semi-cranky.
 
@@ -38,8 +32,6 @@ slide title: or, If We're Not Solving Problems,
                What are We Doing?
 ```
 
-![What are We Doing?](HammockDrivenDev/00m40s.jpg)
-
 [Time 0:00:45]
 
 ```
@@ -47,8 +39,6 @@ slide title: or, What Rich Does
               When He's Not
               Writing Tests
 ```
-
-![What Rich Does](HammockDrivenDev/00m45s.jpg)
 
 [Audience laughter]
 
@@ -66,8 +56,6 @@ slide title: A Rant
       In any case
 ```
 
-![A Rant](HammockDrivenDev/00m59s.jpg)
-
 This is just an experience report.
 
 [Time 0:01:01]
@@ -79,8 +67,6 @@ slide title: An Experience Report
   computer science or any other kind of science
 + YMMV etc
 ```
-
-![An Experience Report](HammockDrivenDev/01m01s.jpg)
 
 It is not advocacy.  There is little methodology here or science or
 anything else.
@@ -96,8 +82,6 @@ slide title: When was the last time you ...
     + a year?
 + Felt confident implementing something for the first time?
 ```
-
-![Last Time You...](HammockDrivenDev/01m11s.jpg)
 
 So I would like you to think about when was the last time you thought
 about something for an entire hour?  Like nobody bothered you, and you
@@ -141,8 +125,6 @@ slide title: Bugs
   + Not implementation
   + Testing and type systems are of limited use here
 ```
-
-![Bugs](HammockDrivenDev/02m55s.jpg)
 
 So I will start by talking about some software development things we
 all know to be true.  We hate bugs in our programs.  We are trying to
@@ -207,8 +189,6 @@ slide title: Analysis and Design
   solving, problems
 ```
 
-![Analysis and Design](HammockDrivenDev/05m16s.jpg)
-
 I am going to talk a little bit about Analysis and Design.  I know
 that is so '90s, and ugly, and was rightfully criticized, and really
 dropped.  Because people considered it to be about process, and
@@ -248,8 +228,6 @@ slide title: Solve Problems!
 + Solving problems requires understanding,
   recognizing and stating them
 ```
-
-![solve Problems](HammockDrivenDev/06m49s.jpg)
 
 There is nothing about feature ...  What is feature?  Feature is just
 an attribute of something.  It is the shiny chrome knob on something.
@@ -291,8 +269,6 @@ slide title: Problem Solving is a Skill
 ```
 [http://en.wikipedia.org/wiki/How_to_Solve_It](http://en.wikipedia.org/wiki/How_to_Solve_It)
 
-![Problem Solving](HammockDrivenDev/08m36s.jpg)
-
 So problem solving is definitely a skill.  I think you should not take
 away from this talk that there is a certain kind of person who is good
 at problem solving, and they get to do this part of the job, and we
@@ -329,8 +305,6 @@ slide title: Practice
 + Where's the greater leverage?
 ```
 
-![Practice](HammockDrivenDev/09m48s.jpg)
-
 But it _is_ a skill, and it is something you can practice, something
 you can learn about.  And it is worth doing, because as human beings,
 we get good at what we practice.  It does not matter what it is.
@@ -355,8 +329,6 @@ slide title: State the Problem
   + out loud in conversation
   + or (heaven forbid) write it down
 ```
-
-![State the Problem](HammockDrivenDev/10m38s.jpg)
 
 So what do we need to do?  If we are going to work on solving
 problems, what is the activity like?
@@ -395,8 +367,6 @@ slide title: Understand the Problem
 + Are there related problems?
 + Write it all down
 ```
-
-![Understand the Problem](HammockDrivenDev/11m45s.jpg)
 
 The next part, which is definitely trickier -- and Polya's book is
 great.  It has got a lot of practical things.  Many of these overlap
@@ -464,8 +434,6 @@ slide title: Be Discerning
 + Write these down too
 ```
 
-![Be Discerning](HammockDrivenDev/14m17s.jpg)
-
 The other thing you have to do is: you have to be discerning.  You
 have to be critical.  We are sort of in this world because there is
 all of this community stuff.  It is like, I just hear "awesome".  I
@@ -510,8 +478,6 @@ slide title: More Input, Better Output
 + Read in and around your space
 + Look (critically!) at other solutions
 ```
-
-![More Input, Better Output](HammockDrivenDev/16m12s.jpg)
 
 The other thing is you have to think about: none of us are born
 knowing how to write software.  None of us are born knowing about SQL,
@@ -564,8 +530,6 @@ slide title: Tradeoffs
 + You might want to write these down also
 ```
 
-![Tradeoffs](HammockDrivenDev/18m07s.jpg)
-
 So everybody says design is about tradeoffs.  Everybody knows this.
 Usually when they talk about tradeoffs in their software, they are
 talking about the parts of their software that suck.  I had to make
@@ -589,8 +553,6 @@ slide title: Focus
   + balls will be dropped
 + Let loved ones know you are going to be 'gone'
 ```
-
-![Focus](HammockDrivenDev/18m55s.jpg)
 
 Okay.  So let us talk a little bit more about practice.  A big part of
 trying to do this work is maintaining your focus.  We had a really
@@ -643,8 +605,6 @@ slide title: Waking Mind
 + Use waking mind time to feed work to background mind
   + and to analyze its products
 ```
-
-![Waking Mind](HammockDrivenDev/21m10s.jpg)
 
 So for me, personally, I think that the process involves two parts of
 your mind, and this is stuff that you are seeing.  There are books
@@ -705,8 +665,6 @@ slide title: Background Mind
     + not direct it
 ```
 
-![Background Mind](HammockDrivenDev/23m37s.jpg)
-
 So let us talk about the background mind.  I am not going to directly
 equate it with the sleeping mind, but the sleeping mind is the number
 one instance of the background mind.  You can find access to your
@@ -764,8 +722,6 @@ slide title: Scientific American said:
   among memories and to solve problems we were working on
   while awake.
 ```
-
-![Scientific American said:](HammockDrivenDev/25m48s.jpg)
 
 So I am not just saying this.  Scientific American
 
@@ -830,8 +786,6 @@ slide title: Loading It Up
 + Go over and over, different orders
 + Hammock time is important _mind's eye_ time
 ```
-
-![Loading It Up](HammockDrivenDev/28m19s.jpg)
 
 So we have a problem, in general, because we are just being asked to
 write software that is more and more complex as time goes by.  And we
@@ -927,8 +881,6 @@ slide title: Wait for it ...
   + Switch around when stuck
 ```
 
-![Wait for it...](HammockDrivenDev/32m22s.jpg)
-
 Now you are done.  Cake is in the oven.  You just have to wait.  It
 is _so_ good.
 
@@ -1003,8 +955,6 @@ slide title: Wake up Working
   + or even switch over for the day
 ```
 
-![Wake up Working](HammockDrivenDev/35m22s.jpg)
-
 But yeah.  Then eventually, the cake comes out of the oven.  You wake
 up and you have a great idea.  You think you know the answer to your
 problem, or you have a good idea for a solution.
@@ -1029,8 +979,6 @@ slide title: Try It
 + Feedback loop is important
   + but don't lean on it
 ```
-
-![Try It](HammockDrivenDev/36m02s.jpg)
 
 Finally, you do have to take your great ideas and figure out if they
 are actually great by either analyzing them more, which is certainly
@@ -1085,8 +1033,6 @@ slide title: You Will Be Wrong
   + Don't be afraid
 ```
 
-![You Will Be Wrong](HammockDrivenDev/38m04s.jpg)
-
 The last thing is: you are going to be wrong.  I am frequently wrong.
 That is part of the game.  You are going to think of better ideas.  I
 think that is one of the most exciting things.  I think no matter what
@@ -1119,12 +1065,8 @@ slide title: Summary
   + it doesn't have a summary
 ```
 
-![Summary](HammockDrivenDev/39m28s.jpg)
-
 So in summary, this was a rant.  There is no summary.
 
 [Audience laughter, then applause]
 
 [Time 0:39:32]
-
-![End Slide](HammockDrivenDev/39m37s.jpg)
