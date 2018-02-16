@@ -15,8 +15,6 @@ slide title: Persistent Data Structures and
               Rich Hickey
 ```
 
-![00.00.00 PersistentDataStructure](PersistentDataStructure/00.00.00.jpg)
-
 How many people program in a functional programming language?  OK, so
 halfway preaching to the converted.  And not in a functional
 programming language?  A non-functional programming language?  So
@@ -51,8 +49,6 @@ slide title: Agenda
 + Q&A
 ```
 
-![00.01.13 PersistentDataStructure](PersistentDataStructure/00.01.13.jpg)
-
 So what I want to do today is to talk about functions and processes,
 and to distinguish the two.  In fact, the core concept in this talk is
 to try to parse out what we mean by identity, state, and values; try
@@ -85,8 +81,6 @@ slide title: Clojure Fundamentals
 + Not Object-oriented
 + Ideas in this talk are not Clojure-specific
 ```
-
-![00.02.11 PersistentDataStructure](PersistentDataStructure/00.02.11.jpg)
 
 I am not really going to talk about Clojure very much.  How many
 people were at my talk yesterday?  OK, how many people who were not
@@ -127,8 +121,6 @@ slide title: Functions
   + Has no notion of time
 ```
 
-![00.03.32 PersistentDataStructure](PersistentDataStructure/00.03.32.jpg)
-
 So what do we mean by functions?  I think that there is a really easy
 way to say, "Oh, a function is something that you call", and that is
 _not_ what we are talking about here.  We are talking about a very
@@ -155,8 +147,6 @@ slide title: Functional Programming
     + But - They execute on a machine
     + Observably consume compute resources
 ```
-
-![00.04.12 PersistentDataStructure](PersistentDataStructure/00.04.12.jpg)
 
 So what is functional programming?  There are lots of answers to this
 question, and I think people who are into type systems will claim a
@@ -218,8 +208,6 @@ slide title: Processes
   _in the local context_ 
 ```
 
-![00.06.37 PersistentDataStructure](PersistentDataStructure/00.06.37.jpg)
-
 So I think most programs are processes, which means we need to talk
 about the part of your program that cannot be purely functional, the
 part that is going to have to produce a different answer at different
@@ -247,8 +235,6 @@ slide title: State
   + j = i
   + j is 42? - depends
 ```
-
-![00.07.35 PersistentDataStructure](PersistentDataStructure/00.07.35.jpg)
 
 So I want to be a little bit more precise about what I mean when I say
 identity, state, and value, and these kinds of things.  And in
@@ -293,8 +279,6 @@ slide title: Variables
   + Composite operations require locks
   + All workarounds for lack of a time model
 ```
-
-![00.09.05 PersistentDataStructure](PersistentDataStructure/00.09.05.jpg)
 
 So variables are not going to be good enough to do the job of managing
 state.  They are predicated on a single thread of control.  They
@@ -341,8 +325,6 @@ slide title: Time
 + Inherently relative
 ```
 
-![00.10.47 PersistentDataStructure](PersistentDataStructure/00.10.47.jpg)
-
 So if we want to be clearer about time, which we are not going to be
 in a non-physics lecture.  We are just going to say, "What are some
 things you think of when you think of time?"  You think of things
@@ -370,10 +352,8 @@ slide title: Value
   as something other than values
   + Big mistake
     + aDate.setMonth("January") - ugh!
-  + DAtes, collections etc are all values
+  + Dates, collections etc are all values
 ```
-
-![00.11.36 PersistentDataStructure](PersistentDataStructure/00.11.36.jpg)
 
 What do we mean by values?  Again, here is an area where there is just
 so much ambiguity and loose thinking, that we cannot write correct
@@ -419,8 +399,6 @@ slide title: Identity
 + Can be composite - the NY Yankees
 + Programs that are processes need identity
 ```
-
-![00.13.24 PersistentDataStructure](PersistentDataStructure/00.13.24.jpg)
 
 So one more concept in the philosophy portion of the talk, which is
 the concept of identity.  This is probably the most nebulous of these
@@ -477,8 +455,6 @@ slide title: State
     + i.e., no time coordination model
 ```
 
-![00.15.52 PersistentDataStructure](PersistentDataStructure/00.15.52.jpg)
-
 So I will go back and talk about state.  We have some term that
 hopefully mean something.  Now we can say: a state is a value of an
 identity at a time.  Hopefully that makes sense.  The identity is a
@@ -518,8 +494,6 @@ slide title: Philosophy
 + Co-located entities can observe each other without cooperation
 + Coordination is desirable in local context
 ```
-
-![00.17.20 PersistentDataStructure](PersistentDataStructure/00.17.20.jpg)
 
 So this is the summary of the philosophy portion.  A key concept I
 think is: things do not change in place.  We think that they do, but
@@ -567,8 +541,6 @@ slide title: Race-walker foul detector
 + Must be a foul, right?
 ```
 
-![00.19.15 PersistentDataStructure](PersistentDataStructure/00.19.15.jpg)
-
 So let us take a little example.  A little race-walker foul detector.
 Race walkers, they have to walk, they cannot run.  They have to walk
 step step step, heel toe, and they cannot have both feet off the
@@ -596,13 +568,11 @@ slide:
 [ photo of competitive race-walk ]
 
 + Snapshots are critical to perception and decision making
-+ Can't stop the runner/race (looking)
++ Can't stop the runner/race (locking)
 + Not a problem if we can get runner's value
 + Similarly don't want to stop sales in order to calculate
   bonuses or sales report
 ```
-
-![00.20.09 PersistentDataStructure](PersistentDataStructure/00.20.09.jpg)
 
 Snapshots, and the ability to consider something as a value at a point
 in time, are _critical_ to perception and decision making.  And they
@@ -654,8 +624,6 @@ slide title: Approach
 + Managed references
   + Variable-like cells with coordination semantics
 ```
-
-![00.22.00 PersistentDataStructure](PersistentDataStructure/00.22.00.jpg)
 
 So, how does it work?  Well, the first thing is: we have to program
 with values.  We have to use values to represent not just numbers, and
@@ -709,8 +677,6 @@ slide title: Persistent Data Structures
 + Example - hash map/set and vector based upon array mapped
   hash tries (Bagwell)
 ```
-
-![00.23.49 PersistentDataStructure](PersistentDataStructure/00.23.49.jpg)
 
 So there are two parts.  We are going to talk now about the values.
 One of the things that people cringe at initially, if they have not
@@ -845,8 +811,6 @@ slide title: Structural Sharing
 + Iteration safe
 ```
 
-![00.30.06 PersistentDataStructure](PersistentDataStructure/00.30.06.jpg)
-
 And the key there is -- this is true for all of these things -- is
 structural sharing.  All functional data structures are essentially
 recursively defined, structurally recursively defined.  Which means
@@ -920,8 +884,6 @@ slide title: Coordination Methods
     + Automatic/enforced
     + _No locks in user code!_
 ```
-
-![00.32.40 PersistentDataStructure](PersistentDataStructure/00.32.40.jpg)
 
 So that is the way to efficiently represent composite objects as
 values.  We got one part of the problem solved.  Now we need to talk
@@ -1034,8 +996,6 @@ slide title: Clojure References
   + Vars - Isolated changes within threads
 ```
 
-![00.35.57 PersistentDataStructure](PersistentDataStructure/00.35.57.jpg)
-
 So I am going to call those boxes references.  We have too many
 overloaded terms.  I cannot think of any new words.  It is a reference
 because it refers to something else.  So identities are references
@@ -1132,8 +1092,6 @@ slide title: Uniform state transition model
 + Snapshot of 'current' state always available with deref
 + No user locking, no deadlocks
 ```
-
-![00.40.17 PersistentDataStructure](PersistentDataStructure/00.40.17.jpg)
 
 One of the things that is nice about the way these references work is:
 they have uniform state transition model.  All of them have different
@@ -1247,8 +1205,6 @@ slide title: Refs and Transactions
   + Must avoid side-effects!
 ```
 
-![00.43.18 PersistentDataStructure](PersistentDataStructure/00.43.18.jpg)
-
 OK, so the hard reference, as I said, are the transactional ones.
 Clojure has a software transactional memory system.  I almost hate
 using this term because people like to criticize STM as if it was one
@@ -1286,8 +1242,6 @@ slide title: The Clojure STM
 + All changes made to Refs during a transaction will appear to
   occur at a single point in the timeline.
 ```
-
-![00.44.15 PersistentDataStructure](PersistentDataStructure/00.44.15.jpg)
 
 This is the way you do coordination.  You cannot really do
 coordination without some technique like this.  You cannot build a
@@ -1356,8 +1310,6 @@ slide title: Refs in action
 @foo -> {:d 17, :a "lucy", :b "ethel", :c 42, :e 6}
 ```
 
-![00.46.24 PersistentDataStructure](PersistentDataStructure/00.46.24.jpg)
-
 So what does it looks like in practice?  We define foo to be a ref.
 That is a transactional box to that map.  We can dereference foo, and
 we see what is in there.  Unfortunately the name order changes because
@@ -1393,11 +1345,9 @@ slide title: Implementation - STM
 + No read tracking
 + Coarse-grained orientation
   + Refs + persistent data structures
-+ Readers don't impeded writers/readers, writers don't impeded readers,
++ Readers don't impede writers/readers, writers don't impede readers,
   supports _commute_
 ```
-
-![00.47.40 PersistentDataStructure](PersistentDataStructure/00.47.40.jpg)
 
 I do not have a lot of time to talk about the implementation details.
 But again, do not think that STM is one thing.  If you have read one
@@ -1450,8 +1400,6 @@ slide title: Agents
 + Only one action per agent happens at a time
 ```
 
-![00.49.33 PersistentDataStructure](PersistentDataStructure/00.49.33.jpg)
-
 I do want to show you one other model, because it is very different,
 And it is nice in that it is very different, yet very much the same
 which is we have sort of isolated change from values.  You can take a
@@ -1487,8 +1435,6 @@ slide title: Agents
   during a transaction are held until it commits
 + Agents are not Actors (Erlang/Scala)
 ```
-
-![00.50.38 PersistentDataStructure](PersistentDataStructure/00.50.38.jpg)
 
 Again as with the other reference types, you can just dereference it
 and see what is in there.  If you do successive actions to agents
@@ -1532,8 +1478,6 @@ slide title: Agents in Action
 @foo -> {:d 17, :a "lucy", :b "ethel", :c 42, :e 6}
 ```
 
-![00.51.40 PersistentDataStructure](PersistentDataStructure/00.51.40.jpg)
-
 So what does this looks like to use?  I say `def foo` to be an `agent`
 referring to a map.  I dereference it.  I see the contents of the map.
 I send that reference the same function `associate` `:a` with `lucy`.
@@ -1563,8 +1507,6 @@ slide title: Atoms
   + Guaranteed atomic transition
   + Must avoid side-effects!
 ```
-
-![00.52.27 PersistentDataStructure](PersistentDataStructure/00.52.27.jpg)
 
 Atoms, a very similar story to agents.  They are independent.  You
 cannot coordinate change to atoms.  There is a different name for the
@@ -1611,10 +1553,8 @@ slide title: Atoms in Action
 
 (swap! foo assoc :a "lucy")
 
-@foo -> {:d 17, :a "fred", :b "ethel", :c 42, :e 6}
+@foo -> {:d 17, :a "lucy", :b "ethel", :c 42, :e 6}
 ```
-
-![00.54.08 PersistentDataStructure](PersistentDataStructure/00.54.08.jpg)
 
 And look at these.  It looks a lot like the other ones.  Define `foo`
 to be an `atom` that refers to that map.  Dereference it, it is there.
@@ -1636,8 +1576,6 @@ slide title: Uniform state transition
 ; atoms
 (swap! foo assoc :a "lucy")
 ```
-
-![00.54.22 PersistentDataStructure](PersistentDataStructure/00.54.22.jpg)
 
 So this is the uniform state transition model.  That is what ref look
 like.  Start a transaction, commute or alter.  Your ref, passing a
@@ -1675,8 +1613,6 @@ slide title: Summary
   coordination
 ```
 
-![00.54.57 PersistentDataStructure](PersistentDataStructure/00.54.57.jpg)
-
 So, in summary, immutable values are critical for functional
 programming.  But it ends up they are also critical for state.  We
 cannot really manage time and state without immutable values.  If you
@@ -1705,8 +1641,6 @@ slide title: Thanks for listening!
 
          Questions?
 ```
-
-![00.55.51 PersistentDataStructure](PersistentDataStructure/00.55.51.jpg)
 
 So, thank you!
 
