@@ -17,8 +17,6 @@ slide title: Effective Programs
          [Clojure logo]
 ```
 
-![00.00.01 Effective Programs](EffectivePrograms/00.00.01.png)
-
 I feel like a broken record every time I start these talks by thanking
 everybody.  So I want to start this way in a different way by saying,
 "My son is getting married today."
@@ -84,8 +82,6 @@ slide title: Clojure is 'opinionated'
   + Pain of experience
 ```
 
-![00.02.53 Clojure is 'opinionated'](EffectivePrograms/00.02.53.png)
-
 And there are a bunch of choices in Clojure.  In particular, there is
 a big choice about what to leave out.  And part of this talk will be
 talking about what was left out.
@@ -110,8 +106,6 @@ slide title: Application Development
 + yield management (Common Lisp producing SQL)
 + more scheduling (Common Lisp -> C++)
 ```
-
-![00.03.16 Application Development](EffectivePrograms/00.03.16.png)
 
 doing Clojure in 2005, I had already been programming for 18 years.
 So I had had it.  I was done.  I was tired of it.  But I had done some
@@ -194,8 +188,6 @@ slide title: Application Development (2)
 + Datomic database (Clojure)
 ```
 
-![00.07.09 Application Development (2)](EffectivePrograms/00.07.09.png)
-
 I went on to help my friend Eric write the new version of the National
 Exit Poll System for the U.S., which also involves an election
 projection system.  We did that in a sort of self-imposed functional
@@ -235,8 +227,6 @@ slide title: Databases!
 + RDF
 + LWW (?)
 ```
-
-![00.08.39 Databases!](EffectivePrograms/00.08.39.png)
 
 Almost all of these projects involved a database.  All different kinds
 of databases from ISAM databases, a lot of SQL, many attempts but not
@@ -293,8 +283,6 @@ slide title: 'Situated' Programs
   + remember/recall from databases
 + deal with real-world irregularity
 ```
-
-![00.10.38 'Situated' Programs](EffectivePrograms/00.10.38.png)
 
 Clojure because, if people who do not do databases can write
 programming languages, _anybody_ can.
@@ -386,8 +374,6 @@ slide title: 'Situated' Programs (2)
 + _not compilers_
 ```
 
-![00.14.28 'Situated' Programs (2)](EffectivePrograms/00.14.28.png)
-
 Other aspects of situated programs.  They rarely are sort of their own
 little universe where they get to decide how things are, and they do
 not need to interact with anyone else or agree with anyone else.
@@ -452,12 +438,10 @@ and things like that are not like these programs.
 ```
 slide title: Effective
 
-producing the intended or expected result
+    producing the intended or expected result
 
 from Latin effectus "accomplishment, performance"
 ```
-
-![00.17.08 Effective](EffectivePrograms/00.17.08.png)
 
 So the title of this talk is "Effective Programs".  And what does
 "effective" mean?  It means "producing the intended result".  And I
@@ -488,8 +472,6 @@ slide title: What is Programming About?
   + enabling good decisions and successful activities
 + experience == information == facts about things that actually happened
 ```
-
-![00.17.51 What is Programming About?](EffectivePrograms/00.17.51.png)
 
 And that is where I want to sort of reclaim the name "programming".
 Or at least make sure we have a broad definition that incorporates
@@ -534,16 +516,14 @@ slide title: What is Programming _Not_ About?
 + itself - that's mathematics
 
 mathematics may be defined as the subject in which
-we never know what we are talking about, nor
-whether what we are saying is true
+   we never know what we are talking about, nor
+        whether what we are saying is true
 
 -- Bertrand Russell
 
 
 + just algorithms/computation
 ```
-
-![00.19.45 What is Programming Not About?](EffectivePrograms/00.19.45.png)
 
 So I will also say that, for me, "what is programming not about?".  It
 is not about itself.  Programming is not about proving theories about
@@ -571,8 +551,6 @@ slide:
 [ rectangle containing the word "Logic" ]
 ```
 
-![00.20.46 Logic](EffectivePrograms/00.20.46.png)
-
 So, do not get me wrong.  I like logic, right?  I have written those
 scheduling systems.  I have written those yield management algorithms.
 I have written a Datalog engine.  I like logic.  I like writing that
@@ -585,10 +563,9 @@ That is really cool.
 ```
 slide: 
 
-[ now there is a circle around the square, touching it at the 4 corners ]
+[ Now there is a circle around the square, just barely surrounding the
+square. ]
 ```
-
-![00.21.03 Logic + Some Shim](EffectivePrograms/00.21.03.png)
 
 But even a theorem prover, or a compiler, eventually needs to read
 something from the disk, or spit something back out, print something.
@@ -602,12 +579,11 @@ done, and I think that Clojure programmers do,
 ```
 slide: 
 
-[ Now the square is significantly smaller, without the word "Logic"
-inside of it, because the font would be unreadably small, and the
-circle around it is much bigger than the square, and contains the text
-"Information Processing" ]
+[ Now the square is smaller, occupying only a small fraction of the
+area of the circle.  The square is no longer labeled "Logic", because
+the text would be unreadably small.  The circle contains the text
+"Information Processing". ]
 ```
-![00.21.25 Information Processing](EffectivePrograms/00.21.25.png)
 
 that is a small part of the program.  Programs are _dominated_ by
 information processing.  Unless they have UIs, in which case, there is
@@ -641,7 +617,8 @@ slide:
 
 [ Square moved to bottom right of enclosing "Information Processing"
 circle, and became a smaller fraction of circle's area then previous
-slide. ] ```
+slide. ]
+```
 
 ![00.22.32 Information Processing](EffectivePrograms/00.22.32.png)
 
@@ -653,9 +630,10 @@ it probably needs to be to solve the problem, this is the ratio
 
 ![00.22.39 Information Processing](EffectivePrograms/00.22.39.png)
 
-it often is, and was in my experience in my work. [ The point being,
-the information processing part was not only the largest part of the
-program, but it was larger than it should have been. ]
+it often is, and was in my experience in my work.
+
+[ His point: Not only was the information processing part the largest
+part of the program, but it was larger than it should have been. ]
 
 Actually, this is also sort of bigger.  The square would be more of a
 dot.  That the information part of our programs is _much_ larger than
