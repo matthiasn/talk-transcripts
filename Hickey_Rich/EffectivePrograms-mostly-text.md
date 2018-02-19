@@ -18,7 +18,7 @@ slide title: Effective Programs
 ```
 
 I feel like a broken record every time I start these talks by thanking
-everybody.  So I want to start this way in a different way by saying,
+everybody.  So I want to start this talk in a different way by saying,
 "My son is getting married today."
 
 [Audience applause]
@@ -37,10 +37,10 @@ Clojure was released, and there is no possible way
 
 [Audience applause]
 
-I could have imagined this.  You know I told my wife Steph, I said,
-"If 100 people use this, that would be ridiculously outrageous", and
-that is not what happened.  And what did happen is interesting.  I do
-not think it is fully understood.
+I could have imagined this.  I told my wife Steph, "If 100 people use
+this, that would be ridiculously outrageous".  And that is not what
+happened.  And what did happen is interesting.  I do not think it is
+fully understood.
 
 But I wanted today to talk about a look back a little bit about the
 motivations behind Clojure.  It is not like when you come out with a
@@ -137,11 +137,11 @@ audio and scrub audio, sort of compare novelty to the past.
 [Time 0:04:59]
 
 I worked on yield management systems.  Does everybody know what "yield
-management" is"?  Probably not.  So what do hotels, airlines, and
-radio stations have in common?  Their inventory disappears as time
-passes.  "Oh, I have a free room.  I have got a slot in my schedule.
-I have got a seat on this airplane."  And then time passes and nobody
-bought it, and now you do not.
+management" is?  Probably not.  So what do hotels, airlines, and radio
+stations have in common?  Their inventory disappears as time passes.
+"Oh, I have a free room.  I have got a slot in my schedule.  I have
+got a seat on this airplane."  And then time passes and nobody bought
+it, and now you do not.
 
 So yield management is the science and practice of trying to figure
 out how to optimize the value of your inventory as it disappears out
@@ -229,14 +229,12 @@ slide title: Databases!
 ```
 
 Almost all of these projects involved a database.  All different kinds
-of databases from ISAM databases, a lot of SQL, many attempts but not
+of databases, from ISAM databases, a lot of SQL, many attempts but not
 many integrations of RDF.  Databases are an essential part of solving
 these kinds of problems.  It is just what we do.
 
 How many people use a database in what they do every day?  How many
-people do not?
-
-OK.
+people do not?  OK.
 
 So this last thing [LWW] is not an acronym for a database.  It is
 there to remind me to tell this anecdote.
@@ -257,8 +255,8 @@ that I do not, because I am going to now disparage them.
 [Audience laughter]
 
 They were both computer language researchers.  And they were talking,
-also disparagingly, about their associate, who had somehow had fallen
-in with databases and lost the true way.  And one of them sort of
+also disparagingly, about their associate, who had somehow fallen in
+with databases and lost the true way.  And one of them sort of
 sneeringly went to the other and said, "Aw, David, when was the last
 time you used a database?".  And he was like, "I do not know that I
 have ever used a database."
@@ -291,20 +289,20 @@ programming languages, _anybody_ can.
 
 So there are different kinds of programs.  And one of the things I
 tried to capture on this slide is to talk about what those kinds of
-programs were that I was working on.  And the word I came up with was
+programs were that I was working on.  And the word I came up with were
 "situated" programs.  In other words, you can distinguish these kinds
 of programs that sit in the world and are sort of entangled with the
 world.  They have a bunch of characteristics.
 
-One is, they execute for an extended period of time.  It is not just
+One is: they execute for an extended period of time.  It is not just
 like calculate this result and spit it over there.  It is not like a
 lambda function at AWS.  These things run on an ongoing basis, and
 they are sort of wired up to the world.  And most of these systems run
-continuously, 24/7.  it is quite terrifying to me that now these
-things which are 30 years old are almost definitely still running 24/7
-somewhere, if they have not been replaced.  So this first notion of
-extended periods of time means continuously, as opposed to just for a
-burst.
+continuously, 24/7.  It is quite terrifying to me that now these
+things, which are 30 years old, are almost definitely still running
+24/7 somewhere, if they have not been replaced.  So this first notion
+of extended periods of time means continuously, as opposed to just for
+a burst.
 
 They almost always deal with information.  What were the kinds of
 things that I talked about?  Scheduling.  In scheduling you look at
@@ -377,11 +375,13 @@ slide title: 'Situated' Programs (2)
 Other aspects of situated programs.  They rarely are sort of their own
 little universe where they get to decide how things are, and they do
 not need to interact with anyone else or agree with anyone else.
-Almost all these systems interacted with other systems.  Almost all of
-these systems interacted with people.  Somebody would sit there and
-say, "start playing this song right now", or "skip this song", and we
-are like "I scheduled that song, and I balanced everything around you
-playing it, and now your DJ just said 'do not do that'".
+Almost all these systems interacted with other systems.
+
+Almost all of these systems interacted with people.  Somebody would
+sit there and say, "start playing this song right now", or "skip this
+song", and we are like "I scheduled that song, and I balanced
+everything around you playing it, and now your DJ just said 'do not do
+that'".
 
 The election projection system has _tons_ of screens for users to look
 at things, and cross-tabulate things, and make decisions, feeding all
@@ -486,26 +486,27 @@ or they are helping people be effective.
 
 Now, how are we effective?  Well, sometimes we are effective because
 we calculate really well.  Like maybe when we are trying to compute
-trajectories for missiles or something like that.  But mostly not.
-Mostly areas of human endeavor.  We are effective because we have
-learned from our experience, and we can turn that experience into
-predictive power.  Whether that is knowing not to step in a giant hole
-or off a cliff, or walk towards the roaring lion, or how to market to
-people, or what is the right approach to doing this surgery, or what
-is the right diagnosis for this problem.
+trajectories for missiles or something like that.
+
+But mostly not.  Mostly areas of human endeavor.  We are effective
+because we have learned from our experience, and we can turn that
+experience into predictive power.  Whether that is knowing not to step
+in a giant hole or off a cliff, or walk towards the roaring lion, or
+how to market to people, or what is the right approach to doing this
+surgery, or what is the right diagnosis for this problem.
 
 People are effective because they learn, and they learn from
 experience and they leverage that.  And so, I am going to say, "being
 effective is mostly not about computation, but it is about generating
 predictive power from information".
 
-And you have heard me talk about information, right?  It is about
-facts.  It is about things that happened.  Experience, especially when
-we start pulling this into the programming world, experience equals
-information equals facts about things that actually happened.  That is
-the raw material of success.  In the world, it is for people.  It
-should be for programs that either support people or replace people.
-So they can do more interesting things.
+And you have heard me talk about information.  It is about facts.  It
+is about things that happened.  Experience, especially when we start
+pulling this into the programming world, experience equals
+information, equals facts about things that actually happened.  That
+is the raw material of success.  In the world, it is for people.  It
+should be for programs that either support people, or replace people,
+so they can do more interesting things.
 
 
 [Time 0:19:45]
@@ -525,7 +526,7 @@ mathematics may be defined as the subject in which
 + just algorithms/computation
 ```
 
-So I will also say that, for me, "what is programming not about?".  It
+So I will also say that, for me, "what is programming not about?"  It
 is not about itself.  Programming is not about proving theories about
 types being consistent with your initial propositions.  It is not.
 That is an interesting endeavor of its own.  But it is not what I have
@@ -536,11 +537,12 @@ programming.  I like to accomplish things in the world.
 Bertrand Russell has a nice snarky comment about that.  He is actually
 not being snarky.  He wants to elevate mathematics and say, "it is
 quite important that mathematics be only about itself".  If you start
-crossing the line, right?  And standing on stage and saying,
-"mathematical safety, type safety equals heart machine safety", you
-are doing mathematics wrong, according to Bertrand Russell.  And it is
-not just algorithms and computation.  They are important, but they are
-a subset of what we do.
+crossing the line, and standing on stage and saying, "mathematical
+safety, type safety equals heart machine safety", you are doing
+mathematics wrong, according to Bertrand Russell.
+
+And it is not just algorithms and computation.  They are important,
+but they are a subset of what we do.
 
 
 [Time 0:20:46]
@@ -551,7 +553,7 @@ slide:
 [ rectangle containing the word "Logic" ]
 ```
 
-So, do not get me wrong.  I like logic, right?  I have written those
+So, do not get me wrong.  I like logic.  I have written those
 scheduling systems.  I have written those yield management algorithms.
 I have written a Datalog engine.  I like logic.  I like writing that
 part of the system.  I usually get to work on that part of the system.
@@ -596,11 +598,11 @@ But I am not going to go there.
 [Audience laughter]
 
 Actually, because I do not do that part.  But the information
-processing actually dominates programs both in the effort, the
-irregularity is often there, right?  It is this information part that
-takes all the irregularity out of the way, so my Datalog engine can
-have an easy day, because everything is now perfect, because I see a
-perfect thing, because somebody fixed it before it got to me.
+processing actually dominates programs both in the effort ...  The
+irregularity is often there.  It is this information part that takes
+all the irregularity out of the way, so my Datalog engine can have an
+easy day, because everything is now perfect, because I see a perfect
+thing, because somebody fixed it before it got to me.
 
 And I do not want to make light of this.  I think this is
 super-critical.  Your best [TBD] Google's coolest search algorithm, if
@@ -626,7 +628,7 @@ slide with circle being a larger fraction of everything] it often is,
 and was in my experience in my work.
 
 [ His point: Not only was the information processing part the largest
-part of the program, but it was larger than it should have been. ]
+part of the program, it was larger than it should have been. ]
 
 Actually, this is also sort of bigger.  The square would be more of a
 dot.  That the information part of our programs is _much_ larger than
@@ -647,8 +649,8 @@ slide:
 
 And of course we are not done.  We do not write programs from scratch,
 so we have to start dealing with libraries.  When we do that, now we
-have started to cross out of "we get to define everything" land,
-right?  Now we have
+have started to cross out of "we get to define everything" land.  Now
+we have
 
 
 [Time 0:23:17]
@@ -661,10 +663,10 @@ dependencies from Information Processing code to Libraries, and from
 the "Logic" square to to Libraries. ]
 ```
 
-relationships.  And we have to define how those ... we are going to
-talk to libraries and how they may talk to us, but mostly we talk to
-them.  So now there are lines, right?  There is some protocol of how
-do you talk to this library.  And we are still not
+relationships.  And we have to define how we are going to talk to
+libraries, and how they may talk to us, but mostly we talk to them.
+So now there are lines.  There is some protocol of how do you talk to
+this library.  And we are still not
 
 
 [Time 0:23:30]
@@ -676,15 +678,17 @@ slide:
 "Information Processing" circle to/from a box labeled "Database". ]
 ```
 
-done, right?  Because we said these situated programs, they involve
+done.  Because we said these situated programs, they involve
 databases.  Now, while the information processing and the logic and
 the libraries may have all shared a programming language -- or at
 least on the JVM, something like the JVM, a runtime -- now we are out
-of that.  Now we have a database that is clearly over there.  It is
-written in a different language.  It is not colocated in memory, so
-there is a wire.  It has its own view of the world, and there is some
-protocol for talking to it.  And invariably, whatever that protocol
-is, we want to fix it.
+of that.  Now we have a database that is clearly over there.
+
+It is written in a different language.  It is not colocated in memory,
+so there is a wire.  It has its own view of the world, and there is
+some protocol for talking to it.
+
+And invariably, whatever that protocol is, we want to fix it.
 
 [Audience laughter]
 
@@ -709,7 +713,7 @@ idea of how they want to talk to libraries or use libraries.  And
 there are more wires and more protocols.
 
 And _here_ we do not get the database vendor at least giving us some
-wire protocol to start with, that we will fix with ORM, we have to
+wire protocol to start with, that we will fix with ORM.  We have to
 make up our own protocols.  And so we do that.  And what do we end up
 with?  JSON, right?  It is not good.
 
@@ -758,7 +762,7 @@ So I am not trying to say, "there is a right and wrong way, and
 Clojure is right and everything else is wrong".  But it _should_ be
 apparent, and maybe it is not, because I think we all aspire to write
 programming languages that are general purpose.  You could probably
-write, a theorem prover in Clojure.  Actually, I am sure you could.
+write a theorem prover in Clojure.  Actually, I am sure you could.
 
 But you certainly would get a different language if your target were
 compilers and theorem provers, or your target were device drivers, or
@@ -767,7 +771,7 @@ programs.  There is not a catchy phrase for that.  But that is what I
 was doing.  All my friends were doing that.  How many people in this
 room are doing that?  Yeah.  So when you look at programming
 languages, you really should look at: what are they for?  There is no
-inherent goodness, like suitability constraints.
+inherent goodness.  There are suitability constraints.
 
 
 [Time 0:27:19]
@@ -811,27 +815,28 @@ careers".  Why am I saying that?  I am saying it because I am
 frustrated with a bunch of limitations in what I was using.
 
 And you can call them problems, and I am going to call them the
-problems of programming.  And I have ordered them here -- I hope you
-can read that.  Can you read it?  Yeah, OK.  I have ordered them here
-in terms of severity.  And severity manifests itself in a couple of
-ways.  Most important, cost.  What is the cost of getting this wrong?
-At the very top you have the domain complexity, about which you could
-do nothing.  This is just the world.  It is as complex as it is.
+problems of programming.  I have ordered them here in terms of
+severity.  And severity manifests itself in a couple of ways.  Most
+important, cost.  What is the cost of getting this wrong?  At the very
+top you have the domain complexity, about which you could do nothing.
+This is just the world.  It is as complex as it is.
 
-But the very next level is the where we start programming.  We look at
-the world and say, "I have got an idea about how this is, and how it
-is supposed to be, and how my program can be effective about
-addressing it".  And the problem is, if you do not have a good idea
-about how the world is, or you cannot map that well to a solution,
-everything downstream from that is going to fail.  There is no
-surviving this misconception problem.  And the cost of dealing with
-misconceptions is incredibly high.
+But the very next level is where we start programming.  We look at the
+world and say, "I have got an idea about how this is, and how it is
+supposed to be, and how my program can be effective about addressing
+it".  And the problem is, if you do not have a good idea about how the
+world is, or you cannot map that well to a solution, everything
+downstream from that is going to fail.  There is no surviving this
+misconception problem.  And the cost of dealing with misconceptions is
+incredibly high.
 
-So then there is 10x, a full order of magnitude reduction in severity
-before we get to this set of problems I think are more in the domain
-of what programming languages can help with.  And because you can read
-these, they are all going to come up in a second as I go through each
-one on some slide, so I am not going to read them all out right now.
+So then there is this 10x, a full order of magnitude reduction in
+severity, before we get to this set of problems I think are more in
+the domain of what programming languages can help with.  And because
+you can read these, they are all going to come up in a second as I go
+through each one on some slide, so I am not going to read them all out
+right now.
+
 But importantly, there is another break where we get to _trivialisms_
 of problems in programming.  Like typos and just being inconsistent.
 Like, you thought you are going to have a list of strings and you put
@@ -905,23 +910,23 @@ simpler stuff?  I mean, that is the problem.  After 18 years of using
 C++ and Java, you are exhausted.  How many people have been
 programming for 18 years?  OK.  How many for more than 20 years?  More
 than 25?  Fewer than 5?  So that is really interesting to me.  It may
-be an indictment of Clojure as a beginner's language or it may be that
-Clojure is the language for cranky, tired, old programmers.
+be an indictment of Clojure as a beginner's language, or it may be
+that Clojure is the language for cranky, tired, old programmers.
 
 [Audience laughter and applause]
 
-And, you know what?  I would not be embarrassed if it was.  That is
+And you know what?  I would not be embarrassed if it was.  That is
 fine by me.  Because I did make it for myself, which I think is an
 important thing to do.  Trying to solve other people's problems, and
 think you understand what they are, that is tricky.
 
-So, when I discovered Common Lisp, having used C++, I said that, "I am
+So when I discovered Common Lisp, having used C++, I said that, "I am
 pretty sure the answer to this first question is, 'yeah, absolutely'".
 And can we do that with a lower cognitive load?  I also think, "yes,
 absolutely".  And then the question is, "can I make a Lisp I can use
-instead of Java or C#?".  Because you just heard my story, and I used
+instead of Java or C#?"  Because you just heard my story, and I used
 Common Lisp a couple of times, and every time it got kicked out of
-production.  Or just ruled out of production, really not kicked out.
+production.  Or just _ruled_ out of production, really not kicked out.
 It did not get a chance.  So I knew I had to target a runtime that
 people would accept.
 
@@ -975,7 +980,7 @@ slide title: Non-problems
 + Few static type checks
 ```
 
-And then there were other things I considered to be absolute
+And then there were other things I considered to be _absolute_
 non-problems.  And the first of these is the parentheses.  How many
 people ...  and it is OK to admit, right?  Everybody has a story.  How
 many people thought the parentheses were going to be a problem and now
@@ -985,6 +990,8 @@ everybody goes through that.  Everybody looks at Lisp and is like,
 Before I start, before I understand the value proposition of it at
 all, I am going to fix this", and that says something about
 programmers.  I am not sure exactly what.
+
+[Audience laughter]
 
 But I do not believe this is a problem, and in fact when we get to the
 middle of this talk you will see that I think this is the opposite of
@@ -1000,8 +1007,9 @@ was equally true then as it is now.
 
 [Audience laughter]
 
-But we really did believe it.  We totally did.  And it does not help.
-It really does not help for the big problems.
+But we really did believe it!  We totally did.  And it does not help.
+It really does not help for the big problems.  The top, the big wide
+ones.
 
 
 [Time 0:35:04]
@@ -1018,25 +1026,22 @@ slide title: PLOP - Place Oriented Programming
 + immutable local bindings
 ```
 
-The top, the big wide ones.
+OK, so problem number one on that list was place oriented programming.
+Absolutely, this is the problem.  Almost all the programs I wrote,
+lots of the things on that list were multi-threaded programs.  They
+are crazy hard in C++.  Just impossible to get right, when you adopt a
+normal mutability approach, mutable objects.  So, this is the number
+one self-inflicted programming problem.  It seemed clear to me that
+the answer was to make functional programming and immutable data the
+default idiom.
 
-OK, so, problem number one on that list was place oriented
-programming.  Absolutely, this is the problem.  Almost all the
-programs I wrote, lots of the things on that list were multi-threaded
-programs, they are crazy hard in C++.  Just impossible to get right,
-when you adopt a normal mutability approach, mutable objects.  So,
-this is the number one self-inflicted programming problem.  It seemed
-clear to me that the answer was to make functional programming and
-immutable data the default idiom.
+So the challenge I had was: were there data structures that would be
+fast enough to say, "we could swap this for that"?  And the goal I had
+was to get within 2x for reads and 4x for writes.  And I did a lot of
+work on this.  This was actually the main research work behind
+Clojure, was about these persistent data structures.
 
-So the challenge I had was, were there data structures that would be
-fast enough to say, "we could swap this for that"?  And the objective
-I had, the goal I had was to get within 2x for reads and 4x for
-writes.  And I did a lot of work on this.  This was actually the main
-research work behind Clojure, was about these persistent data
-structures.
-
-And eventually I found ... I looked at Okasaki's stuff and the fully
+And eventually I found ... I looked at Okasaki's stuff and the _fully_
 functional approach, and none of that gets here.  And then I found
 Bagwell's structures, which were not persistent, but I realized could
 be made so.  And they just have tremendously great characteristics,
@@ -1049,13 +1054,14 @@ immutable local bindings.  Basically if you fall into Clojure, your
 first hurdle is not the parentheses, right?  It is this functional
 paradigm.  Everything is gone.  There is no mutable variables.  There
 is no state.  There are no mutable collections and everything else.
-But there is a lot of support.  There is a big library.  You just have
-to sort of learn the idioms.  So I think this was straightforward.
+But there is a lot of support.  There is a _big_ library.  You just
+have to sort of learn the idioms.  So I think this was
+straightforward.
 
 The critical thing that is different about Clojure is, by the time I
 was doing Clojure, the people who invented this stuff had adopted a
 lot more.  I think most of the adherents in the functional programming
-community considered functional programming to be about typed
+community considered functional programming to be about _typed_
 functional programming.  Statically typed functional programming _is_
 functional programming.
 
@@ -1079,25 +1085,26 @@ slide title: Information
 ```
 
 OK, problem number two -- and this is the most subtle problem.  This
-is the thing that annoys me the most about statically typed
-programming languages -- is they are terrible at information.  So let
-us look at what information is.  Inherently, information is sparse.
-It is what you know.  It is what happened in the world.  Does the
-world fill out forms, and fill everything out for you?  All the things
-you would like to know?  No!  It does not.  It does not, and "not
-ever" is probably more correct.
+is the thing that annoys me the most about statically typed languages
+-- is they are terrible at information.  So let us look at what
+information is.  Inherently, information is sparse.  It is what you
+know.  It is what happened in the world.  Does the world fill out
+forms, and fill everything out for you?  All the things you would like
+to know?  No!  It does not.  It does not, and "not ever" is probably
+more correct.
 
 The other thing is, "what can you know?"  What are you allowed to
 know?  There are no good answers to that.  Whatever you want, right?
-It is open.  What else is there?  What IS there to know?  Well I mean,
-what time is it, right?  Because every second that goes by, there is
-more stuff to know, more things happen, more facts, more things happen
-in the universe.  So information accretes, it just keeps accumulating.
+It is open.  What else is there?  What _is_ there to know?  Well I
+mean, what time is it, right?  Because every second that goes by,
+there is more stuff to know, more things happen, more facts, more
+things happen in the universe.  So information accretes, it just keeps
+accumulating.
 
 What else do we know about information?  We do not really have a good
 way of grappling with it, except by using names.  When we deal with
 information as people, names are super-important.  If I just say,
-"47", there is no communication going on.  We have to connect it.
+"47", there is no communication going on yet.  We have to connect it.
 
 And then the other big thing, and this is the thing I struggle with so
 often.  I have a system.  I made a class or a type about some piece of
@@ -1126,7 +1133,7 @@ slide title: The Information Programming Problem
 ```
 
 So what is the problem with programming in a way that is compatible
-with information?  It is that we elevate the containership of
+with information?  It is that we elevate the _containership_ of
 information to become the semantic driver.  We say, "this is a person,
 and a person has a name, and a person has an email, and a person has a
 social security number", and there is no semantics for those three
@@ -1146,8 +1153,8 @@ themselves.
 
 There is no compositional algebra in programming languages for
 information.  So we are taking these constructs that I think were
-there for other purposes, we have to use them because it is all we are
-given, and it is what is idiomatic.  Take out a class, take out a
+there for other purposes.  We have to use them because it is all we
+were given, and it is what is idiomatic.  Take out a class, take out a
 type, and do this thing.
 
 But the most important thing is that the aggregates determine the
@@ -1181,10 +1188,11 @@ One way is just like, "naming something is abstracting".  I disagree
 with that.  Abstracting really should be drawing from a set of
 exemplars some essential thing.  Not just naming something.  And what
 I think is actually happening here is we are getting not data
-abstractions, you are getting data concretions.  Relational algebra,
-that is a data abstraction.  Datalog is a data abstraction.  RDF is a
-data abstraction.  Your person class, your product class, those are
-not data abstractions.  They are concretions.
+abstractions, you are getting data concretions.
+
+Relational algebra, that is a data abstraction.  Datalog is a data
+abstraction.  RDF is a data abstraction.  Your person class, your
+product class, those are not data abstractions.  They are concretions.
 
 
 [Time 0:43:24]
@@ -1217,13 +1225,13 @@ functional, high-performance activity.
 And they are generic.  What do we do in Clojure if we have just some
 of the information here and just some of the information there, and we
 need both those things over there?  We say, "what is the problem?"
-There is no problem.  I take some information, some information, and
+There is no problem.  I take some information, some information, and I
 merge them, I hand it along.  If I need a subset of that, I take a
 subset of that.  I call "select-keys" and I get a subset.  I can
 combine anything that I like.  There is an algebra associated with
 associative data.
 
-The names are first-class.  Keywords and symbols are functions.  They
+The names are first class.  Keywords and symbols are functions.  They
 are functions of associative containers.  They know how to look
 themselves up.  And they are reified, so you can tangibly flow them
 around your program and say, "pick out these three things" without
@@ -1268,7 +1276,7 @@ and you want no part of it.  And this is a big problem.
 The other thing I think is more subtle, but I put it here because
 unless you see this, is positional semantics do not scale.  What is an
 example of positional semantics?  Argument lists.  Most languages have
-them, and Clojure has some too.  Who wants to call a function with 17
+them, and Clojure has them, too.  Who wants to call a function with 17
 arguments?  Nope.
 
 [Audience laughter]
@@ -1285,12 +1293,12 @@ break down every time you hit that limit.
 How many people like going to the doctor's office and filling out the
 forms.  Don't you hate it?  You get this big lined sheet of paper that
 is blank.  Then you get this set of rules, that says, "put your social
-security on line 42, and your name on line 17".  That is how it works,
-right?  That is how the world works.  That is how we talk to other
-people?  No!  It does not scale.  It is not what we do.  We always put
-the labels right next to the stuff and the labels matter.  But with
-positional semantics we are saying, "No, they don't.  Just remember
-the third thing mean this, and the seventh thing means that".
+security number on line 42, and your name on line 17".  That is how it
+works, right?  That is how the world works.  That is how we talk to
+other people?  No!  It does not scale.  It is not what we do.  We
+always put the labels right next to the stuff and the labels matter.
+But with positional semantics we are saying, "No, they don't.  Just
+remember the third thing mean this, and the seventh thing means that".
 
 [Time 0:47:29]
 
@@ -1315,10 +1323,10 @@ no labels on these parameters.  They may get names by convention, but
 they are not properly named.  When you want to reuse the type with
 parameters, you get to give them names
 
-[audio cut off]
+[audio cut off, only for a few seconds]
 
-(?) again.  Just like in pattern matching.  That is terrible.  That is
-a terrible idea.  And it does not scale.
+again.  Just like in pattern matching.  That is terrible.  That is a
+terrible idea.  And it does not scale.
 
 So anywhere positionality is the only thing you have got, you are
 eventually going to run out of steam.  You are going to run out of the
@@ -1339,8 +1347,8 @@ not mess with it.  Mostly, they do not mess with it.  I do not know
 what we are protecting against, but we can prove now that they are
 still strings over there.
 
-The constructs are open.  We much prefer runtime polymorphism either
-by multi-methods or protocols to switch statements, pattern matching,
+The constructs are open.  We much prefer runtime polymorphism, either
+by multi-methods or protocols, to switch statements, pattern matching,
 and things like that.
 
 The maps are open.  They are need-to-know.  What do we do in Clojure
@@ -1374,9 +1382,9 @@ slide title: Language Model Complexity
 ```
 
 So the other problem is language model complexity.  C++ is a very
-complex language, and so is Haskell, and so is Java and so are most of
-them.  Clojure is very small.  It is not quite Scheme small, but it is
-small compared to the others.  And it is just the basic lambda
+complex language, and so is Haskell, and so is Java, and so are most
+of them.  Clojure is very small.  It is not quite Scheme small, but it
+is small compared to the others.  And it is just the basic lambda
 calculus kind of thing with immutable functional core.  There are
 functions.  There are values.  You can call functions on values and
 get other values.  That is it.  There is no hierarchy.  There is no
@@ -1389,10 +1397,11 @@ about the performance of our programs, because of resources.  And that
 is unfortunate.  At least one of the nice things about C was: you knew
 if your program crashed, it was your problem.  And you just figure it
 out.  But you knew what it was going to take up in RAM, and you could
-calculate things, and it was quite tractable.  And that matters to
-programmers.  Programming is not mathematics.  In mathematics you can
-swap any isomorphism for any other.  In programming you get fired for
-doing that.
+calculate things, and it was quite tractable.
+
+And that matters to programmers.  Programming is not mathematics.  In
+mathematics you can swap any isomorphism for any other.  In
+programming you get fired for doing that.
 
 [Audience laughter]
 
@@ -1423,15 +1432,15 @@ RDF got it right
   + semantics associated with the predicates/attributes, named by URIs
 ```
 
+[ One dictionary's definition of "parochialism": a limited or narrow
+outlook, especially focused on a local area; narrow-mindedness". ]
+
 Now we are into the real nitty-gritty of things I did not like, and
 therefore I left out.  This type thing, it goes everywhere.  And the
 name I came up for it is "parochialism".  This idea that "I have this
 language, and it is got this cool idea about how you should think
 about things.  You should think about things using algebraic data
 types.  Or you should think about things using inheritance".
-
-[ One dictionary's definition of "parochialism": a limited or narrow
-outlook, especially focused on a local area; narrow-mindedness". ]
 
 It yields this intense parochialism.  You start to have
 representations of things, manifestations of representations of
@@ -1450,13 +1459,12 @@ databases, dudes?"  Yeah.  What is wrong?
 
 What is wrong is, one company bought another company.  Now they are
 the same company.  They now have these two databases.  In one
-database, your name is in the person thing, and in another database
-your name is in the person table, and in another database your name is
-in the mailing list table.  Who knows that mailing list table name and
-person name are actually the same piece of information?  Nobody.  They
-have to have meetings.  I mean this is a big dollar -- this is a big
-ticket problem.  It is not a small ... It is not a laughing matter,
-right?
+database, your name is in the person table, and in another database
+your name is in the mailing list table.  Who knows that mailing list
+table name and person name are actually the same piece of information?
+Nobody.  They have to have meetings.  I mean this is a big dollar --
+this is a big ticket problem.  It is not a small ... It is not a
+laughing matter, right?
 
 [Audience laughter, after Rich started laughing first]
 
@@ -1499,15 +1507,17 @@ Almost every other language that deals with types encourages this
 tyranny of the container I talked about before.  We have a choice in
 Clojure, I think people go either way.  There are two things, one is
 the container dominates, the other is just sort of the notion of
-context dominating the meaning, like, because I called it this in this
-context, it means that.  But we have the recipe in Clojure for doing
-better than that, in which you use namespace-qualified keys.  With
-namespace-qualified keys we now can merge data and know what things
-mean, regardless of the context in which they are used.
+context dominating the meaning, like, "because I called it this in
+this context, it means that".
+
+But we have the recipe in Clojure for doing better than that, in which
+you use namespace-qualified keys.  With namespace-qualified keys we
+now can merge data and know what things mean, regardless of the
+context in which they are used.
 
 And anything about this thwarts the composition I talked about before.
 
-And in particular because we are pointed at this
+And in particular, because we are pointed at this
 program-manipulating-program idea, as you will see later, it makes
 this harder.
 
@@ -1535,14 +1545,15 @@ can pass them around.  We can write them down.  A user who does not
 know Clojure can actually type one into a text file and save it, and
 do something meaningful with our program without learning Clojure.
 
-We have this namespace qualification.  If you follow the conventions,
-which unfortunately a lot of Clojure libraries are not yet doing, of
-this reversed domain name system, which is the same as Java's, all
+We have this namespace qualification.  If you follow the conventions
+-- which unfortunately a lot of Clojure libraries are not yet doing --
+of this reversed domain name system, which is the same as Java's, all
 Clojure names are conflict-free, not only with other Clojure names,
 but with Java names.  That is a _fantastically_ good idea, and it is
 similar to the idea in RDF of using URIs for names.
 
-And the aliases help make this less burdensome.
+And the aliases help make this less burdensome.  And we have done some
+more recently to do more with that.
 
 
 [Time 0:57:45]
@@ -1554,8 +1565,6 @@ slide title: Distribution
   + very basic data types - maps of scalars/vectors/maps
 + program inside as you do outside
 ```
-
-And we have done some more recently to do more with that.
 
 Then there is this distribution problem.  And here is where I start
 saying, "Taking a language-specific view of program design is a
@@ -1576,13 +1585,14 @@ succeeded when it moved to this.
 
 And this is very successful.  Why should we program in a way that is
 all super-parochial if we only need to eventually represent some
-subset of a program, may be a subset we did not know in advance, over
-wires.  If we program this way all the time, we program the inside of
-our programs as "let us pass around data structures", and then
-somebody says, "Oh, I wish I could put half of your program across a
-wire, or replicated over six machines", what do we say in Clojure?
-That is great.  I will start shipping some edn across a socket and we
-are done.  As opposed to, you have got to do everything over.
+subset of a program -- maybe a subset we did not know in advance --
+over wires.  If we program this way all the time, we program the
+inside of our programs as "let us pass around data structures", and
+then somebody says, "Oh, I wish I could put half of your program
+across a wire, or replicated over six machines", what do we say in
+Clojure?  That is great.  I will start shipping some edn across a
+socket and we are done.  As opposed to, you have got to do everything
+over.
 
 
 [Time 0:59:22]
@@ -1622,7 +1632,7 @@ And the old Perlis quip about, "Any sufficiently large C or C++
 program has a poorly implemented Common Lisp", is so true.  Again,
 Spring, right?  As you get a larger system that you want to maintain
 over time, and deal with all those complexities that I showed before,
-you want dynamism.  You have to have it.  It is not like an optional
+you want dynamism.  You _have_ to have it.  It is not like an optional
 thing.  It is necessary.
 
 [ By "the old Perlis quip" Rich is probably referring to Philip
@@ -1644,10 +1654,10 @@ https://web.archive.org/web/19990117034445/http://www-pu.informatik.uni-tuebinge
 
 But what was particularly interesting for me in implementing Clojure
 was how much runtime tangibility and situated sensibilities were in
-the JVM design.  The JVM is actually a very dynamic thing.  As much as
-Java looks like say, C# or C++, the JVM it was written with an idea of
-"We are going to embed these programs on set top boxes, and network
-them, and need to send code around that you could update their
+the JVM design.  The JVM is actually a _very_ dynamic thing.  As much
+as Java looks like say, C# or C++, the JVM, it was written with an
+idea of "We are going to embed these programs on set top boxes, and
+network them, and need to send code around that you could update their
 capabilities".  That is like, it is situated everywhere you turn.  And
 the runtime has got a ton of excellent support for that.  Which makes
 it a great platform for languages like Clojure.
@@ -1684,14 +1694,14 @@ slide title: Epochal time model
 
 ![01.02.36 Epochal time model](EffectivePrograms/01.02.36.png)
 
-The other thing you need, is you need some language for dealing with
-state transitions.  And that is the epochal time model.  I am
-obviously not going to get into this again here, but I have given
-talks about this before.  So Clojure has this.  And it was a
-combination of those things that let me say, "I think I have a
-reasonable answer for my friend".  If he says, "How can I write a real
-program with this?", I can say, "Here is how you can write a real
-program, including a multi-threaded program, and not go crazy".
+The other thing you need is some language for dealing with state
+transitions.  And that is the epochal time model.  I am obviously not
+going to get into this again here, but I have given talks about this
+before.  So Clojure has this.  And it was a combination of those
+things that let me say, "I think I have a reasonable answer for my
+friend".  If he says, "How can I write a real program with this?", I
+can say, "Here is how you can write a real program, including a
+multi-threaded program, and not go crazy".
 
 
 [Time 1:03:04]
@@ -1727,15 +1737,15 @@ slide title: R.E.P.L.
 
 But there is the REPL.  And I think that still people are like, "the
 REPL is cool because I get to try things".  And that is true, but the
-REPL is much cooler than that.  It is cooler than that, because it is
-an acronym.  And it is cooler than that because _read_ is its own
+REPL is _much_ cooler than that.  It is cooler than that, because it
+is an acronym.  And it is cooler than that because _read_ is its own
 thing.  And what Clojure did by adding a richer set of data
 structures, is it made read/print into a super power.  It was not just
 a convenience.  It is not just a way to interact with people.  It is
 not just a way to make it easy to stream programs around, or program
 fragments around.
 
-It is now like, "Here is your free wire protocol", for real stuff.
+It is now like, "Here is your free wire protocol, for real stuff".
 How many people ever sent edn over a wire?  Yeah.  How many people
 like the fact that they do not need to think that is a possibility.
 They can just do it?  And if they want to switch to something else,
@@ -1834,7 +1844,7 @@ It is tangible.  It works over wires.  It is not incompatible with the
 rest of the world.  Do other languages have maps?  Associative data
 structures and vectors and strings and numbers?  So it seems like a
 happy lingua franca.  And why shouldn't we use the lingua franca in
-our program?  Why should we have a different language.  It is actually
+our program?  Why should we have a different language?  It is actually
 not that much better, and you have to keep translating.
 
 
@@ -1871,16 +1881,21 @@ Peyton Jones ]
 
 Simon Peyton Jones, in an excellent series of talks, listed these
 advantages of types.  Because this is the big thing that is left out
-of Clojure.  There are no types.  They guarantee the absence of
-certain kinds of errors, which is true.  And he would say, he does
-say, "This is the least benefit" of static typing.
+of Clojure.  There are no types.
+
+They guarantee the absence of certain kinds of errors, which is true.
+And he would say -- he does say -- "This is the least benefit of
+static typing".
 
 They serve as a partial machine-checked specification, and "partial"
-is the operative word here.  It is very partial.  They are a design
-language.  They help you think.  You have a framework in which you can
-think about your problems.  They support interactive development like
-IntelliSense.  But the biggest merit, he says, is in software
-maintenance.
+is the operative word here.  It is very partial.
+
+They are a design language.  They help you think.  You have a
+framework in which you can think about your problems.
+
+They support interactive development like IntelliSense.
+
+But the biggest merit, he says, is in software maintenance.
 
 
 [Time 1:06:47]
@@ -1900,13 +1915,14 @@ And I really disagree with just a lot of this.  It has not been my
 experience.  The biggest errors are not caught by these type systems.
 You need extensive testing to do real-world effectiveness checking.
 
-Names dominate semantics.  a to a, list of a to list of a.  It means
-nothing.  It tells you nothing.  If you take away the word "reverse",
-you do not know anything.  You really do not.  And to elevate this to
-say, "Oh, this is an important thing.  We have all these properties".
-It is not true.  It just is not true.  There are thousands of functions
-that take a list of a and return a list of a.  What does that mean?
-It means nothing.
+Names dominate semantics.  a to a [in Haskell syntax: a -> a], list of
+a to list of a [in Haskell syntax: [a] -> [a]].  It means nothing.  It
+tells you nothing.  If you take away the word "reverse", you don't
+know anything.  You really don't.  And to elevate this to say, "Oh,
+this is an important thing.  We have all these properties".  It is not
+true.  It just is not true.  There are thousands of functions that
+take a list of a and return a list of a.  What does that mean?  It
+means nothing.
 
 And checking it ... I mean, if you only had a list of a-s, where are
 you going to get something else to return?  I mean, obviously you are
@@ -1922,8 +1938,8 @@ thinking about?  Draw that.  What is important?  Write that down.
 That is how it should work.
 
 Yes, IntelliSense is much helped by static types.  And performance
-optimization, which he did not list, but I think is one of the biggest
-benefits.  We love that in C++.
+optimization, which he did not list, but I think this is one of the
+biggest benefits.  We love that in C++.
 
 And maintenance, I think it is not true.  I think that they have
 created problems that they now use types to solve.  Oh, I
@@ -1951,12 +1967,12 @@ physical science
 -- Bertrand Russell
 ```
 
-So I mean for young programmers, if everybody's tired and old, this
-does not matter any more.  But when you are young, you have got lots
-of free space.  I used to say "an empty head", but that is not right.
-You have got a lot of free space available, and you can fill it with
-whatever you like.  And these type systems, they are quite fun,
-because from an endorphin standpoint solving puzzles and solving
+So I mean for young programmers, if everybody's tired and old, then
+this does not matter any more.  But when you are young, you have got
+lots of free space.  I used to say "an empty head", but that is not
+right.  You have a lot of free space available, and you can fill it
+with whatever you like.  And these type systems, they are quite fun,
+because from an endorphin standpoint, solving puzzles and solving
 problems is the same.  It gives you the same rush.  Puzzle solving is
 really cool.
 
@@ -2122,17 +2138,21 @@ slide title: Be Effective!
 ```
 
 So, I would encourage you all to embrace the fact that Clojure is
-different.  Don't be cowed by the proof people.  Programming is not a
-solved problem.  Logic should be your tool.  It should not be your
-master.  You should not be underneath a logic system.  You should be
-_applying_ a logic system when it works out for you.
+different.  Don't be cowed by the proof people.
+
+[Audience laughter]
+
+Programming is not a solved problem.  Logic should be your tool.  It
+should not be your master.  You should not be underneath a logic
+system.  You should be _applying_ a logic system when it works out for
+you.
 
 I am encouraging you to design at the system level.  It is not all
 about your programming language.  We all get infatuated with our
-programming languages.  But you know what?  I am actually skeptical
-about programming languages being the key to programming.  I do not
-think they are.  They are a small part of programming.  They are not
-the driver of programming.
+programming languages.  But you know what?  I am actually pretty
+skeptical about programming languages being the key to programming.  I
+do not think they are.  They are a small part of programming.  They
+are not the driver of programming.
 
 And embrace these new opportunities.  There are going to be a bunch of
 talks during the conference about deep learning, and take advantage of
