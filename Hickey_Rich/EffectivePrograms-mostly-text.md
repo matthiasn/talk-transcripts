@@ -620,17 +620,10 @@ circle, and became a smaller fraction of circle's area then previous
 slide. ]
 ```
 
-![00.22.32 Information Processing](EffectivePrograms/00.22.32.png)
-
-while this is the ratio
-
-![00.22.35 Information Processing](EffectivePrograms/00.22.35.png)
-
-it probably needs to be to solve the problem, this is the ratio
-
-![00.22.39 Information Processing](EffectivePrograms/00.22.39.png)
-
-it often is, and was in my experience in my work.
+while this is the ratio [jump back to previous slide] it probably
+needs to be to solve the problem, this is the ratio [jump forward to
+slide with circle being a larger fraction of everything] it often is,
+and was in my experience in my work.
 
 [ His point: Not only was the information processing part the largest
 part of the program, but it was larger than it should have been. ]
@@ -652,8 +645,6 @@ slide:
 "Information Processing" circle. ]
 ```
 
-![00.23.05 Information Processing + Libraries](EffectivePrograms/00.23.05.png)
-
 And of course we are not done.  We do not write programs from scratch,
 so we have to start dealing with libraries.  When we do that, now we
 have started to cross out of "we get to define everything" land,
@@ -670,8 +661,6 @@ dependencies from Information Processing code to Libraries, and from
 the "Logic" square to to Libraries. ]
 ```
 
-![00.23.17 Information Processing + Libraries](EffectivePrograms/00.23.17.png)
-
 relationships.  And we have to define how those ... we are going to
 talk to libraries and how they may talk to us, but mostly we talk to
 them.  So now there are lines, right?  There is some protocol of how
@@ -683,11 +672,9 @@ do you talk to this library.  And we are still not
 ```
 slide: 
 
-[ Now add a dashed line, bidirectional arrows, between the
+[ Now add a line with arrows in both directions, between the
 "Information Processing" circle to/from a box labeled "Database". ]
 ```
-
-![00.23.30 Information Processing + Libraries + Database](EffectivePrograms/00.23.30.png)
 
 done, right?  Because we said these situated programs, they involve
 databases.  Now, while the information processing and the logic and
@@ -766,8 +753,6 @@ You'll get a different language if you're writing:
 
 What are _you_ doing?
 ```
-
-![00.26.18 Different Strokes](EffectivePrograms/00.26.18.png)
 
 So I am not trying to say, "there is a right and wrong way, and
 Clojure is right and everything else is wrong".  But it _should_ be
@@ -885,8 +870,6 @@ Inconsistency
 Typos
 ```
 
-![00.29.49 The Problems of Programming (with Green)](EffectivePrograms/00.29.49.png)
-
 So what were the problems that Clojure took on?  These green ones.
 And again I will go through all the green ones in a moment, but I
 would say, amongst the ones in the middle, I do not think that Clojure
@@ -916,8 +899,6 @@ slide title: Clojure Design Objectives
 + with low cognitive load from language
 + make a Lisp I can use instead of Java/C#
 ```
-
-![00.30.46 Clojure Design Objectives](EffectivePrograms/00.30.46.png)
 
 So fundamentally, what is Clojure about?  Can we make programs out of
 simpler stuff?  I mean, that is the problem.  After 18 years of using
@@ -958,8 +939,6 @@ slide title: Meta problems
   + compatibility
 ```
 
-![00.32.23 Meta problems](EffectivePrograms/00.32.23.png)
-
 So there are these meta problems.  You can try to take on some
 programming problems, but there are always problems in getting a
 language accepted.  I did not think Clojure would get accepted.
@@ -995,8 +974,6 @@ slide title: Non-problems
 + Lisp syntax (parentheses)
 + Few static type checks
 ```
-
-![00.33.33 Non-problems](EffectivePrograms/00.33.33.png)
 
 And then there were other things I considered to be absolute
 non-problems.  And the first of these is the parentheses.  How many
@@ -1040,8 +1017,6 @@ slide title: PLOP - Place Oriented Programming
 + large library of pure functions
 + immutable local bindings
 ```
-
-![00.35.04 PLOP - Place Oriented Programming](EffectivePrograms/00.35.04.png)
 
 The top, the big wide ones.
 
@@ -1103,8 +1078,6 @@ slide title: Information
 + (should be) composable
 ```
 
-![00.37.47 Information](EffectivePrograms/00.37.47.png)
-
 OK, problem number two -- and this is the most subtle problem.  This
 is the thing that annoys me the most about statically typed
 programming languages -- is they are terrible at information.  So let
@@ -1151,8 +1124,6 @@ slide title: The Information Programming Problem
     + not how information works
   + yield information 'concretions'
 ```
-
-![00.39.44 The Information Programming Problem](EffectivePrograms/00.39.44.png)
 
 So what is the problem with programming in a way that is compatible
 with information?  It is that we elevate the containership of
@@ -1229,8 +1200,6 @@ slide title: Clojure and Information
 + associating semantics with attributes, not aggregates
 ```
 
-![00.43.24 Clojure and Information](EffectivePrograms/00.43.24.png)
-
 So we know in practice, Clojure says, "just use maps".  What this
 meant actually was, "Clojure did not give you anything else", right?
 
@@ -1283,8 +1252,6 @@ Clojure emphasizes
 + open constructs, runtime polymorphism
 + open maps, need-to-know, accept and propagate more
 ```
-
-![00.45.23 Brittleness/coupling](EffectivePrograms/00.45.23.png)
 
 All right, brittleness and coupling.  This is another thing that is
 just my personal experience: that static type systems yield much more
@@ -1406,8 +1373,6 @@ slide title: Language Model Complexity
 + execution model akin to Java
 ```
 
-![00.50.54 Language Model Complexity](EffectivePrograms/00.50.54.png)
-
 So the other problem is language model complexity.  C++ is a very
 complex language, and so is Haskell, and so is Java and so are most of
 them.  Clojure is very small.  It is not quite Scheme small, but it is
@@ -1457,8 +1422,6 @@ RDF got it right
 + subject/predicate/object
   + semantics associated with the predicates/attributes, named by URIs
 ```
-
-![00.52.43 Parochialism - names](EffectivePrograms/00.52.43.png)
 
 Now we are into the real nitty-gritty of things I did not like, and
 therefore I left out.  This type thing, it goes everywhere.  And the
@@ -1525,8 +1488,6 @@ slide title: Parochialism - types and contexts
 + Raises bar for program-manipulating programs
 ```
 
-![00.55.30 Parochialism - types and contexts](EffectivePrograms/00.55.30.png)
-
 But it goes further.  I would say that the more elaborate your type
 system is, the more parochial your types are.  The less general they
 are, the less transportable they are, the less understandable by other
@@ -1564,8 +1525,6 @@ slide title: Clojure Names
 + aliases to make it easy to do the right thing
 ```
 
-![00.56.41 Clojure Names](EffectivePrograms/00.56.41.png)
-
 So Clojure has names that are first class.  This is stuff that was in
 Lisp.  It just dominates more because they became the accessors for
 the associative data type.  They are functions in and of themselves.
@@ -1595,8 +1554,6 @@ slide title: Distribution
   + very basic data types - maps of scalars/vectors/maps
 + program inside as you do outside
 ```
-
-![00.57.45 Distribution](EffectivePrograms/00.57.45.png)
 
 And we have done some more recently to do more with that.
 
@@ -1639,8 +1596,6 @@ slide title: Runtime tangibility
 + Situated sensibilities
 ```
 
-![00.59.22 Runtime tangibility](EffectivePrograms/00.59.22.png)
-
 So there were plenty of inspirations and examples for me of this.
 Runtime tangibility is one of the things I really got excited about
 when I learned Common Lisp coming from C++.  Smalltalk and Common Lisp
@@ -1670,7 +1625,7 @@ over time, and deal with all those complexities that I showed before,
 you want dynamism.  You have to have it.  It is not like an optional
 thing.  It is necessary.
 
-[ By "the old Perlis quip" Rich sounds like is referring to Philip
+[ By "the old Perlis quip" Rich is probably referring to Philip
 Greenspun's tenth rule of programming:
 
 "Any sufficiently complicated C or Fortran program contains an ad-hoc,
@@ -1708,7 +1663,7 @@ dynamic thinking.
 So there is situated sensibilities in all of these.
 
 
-[Time 1:01:26]
+[Time 1:02:26]
 
 ```
 slide title: Concurrency
@@ -1716,14 +1671,12 @@ slide title: Concurrency
 + Functional + immutable gets you 90% there
 ```
 
-![01.02.26 Concurrency](EffectivePrograms/01.02.26.png)
-
 The last problem on my initial slide was concurrency, and I think
 mostly concurrency gets solved by being functional and immutable by
 default.
 
 
-[Time 1:01:36]
+[Time 1:02:36]
 
 ```
 slide title: Epochal time model
@@ -1754,8 +1707,6 @@ slide title: Lisp - the good parts
 + read/print
 ```
 
-![01.03.04 Lisp - the good parts](EffectivePrograms/01.03.04.png)
-
 So there is lots of stuff I wanted to take from Lisp, and I think I
 talked about a lot of these.  It is dynamic.  It is small.  It had
 first class names.  It is very tangible.  There is this code is data,
@@ -1771,10 +1722,8 @@ slide title: R.E.P.L.
 + read - human writable text -> data structures
 + eval - data -> executable code
 + print - data -> human-readable text
-+ yes, can make interactive prompt but may other things
++ yes, can make interactive prompt but many other things
 ```
-
-![01.03.15 R.E.P.L.](EffectivePrograms/01.03.15.png)
 
 But there is the REPL.  And I think that still people are like, "the
 REPL is cool because I get to try things".  And that is true, but the
@@ -1812,8 +1761,6 @@ slide title: Lisp - Needs Fixing
 + packages/interning
 ```
 
-![01.04.25 Lisp - Needs Fixing](EffectivePrograms/01.04.25.png)
-
 But Lisp had a bunch of things that needed to be fixed, in my opinion.
 It was built on concretions.  A lot of the design of more abstractions
 and CLOS and stuff like that came after the underpinnings.  The
@@ -1848,11 +1795,9 @@ slide title: Power - Strong Host Support
 + use host scalars
 ```
 
-![01.05.22 Power - Strong Host Support](EffectivePrograms/01.05.22.png)
-
 The other part about Clojure that is important is leverage.
 
-Oh I am running out of time.  I am not going to talk about that.
+Oh, I am running out of time.  I am not going to talk about that.
 
 
 [Time 1:05:30]
@@ -1868,8 +1813,6 @@ slide title: Large functional library built on abstractions
   + ClojureScript did later define same abstractions on protocols
 ```
 
-![01.05.30 Large functional library built on abstractions](EffectivePrograms/01.05.30.png)
-
 Or that.
 
 
@@ -1884,8 +1827,6 @@ slide title: The edn Data Model (Transit too)
 + Good with names
 + The heart of Clojure
 ```
-
-![01.05.31 The edn Data Model (Transit too)](EffectivePrograms/01.05.31.png)
 
 So the edn data model is not like a small part of Clojure.  It is sort
 of the heart of Clojure.  It is the answer to many of these problems.
@@ -1922,15 +1863,11 @@ slide title: The Joy of Types (SPJ)
 + are a design language - types are UML of Haskell
 + support interactive development - intellisense
 + biggest merit: software maintenance
-
-https://www.youtube.com/watch?v=brE_dyedGm0
 ```
 [https://www.youtube.com/watch?v=brE_dyedGm0](https://www.youtube.com/watch?v=brE_dyedGm0)
 
-[ Link is to YouTube video of Simon Peyton Jones talk "Adventure with
-Types in Haskell" ]
-
-![01.06.08 The Joy of Types (SPJ)](EffectivePrograms/01.06.08.png)
+[ Link is to video of talk "Adventure with Types in Haskell" by Simon
+Peyton Jones ]
 
 Simon Peyton Jones, in an excellent series of talks, listed these
 advantages of types.  Because this is the big thing that is left out
@@ -1958,8 +1895,6 @@ slide title: But...
 + Intellisense, perf optimization - yep, types help
 + Maintenance - overcoming coupling they create
 ```
-
-![01.06.47 But...](EffectivePrograms/01.06.47.png)
 
 And I really disagree with just a lot of this.  It has not been my
 experience.  The biggest errors are not caught by these type systems.
@@ -2016,8 +1951,6 @@ physical science
 -- Bertrand Russell
 ```
 
-![01.08.47 Puzzles vs Problems](EffectivePrograms/01.08.47.png)
-
 So I mean for young programmers, if everybody's tired and old, this
 does not matter any more.  But when you are young, you have got lots
 of free space.  I used to say "an empty head", but that is not right.
@@ -2040,8 +1973,6 @@ slide title: Spec
 + Next iteration will increase its programmability
   + producing and consuming
 ```
-
-![01.09.26 Spec](EffectivePrograms/01.09.26.png)
 
 But that is not what it should be about.
 
@@ -2072,8 +2003,6 @@ slide title: Information vs Logic
   + Via which brains _see_ and _act_
 + Real-world safety is going to come from experience, not proof
 ```
-
-![01.10.12 Information vs Logic](EffectivePrograms/01.10.12.png)
 
 So finally, information versus logic.  The bottom line is, "Where are
 we going in programming?"  The fact is, we actually do not know how to
@@ -2120,8 +2049,8 @@ mean real-world?  That is not true.
 ```
 slide title: The Problem Tackled by Deep Learning
 
-[ Same text as "The Problems of Programming" slide, but now only the
-"Misconception" box is highlighted in a different color. ]
+[ Same text as earlier "The Problems of Programming" slide, but now
+only the "Misconception" box is highlighted in a different color. ]
 
 Domain Complexity
 _Misconception_
@@ -2146,8 +2075,6 @@ Inconsistency
 Typos
 ```
 
-![01.12.29 The Problem Tackled by Deep Learning](EffectivePrograms/01.12.29.png)
-
 So, this is what is really interesting.  Deep learning and
 technologies like that are pointed above the line, above that top 10x.
 They are pointed at the misconception problem.  They say, "You know
@@ -2166,8 +2093,6 @@ slide title: Programmable Programs
 + Dynamic discovery and invocation
 + Dynamic enhancement
 ```
-
-![01.12.56 Programmable Programs](EffectivePrograms/01.12.56.png)
 
 So, I am going to emphasize that we write programmable programs, and
 that Clojure is well-suited to that.  We have a generic way to
@@ -2195,8 +2120,6 @@ slide title: Be Effective!
   + Make programmable programs
 + Solve problems, not puzzles
 ```
-
-![01.13.38 Be Effective!](EffectivePrograms/01.13.38.png)
 
 So, I would encourage you all to embrace the fact that Clojure is
 different.  Don't be cowed by the proof people.  Programming is not a
@@ -2232,8 +2155,6 @@ what the world is
 
 -- Bertrand Russell
 ```
-
-![01.14.34 fin](EffectivePrograms/01.14.34.png)
 
 solve problems, not puzzles.  Thank you.
 
