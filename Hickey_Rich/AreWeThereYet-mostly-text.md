@@ -38,9 +38,9 @@ slide title: Provocation
 ```
 
 So are we being well served by Object Orientation as commonly
-embodied.  The concept is pretty broad and there are multiple possible
-embodiments, but it ends up the ones that we have have a lot of
-consistent attributes.
+embodied?  The concept is pretty broad, and there are multiple
+possible embodiments, but it ends up the ones that we have have a lot
+of consistent attributes.
 
 Do we all agree this is the best way to write software?  Do we think
 this will continue to be the best way?
@@ -62,15 +62,15 @@ in color and a little bit in shape. ]
 
 Certainly today, this is a really entrenched model.  It does not
 matter which language you are using.  Everybody has different
-languages that are groovy and whatnot.  Scala and Java and people use
-C# and they love the differences between these languages.  And I want
-you to focus on the _similarities_ between these languages, which is
-they are all single-dispatch, stateful, object-oriented languages.
+languages: Groovy, and whatnot, Scala, and Java, and people use C#,
+and they love the differences between these languages.  And I want you
+to focus on the _similarities_ between these languages, which is they
+are all single-dispatch, stateful, object-oriented languages.
 
-And they have a lot of the same kinds of things in classes, some
-notion of classes, inheritance.  Fields are an interesting concept.
-Methods are more interesting and we will talk about them later.  They
-are all garbage collected, and they have a heritage that goes back to
+And they have a lot of the same kinds of things: some notion of
+classes, inheritance.  Fields are an interesting concept.  Methods are
+more interesting, and we will talk about them later.  They are all
+garbage collected, and they have a heritage that goes back to
 languages like Smalltalk.
 
 
@@ -100,8 +100,7 @@ other great choices that we have.
 
 But they have more to do with the sensibilities of the programmer than
 they have to do with significant differences in the programming model.
-OK?  So they are all different cars, but they are all on the same
-road.
+So they are all different cars, but they are all on the same road.
 
 
 [Time 0:02:17]
@@ -128,7 +127,7 @@ They have big investments.  People know how to do it.  It is not
 something you are going to move away from any too readily.
 
 And certainly, I want to emphasize, the purpose of this talk is not to
-beat up on OO, but to have everybody just take a step back; just
+beat up on OO, but to have everybody just take a step back.  Just
 imagine you do not love it, if you do, and think about whether or not
 it is perfect.
 
@@ -153,8 +152,8 @@ do we add things?  What drives us to make changes, or what drives us
 to change cars to say, "I am going to stop using this language and
 adopt this other language"?  And what things _should_ drive us to
 that?  I do not think a lot of people say, "Oh, I am tired of
-semicolons.  I cannot do it anymore; curly braces or something.  I am
-going to switch to something easier."
+semicolons.  I cannot do it anymore.  Or curly braces, or something.
+I am going to switch to something easier."
 
 I think static and dynamic may cause people to switch, but I think
 there are examples already in our history that show us what causes us
@@ -201,7 +200,7 @@ to that, he also became a philosopher.  And he wrote some great
 things, and I am just going to put them up here because they are
 great.
 
-So the first thing is distrust simplicity.  I do not want to talk
+So the first thing is: distrust simplicity.  I do not want to talk
 actually about the complexity of the problems we are trying to solve.
 We all know we are given increasingly more complex problems to solve,
 bigger problems, more data, more flexibility.  Expectations of people
@@ -239,7 +238,7 @@ a danger zone.  I know I am going to be careful with that."
 The worst kind of incidental complexity is the kind that is disguised
 as simplicity.  "Look how easy this is!  There are no semicolons."  I
 do not want to beat up on no semicolons.  It is just an easy way to
-say, "Look at some superficial aspect of language I am using, this
+say, "Look at some superficial aspect of the language I am using, this
 seems easy, this seems familiar".  But is there incidental complexity
 hiding underneath it?
 
@@ -277,7 +276,7 @@ it?  Is it yours?  Is it now your responsibility?  Do you have to
 delete it later?  Is it even something that can be deleted?  Can you
 hand it to somebody else?  Is that allowed?  Could you save it?
 
-So the problem there was there is no standard automatic memory
+So the problem there was: there is no standard automatic memory
 management.  There is no garbage collection.  And this was, and still
 is, for people using this language, a big source of incidental
 complexity.  Because managing memory is on you.  You do not see that.
@@ -286,7 +285,7 @@ managing memory is on your head."  This is incidental complexity.  You
 have to just know that.  It is not in the source code.
 
 And it is a big problem.  I think the lack of garbage collection
-really impeded C++ in one of its design objectives, which is: it is
+really impeded C++ in one of its design objectives, which is: it was
 supposed to be a library language.  All the original design stuff and
 any time you heard Stroustrup talk about it, it is like, "C++ is going
 to be a library language".  But it only ever ended up being a
@@ -318,10 +317,14 @@ slide title: Java
 ```
 
 So let us look at Java.  It is easier; there is no asterisk.  This is
-like even better.  So what is the problem with this?  It is simpler.
-It is definitely simpler.  Now we only have references to managed
-memory, and we have automatic memory management.  We have garbage
-collection.  This is much, much better.  It is much easier.
+like even better.
+
+[Audience laughter]
+
+So what is the problem with this?  It is simpler.  It is definitely
+simpler.  Now we only have references to managed memory, and we have
+automatic memory management.  We have garbage collection.  This is
+much, much better.  It is much easier.
 
 Except, again, we have this hidden complexity.  Is this a mutable
 thing or not?  When will I see a consistent value?  If I look at this
@@ -348,8 +351,8 @@ This is every single language I listed that allows for mutable objects
 has this problem.  And there is no way to fix it.
 
 So what is the problem here?  I am going to say the problem here is:
-we do not have any standard time management.  OK?  That may be a
-really confusing thing.  Hopefully, it will not be as we go along.
+we do not have any standard time management.  That may be a really
+confusing thing.  Hopefully, it will not be as we go along.
 
 
 [Time 0:10:55]
@@ -370,7 +373,7 @@ So this is kind of a little bit of a reiteration of the points I was
 making before.  I think that because we are so familiar with this, we
 are absolutely, completely blind to it.  And when we choose languages,
 or when people choose different languages, a lot of times they make
-the decision on very superficial differences like the syntax, or
+the decisions on very superficial differences like the syntax, or
 perhaps sort of this makes me feel good, expressivity differences,
 which I admit completely are real and valid, but they are somewhat
 emotional.
@@ -410,9 +413,9 @@ I mean, somebody who is building houses out of bricks does not need to
 worry about the inside of bricks.  They have certain properties, they
 have certain expectations.  And I think it is one of the selling
 points of Object Orientation, that this is a way to make these kinds
-of units that we can combine to make programs that are easy to
+of units that we can combine to make programs that are easier to
 understand.  Because we understand the pieces.  And we put the pieces
-together, we get something we can understand.
+together, and we get something we can understand.
 
 
 [Time 0:13:06]
@@ -482,7 +485,7 @@ a function, it would be no good.  Google is a process that is
 connected to the rest of the world.  It is scouring pages and
 integrating them and forming algorithms, which hopefully also should
 change.  As a whole, it feels much more like a participant in the
-world than a function anymore.  It is not an idealized calculation.
+world than a function any more.  It is not an idealized calculation.
 
 So we can say that the entire program has this behavior we can observe
 over time, although you will see I do not like the word "behavior".
@@ -540,19 +543,20 @@ completely meaningless.
 And in addition, even though objects putatively are about process,
 there is no notion, no concrete notion of time in objects.  No more so
 than there are in functions.  But at least functions are not
-pretending to play with time.  Functions say there is no time.  There
-are my inputs and my outputs.  I am not pretending to deal with time.
+pretending to play with time.  Functions say, "There is no time.
+There are my inputs and my outputs.  I am not pretending to deal with
+time."
 
 Objects are pretending to deal with time.  And yet, our object systems
 do not have any reified notion of time.  There is nothing you can talk
-about explicitly, because most of them were born in the day when your
+about explicitly, because most of them were born in a day when your
 program ruled the computer.  You had a single monotonic execution flow
 and it just did what it wanted; do this, do that.  There was a single
 universal process controlling everything.
 
 Now that that is no longer true, we try to use locks to restore that
 vision of the world.  But that vision of the world was _never_
-correct.  And you can tell in one key way because we still, even with
+correct.  And you can tell in one key way: because we still, even with
 all the locks and everything else, we still do not really have a
 concrete representation we can use for perception.  Can I look at
 something and see it be stable?  Or memory.  Can I remember that?
@@ -578,8 +582,8 @@ by Alfred North Whitehead ]
 And we have done so in a couple of ways.  The first is: we have made
 objects that can change in place, and we have made objects that we
 could _see_ change in place.  As I have said, we left out any concrete
-notion of time.  And, there is no proper notion of values.  OK?  You
-can fabricate values.  You can make a class that has all immutable
+notion of time.  And, there is no proper notion of values.  You can
+fabricate values.  You can make a class that has all immutable
 components, and that would constitute a value.  But there is no proper
 notion of value in a lot of these languages.
 
@@ -591,11 +595,11 @@ addition, as I said before, our ability to perceive is fragile.
 So I have the hero of the day, Whitehead, up here.  Who, subsequent to
 doing all the Principia Mathematica stuff, as I said, became a
 philosopher.  And he tried to concern himself with: how does the world
-actually work informed by the current knowledge -- which this was back
-in the '20s -- of quantum mechanics and relativity.  And one of the
-things that he came up with was the fact that time must be atomic and
-move in chunks.  And in fact, time is not actually a real thing you
-can touch, but it is something that you derive from seeing these
+actually work, informed by the current knowledge -- which this was
+back in the '20s -- of quantum mechanics and relativity.  And one of
+the things that he came up with was the fact that time must be atomic
+and move in chunks.  And in fact, time is not actually a real thing
+you can touch, but it is something that you derive from seeing these
 epochal transitions.
 
 
@@ -613,8 +617,8 @@ So I am going to explain that more, but this is a great quote.  "No
 man can ever cross the same river twice."  Because what is a river?  I
 mean, we love this idea of objects; like there is this thing that
 changes.  There is no river.  There is water there at one point in
-time.  And another point in time, there is other water there.  River;
-river is all in here [the mind].  OK?
+time.  And at another point in time, there is other water there.
+River; river is all in here [the mind].
 
 
 [Time 0:20:27]
@@ -643,21 +647,21 @@ architectures.  Where is the variable?"  Well, there is one version
 over here from one point in time.  And another one over here.  And
 that is on its way to a place, that this over there might see at some
 point.  It is live.  Now we see the problem.  There are no changing
-values.  There is values at points in time and all you are ever going
+values.  There are values at points in time and all you are ever going
 to get is the value for a point in time.  And values do not change.
 
 So the biggest key insight of Whitehead was: there is no such thing as
 a mutable object.  We have invented them.  We need to uninvent them.
-OK?  And Whitehead's model, which I am _grossly_ oversimplifying.  I
-do not even understand it.  The book is completely daunting, but it is
-full of really cool insights.  And what is he has built is a model
-that says: there is this immutable thing.  Then there is a process in
-the universe that is going to create the next immutable thing.
+And Whitehead's model, which I am _grossly_ oversimplifying.  I do not
+even understand it.  The book is completely daunting, but it is full
+of really cool insights.  And what is he has built is a model that
+says: there is this immutable thing.  Then there is a process in the
+universe that is going to create the next immutable thing.
 
 And entities that we see as continuous are a superimposition we place
 on a bunch of values that are causally related.  We see things happen
-over time and we say, "Oh, that is Fred!"  or "Oh, that is the river
-outside the back of my house" or "that is a cloud".  We know you can
+over time and we say, "Oh, that is Fred!" or "Oh, that is the river
+outside the back of my house" or "That is a cloud".  We know you can
 look at a cloud for enough time, and all of a sudden it is like, well,
 not it is three clouds, or the cloud disappeared.  There is no cloud
 changing.  You superimpose the notion of cloud on a series of related
@@ -679,18 +683,17 @@ slide title: A Simplified View (apologies to A.N.W.)
 ```
 
 So, here are the rules.  Again, I am not restating Whitehead.  I am
-making this up now.  OK?  Actual entities are immutable.  When you
-have a new thing, it is a function -- in that pure functional sense
-that I just talked about -- of the past.  So the future is a function
-of the past.  And the notion of process is what creates the future
-from the past.
+making this up now.  Actual entities are immutable.  When you have a
+new thing, it is a function -- in that pure functional sense that I
+just talked about -- of the past.  So the future is a function of the
+past.  And the notion of process is what creates the future from the
+past.
 
-Identities are mental constructs.  OK?  We call it a cloud.  We call
-it a river.  We call him Fred.  It is an extremely useful
-psychological artifact.  That is why we have object-oriented
-languages.  This is useful to us.  It helps us understand things.  But
-we have to make sure we understand that objects are not things that
-change over time.
+Identities are mental constructs.  We call it a cloud.  We call it a
+river.  We call him Fred.  It is an extremely useful psychological
+artifact.  That is why we have object-oriented languages.  This is
+useful to us.  It helps us understand things.  But we have to make
+sure we understand that objects are not things that change over time.
 
 We superimpose object on a set of values we saw over time.  That is an
 object.  So just because we like to think of it this way, because it
@@ -741,10 +744,11 @@ slide title: Terms (for this talk)
 
 So now we are completely out of Whitehead terms.  He has a whole bunch
 of his own terms.  But these are the terms I want to use to talk about
-the rest of this problem.  The first is the notion of a "value".  We
-need a very proper notion of a value.  We tend to have a decent notion
-of a value when we say "42".  We have a _much_ weaker notion of a
-value when we talk about dates.
+the rest of this problem.
+
+The first is the notion of a "value".  We need a very proper notion of
+a value.  We tend to have a decent notion of a value when we say "42".
+We have a _much_ weaker notion of a value when we talk about dates.
 
 So the key characteristic of a value is that it is immutable.  It
 could be a magnitude, it could be something like that, or any
@@ -791,7 +795,7 @@ values.  So we need stable values.
 
 And we need to collect them from other parts of our program.  We need
 to see stable values.  We need to be able to remember them.  So I am
-using the word "perceived".  I understand completely perception is an
+using the word "perceived".  I understand completely, perception is an
 incredibly intricate and unresolved mental phenomenon.  But I like it
 better than just "observe" because I can observe the entire room, but
 perception really is kind of that division into entities.  It is a
@@ -862,11 +866,13 @@ Nor do we get to stop the world when we want to look around
 ```
 
 The other thing we do not get to do in the real world -- if we are
-going to model the real world -- we do not get to do this.  Wait!  We
-do not get to stop the world, especially not to observe it.  But what
-do we do in our programs all the time?  Stop!  Wait!  Stop!  Wait!
-Hold on!  Everybody is trying to stop the world so they can control it
-completely.
+going to model the real world -- we do not get to do this [points to
+image of Neo stopping the bullets].  Wait!
+
+We do not get to stop the world, especially not to observe it.  But
+what do we do in our programs all the time?  Stop!  Wait!  Stop!
+Wait!  Hold on!  Everybody is trying to stop the world so they can
+control it completely.
 
 As we get more concurrent, we are going to need to learn to live in a
 world that is going to proceed in spite of our intention or desire or
@@ -934,8 +940,8 @@ continued.
 It seems instantaneous.  I see the person in the front row here, but
 they could leave.  Depending on how much time, and how much distance,
 because light is pretty fast.  Again, it is like tricky.  Like
-electrons.  It makes us think that we are looking at memory right now.
-But it is really not.  It is always the past.  We are always
+electrons.  It makes us think that we are looking at memory _right
+now_.  But it is really not.  It is always the past.  We are always
 perceiving the past.
 
 The other thing to pick up from looking at our sensory system is the
@@ -1028,7 +1034,7 @@ world and they affect things.  So those are those functions.
 We are going to call any one of those, relative to an identity, its
 "state".  Again, it is just a label of a value, of an identity, at a
 point in time.  We will call it state.  And the identity itself again
-is a derived thing.  The succession of states is Fred or the river.
+is a derived thing.  The succession of states is Fred, or the river.
 
 The important thing also here is that people can be looking at this.
 There can be observers.  Light can bounce off the river.  It can
@@ -1075,9 +1081,9 @@ Save them.  Maybe we will use them as percepts later.  And we need
 something that is going to coordinate the succession of values.  So we
 will call them "time coordination constructs".  So we need those.
 
-It ends up that we can.  And maybe some theoretician will prove we
-_have to_ consume memory in order to model time.  We certainly can.  I
-do not know that we need to, but I have not figured out a way to do
+It ends up that we can -- and maybe some theoretician will prove we
+_have to_ -- consume memory in order to model time.  We certainly can.
+I do not know that we need to, but I have not figured out a way to do
 without.
 
 So what do we do?  We say we pass the old value to a pure function, we
@@ -1097,7 +1103,7 @@ So we could use these values as our percepts.  We can also use them as
 our memories.  If we have a portion of our program that needs to
 remember something, this value would also serve that purpose.  So if
 we have a good system for doing values, we can do that.  And then, the
-beautiful thing is if we are consuming memory to model time, GC will
+beautiful thing is: if we are consuming memory to model time, GC will
 erase the past and the memories that nobody cares about anymore.
 
 
@@ -1131,8 +1137,8 @@ characteristics.
 So that is quickie persistent data structures.  So what good are they?
 In particular, they are immutable.  So they are great for the purposes
 that we need: memories and perceptions.  Snapshots, essentially.  They
-are stable.  Another beautiful, just practical aspect of them is: they
-never need synchronization.  That is just like the baseball game.
+are stable.  Another beautiful, just practical, aspect of them is:
+they never need synchronization.  That is just like the baseball game.
 That is good!  There are 19,000 memories there, or 19,000 perceivers.
 No synchronization.
 
@@ -1151,7 +1157,7 @@ And if you have not ever used a functional language, or ever used
 persistent data structures in a nonfunctional language, just take my
 word for it, this is so much better.  If you write a program that uses
 data structures like this, you will just be able to sleep at night.
-You are going to be happier.  Your life is going to be better because
+You are going to be happier.  Your life is going to be better, because
 there is a _huge_ quantity of things you will no longer have to worry
 about.
 
@@ -1233,8 +1239,8 @@ slide title: Declarativeness and Parallelism
 ```
 
 Moving forward, as we try to make programs that we can parallelize, we
-have to stop writing loops.  I think everybody understands it is a
-whole separate talk.  That we are going to get our future performance
+have to stop writing loops.  I think everybody understands -- it is a
+whole separate talk -- that we are going to get our future performance
 gains from parallelization.  Which means we are going to have to write
 more declarative programs.  And those declarative programs are going
 to need to be able to take data structures and do parallel
@@ -1335,8 +1341,8 @@ these persistent data structures.  So how do we make sure that there
 is only one blue arrow train for any particular identity?  How do we
 coordinate time?  Again, remember, identity is a side effect.  We see
 that later.  The same thing with time; we see that later.  But it is
-convenient to us when we are trying to model in our program to pretend
-we are driving it forward.
+convenient to us, when we are trying to model in our program, to
+pretend we are driving it forward.
 
 
 [Time 0:47:11]
@@ -1356,7 +1362,7 @@ slide title: Time constructs
 ```
 
 So what does a time construct do?  Its main job is to make sure that
-you have atomic succession of values.  that is its main purpose; that
+you have atomic succession of values.  That is its main purpose; that
 we go from one value to another, incorruptibly.  And that there is no
 in-between.  That is what epochal means.
 
@@ -1373,29 +1379,32 @@ that.
 
 We want to have multiple timelines.  Again, this whole "I am the
 program.  I control the universe.  I am stopping everything or I am
-the only thing".  That is not working anymore.  We need to have lots
+the only thing".  That is not working any more.  We need to have lots
 of threads of control, which means we want multiple timelines.
 
 The nice thing about this whole thing is that there is no inherent
 semantics to this.  Other than complying with these couple of points,
-there is a variety of different semantics you can apply.  You can use
-CAS, which is essentially saying there is one timeline per identity.
-And it is uncoordinated.  It is impossible to coordinate two things
-that are using CAS timelines, but CAS timelines are still useful.
-They have semantics you can understand.
+there is a variety of different semantics you can apply.
 
-There are agents or actor systems which are also one-to-one.  There is
-one timeline per entity so they cannot be coordinated.  But they are
-asynchronous so that they are not connected to the timeline of the
-person enacting the event.
+[Time 0:48:31]
 
-There are things like STM which allow you to coordinate timelines.
+You can use CAS, which is essentially saying there is one timeline per
+identity.  And it is uncoordinated.  It is impossible to coordinate
+two things that are using CAS timelines, but CAS timelines are still
+useful.  They have semantics you can understand.
+
+There are agents or actor systems, which are also one-to-one.  There
+is one timeline per entity, so they cannot be coordinated.  But they
+are asynchronous, so that they are not connected to the timeline of
+the person enacting the event.
+
+There are things like STM, which allow you to coordinate timelines.
 And maybe even there can be new constructs based around locks.
 Because you can look at locks as saying, "Well, that is the way to
 enforce timelines".  It definitely is the way to enforce timelines.
 If you have a way to automate that, and package it up into one of
 these time constructs, that is great, and you should.  The difference
-between them and STM would likely be that they have fixed regions as
+between them and STM would likely be that they have fixed regions, as
 opposed to STM, which has arbitrary regions.  But if you said, "Well,
 all these timelines are really timeline X", X could be represented by
 a lock.  And if you have some sort of time construct that ensures lock
@@ -1477,14 +1486,14 @@ results is the result, and the thing changes.
 
 So there is now an asynchrony between the caller's timeline and the
 timeline of the identity.  But otherwise, it is still doing all the
-same work.  It is 1:1 relationship between the timeline and the
+same work.  It is one to one relationship between the timeline and the
 identity.  Atomic state succession falls out of two things.  The
 succession falls out of the fact that everything is being put in a
 queue.  And the atomic falls out of the fact that there is only one
 reader.
 
 And they can also provide point-in-time value perception.  The reason
-why I call these things agents and not actors is actors typically do
+why I call these things agents and not actors, is actors typically do
 not.  In fact, they definitely do not.  But in an in-process model, I
 think perception should always be supported.
 
@@ -1528,7 +1537,7 @@ But the most important thing is: we are not walking away from the
 epochal time model.  This is _still_ the epochal time model.  For any
 value that is going to participate in an STM transaction, it is still
 the same thing.  You are going to have some function on the past
-produce the future.  A pure function and values in and out.
+produce the future.  A pure function, and values in and out.
 
 
 [Time 0:53:58]
@@ -1543,7 +1552,7 @@ So what does this look like now?  There is multiple identities,
 potentially, or places, or whatever.  Whatever construct is meaningful
 to your program, you still have that.  And any particular transaction
 is going to take an arbitrary set of these and atomically do that
-function transformation.  So it is a way of connecting a bunch of
+function transformation.  So it is a way of collecting a bunch of
 little micro processes and making them one process.
 
 Internally, each one works exactly the same way as before.  I just did
@@ -1566,9 +1575,9 @@ slide title: Perception in (MVCC) STM
 
 <img src="AreWeThereYet/00.55.07.jpg" alt="00:55:07 Perception in (MVCC) STM" id="slide-46">
 
-So, I left perception out of this because this is too messy.  So what
+So, I left perception out of this because this was too messy.  So what
 is the perception story for STM?  Can we look at the whole stadium at
-one time, or can we glance and see multiple entities?  And it ends up
+one time?  Can we glance and see multiple entities?  And it ends up
 that you can build systems that do that.  In particular, an STM that
 uses multi-version concurrency control can do it.  And I will explain
 that more later, but I just want to show it to your first.
@@ -1587,7 +1596,7 @@ STMs provide.
 You can still do a non-transactional scan.  You can pan.  You can look
 at this part of the stadium, and then go over here and look at that.
 Or you can look at a car on the road, and you can look up at the
-clouds.  Can you see the red car here and look up at the clouds?  You
+clouds.  You see the red car here, and look up at the clouds, and you
 look over here and you see the red car.  But you know when you are
 doing that, what?  That may be the same red car.  You realize when you
 are panning like that, you are not seeing a point-in-time.  But you
@@ -1658,17 +1667,17 @@ The other cool thing about multiversion concurrency control is: it
 allows readers to have their own notion of a timeline.  "I saw this
 then.  And then later, I saw that."  That is really important to some
 decision-making.  In fact, when our brain reconstructs behavior, that
-is exactly what it does.  We just looked at the century system.  It is
+is exactly what it does.  We just looked at the sensory system.  It is
 discretizing and "snapshotizing" everything.  But we definitely have
 percepts for the lion is running towards me.  Well running, we have to
 re-derive that; that running.  And we do that by a mental process that
 somehow allows us to compare a snapshot from before to a snapshot we
-know is later, and see the deltas of that and say, "Running lion".
+know is later, and see the deltas of that and say, "running lion".
 
-In addition, again, we know the difference between a visual scan.  And
-we know when we have looked at something, and we have carelessly
-looked at something else over here, we are not allowed to correlate
-those things and say they happened at the same time.
+In addition, again, we know the difference between a visual scan.  We
+know when we have looked at something, and we have carelessly looked
+at something else over here, we are not allowed to correlate those
+things and say they happened at the same time.
 
 
 [Time 1:00:12]
@@ -1725,7 +1734,7 @@ slide title: Conclusions
 ```
 
 So in conclusion, sometimes -- I mean, all the time -- I think if you
-are suffering from excessive complexity, you got to think about
+are suffering from excessive complexity, you have got to think about
 changing something.  And sometimes, people actually do change.  We
 moved from languages that were not garbage-collected substantially, to
 ones that are, because that reduces our implicit complexity.  There is
@@ -1737,9 +1746,10 @@ our lives much, much harder.  And it is going to get worse.  We need
 to become explicit about time in our programs.
 
 We really need to pay attention to the functional programming people
-who are saying, "Look at all these great properties of pure functions.
-They are there."  They definitely satisfy Whitehead's, "We move
-forward by taking away the need to understand the insides of things."
+who are saying, "Look at all these great properties of pure
+functions".  They are there.  They definitely satisfy Whitehead's, "We
+move forward by taking away the need to understand the insides of
+things."
 
 I believe that this epochal time model is worth trying.  I think it is
 a general model.  It supports multiple implementation ideas and it
@@ -1768,7 +1778,7 @@ slide title: Future Work
 So what is still unresolved here?  Well, coordinating this internal
 time with the external world is going to become an important thing.
 And it is a hard problem.  Tying STM transactions to transactional I/O
-would be a very interesting, and I think, a possible thing.
+would be a very interesting, and I think, possible thing.
 
 Again, overall though, you want to move away from transactionality.
 Transactionality is control, control, control.  You want to become as
@@ -1798,7 +1808,7 @@ That is it.  Thanks.
 [Time 1:04:33]
 
 ```
-slide: 
+slide:
 
 "It is the business of the future to be dangerous; and it is among the
 merits of science that it equips the future for its duties."
@@ -1809,139 +1819,149 @@ Alfred North Whitehead
 Do we have time for questions?  I know we are running late.  Any
 questions?  Yes?
 
-[ Audience member 1: So a variation on this talk has been given at
-every functional program language conference for the last 20 years,
-and they have been wrong for 20 years.  So why do you think that this
-thought will be wrong, or not wrong? ]
+[Audience member 1: So a variation on this talk has been given at
+every functional programming language conference for the last 20
+years, and they have been wrong for 20 years.  So why do you think
+that this thought will be wrong, or not wrong?]
 
-[Rich Hickey] Well, I do not know what those talks were, but from what
-I have seen, functional programming, in many respects, just tries to
-get time out of the way.
+Well, I do not know what those talks were, but from what I have seen,
+functional programming, in many respects, just tries to get time out
+of the way.
 
-[ Audience member 1: Right. ]
+[Audience member 1: Right.]
 
-[Rich Hickey] Get time out of it.  Well that is not what this is.
-This is about time is an important part of programs that you have to
-contend with.
+Get time out of it.  Well that is not what this is.  This is about:
+time is an important part of programs that you have to contend with.
 
-[ Audience member 1: Okay. ]
+[Audience member 1: Okay.]
 
-[Rich Hickey] I am not advocating purely functional programming here
-_at all_.  I am saying there are programs.  There are programs that
-are one of those boxes.  One transition from value to another.  That
-kind of program is a calculator.  Most programs have to deal with that
-progression of time.  And that is a hard problem.  So I am not trying
-to walk away from it.  I am trying to walk towards it.
+I am not advocating purely functional programming here _at all_.  I am
+saying there are programs.  There are programs that are one of those
+boxes.  One transition from value to another.  That kind of program is
+a calculator.  Most programs have to deal with that progression of
+time.  And that is a hard problem.  So I am not trying to walk away
+from it.  I am trying to walk towards it.
 
-[ Audience member 2: I think what you are doing here is you are
+[Audience member 2: I think what you are doing here is you are
 recapitulating the early history of philosophy because it was
-Heraclitus that said everything flows so that is your object oriented
-thing.  And then, it was Plato that followed and said no.  And
-Parmenides also had said, "No, everything is stable."  And that is the
-functional community, saying there is no such thing as change.  And
-then, it was Aristotle that synthesized the two and figured out how to
-get the hybrid model, the multi-paradigm model, and integrated change
-with invariability with the concept of a substance.  And that is what
-I see you dealing with more in this. ]
+Heraclitus that said "everything flows", so that is your object
+oriented thing.  And then, it was Plato that followed and said no.
+And Parmenides also had said, "No, everything is stable."  And that is
+the functional community, saying there is no such thing as change.
+And then, it was Aristotle that synthesized the two and figured out
+how to get the hybrid model, the multi-paradigm model, and integrated
+change with invariability, with the concept of a substance.  And that
+is what I see you dealing with more in this.]
 
-[Rich Hickey] Yeah.  Well, I mean, read Whitehead.  I mean, he really
-did that.  He really did exactly what you are saying.  I am just
-trying to program without going crazy.
+[Time 1:06:11]
+
+Yeah.  Well, I mean, read Whitehead.  I mean, he really did that.  He
+really did exactly what you are saying.  I am just trying to program
+without going crazy.
 
 [Audience laughter]
 
-[Rich Hickey] But I am inspired definitely by that, by those notions.
-That I think they are really important for fixing the model we have.
-Yes?
+But I am inspired definitely by that, by those notions.  I think they
+are really important for fixing the model we have.  Yes?
 
-[ Audience member 3: So, have you read a paper called “[Time, Clocks,
+[Audience member 3: So, have you read a paper called "[Time, Clocks,
 and the Ordering of Events in a Distributed
-System](http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf)”
-by Lamport in '78? ]
+System](http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf)"
+by Lamport in '78?]
 
-[Rich Hickey] Yes, I have.  Yes.
+Yes, I have.  Yes.
 
-[ Audience member 3: So, I think that that is exactly the same set of
-ideas. ]
+[Audience member 3: So, I think that that is exactly the same set of
+ideas.]
 
-[Rich Hickey] Yes, it is.  I mean, I think there is lots of cool
-things.  I think that is interesting.  I think the whole wave, what is
-happening in wave right now, those operational transforms, are a
-really interesting way to think about this.  I mean, there is a lot more
-to this.  For instance, the composability of transformations and things
-like that that are very interesting.  But yes, Lamport is...
+Yes, it is.  I mean, I think there is lots of cool things.  I think
+that is interesting.  I think the whole Wave, what is happening in
+Wave right now, those operational transforms, are a really interesting
+way to think about this.
 
-[ Audience member 3: There is one fascinating difference between
+[A Google search on the terms: wave operational transforms
+
+turns up this as an early result: https://svn.apache.org/repos/asf/incubator/wave/whitepapers/operational-transform/operational-transform.html ]
+
+I mean, there is a lot more to this.  For instance, the composability
+of transformations and things like that that are very interesting.
+But yes, Lamport is...
+
+[Audience member 3: There is one fascinating difference between
 Lamport's treatment of it and yours, is Lamport's is very much
 communication-oriented.  He says time advances when one entity
 communicates something to another.  Whereas in your framework, time
 advances when the outputs of one function are used as the inputs to
-the next function.  But, it is really the same thing. ]
+the next function.  But, it is really the same thing.]
 
-[Rich Hickey] It is.  I mean, the communications part gets tricky, I
-think.  I like the fact that this is sort of communication-free.  But
-maybe time constructs are a different form of communication.  And I do
-not know if they are different.
+It is.  I mean, the communications part gets tricky, I think.  I like
+the fact that this is sort of communication-free.  But maybe time
+constructs are a different form of communication.  And I do not know
+if they are different.
 
-[ Audience member 3: Different words for the same thing. ]
+[Audience member 3: Different words for the same thing.]
 
-[Rich Hickey] Yes.  They may be.  They may be.
+Yes.  They may be.  They may be.
 
-[ Audience member 4: Yeah, yeah.  Communication is in your F box, not
-in the flow of time. ]
+[Audience member 4: Yeah, yeah.  Communication is in your F box, not
+in the flow of time.]
 
-[Rich Hickey] Yeah.  Well, this is sort of in the flow of time too.
-That is definitely -- in the coordination aspect, that is
-communicating to people.  You next.  Now you, now you.  Yes?
+[Time 1:07:49]
 
-[ Audience member 5: So, have you found that the JVM provides all the
-right primitives to make things like STM fast or do you wish that
-there was additional support that you could take advantage of? ]
+Yeah.  Well, it is sort of in the flow of time too.  That is
+definitely -- in the coordination aspect, that is communicating to
+people.  You next.  Now you, now you.  Yes?
 
-[Rich Hickey] I am having a good time right now.
+[Audience member 5: So, have you found that the JVM provides all the
+right primitives to make things like STM fast, or do you wish that
+there was additional support that you could take advantage of?]
 
-[ Audience member 5: OK. ]
+I am having a good time right now.
 
-[Rich Hickey] I do not ...
+[Audience member 5: OK.]
 
-[ Audience member 5: What would you ask for out of JVM? ]
+I do not ...
 
-[Rich Hickey] The garbage collection pressure of this is going to be
-significant.  So just keep making everything you have faster.
+[Audience member 5: What would you ask for out of JVM?]
+
+The garbage collection pressure of this is going to be significant.
+So just keep making everything you have faster.
 
 [Audience laughter]
 
-[ Audience member 5: I can do that. ]
+[Audience member 5: I can do that.]
 
-[ Audience member 6: You were a little bit harsh I thought on the FP
-people.  What about Functional Reactive Programming is [TBD] ]
+[Audience member 6: You were a little bit harsh I thought on the FP
+people.  What about Functional Reactive Programming is [TBD]]
 
-[Rich Hickey] That is pretend time.
+That is pretend time.
 
-[ Audience member 6: What is the difference? ]
+[Audience member 6: What is the difference?]
 
-[Rich Hickey] I do not want to characterize Functional Reactive
-Programming.  I will say this.  I worked in broadcast automation
-systems for a long time.  I read that book.  I saw absolutely _no_
-correlation between that and what I actually had to do in the real
-world at all.  But fabricating time and turning it into an argument to
-functions, now you are punting again.  You are pretending.  Right?
-That is not time.  That is again punting.  And as soon as you connect
-it to the outside world, you will see that is the case.
+I do not want to characterize Functional Reactive Programming.  I will
+say this.  I worked in broadcast automation systems for a long time.
+I read that book.  I saw absolutely _no_ correlation between that and
+what I actually had to do in the real world at all.
 
-[ Audience member 7: Have you looked to any modern event processing
-languages that have streams of events and everything in it can operate
-on the immutable stream of events?  You can store an event into tables
-or aggregation things, but all your data is immutable as the next
-flow. ]
+[Time 1:08:54]
 
-[Rich Hickey] As long as all your data is immutable, I think you are
-on the right track.  I think the key takeaway here is: there is no
-such thing as a mutable object.  If you can really believe that, you
-can build better systems.  Which, again, is not to disagree.  I mean,
-obviously, I like functional programming, right?  But I do not see
-them talking about a lot of the problems that I think real people
-have.
+But fabricating time and turning it into an argument to functions, now
+you are punting again.  You are pretending.  Right?  That is not time.
+That is again punting.  And as soon as you connect it to the outside
+world, you will see that is the case.
+
+[Audience member 7: Have you looked at any of the modern event
+processing languages that have streams of events and everything in it
+can operate on an immutable stream of events?  You can store an event
+into tables or aggregation things, but all your data is immutable as
+the next flow.]
+
+As long as all your data is immutable, I think you are on the right
+track.  I think the key takeaway here is: there is no such thing as a
+mutable object.  If you can really believe that, you can build better
+systems.  Which, again, is not to disagree.  I mean, obviously, I like
+functional programming, right?  But I do not see them talking about a
+lot of the problems that I think real people have.
 
 Anything else?  Thanks!
 
