@@ -8,9 +8,12 @@
 
 ```
 slide title: Are We There Yet?
-```
 
-<img src="AreWeThereYet/00.00.00.jpg" alt="00:00:00 Are We There Yet?" id="slide-1">
+
+A deconstruction of object-oriented time
+
+Rich Hickey
+```
 
 So I am going to talk about time today.  In particular, how we treat
 time in object-oriented languages generally, and maybe how we fail to.
@@ -34,8 +37,6 @@ slide title: Provocation
     to see its attendant costs or limitations?
 ```
 
-<img src="AreWeThereYet/00.00.34.jpg" alt="00:00:34 Provocation" id="slide-2">
-
 So are we being well served by Object Orientation as commonly
 embodied.  The concept is pretty broad and there are multiple possible
 embodiments, but it ends up the ones that we have have a lot of
@@ -54,9 +55,10 @@ slide title: A Deeply Entrenched Model
   + Single-dispatch, stateful OO
   + Classes, inheritance, fields, methods, GC
 + Smalltalk, Java, C#, Python, Ruby, Scala ...
-```
 
-<img src="AreWeThereYet/00.00.55.jpg" alt="00:00:55 A Deeply Entrenched Model" id="slide-3">
+[ Photo of traffic jam on a highway with mostly similar cars, varying
+in color and a little bit in shape. ]
+```
 
 Certainly today, this is a really entrenched model.  It does not
 matter which language you are using.  Everybody has different
@@ -85,9 +87,9 @@ slide title: Not so Different
 + Preferences have more to do with programmer sensibilities and
   expressivity than core principles
 + Different cars, same road
-```
 
-<img src="AreWeThereYet/00.01.41.jpg" alt="00:01:41 Not So Different" id="slide-4">
+[ Photo of empty road leading off into the horizon. ]
+```
 
 They are not significantly different in some dimensions.  They are
 superficially different.  They might have mix-ins.  They might have
@@ -115,8 +117,6 @@ slide title: Has OO "Won"?
     may be driving on the wrong road.
 ```
 
-<img src="AreWeThereYet/00.02.17.jpg" alt="00:02:17 Has OO “Won”?" id="slide-5">
-
 Is this the end?  Are we done?  Are we going to keep making languages
 that are just very, very slight incremental differences to the things
 that we know?  Certainly, one thing is undeniable: people like Object
@@ -142,9 +142,9 @@ slide title: What are we missing?
   world, or will we be facing some fundamental impedance mismatch?
 + What pressures should drive the adoption of new (and often old)
   ideas not yet in the mainstream?
-```
 
-<img src="AreWeThereYet/00.03.09.jpg" alt="00:03:09 What are we missing?" id="slide-6">
+[ Photo of a road sign with wavy arrow indicating "curves ahead". ]
+```
 
 When we look at languages and try to think of: "If I could write
 another language, or if I could fix this language, or if I could add a
@@ -166,13 +166,11 @@ to switch.
 ```
 slide title: Some Critical Ideas
 
-+ Incidental Complexity
++ Incidental complexity
 + Time / Process
 + Functions / Value / Identity / State
 + Action / Perception
 ```
-
-<img src="AreWeThereYet/00.03.52.jpg" alt="00:03:52 Some Critical Ideas" id="slide-7">
 
 So the things I am going to talk about today are a small subset of the
 kinds of things that I think you should think about when you look back
@@ -197,8 +195,6 @@ slide:
 Alfred North Whitehead
 ```
 
-<img src="AreWeThereYet/00.04.30.jpg" alt="00:04:30 Seek simplicity, and distrust it" id="slide-8">
-
 So the hero of the talk today is Alfred North Whitehead.  He is the
 famous guy who with Russell wrote Principia Mathematica.  Subsequent
 to that, he also became a philosopher.  And he wrote some great
@@ -222,8 +218,6 @@ slide title: Incidental complexity
   tools or languages
 + Worst when a side effect of making things appear simple
 ```
-
-<img src="AreWeThereYet/00.05.09.jpg" alt="00:05:09 Incidental complexity" id="slide-9">
 
 The complexity I want to talk about today is the incidental
 complexity.  The complexity that arises from the way our tools work,
@@ -263,8 +257,6 @@ slide title: C++
   + Presents inherent challenge to C++ as a library language
   + Implicit complexity we are no longer willing to bear
 ```
-
-<img src="AreWeThereYet/00.06.25.jpg" alt="00:06:25 C++" id="slide-10">
 
 So this is an example.  Again, not to beat up on C++, but I spent more
 than a decade doing this.  So it is not that hard.  I mean, if you get
@@ -325,8 +317,6 @@ slide title: Java
 + No standard automatic time management
 ```
 
-<img src="AreWeThereYet/00.08.52.jpg" alt="00:08:52 Java" id="slide-11">
-
 So let us look at Java.  It is easier; there is no asterisk.  This is
 like even better.  So what is the problem with this?  It is simpler.
 It is definitely simpler.  Now we only have references to managed
@@ -376,8 +366,6 @@ slide title: Familiarity Hides Complexity
   + Concurrency is the last straw
 ```
 
-<img src="AreWeThereYet/00.10.55.jpg" alt="00:10:55 Familiarity Hides Complexity" id="slide-12">
-
 So this is kind of a little bit of a reiteration of the points I was
 making before.  I think that because we are so familiar with this, we
 are absolutely, completely blind to it.  And when we choose languages,
@@ -411,8 +399,6 @@ operations which we can perform without thinking about them."
 Alfred North Whitehead
 ```
 
-<img src="AreWeThereYet/00.12.08.jpg" alt="00:12:08 Civilization advances by extending…" id="slide-13">
-
 So we are programmers.  We do not use assembly language anymore.  We
 have languages.  Each time we build a new language, or we use a new
 language, we are expecting some benefits in this area.  We want to
@@ -442,8 +428,6 @@ slide title: Pure Functions are Worry-Free
 + Easy to understand, change,          about them" criteria
   test, compose
 ```
-
-<img src="AreWeThereYet/00.13.06.jpg" alt="00:13:06 Pure Functions are Worry-Free" id="slide-14">
 
 It ends up that they are really not the best unit for that.  The best
 unit for that are functions.  And in particular, pure functions.  If
@@ -479,9 +463,9 @@ slide title: _But_ - many interesting programs aren't functions
 + Have observable behavior over time
   + get inputs over time
 + We are building _processes_
-```
 
-<img src="AreWeThereYet/00.14.22.jpg" alt="00:14:22 But – many interesting programs aren't functions" id="slide-15">
+[ Image of Google search results web page. ]
+```
 
 On the other hand, as great as functions are as building blocks, our
 programs in general are not functions.  There are programs that are
@@ -516,8 +500,6 @@ unsystematized, barely analysed, intuition of men has produced."
 Alfred North Whitehead
 ```
 
-<img src="AreWeThereYet/00.15.34.jpg" alt="00:15:34 That ‘all things flow…'" id="slide-16">
-
 So maybe we have not seen the value of functions.  I certainly do not
 think we have.  But we also have seen the limitations.  Object
 Orientation was a way to say, "Well functions are great, and they are
@@ -546,8 +528,6 @@ slide title: OO and "Change"
     + Locking an attempt to restore single timeline
 + No recipe for perception / memory - call clone()?
 ```
-
-<img src="AreWeThereYet/00.16.17.jpg" alt="00:16:17 OO and “Change”" id="slide-17">
 
 So the first thing we should realize: that any programming model that
 tries to model the real world is essentially going to be a simplistic
@@ -595,8 +575,6 @@ slide title: We have gotten this wrong!
 by Alfred North Whitehead ]
 ```
 
-<img src="AreWeThereYet/00.18.16.jpg" alt="00:18:16 We have gotten this wrong!" id="slide-18">
-
 And we have done so in a couple of ways.  The first is: we have made
 objects that can change in place, and we have made objects that we
 could _see_ change in place.  As I have said, we left out any concrete
@@ -631,8 +609,6 @@ slide:
 Heraclitus
 ```
 
-<img src="AreWeThereYet/00.20.00.jpg" alt="00:20:00 “No man can cross the same river twice”" id="slide-19">
-
 So I am going to explain that more, but this is a great quote.  "No
 man can ever cross the same river twice."  Because what is a river?  I
 mean, we love this idea of objects; like there is this thing that
@@ -654,8 +630,6 @@ slide title: Oops!
   + Multiple versions of the value associated with an address
 + Maintaining the illusion is getting harder and harder
 ```
-
-<img src="AreWeThereYet/00.20.27.jpg" alt="00:20:27 Oops!" id="slide-20">
 
 So how did we make this mistake?  What is the real nature of this
 mistake?  It looked like we could change memory in place.  We were
@@ -704,8 +678,6 @@ slide title: A Simplified View (apologies to A.N.W.)
 + Time is atomic, epochal succession of process events
 ```
 
-<img src="AreWeThereYet/00.22.34.jpg" alt="00:22:34 A Simplified View" id="slide-21">
-
 So, here are the rules.  Again, I am not restating Whitehead.  I am
 making this up now.  OK?  Actual entities are immutable.  When you
 have a new thing, it is a function -- in that pure functional sense
@@ -739,8 +711,6 @@ but no continuity of becoming"
 Alfred North Whitehead
 ```
 
-<img src="AreWeThereYet/00.24.04.jpg" alt="00:24:04 Quote" id="slide-22">
-
 So Whitehead's great quote, which is extremely confusing, but I think
 it is something that you could try to get right now and remember as I
 keep going, is that there is a becoming of continuity.  There is this
@@ -768,8 +738,6 @@ slide title: Terms (for this talk)
     causally related values
     (states) over time
 ```
-
-<img src="AreWeThereYet/00.24.27.jpg" alt="00:24:27 Terms (for this talk)" id="slide-23">
 
 So now we are completely out of Whitehead terms.  He has a whole bunch
 of his own terms.  But these are the terms I want to use to talk about
@@ -815,8 +783,6 @@ slide title: Why should we care?
   + _while getting state and time right_
 ```
 
-<img src="AreWeThereYet/00.26.09.jpg" alt="00:26:09 Why should we care?)" id="slide-24">
-
 This all sounds kind of high falutin'.  Why do we care about this?  We
 care about it because we are trying to make programs that make
 decisions.  We have logic in our programs.  You cannot have logic on
@@ -846,6 +812,10 @@ understand those objects.  I understand".  But it is not right.
 
 [Time 0:27:44]
 
+```
+[ Greatly magnified image of neurons in human brain. ]
+```
+
 <img src="AreWeThereYet/00.27.45.jpg" alt="00:27:45 scary graphic)" id="slide-25">
 
 So I saw this great talk at JavaOne where the people who wrote "Head
@@ -865,11 +835,12 @@ something we can use to write programs.
 ```
 slide: 
 
+[ Photo of woman wearing surgical gloves holding a human brain,
+showing it to a nearby man.  Maybe a scene from a movie? ]
+
 We don't make decisions about things in the world by
 taking turns rubbing our brains on them.
 ```
-
-<img src="AreWeThereYet/00.28.18.jpg" alt="00:28:18 We do not make decisions...)" id="slide-26">
 
 The first thing we need to understand is: we do not make decisions
 about the world by direct cognition.  We do not take our brains and
@@ -889,8 +860,6 @@ causing bullets to stop in mid air before him. ]
 
 Nor do we get to stop the world when we want to look around
 ```
-
-<img src="AreWeThereYet/00.28.46.jpg" alt="00:28:46 Nor do we get to stop the world)" id="slide-27">
 
 The other thing we do not get to do in the real world -- if we are
 going to model the real world -- we do not get to do this.  Wait!  We
@@ -915,15 +884,13 @@ work?  We do not rub our brains on it.  We do not stop the world.
 ```
 slide: 
 
-[ Photo of thousands of people in a stadium watching a baseball game
-on the field. ]
+[ Photo of thousands of people in a stadium watching a baseball
+game. ]
 
 Perception is massively parallel and requires no coordination
 
 This is not message passing!
 ```
-
-<img src="AreWeThereYet/00.29.38.jpg" alt="00:29:38 Perception is massively parallel…)" id="slide-28">
 
 It is incredibly parallel.  There is umpteen thousand people in this
 stadium.  They can all watch the game.  They do not say, "Whoa, whoa,
@@ -935,8 +902,12 @@ So the first thing is: perception is uncoordinated.  It is massively
 parallel.  It is not message passing.  There is no communication
 between the people who want to see the game, and the game.
 
+So, we can again look again.  We are trying to model reality, so we
+can look at reality a little bit.  How do we do it?  How does the
+wetware do it?
 
-[Time 0:30:08]
+
+[Time 0:30:19]
 
 ```
 slide title: Perception
@@ -946,13 +917,10 @@ slide title: Perception
   + Discretization
   + Simultaneity detection
 + Ignoring feedback, we like snapshots
+
+[ Cover image of the book "Spikes: Exploring the Neural Code", by Fred
+Rieke, David Warland, Rob de Ruyter van Steveninck, and William Bialek ]
 ```
-
-So, we can again look again.  We are trying to model reality, so we
-can look at reality a little bit.  How do we do it?  How does the
-wetware do it?
-
-<img src="AreWeThereYet/00.30.19.jpg" alt="00:30:19 Perception" id="slide-29">
 
 Well it ends up that the first thing you have to realize is: we are
 _always_ considering the past.  We are never perceiving the present.
@@ -1002,8 +970,6 @@ Action, in a place, must be sequential
 
 Action and perception are different!
 ```
-
-<img src="AreWeThereYet/00.32.28.jpg" alt="00:32:28 Action, in a place, must be sequential" id="slide-30">
 
 Another thing we have done in Object Orientation is methods.  Methods
 are a way to read things and perceive things, and a way to make things
@@ -1102,8 +1068,6 @@ slide title: Implementation ideas
   + Can also serve as identities
 ```
 
-<img src="AreWeThereYet/00.36.55.jpg" alt="00:36:55 Implementation ideas" id="slide-32">
-
 So that leaves us with two other things on the diagram.  One was
 values.  The other was: somehow we manage that succession.  Some sort
 of time constructs.  So we need a way to efficiently create values.
@@ -1153,8 +1117,6 @@ slide title: Persistent data structures
                                    + Rest easy, stay sane
 ```
 
-<img src="AreWeThereYet/00.38.59.jpg" alt="00:38:59 Persistent data structures" id="slide-33">
-
 So the construct I think we need to do values are persistent data
 structures.  I have talked about them before.  And if anybody does not
 know, really quickly, we are not talking about being able to put stuff
@@ -1202,8 +1164,6 @@ slide:
 [ Photo of a person hugging a tree that they can only get their arms a
 small fraction of the way around, because its diameter is so large. ]
 ```
-
-<img src="AreWeThereYet/00.41.01.jpg" alt="00:41:01 big old tree" id="slide-34">
 
 All right.  So these persistent data structures, they are involved.
 This is old.  This is really old.  This stuff is so old, it is almost
@@ -1272,8 +1232,6 @@ slide title: Declarativeness and Parallelism
     coordination                      outside of FP
 ```
 
-<img src="AreWeThereYet/00.42.35.jpg" alt="00:42:35 Declarativeness and Parallelism" id="slide-37">
-
 Moving forward, as we try to make programs that we can parallelize, we
 have to stop writing loops.  I think everybody understands it is a
 whole separate talk.  That we are going to get our future performance
@@ -1315,8 +1273,6 @@ the Audience
     as input, producing version        possible, with O(1) conversions
     N+1 as return value. ]             between persistent / transient
 ```
-
-<img src="AreWeThereYet/00.43.50.jpg" alt="00:43:50 “It is the performance, stupid!”" id="slide-38">
 
 I mean, I am not going to lie to you.  Everybody is like, performance
 models and everything else.  They are slower!  They are slower,
@@ -1370,8 +1326,6 @@ remember what we are talking about when we talk about time.
 
 ```
 slide title: Epochal Time Model
-
-[ Repeat of earlier slide with the same title. ]
 ```
 
 <img src="AreWeThereYet/00.46.40.jpg" alt="00:46:40 Epochal Time Model" id="slide-39">
@@ -1400,8 +1354,6 @@ slide title: Time constructs
   strategies with different         + coordinated, fixed regions
   characteristics / semantics
 ```
-
-<img src="AreWeThereYet/00.47.11.jpg" alt="00:47:11 Time constructs" id="slide-40">
 
 So what does a time construct do?  Its main job is to make sure that
 you have atomic succession of values.  that is its main purpose; that
@@ -1545,8 +1497,6 @@ slide:
 [ Photo of The Three Stooges, with Moe grabbing Larry and Curly. ]
 ```
 
-<img src="AreWeThereYet/00.52.53.jpg" alt="00:52:53 Three Stooges image" id="slide-43">
-
 All right.  So what happens when you need to coordinate two things?
 Or more than two things?  These things, these CASs and other things
 are not going to work.  Because you cannot coordinate them.
@@ -1564,8 +1514,6 @@ slide title: STM
 + Individual components still follow functional process model
   + f(vN, args) _becomes_ vN+1
 ```
-
-<img src="AreWeThereYet/00.53.07.jpg" alt="00:53:07 STM" id="slide-44">
 
 So you need something else.  One possible other thing -- it is
 probably not the only one -- is Software Transactional Memory, or any
@@ -1678,8 +1626,6 @@ slide title: Multiversion concurrency control
                                       scans that span time
 ```
 
-<img src="AreWeThereYet/00.57.29.jpg" alt="00:57:29 Multiversion concurrency control" id="slide-47">
-
 So one way to do this is using multiversion concurrency control.  This
 is the same old -- all this stuff is old.  This is the same old stuff
 from databases.  So multiversion concurrency control means that you
@@ -1735,10 +1681,8 @@ slide title: STMs differ
   + back to "stop the world while I look at it"
 + Granularity matters!
   + STMs that require a transaction in order to see consistent values of
-    individual entities are not getting time right, IMO
+    individual identities are not getting time right, IMO
 ```
-
-<img src="AreWeThereYet/01.00.12.jpg" alt="01:00:12 STMs differ" id="slide-48">
 
 So this is really not a talk about STM, but I do think that one
 takeaway I would really like you to have is that STMs are different
@@ -1779,8 +1723,6 @@ slide title: Conclusions
 + Epochal time model a general solution for the local process
 + Current infrastructures (JVM) are sufficient for implementation
 ```
-
-<img src="AreWeThereYet/01.01.38.jpg" alt="01:01:38 Conclusions" id="slide-49">
 
 So in conclusion, sometimes -- I mean, all the time -- I think if you
 are suffering from excessive complexity, you got to think about
@@ -1823,8 +1765,6 @@ slide title: Future Work
 + Reconciling epochal time with OO - is it possible?
 ```
 
-<img src="AreWeThereYet/01.03.08.jpg" alt="01:03:08 Future Work" id="slide-50">
-
 So what is still unresolved here?  Well, coordinating this internal
 time with the external world is going to become an important thing.
 And it is a hard problem.  Tying STM transactions to transactional I/O
@@ -1865,8 +1805,6 @@ merits of science that it equips the future for its duties."
 
 Alfred North Whitehead
 ```
-
-<img src="AreWeThereYet/01.04.33.jpg" alt="01:04:33 It is the business of the future to be dangerous…" id="slide-51">
 
 Do we have time for questions?  I know we are running late.  Any
 questions?  Yes?
