@@ -19,8 +19,6 @@ slide:
 I.T.
 ```
 
-![IT](ValueOfValues/00m24s.jpg)
-
 Information Technology.
 
 
@@ -29,18 +27,12 @@ Information Technology.
 ```
 slide title: Information
 
-_Inform_
-
-  'to convey knowledge via _facts_'
-
-  'give shape to (the mind)'
-
-_Information_
-
-  the facts
++ _Inform_
+  + 'to convey knowledge via _facts_'
+  + 'give shape to (the mind)'
++ _Information_
+  + the facts
 ```
-
-![Information](ValueOfValues/00m27s.jpg)
 
 Yeah, or other things.  So what do we mean when we say information?
 
@@ -57,14 +49,12 @@ is what information is.  Information is facts.
 ```
 slide title: What is a Fact?
 
-_Place_ where specific information is _stored_
-There is a place for every piece of information
-Facts have _operations_, e.g. _get_ and _set_
-Operations control how facts can _change_
-To convey a fact, convey its _location_
++ _Place_ where specific information is _stored_
++ There is a place for every piece of information
++ Facts have _operations_, e.g. _get_ and _set_
++ Operations control how facts can _change_
++ To convey a fact, convey its _location_
 ```
-
-![What is Fact?](ValueOfValues/01m04s.jpg)
 
 So what is a fact?  Well, a fact is a place where information is
 stored.  And what is great about that is that there is a place for
@@ -85,8 +75,6 @@ How many people are uncomfortable right now?
 been superimposed on the previous slide. ]
 ```
 
-![What is Fact? 2](ValueOfValues/01m45s.jpg)
-
 I am.  This is not true.  This is wrong.  Everything that I just said
 was wrong.  Dead wrong.  And you _should_ be uncomfortable.  That is
 not what facts are.
@@ -97,12 +85,10 @@ not what facts are.
 ```
 slide title: Place
 
-'A particular portion of space'
-'An area used for a particular purpose'
-Memory address, disk sector
++ 'A particular portion of space'
++ 'An area used for a particular purpose'
++ Memory address, disk sector
 ```
-
-![Place](ValueOfValues/01m59s.jpg)
 
 So are facts places?  Well, what is a place?
 
@@ -126,15 +112,13 @@ familiar with this notion of a place.
 ```
 slide title: 'Information' Systems?
 
-In memory
-  mutable objects are abstractions of places
-  objects have _methods_
-In durable storage
-  tables / documents / records are places
-  DBs have _update_
++ In memory
+  + mutable objects are abstractions of places
+  + objects have _methods_
++ In durable storage
+  + tables / documents / records are places
+  + DBs have _update_
 ```
-
-![Information Systems](ValueOfValues/02m51s.jpg)
 
 But I think it is quite important to think about whether or not, with
 these memory addresses and disk locations, we are actually building
@@ -163,14 +147,12 @@ are about.
 ```
 slide title: PLOP
 
-PLace-Oriented Programming
-New information _replaces_ old
-Born of limitations of early computers
-  small RAM and disks
-Those limitations are long gone
++ PLace-Oriented Programming
++ New information _replaces_ old
++ Born of limitations of early computers
+  + small RAM and disks
++ Those limitations are long gone
 ```
-
-![PLOP](ValueOfValues/04m05s.jpg)
 
 And I have a word for this, or a term for this, which I call "PLOP".
 PLace-Oriented Programming, which is what this is.  And you can tell
@@ -214,15 +196,13 @@ So why does PLOP still rule?  That is the key question here.
 ```
 slide title: Memory and Records
 
-We've co-opted
-  and believe our own myths
-Mental memory is _associative_ and _open_
-Real records are _enduring_
-  and _accreting_
-  not erase and overwrite
++ We've co-opted
+  + and believe our own myths
++ Mental memory is _associative_ and _open_
++ Real records are _enduring_
+  + and _accreting_
+  + not erase and overwrite
 ```
-
-![Memory and Records](ValueOfValues/06m10s.jpg)
 
 When we talk about Place-Oriented Programming, we often talk about
 these two things: memory and records.  These words had meanings before
@@ -263,12 +243,10 @@ things worked before we had computers.
 ```
 slide title: Value
 
-'Relative worth'
-'A particular magnitude, number or amount'
-'Precise meaning or significance'
++ 'Relative worth'
++ 'A particular magnitude, number or amount'
++ 'Precise meaning or significance'
 ```
-
-![Value](ValueOfValues/08m02s.jpg)
 
 This talk is about values.  It is another term we should define, and
 again, we just go back to the dictionary.  And there are some very
@@ -292,12 +270,10 @@ comparing part is important.
 ```
 slide title: Is a String a Vaue?
 
-Is it immutable?
-Equality, comparability are basis for logic
-Who wants to go back to mutable Strings?
++ Is it immutable?
++ Equality, comparability are basis for logic
++ Who wants to go back to mutable Strings?
 ```
-
-![Is a String a Value?](ValueOfValues/09m01s.jpg)
 
 So the question right now is, "Is a string a value?"  How many people
 think it is?  I love doing the answer the questions by raising your
@@ -332,11 +308,9 @@ value.  So we really do not want to go back.
 ```
 slide title: Programming Values
 
-Immutable
-Are semantically transparent
++ Immutable
++ Are semantically transparent
 ```
-
-![Programming Values](ValueOfValues/10m33s.jpg)
 
 So now we want to sort of talk about values, not from the dictionary
 definition, but very specifically in terms of what we do in
@@ -358,12 +332,10 @@ outside.  That is what a value is about.
 ```
 slide title: Value Propositions
 
-Values can be shared
-Reproducible results
-Easy to fabricate
++ Values can be shared
++ Reproducible results
++ Easy to fabricate
 ```
-
-![Value Propositions](ValueOfValues/11m21s.jpg)
 
 The reason to give this talk is to talk about sort of the value
 propositions of values.  What makes values good?  And originally, this
@@ -409,12 +381,10 @@ fact that values are easy to fabricate is important.
 ```
 slide title: Value Propositions
 
-Language independent
-Generic
-Values aggregate to values
++ Language independent
++ Generic
++ Values aggregate to values
 ```
-
-![Value Propositions 2](ValueOfValues/13m16s.jpg)
 
 All right.  Values are language independent.  So I just talked about
 that already.  The notion of a list or a string or a number or a map.
@@ -478,12 +448,10 @@ to aggregates.
 ```
 slide title: Value Propositions
 
-Conveyance
-Perception
-Memory
++ Conveyance
++ Perception
++ Memory
 ```
-
-![Value Propositions 3](ValueOfValues/16m15s.jpg)
 
 There are other benefits you get from values, and we see these all the
 time.  Values are easy to convey.  If I have some piece of information
@@ -520,12 +488,10 @@ it.  How do you do that?  It depends.  Exactly.  It depends.
 ```
 slide title: Value Propositions
 
-Values make the best interfaces
-Reduce coordination
-Location flexibility
++ Values make the best interfaces
++ Reduce coordination
++ Location flexibility
 ```
-
-![Value Propositions 4](ValueOfValues/17m47s.jpg)
 
 So the other thing I want you to do is start thinking bigger, bigger
 than your box, bigger than your process.  Because these value
@@ -574,14 +540,12 @@ would call location flexibility.
 ```
 slide title: Facts are Values
 
-Not places
-Don't facts change?
-  _No_ - they incorporate _time_
-_Fact_ - 'an event or thing known to have happened or existed'
-From: _factum_ - 'something done'
++ Not places
++ Don't facts change?
+  + _No_ - they incorporate _time_
++ _Fact_ - 'an event or thing known to have happened or existed'
++ From: _factum_ - 'something done'
 ```
-
-![Facts are Values](ValueOfValues/20m09s.jpg)
 
 So let us get back to information technology, and back to facts.  The
 first fact about facts is that facts are values.  They are not places.
@@ -606,15 +570,13 @@ That is a new fact, just like you can have new email addresses.
 ```
 slide title: Facts != Recent Facts
 
-Knowledge is derived from facts
-  Comparing
-  Combining
-Especially from different time points
-_You cannot update a fact_
-  any more than you can change the past
++ Knowledge is derived from facts
+  + Comparing
+  + Combining
++ Especially from different time points
++ _You cannot update a fact_
+  + any more than you can change the past
 ```
-
-![Facts! = Recent Facts](ValueOfValues/21m16s.jpg)
 
 The other thing about facts is that it is very important when you
 consider facts that it is insufficient for you to consider recent
@@ -641,16 +603,14 @@ And that is what facts are.  They are the documentation of the past.
 ```
 slide title: Information Systems
 
-Are fundamentally about _facts_
-  Maintaining, manipulating
-To give users _leverage_
-  Making decisions
-Systems should be _value-oriented_
-  Don't use _process_ constructs for information
-_Place has no role in an information model_
++ Are fundamentally about _facts_
+  + Maintaining, manipulating
++ To give users _leverage_
+  + Making decisions
++ Systems should be _value-oriented_
+  + Don't use _process_ constructs for information
++ _Place has no role in an information model_
 ```
-
-![Information Systems](ValueOfValues/22m27s.jpg)
 
 So let us go back and sort of revisit: what would it mean to build
 information systems that are about information?  It would mean that
@@ -696,14 +656,12 @@ information management and decision support.
 ```
 slide title: Decision Making
 
-We know what it takes to support our own decision making (hint: _information_)
-Compare present to past
-Spot trends, rates
-Aggregates
-Often requires _time_
++ We know what it takes to support our own decision making (hint: _information_)
++ Compare present to past
++ Spot trends, rates
++ Aggregates
++ Often requires _time_
 ```
-
-![Decision Making](ValueOfValues/24m27s.jpg)
 
 So one of the great things about this talk is: I think you all already
 know this.  Because we do decision making.  We know what it takes to
@@ -718,15 +676,13 @@ over time.  We almost always need a temporal aspect.
 ```
 slide title: Programmer I.T.
 
-Source Control
-  Update in place? - No
-  Timestamps - of course!
-Logs
-  Update in place? - No
-  Timestamps - of course!
++ Source Control
+  + Update in place? - No
+  + Timestamps - of course!
++ Logs
+  + Update in place? - No
+  + Timestamps - of course!
 ```
-
-![Programmer I.T.](ValueOfValues/24m54s.jpg)
 
 How can I tell you I know this is true?  Well, it is really
 straightforward.  We are programmers.  We have stuff to do.  We have
@@ -763,16 +719,14 @@ decisions?  We know there is no way.  No way.  So we do not do this.
 ```
 slide title: Big Data
 
-Business to programmers:
-  _"I like your database better than the one you gave me"_
-Logs have all the information
-  and timestamps
-We are reactive here
-  mining logs, seriously?
-Not delivering leverage
++ Business to programmers:
+  + _"I like your database better than the one you gave me"_
++ Logs have all the information
+  + and timestamps
++ We are reactive here
+  + mining logs, seriously?
++ Not delivering leverage
 ```
-
-![Big Data](ValueOfValues/26m36s.jpg)
 
 So big data.  It is all connected.  What is big data?  I will contend
 that a certain percentage of big data is this.  It is businesses
@@ -800,15 +754,13 @@ but that is sort of our fault.
 ```
 slide title: The Space Age
 
-_Space_
-  'The unlimited expanse in which all things are located, and all events occur'
-If _new_ never fails ...
-  you are effectively running in space
-If _S3_ never fills up ...
-  it is not the _cloud_, but space
++ _Space_
+  + 'The unlimited expanse in which all things are located, and all events occur'
++ If _new_ never fails ...
+  + you are effectively running in space
++ If _S3_ never fills up ...
+  + it is not the _cloud_, but space
 ```
-
-![The Space Age](ValueOfValues/27m46s.jpg)
 
 I think we are moving into what I would like to call The Space Age.
 One more definition: space, the unlimited expanse in which all things
@@ -835,13 +787,11 @@ time you want to put a file on S3, it says, "Sure!"
 ```
 slide title: New Facts, New Space
 
-The end of PLOP
-If you can afford this, why do anything else?
-You can afford this
-  _(there will be garbage)_
++ The end of PLOP
++ If you can afford this, why do anything else?
++ You can afford this
+  + _(there will be garbage)_
 ```
-
-![New Facts, New Space](ValueOfValues/29m00s.jpg)
 
 Are you worried about the edge of it?  I mean, most of the times, we
 do not worry about the edge of space.  I mean, maybe you do, but I do
@@ -868,16 +818,14 @@ going to happen with storage.  There will be garbage.
 ```
 slide title: Summary
 
-We continue to use place-oriented programming languages and databases
-  _and make new ones!_
-  long after rationale is _gone_
-We are missing out on the value of values
-  which we recognize
-We need to deliver _information_ systems
-  demand is clear, resources available
++ We continue to use place-oriented programming languages and databases
+  + _and make new ones!_
+  + long after rationale is _gone_
++ We are missing out on the value of values
+  + which we recognize
++ We need to deliver _information_ systems
+  + demand is clear, resources available
 ```
-
-![Summary](ValueOfValues/29m53s.jpg)
 
 But that is OK.  These are things that we are learning about how to
 manage.
