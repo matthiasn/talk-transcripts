@@ -814,13 +814,13 @@ still be easier, because it is now wrong.  So it looks, "Oh, I
 understand those objects.  I understand".  But it is not right.
 
 
-[Time 0:27:44]
+[Time 0:27:45]
 
 ```
 [ Greatly magnified image of neurons in human brain. ]
 ```
 
-<img src="AreWeThereYet/00.27.45.jpg" alt="00:27:45 scary graphic)" id="slide-25">
+![00.27.45 scary graphic](AreWeThereYet/00.27.45.jpg)
 
 So I saw this great talk at JavaOne where the people who wrote "Head
 First Java", which is a fantastic book, talked about...  Well the guy
@@ -1001,7 +1001,7 @@ different things!
 slide title: Epochal Time Model
 ```
 
-<img src="AreWeThereYet/00.33.34.jpg" alt="00:33:34 Epochal Time Model" id="slide-31">
+![00.33.34 Epochal Time Model](AreWeThereYet/00.33.34.jpg)
 
 So now I am going to put this up.  I will put it up again later.  This
 is a model.  This is not a picture of some software.  This is a model
@@ -1187,7 +1187,7 @@ slide title: Trees!
 + Nodes use arrays                     hash maps / sets etc
 ```
 
-<img src="AreWeThereYet/00.41.14.jpg" alt="00:41:14 Trees!" id="slide-35">
+![00.41.14 Trees!](AreWeThereYet/00.41.14.jpg)
 
 Trees.  And all the persistent data structures essentially, under the
 hood, are trees, because trees have these properties that allow you to
@@ -1210,7 +1210,7 @@ structural sharing.
 slide title: Structural Sharing
 ```
 
-<img src="AreWeThereYet/00.41.55.jpg" alt="00:41:55 Structural Sharing" id="slide-36">
+![00.41.55 Structural Sharing](AreWeThereYet/00.41.55.jpg)
 
 So the tree rooted in "Past" there is immutable.  It is never going to
 be changed.  When we need to make a new version -- say add a new node
@@ -1334,7 +1334,7 @@ remember what we are talking about when we talk about time.
 slide title: Epochal Time Model
 ```
 
-<img src="AreWeThereYet/00.46.40.jpg" alt="00:46:40 Epochal Time Model" id="slide-39">
+![00.46.40 Epochal Time Model](AreWeThereYet/00.46.40.jpg)
 
 So we just said we now know what the Vs are.  They are going to be
 these persistent data structures.  So how do we make sure that there
@@ -1423,7 +1423,7 @@ slide title: CAS as Time Construct
   + can automate spin             + Point-in-time value perception
 ```
 
-<img src="AreWeThereYet/00.49.48.jpg" alt="00:49:48 CAS as Time Construct" id="slide-41">
+![00.49.48 CAS as Time Construct](AreWeThereYet/00.49.48.jpg)
 
 Let us look at CAS as a time construct.  It is the easiest possible
 thing.  So you have some CAS-like thingy like AtomicReference.  That
@@ -1470,7 +1470,7 @@ slide title: Agents as Time Construct
     thread pool thread            + Point-in-time value perception
 ```
 
-<img src="AreWeThereYet/00.51.30.jpg" alt="00:51:30 Agents as Time Construct" id="slide-42">
+![00.51.30 Agents as Time Construct](AreWeThereYet/00.51.30.jpg)
 
 I do not want to spend too much time on agents.  They are a lot like
 CAS, except that there is no longer a coordination.  In CAS, when
@@ -1546,7 +1546,7 @@ produce the future.  A pure function, and values in and out.
 slide title: STM as Time Construct
 ```
 
-<img src="AreWeThereYet/00.53.58.jpg" alt="00:53:58 STM as Time Construct" id="slide-45">
+![00.53.58 STM as Time Construct](AreWeThereYet/00.53.58.jpg)
 
 So what does this look like now?  There is multiple identities,
 potentially, or places, or whatever.  Whatever construct is meaningful
@@ -1573,7 +1573,7 @@ will tell you.
 slide title: Perception in (MVCC) STM
 ```
 
-<img src="AreWeThereYet/00.55.07.jpg" alt="00:55:07 Perception in (MVCC) STM" id="slide-46">
+![00.55.07 Perception in (MVCC) STM](AreWeThereYet/00.55.07.jpg)
 
 So, I left perception out of this because this was too messy.  So what
 is the perception story for STM?  Can we look at the whole stadium at
