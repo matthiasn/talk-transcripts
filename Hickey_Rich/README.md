@@ -1,7 +1,7 @@
 Talks by Rich Hickey
 --------------------
 
-* **[Effective Programs (10/2017)](EffectivePrograms.md)**
+* **[Effective Programs (10/2017)](EffectivePrograms.md)** [[version with text for most slides]](EffectivePrograms-mostly-text.md)
 * **[Spec-ulation (12/2016)](Spec_ulation.md)**
 * **[clojure.spec (11/2016)](ClojureSpec.md)**
 * **[Clojure, Made Simple (06/2015)](ClojureMadeSimple.md)**
