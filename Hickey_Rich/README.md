@@ -15,6 +15,6 @@ Talks by Rich Hickey
 * **[The Value of Values (07/2012)](ValueOfValues.md)** [[version with text for most slides]](ValueOfValues-mostly-text.md)
 * **[Reducers (06/2012)](Reducers.md)**
 * **[Simple Made Easy (9/2011)](SimpleMadeEasy.md)**
-* **[Hammock Driven Development (10/2010)](HammockDrivenDev.md)**
+* **[Hammock Driven Development (10/2010)](HammockDrivenDev.md)** [[version with text for most slides]](HammockDrivenDev-mostly-text.md)
 * **[Persistent Data Structures and Managed References (10/2009)](PersistentDataStructure.md)**
 * **[Are we there yet? (09/2009)](AreWeThereYet.md)**
