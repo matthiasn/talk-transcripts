@@ -16,5 +16,5 @@ Talks by Rich Hickey
 * **[Reducers (06/2012)](Reducers.md)**
 * **[Simple Made Easy (9/2011)](SimpleMadeEasy.md)**
 * **[Hammock Driven Development (10/2010)](HammockDrivenDev.md)** [[version with text for most slides]](HammockDrivenDev-mostly-text.md)
-* **[Persistent Data Structures and Managed References (10/2009)](PersistentDataStructure.md)**
+* **[Persistent Data Structures and Managed References (10/2009)](PersistentDataStructure.md)** [[version with text for most slides]](PersistentDataStructure-mostly-text.md)
 * **[Are we there yet? (09/2009)](AreWeThereYet.md)** [[version with text for most slides]](AreWeThereYet-mostly-text.md)
