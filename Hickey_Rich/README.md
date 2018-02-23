@@ -14,7 +14,7 @@ Talks by Rich Hickey
 * **[Deconstructing the Database (11/2012)](DeconstructingTheDatabase.md)**
 * **[The Value of Values (30 min version) (07/2012)](ValueOfValues.md)** [[version with text for most slides]](ValueOfValues-mostly-text.md)
 * **[Reducers (06/2012)](Reducers.md)**
-* **[The Value of Values (1 hour version) (05/2012)](ValueOfValues.md)**
+* **[The Value of Values (1 hour version) (05/2012)](ValueOfValuesLong.md)**
 * **[Simple Made Easy (9/2011)](SimpleMadeEasy.md)**
 * **[Hammock Driven Development (10/2010)](HammockDrivenDev.md)** [[version with text for most slides]](HammockDrivenDev-mostly-text.md)
 * **[Persistent Data Structures and Managed References (10/2009)](PersistentDataStructure.md)** [[version with text for most slides]](PersistentDataStructure-mostly-text.md)
