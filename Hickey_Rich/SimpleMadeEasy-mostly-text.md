@@ -7,12 +7,12 @@
 [Time 0:00:00]
 
 ```
-slide title: Simple Made Easy
+slide:
+
+Simple Made Easy
 
 Rich Hickey
 ```
-
-![00:00:00 Simple Made Easy](SimpleMadeEasy/00.00.00.jpg)
 
 Hi.  So who is ready for some more category theory?
 
@@ -38,13 +38,10 @@ are trying to convince to do the right thing.
 ```
 slide:
 
-Simplicity is prerequisite for
-reliability
+Simplicity is prerequisite for reliability
 
             Edsger W. Dijkstra
 ```
-
-![00:01:00 Edsger W. Dijkstra quote](SimpleMadeEasy/00.01.00.jpg)
 
 So, I will start with an appeal to authority.  Simplicity is a
 prerequisite for reliability.  I certainly agree with this.  I do not
@@ -67,8 +64,6 @@ slide title: Word Origins
 
   vs _complex_          vs _hard_
 ```
-
-![00:01:21 Word Origins](SimpleMadeEasy/00.01.21.jpg)
 
 I love word origins.  They are tremendous fun.  One of the reasons why
 they are fun is because words eventually come to mean whatever we all
@@ -107,19 +102,13 @@ away".  It actually means "strong", or torturously so.
 slide title: Simple
 
 + One fold/braid      + But not
-
   + One role            + One instance
-
   + One task            + One operation
-
   + One concept       + _About lack of
-                        interleaving, not
-  + One dimension       cardinality_
-
+  + One dimension       interleaving, not
+                        cardinality_
                       + _Objective_
 ```
-
-![00:03:19 Simple](SimpleMadeEasy/00.03.19.jpg)
 
 So if we want to try to apply "simple" to the kinds of work that we
 do, we are going to start with this concept of having one braid.  And
@@ -159,18 +148,13 @@ important in deciding the difference between simple and easy.
 slide title: Easy
 
 + Near, at hand              + Near our capabilities
-
   + on our hard drive, in    + Easy is _relative_
     our tool set, IDE, apt
     get, gem install ...
-
   + Near to our
     understanding/skill set
-
     + familiar
 ```
-
-![00:05:16 Easy](SimpleMadeEasy/00.05.16.jpg)
 
 So let us look at "easy".  I think this notion of nearness is really,
 really cool.  In particular, obviously there are many ways in which
@@ -250,8 +234,6 @@ slide title: Construct vs Artifact
 + _We must assess constructs by their artifacts_
 ```
 
-![00:09:06 Construct vs Artifact](SimpleMadeEasy/00.09.06.jpg)
-
 So, what is one critical area where we have to distinguish these two
 things, and look at them from a perspective of them being easy and
 being simple?  It has to do with constructs and artifacts.  We program
@@ -313,11 +295,8 @@ slide title: Limits
 + Intertwined things must be considered together
 + Complexity undermines understanding
 
-[ Simple line figure showing a person stick figure juggling three
-  balls. ]
+[ Drawing showing a person stick figure juggling three balls. ]
 ```
-
-![00:12:14 Limits](SimpleMadeEasy/00.12.14.jpg)
 
 So let us talk a little bit about limits.  Oh, look; it does move.
 This is just supposed to sort of lull you into this state where
@@ -370,8 +349,6 @@ slide title: Change
   + Not talking about proof, just informal reasoning
 ```
 
-![00:14:07 Change](SimpleMadeEasy/00.14.07.jpg)
-
 So how do we change our software?  Apparently, I heard in a talk
 today, that Agile and Extreme Programming have shown that refactoring
 and tests allow us to make change with zero impact.
@@ -417,8 +394,6 @@ slide title: Debugging
 
 [ Photos of guard rails next to automobile roads. ]
 ```
-
-![00:15:32 Debugging](SimpleMadeEasy/00.15.32.jpg)
 
 So what about the other side?  There are two things you do with the
 future of your software.  One is, you add new capabilities.  The other
@@ -477,8 +452,6 @@ labeled "Easy" starts out with high development speed early on, then
 gets lower as time progresses.  Made-up chart labeled "Simple" starts
 out low or medium, and gradually grows over time. ]
 ```
-
-![00:17:14 Development Speed](SimpleMadeEasy/00.17.14.jpg)
 
 Now, of course, everybody is going to start moaning, "But I have all
 this speed.  I am agile.  I am fast.  This easy stuff is making my
@@ -550,8 +523,6 @@ slide title: Easy Yet Complex?
 [ Photo of a person using a loom with yarn. ]
 ```
 
-![00:19:36 Easy Yet Complex?](SimpleMadeEasy/00.19.36.jpg)
-
 So one of the problems I think we have is this conundrum that some
 things that are easy actually are complex.  So let us look.
 
@@ -601,8 +572,6 @@ slide title: Benefits of Simplicity
 [Photo of knitted castle, and another made of Lego blocks. ]
 ```
 
-![00:21:30 Benefits of Simplicity](SimpleMadeEasy/00.21.30.jpg)
-
 What benefits do we get from simplicity?  We get ease of
 understanding.  That is sort of definitional.  I contend we get ease
 of change and easier debugging.  Other benefits that come out of it,
@@ -631,8 +600,6 @@ slide title: Making Things Easy
   + not going to move very far
   + make things near by simplifying them
 ```
-
-![00:22:35 Making Things Easy](SimpleMadeEasy/00.22.35.jpg)
 
 OK.  So how do we make things easy?  Presumably the objective here is
 not to just bemoan the software crisis.  So what can we do to make
@@ -694,8 +661,6 @@ slide title: Parens are Hard!
     complexity complaint
 ```
 
-![00:24:48 Parens are Hard!](SimpleMadeEasy/00.24.48.jpg)
-
 All right, so let us look at a fact.
 
 [Audience laughter]
@@ -756,13 +721,10 @@ familiarity thing, which you can solve for yourself.
 ```
 slide:
 
-LISP programmers know the value of
-everything and the cost of nothing.
+LISP programmers know the value of everything and the cost of nothing.
 
                         Alan Perlis
 ```
-
-![00:27:33 Alan Perlis quote](SimpleMadeEasy/00.27.33.jpg)
 
 OK.  This was an old dig at Lisp programmers.  I am not totally sure
 what he was talking about.  I believe it was a performance related
@@ -792,31 +754,29 @@ carefully enough at the byproducts.
 slide title: What's in _your_ Toolkit?
 
      Complexity            Simplicity
---------------------  ----------------------------
+--------------------    ----------------------------
 
   State, Objects             Values
 
-      Methods           Functions, Namespaces
+      Methods            Functions, Namespaces
 
        vars               Managed refs
 
-Inheritance, switch,    Polymorphism a la carte
+Inheritance, switch,     Polymorphism a la carte
      matching
 
-      Syntax                 Data
+      Syntax                  Data
 
-Imperative loops, fold    Set functions
+Imperative loops, fold     Set functions
 
-      Actors                Queues
+      Actors                 Queues
 
-       ORM             Declarative data manipulation
+       ORM               Declarative data manipulation
 
-   Conditionals             Rules
+   Conditionals              Rules
 
-  Inconsistency           Consistency
+  Inconsistency            Consistency
 ```
-
-![00:28:50 What's in your Toolkit?](SimpleMadeEasy/00.28.50.jpg)
 
 So, what is in your toolkit?  I have these two columns.  One says
 complexity and one says simplicity.  The simplicity column just means
@@ -874,11 +834,9 @@ slide title: Complect
   + Complecting things is the source of complexity
 + Best to avoid in the first place
 
-[ Drawing showing steps starting from having four parallel strands,
+[ Drawing shows 6 steps, starting from having four parallel strands,
   and step by step braiding them together. ]
 ```
-
-![00:31:36 Complect](SimpleMadeEasy/00.31.36.jpg)
 
 OK.  So there is this really cool word called "complect".  I found it.
 
@@ -928,8 +886,6 @@ slide title: Compose
 [ Drawing of two Lego blocks apart, then connected together. ]
 ```
 
-![00:33:07 Compose](SimpleMadeEasy/00.33.07.jpg)
-
 So "complect" actually means to braid together.  And "compose" means
 to place together.  And we know that.  Everybody keeps telling us.
 What we want to do is make composable systems.  We just want to place
@@ -942,6 +898,8 @@ we write robust software.
 
 ```
 slide title: Modularity and Simplicity
+
+[ Blue Lego block on the left, yellow Lego block on the right. ]
 ```
 ![00:33:35 Modularity and Simplicity](SimpleMadeEasy/00.33.35.jpg)
 
@@ -958,6 +916,14 @@ happens?  You can write modular software with all kinds of
 interconnections between them.  They may not call each other, but they
 are completely complected.
 
+```
+slide title: Modularity and Simplicity
+
+[ Blue Lego block on the left now has "thought balloon" showing that
+it is thinking about the yellow Lego block, and the yellow Lego block
+on the right has similar thought balloon showing it thinking about the
+blue Lego block. ]
+```
 ![00:34:19 Modularity and Simplicity - build slide](SimpleMadeEasy/00.34.19.jpg)
 
 And we know how to solve this.  It has nothing to do with the fact
@@ -968,6 +934,12 @@ are allowed to think about, if you want to really anthropomorphize.
 
 ```
 slide title: Modularity and Simplicity
+
+[ Blue Lego block on the left now has "thought balloon" showing that
+it is thinking about just the white surface of the yellow Lego block,
+and the yellow Lego block on the right has similar thought balloon
+showing it thinking about only the white surface of the blue Lego
+block. ]
 
 + _Partitioning and stratification don't imply simplicity_
   + but _are_ enabled by it
@@ -1004,13 +976,11 @@ thing never returns the number 17.  What is that?
 slide title: State is Never Simple
 
 + Complects value and time
-+ It _is_ easy, in the at-hand and familiar sense
++ It _is_ easy, in the at-hand and familiar senses
 + Interweaves everything that touches it, directly or indirectly
   + Not mitigated by modules, encapsulation
 + Note - this has nothing to do with asynchrony
 ```
-
-![00:35:38 State is Never Simple](SimpleMadeEasy/00.35.38.jpg)
 
 OK.  I am not going to get up here and tell you state is awesome.  I
 like state.  I am not a functional whatever guy, whatever.  I am going
@@ -1069,8 +1039,6 @@ slide title: Not all refs/vars are Equal
 + Does your var do that?
 ```
 
-![00:38:00 Not all refs/vars are Equal](SimpleMadeEasy/00.38.00.jpg)
-
 But we fixed this, right?  Your language, your new, shiny language has
 something called var, or maybe it has refs or references.  None of
 these constructs make state simple.  That is the first, primary thing.
@@ -1107,30 +1075,28 @@ slide title: The Complexity Toolkit
       Construct             Complects
 --------------------  ----------------------------
 
-        State        Everything that touches it
+        State         Everything that touches it
 
-       Objects        State, identity, value
+       Objects          State, identity, value
 
-       Methods     Function and state, namespaces
+       Methods        Function and state, namespaces
 
-        Syntax            Meaning, order
+        Syntax             Meaning, order
 
-     Inheritance             Types
+     Inheritance              Types
 
-   Switch/matching      Multiple who/what pairs
+   Switch/matching       Multiple who/what pairs
 
-     var(iable)s           Value, time
+     var(iable)s            Value, time
 
-Imperative loops, fold      what/how
+Imperative loops, fold       what/how
 
-      Actors                what/who
+        Actors               what/who
 
-       ORM                    OMG
+         ORM                   OMG
 
-   Conditionals         Why, rest of program
+     Conditionals       Why, rest of program
 ```
-
-![00:39:28 The Complexity Toolkit](SimpleMadeEasy/00.39.28.jpg)
 
 All right, let us see why things are complex.  State, we already
 talked about.  It complects everything it touches.  Objects complect
@@ -1200,33 +1166,31 @@ slide title: The Simplicity Toolkit
    Construct           Get it via ...
 ----------------  ----------------------------
 
-     Values     final, persistent collections
+     Values       final, persistent collections
 
-   Functions     a.k.a. stateless methods
+   Functions      a.k.a. stateless methods
 
-   Namespaces        language support
+   Namespaces         language support
 
-      Data          Maps, arrays, sets,
-                      XML, JSON etc
+      Data           Maps, arrays, sets,
+                       XML, JSON etc
 
-Polymorphism a la    Protocols, type
-     carte              classes
+Polymorphism a la     Protocols, type
+     carte               classes
 
-   Managed refs    Clojure/Haskell refs
+   Managed refs     Clojure/Haskell refs
 
-  Set functions        Libraries
+  Set functions         Libraries
 
-     Queues            Libraries
+     Queues             Libraries
 
-Declarative data     SQL/LINQ/Datalog
+Declarative data      SQL/LINQ/Datalog
    manipulation
 
-      Rules         Libraries, Prolog
+      Rules          Libraries, Prolog
 
-   Consistency     Transactions, values
+   Consistency      Transactions, values
 ```
-
-![00:42:55 The Simplicity Toolkit](SimpleMadeEasy/00.42.55.jpg)
 
 So if you take away two things from this talk, one would be the
 difference between the words "simple" and "easy".  The other, I would
@@ -1335,8 +1299,6 @@ slide title: Environmental Complexity
   + just make things more complex
 ```
 
-![00:47:21 Environmental Complexity](SimpleMadeEasy/00.47.21.jpg)
-
 OK.  There is a source of complexity that is really difficult to deal
 with, and not your fault.  I call it environmental complexity.  Our
 programs end up running on machines next to other programs, next to
@@ -1386,8 +1348,6 @@ concerns.
                      Edsger W. Dijkstra
 ```
 
-![00:49:03 Edsger W. Dijkstra quote](SimpleMadeEasy/00.49.03.jpg)
-
 This is a hugely long quote.  Basically, it says programming is not
 about typing, like this [gestures of typing on a keyboard].  It is
 about thinking.
@@ -1404,8 +1364,6 @@ slide title: Abstraction for Simplicity
 + Who, What, When, Where, Why and How
 + I don't know, I don't want to know
 ```
-
-![00:49:20 Abstraction for Simplicity](SimpleMadeEasy/00.49.20.jpg)
 
 So the next phase here -- I have got to move a little bit quicker --
 is how do we design simple things of our own?  So the first part of
@@ -1449,8 +1407,6 @@ slide title: What
 + Don't complect with:
   + How
 ```
-
-![00:50:39 What](SimpleMadeEasy/00.50.39.jpg)
 
 All right, so what is "what"?  "What" is the operations.  "What" is
 what we want to accomplish.  We are going to form abstractions by
@@ -1507,8 +1463,6 @@ slide title: Who
   + other entities
 ```
 
-![00:52:41 Who](SimpleMadeEasy/00.52.41.jpg)
-
 "Who" is about data or entities.  These are the things that our
 abstractions are going to be connected to eventually, depending on how
 your technology works.  You want to build components up from
@@ -1545,8 +1499,6 @@ slide title: How
   + anything
 ```
 
-![00:53:45 How](SimpleMadeEasy/00.53.45.jpg)
-
 How things happen, this is the actual implementation code, the work of
 doing the job.  You strictly want to connect these things together
 using those polymorphism constructs.  That is the most powerful thing.
@@ -1575,8 +1527,6 @@ slide title: When, Where
 + Can seep in via directly connected objects
   + Use queues
 ```
-
-![00:54:40 When, Where](SimpleMadeEasy/00.54.40.jpg)
 
 When and where, this is pretty simple.  I think you just have to
 strenuously avoid complecting this with anything.  I see it
@@ -1607,8 +1557,6 @@ slide title: Why
 + Explore rules and declarative logic systems
 ```
 
-![00:55:34 Why](SimpleMadeEasy/00.55.34.jpg)
-
 And then there is the "why" part.  This is sort of the policy and
 rules.  I think this is hard for us.  We typically put this stuff all
 over our application.  Now if you ever have to talk to a customer
@@ -1634,8 +1582,6 @@ slide title: Information _is_ Simple
   + ties logic to representation du jour
 + Represent data as data
 ```
-
-![00:56:10 Information is Simple](SimpleMadeEasy/00.56.10.jpg)
 
 Finally, in this area, information: it is simple.  The only thing you
 can possibly do with information is ruin it.
@@ -1675,8 +1621,6 @@ into the real sense of things
                  Constantin Brancusi
 ```
 
-![00:57:20 Constantin Brancusi quote](SimpleMadeEasy/00.57.20.jpg)
-
 
 [Time 0:57:22]
 
@@ -1689,8 +1633,6 @@ slide title: Simplifying
 
 [ several photos and drawings of knots ]
 ```
-
-![00:57:24 Simplifying](SimpleMadeEasy/00.57.24.jpg)
 
 So the final aspect, so we choose simple tools.  We write simple
 stuff.  And then sometimes we have to simplify other people's stuff.
@@ -1720,8 +1662,6 @@ slide title: Simplicity is a Choice
 + Your 'reliability' tools (testing, refactoring, type systems) don't care
   + and are quite peripheral to producing good software
 ```
-
-![00:58:14 Simplicity is a Choice](SimpleMadeEasy/00.58.14.jpg)
 
 The bottom line is: simplicity is a choice.  It is your fault if you
 do not have a simple system.  And I think we have a culture of
@@ -1771,8 +1711,6 @@ slide title: Simplicity _Made Easy_
 + Reap the benefits!
 ```
 
-![00:59:53 Simplicity Made Easy](SimpleMadeEasy/00.59.53.jpg)
-
 So, how do we make simplicity easy?  We are going to choose constructs
 with simpler artifacts and avoid constructs that have complex
 artifacts.  It is the artifacts.  It is not the authoring.  As soon as
@@ -1802,13 +1740,10 @@ do that.
 ```
 slide:
 
-Simplicity is the ultimate
-sophistication.
+Simplicity is the ultimate sophistication.
 
               Leonardo da Vinci
 ```
-
-![01:01:13 Leonardo da Vinci quote](SimpleMadeEasy/01.01.13.jpg)
 
 So I will leave you with this.  This is what you say when somebody
 tries to sell you a sophisticated type system.
