@@ -188,6 +188,8 @@ In particular, if you want everything to be familiar, you will never
 learn anything new because it cannot be significantly different from
 what you already know and not drift away from the familiarity.
 
+[Time 0:07:13]
+
 There is a third aspect of being easy that I do not think we think
 enough about that is going to become critical to this discussion,
 which now is being near to our capabilities.  And we do not like to
@@ -255,6 +257,8 @@ the construct.  Oh, look; I only had to type 16 characters.  Wow!
 That is great.  No semicolons or things like that.  This whole notion
 of sort of programmer convenience, again, we are _infatuated_ with it,
 not to our benefit.
+
+[Time 0:10:29]
 
 On the flipside it gets even worse.  Our employers are also infatuated
 with it.  Those first two meanings of easy, what do they mean?  If I
@@ -688,6 +692,8 @@ I mean [laughter] that is just crazy!
 But I think this is your responsibility to fix these two things, as a
 user, as a potential user.  You have got to do this.
 
+[Time 0:25:58]
+
 But we could dig deeper.  Let us look at the third thing.  Did you
 actually give me something that was simple?  Is a language built all
 out of parens simple?  In the case I am saying, is it free of
@@ -798,10 +804,14 @@ namespace.
 Vars are complex and variables are complex.  Managed references are
 also complex, but they are simpler.  Inheritance, switch statements,
 pattern matching are all complex, and polymorphism a la carte is
-simple.  Now remember the meaning of simple.  The meaning of simple
-means unentangled, not twisted together with something else.  It does
-not mean I already know what it means.  Simple does not mean, "I
-already know what it means".
+simple.
+
+[Time 0:30:11]
+
+Now remember the meaning of simple.  The meaning of simple means
+unentangled, not twisted together with something else.  It does not
+mean I already know what it means.  Simple does not mean, "I already
+know what it means".
 
 OK.  Syntax is complex.  Data is simple.  Imperative loops, fold even,
 which seems kind of higher level, still has some implications that tie
@@ -1128,6 +1138,8 @@ de-reference an address and get an object out.  I want to get one of
 those computers.  Have you ever used one of those computers?  I cannot
 get one.  I called Apple, and they were like, pff, no.
 
+[Time 0:41:14]
+
 The only thing you can ever get out of a memory address is a word, a
 scalar, the thing that was all derided.  Recovering a composite object
 from an address is not something computers do, none of the ones that
@@ -1236,6 +1248,8 @@ thousands of variations that have nothing to do with the essence of
 this stuff, and make it hard to write programs that manipulate the
 essence of the stuff.  We should just manipulate the essence of the
 stuff.  It is not hard.  It is simpler.
+
+[Time 0:45:10]
 
 Also, the same thing for communications.  Are we all not glad we don't
 use the Unix method of communicating on the Web?  Any arbitrary
