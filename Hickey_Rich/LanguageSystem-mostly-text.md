@@ -16,8 +16,6 @@ slide:
 
 ```
 
-![00.00.00 TBD](LanguageSystem/00.00.00.jpg)
-
 Thanks.  This is the third Conj and the fifth year of Clojure as being
 a public thing, and I could not be happier to see everybody here, and
 a lot of good old friends and new friends.  And so excited about the
@@ -38,8 +36,6 @@ slide:
     T   D
 ```
 
-![00.00.43 TBD - build slide](LanguageSystem/00.00.43.jpg)
-
 It is like one of those Apple keynotes.
 
 So TBD.
@@ -55,8 +51,6 @@ slide:
 
 + Putting the personal in pmap
 ```
-
-![00.00.54 To Better](LanguageSystem/00.00.54.jpg)
 
 What does it mean: To?
 
@@ -92,8 +86,6 @@ slide:
        Rich Hickey
 ```
 
-![00.01.36 The Language of the System](LanguageSystem/00.01.36.jpg)
-
 No, so today I would like to talk about the language of the system.
 
 [Time 0:01:45]
@@ -101,14 +93,9 @@ No, so today I would like to talk about the language of the system.
 ```
 slide title: The Language Bubble
 
-Programming Language defines world
-(w/Runtime)
-
-I/O as if someone else's problem
-vs the point of your program
++ Programming Language defines world (w/Runtime)
++ I/O as if someone else's problem vs the point of your program
 ```
-
-![00.01.45 The Language Bubble](LanguageSystem/00.01.45.jpg)
 
 Which is a title that may not convey anything in particular, but
 hopefully it will make some sense by the end.
@@ -176,8 +163,6 @@ slide title: Language + Runtime
 + ...
 ```
 
-![00.04.04 Language + Runtime](LanguageSystem/00.04.04.jpg)
-
 So if we look at what constitutes a language, and again sort of
 language plus runtime, we get all of these facilities.  And this is in
 no particular order.  But some of the things that really matter when
@@ -229,9 +214,9 @@ slide title: System
 + Ensemble of programs (services)
 + No global managers as with runtimes/OS
 + Connected how?
-```
 
-![00.06.22 System](LanguageSystem/00.06.22.jpg)
+[ Photo of 3 legged stool. ]
+```
 
 When we talk about system, we are talking about something bigger,
 bigger than a program.  In particular, I am talking about something
@@ -296,8 +281,6 @@ slide title: Language
   program -> program
 ```
 
-![00.09.00 Language](LanguageSystem/00.09.00.jpg)
-
 So when we say language, what do we mean?  The root, again, is tongue.
 It is obviously about communication.  But everybody knows the old saw
 about programming is: you think it is about talking to the machine.
@@ -331,7 +314,7 @@ that is going to become really important as we move forward.
 slide title: The Stacks
 
   Program                 System
-  -------                 -------
+  ---------------------   -----------------------
 
   Application libs        Application as services
 
@@ -339,8 +322,6 @@ slide title: The Stacks
 
   Language primitives     Protocols and formats
 ```
-
-![00.10.22 The Stacks](LanguageSystem/00.10.22.jpg)
 
 So one way to think about these two things is as stacks, stacks of
 specificity and hierarchy and encapsulation.  So at the bottom of a
@@ -386,8 +367,6 @@ slide title: Say What?
 + Schemas? explicit? in/out of band?
 + Generic processors and intermediaries?
 ```
-
-![00.12.16 Say What?](LanguageSystem/00.12.16.jpg)
 
 So the first thing we have to talk about is, "Say what?"  Again, we
 talk about protocols and formats, but formats are huge.  How many
@@ -563,8 +542,6 @@ slide title:  Values
   + permalinks etc
 ```
 
-![00.19.10 Values](LanguageSystem/00.19.10.jpg)
-
 So obviously in this room we do not have to talk about the value of
 values.  We like values.  And I think the only thing to do here is to
 sort of, again, think about the differences between programming
@@ -627,8 +604,6 @@ slide title: Names
 + Services, machines, storage locations etc
 ```
 
-![00.21.29 Names](LanguageSystem/00.21.29.jpg)
-
 So that brings us back to names.  And again, here, we sort of have
 this difference.  Inside a program, we have all these great scopes.  I
 am in a local scope.  I have a let.  Just nobody knows about this.
@@ -685,8 +660,7 @@ these values are going to need names, which is another critical thing.
 [Time 0:24:04]
 
 ```
-slide title: Read Between the
-                   Lines
+slide title: Read Between the Lines
 
 + Where do the semantics of a system live?
 
@@ -708,8 +682,6 @@ slide title: Read Between the
       | 2 |   | 9 |        | 10 |
       +---+   +---+        +----+
 ```
-
-![00.24.03 Read Between the Lines](LanguageSystem/00.24.03.jpg)
 
 So systems look like this.  Every process has a number.  No, obviously
 they do not.  This is - I am being lazy on Google images.  That has
@@ -765,18 +737,15 @@ is not enough to really understand it.
 [Time 0:26:14]
 
 ```
-slide title: The Revenge of
-                Objects?
+slide title: The Revenge of Objects?
 
         DANGER [in bright red oval]
 
 + 'Service' is an arbitrary notion
 
 + Triggering effects across a graph of stateful
-  objects [strikethrough that word] services
+  --objects-- [strikethrough that word] services
 ```
-
-![00.26.14 The Revenge of Objects?](LanguageSystem/00.26.14.jpg)
 
 And this is where I think we really run into trouble.  This is where
 the problem is.  What does that look like?
@@ -815,15 +784,12 @@ negative attributes of object orientation.
 ```
 slide title: Welcome to the Machine
 
-   [ Figure of a multi-part machine that
-     looks like it might be arranged in an
-     assembly line fashion. ]
+   [ Figure of a multi-part machine that looks like
+     it is arranged in an assembly line fashion. ]
 
 + Machines apply force to accomplish work
 + That's what systems do!
 ```
-
-![00.27.46 Welcome to the Machine](LanguageSystem/00.27.46.jpg)
 
 So I think one way to think about this is to think about machines and
 production lines and things like that.  What we are trying to do here
@@ -864,8 +830,6 @@ slide title: Avoiding Objects
 + Keep separate
 + _flow_ vs places
 ```
-
-![00.29.11 Avoiding Objects](LanguageSystem/00.29.11.jpg)
 
 So there are a bunch of characteristics that you can combine that will
 -- even though that technically a certain percentage of them are not
@@ -915,8 +879,6 @@ slide title: Transform
 + But sometimes work from/to storage
 ```
 
-![00.31.06 Transform](LanguageSystem/00.31.06.jpg)
-
 So transformation, this is the thing that is easiest.  We know
 transformation is just functions.  It is basically straightforward.
 The only thing here is that generally there might be some input to the
@@ -953,8 +915,6 @@ slide title: I'm a Mover
 
 [ Figure of a line of identical objects on a conveyor belt. ]
 ```
-
-![00.32.10 I'm a Mover](LanguageSystem/00.32.10.jpg)
 
 Now we get to moving things around.  I think it is one of the things
 in Clojure maybe I did not make clear enough, because I did not need
@@ -1005,8 +965,6 @@ slide title: Memory     [ figure of human brain ]
 + References (identities) to values
 + Coordination a la carte
 ```
-
-![00.34.17 Memory](LanguageSystem/00.34.17.jpg)
 
 All right, now there is memory.  This is the part that is really
 tricky, because you do not have a ton of great options for memory that
@@ -1132,8 +1090,7 @@ slide title: Failure
 + Retries, idempotency
 + http://www.erlang.org/download/armstrong_thesis_2003.pdf
 ```
-
-![00.38.49 Failure](LanguageSystem/00.38.49.jpg)
+[http://www.erlang.org/download/armstrong_thesis_2003.pdf](http://www.erlang.org/download/armstrong_thesis_2003.pdf)
 
 All right, of course this is my favorite topic: errors and error
 messages and whatever.
@@ -1205,8 +1162,6 @@ slide title: Systems are Dynamic
 + Discoverability, scalability, elasticity etc
 ```
 
-![00.41.45 Systems are Dynamic](LanguageSystem/00.41.45.jpg)
-
 So the other things about systems is that they are dynamic, and they
 are dynamic in a whole bunch of different ways.  They are dynamic in
 membership where we just said some machines come and go.  Sometimes
@@ -1241,8 +1196,6 @@ slide title: Holistic Approach
 + bespoke communication
 + specified model (actors)
 ```
-
-![00.42.46 Holistic Approach](LanguageSystem/00.42.46.jpg)
 
 So there is a holistic approach to this.  And there is a great example
 of the holistic approach to this, which is Erlang.  Erlang _is_ a
@@ -1315,8 +1268,6 @@ slide title: Heterogeneous Approach
   + Simple Services
 ```
 
-![00.45.19 Heterogeneous Approach](LanguageSystem/00.45.19.jpg)
-
 So that leaves us with the heterogeneous approach.  We have to have
 some sort of cross-language notion of how to talk about things, how to
 express the semantics of systems, and what the language of systems are
@@ -1331,7 +1282,7 @@ are protocols and formats.
 slide title: The Stacks
 
   Program                 System
-  -------                 -------
+  ---------------------   -----------------------
 
   Application libs        Application as services
 
@@ -1340,8 +1291,6 @@ slide title: The Stacks
   Language primitives     Protocols and formats
 
 ```
-
-![00.45.43 The Stacks](LanguageSystem/00.45.43.jpg)
 
 And I think the third part, the thing that fills in this box, are
 things that I will call "simple services".  So a simple service is a
@@ -1365,8 +1314,6 @@ slide title: _Simple_ System Services
 + Storage (S3, K/V stores et al)
 + More, and smaller - the best do the least
 ```
-
-![00.46.17 Simple System Services](LanguageSystem/00.46.17.jpg)
 
 So we have queues.  We have java.util.concurrent queue and then how
 many message queues are out there?  Tons, tons, all with different
@@ -1451,8 +1398,6 @@ slide title: Whither the Interface?
   e.g. jclouds
 ```
 
-![00.49.50 Whither the Interface?](LanguageSystem/00.49.50.jpg)
-
 So I think one of the problems we have here is: there is something
 that we really like inside our programming languages, an important
 tool, which is the interface or the protocol.  It is the thing that
@@ -1533,8 +1478,6 @@ slide title: Programs -> Systems
   w/o, difficult to parameterize service with services
 ```
 
-![00.53.12 Programs -> Systems](LanguageSystem/00.53.12.jpg)
-
 So what can programs tell systems?  What can our systems learn from
 our programming?  One is, we need more values.  Values need to be
 first class.  We need to name them.  We need to start using the
@@ -1598,8 +1541,6 @@ slide title: Systems -> Programs
   Is your language?
   Are your protocols?
 ```
-
-![00.55.37 Systems -> Programs](LanguageSystem/00.55.37.jpg)
 
 What do systems tell programs?  There are great old papers that say,
 "Do not try to make your distributed system like your programming
@@ -1683,14 +1624,11 @@ do not need to say that.
 ```
 slide title: Call to Action
 
-+ Consider building simple services
-  rather than language libs
++ Consider building simple services rather than language libs
 + Try to avoid bespoke protocols and formats
 + Consider the abstraction of your service
 + Design to be composed
 ```
-
-![00.59.17 Call to Action](LanguageSystem/00.59.17.jpg)
 
 So, I think people are building some great libraries.  I would love to
 see more people build some services, some simple services.  I think
