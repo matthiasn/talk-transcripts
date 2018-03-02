@@ -10,7 +10,7 @@ Talks by Rich Hickey
 * **[Implementation details of core.async Channels (06/2014)](ImplementationDetails.md)** [[version with text for most slides]](ImplementationDetails-mostly-text.md)
 * **[Design, Composition and Performance (11/2013)](DesignCompositionPerformance.md)**
 * **[Clojure core.async Channels (09/2013)](CoreAsync.md)** [[version with text for most slides]](CoreAsync-mostly-text.md)
-* **[The Language of the System (11/2012)](LanguageSystem.md)**
+* **[The Language of the System (11/2012)](LanguageSystem.md)** [[version with text for most slides]](LanguageSystem-mostly-text.md)
 * **[Deconstructing the Database (11/2012)](DeconstructingTheDatabase.md)**
 * **[The Value of Values (30 min version) (07/2012)](ValueOfValues.md)** [[version with text for most slides]](ValueOfValues-mostly-text.md)
 * **[Reducers (06/2012)](Reducers.md)**
