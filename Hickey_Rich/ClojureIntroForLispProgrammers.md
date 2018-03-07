@@ -1,7 +1,7 @@
 # Clojure - An Introduction for Lisp Programmers
 
 * **Speaker: Rich Hickey**
-* **Event: [Boston Lisp meeting 2008](http://2016.clojure-conj.org) - Sep 29, 2008**
+* **Event: Boston Lisp meeting 2008 - Sep 29, 2008**
 * **Video: Part 1: [https://www.youtube.com/watch?v=cPNkH-7PRTk](https://www.youtube.com/watch?v=cPNkH-7PRTk) Part 2: [https://www.youtube.com/watch?v=7mbcYxHO0nM](https://www.youtube.com/watch?v=7mbcYxHO0nM)**
 
 ```
@@ -35,7 +35,6 @@ Does this work.  Let us see.  Oh yeah, look at that.  [tries out slide
 control and slides advance]
 
 
-(slide 2)
 [Time 0:00:54]
 
 ```
@@ -1443,8 +1442,8 @@ looping through whatever was passed, over and over and over again.  As
 long as you do not try to print it at the REPL, because I have not
 implemented *print-length*, you will be fine.
 
-[Note that *print-length* has been added since this talk:
-http://clojure.org/api#toc22 ]
+[Note that `*print-length*` has been added since this talk:
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/*print-length* ]
 
 That is really a beautiful thing.  It will change the way you write
 software, to have essentially all of these functions are lazy.  They
@@ -3439,8 +3438,6 @@ enclosing transaction.
 Under the hood, Clojure's STM is pretty unique.  If you have done any
 reading about STMs, it is a multi-version concurrency control system,
 which is unusual.  Yes?
-
-[ http://wiki.zope.org/ZODB/MultiVersionConcurrencyControl ]
 
 [Audience: Can you imagine mutations to Refs that are not wrapped in a
 dosync as participating in just a very small transaction?]
