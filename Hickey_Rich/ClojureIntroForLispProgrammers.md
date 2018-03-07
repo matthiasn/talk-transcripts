@@ -842,6 +842,8 @@ Everywhere!  Have at it!  Stick them anywhere you want!
 
 Just whatever makes you feel good.
 
+[Time 0:29:22]
+
 [Audience: Is the square bracket the only way to make a vector?]
 
 No, there are named functions for all of them things.  There are
@@ -980,6 +982,8 @@ iterator.  This is the abstraction inside cons cells.  "rest" says
 "get me the rest", which is going to be either what?  A sequence or
 nil.  That is it.  That is the abstraction that is inside there.
 
+[Time 0:34:54]
+
 [Audience: No improper lists?]
 
 No.
@@ -990,8 +994,8 @@ Well at this point, I have stopped talking about lists, right?
 
 [Audience: Right.  Fair enough.]
 
-I have nothing to do with this.  In fact, the next thing I am going to
-say is: there is no reason you cannot build an exemplar of this
+I have nothing to do with lists.  In fact, the next thing I am going
+to say is: there is no reason you cannot build an exemplar of this
 abstraction on top of vectors, right?  I can make something that
 implements first and rest on vectors.  I can implement something that
 implements first and rest on maps.  I can implement something that
@@ -1108,6 +1112,8 @@ And that program was churning.  You know how much it was churning?  It
 was churning 20 Gigs of garbage a second.
 
 [Audience laughter]
+
+[Time 0:39:25]
 
 20 gigs of garbage a second.  Do you know how much of the overall CPU
 energy that used?  7%.  Guess what?  Ephemeral garbage on the JVM is
@@ -1227,6 +1233,8 @@ and say, "Oh, I wish you had this kind of cool data structure.  Could
 you please add it?"  You can do that.  You can do that from Java, or
 from Clojure.  Anybody can do it.
 
+[Time 0:43:59]
+
 And all the algorithms you have, and all the algorithms that I have
 already written, and all of the algorithms all of the other people
 have already written, are going to work with your new data structure
@@ -1318,6 +1326,8 @@ Yes.
 [Audience: You are going to tell me later how to write a take that
 actually returns a value of an arbitrary type?  Because here you are
 writing a take, and it returns a sequence.]
+
+[Time 0:47:28]
 
 "take" returns a sequence.
 
@@ -1473,6 +1483,8 @@ higher than if you used a lazy approach.
 So this is really great.  interleave is lazy, partition, these are all
 lazy.  And there are just tons of functions in Clojure.
 
+[Time 0:52:55]
+
 [Audience: Is the first line a typo, because you drop a vector and get
 a list back?]
 
@@ -1580,6 +1592,8 @@ Union, intersection, and all that stuff, and go a higher level still.
 what is a relation?  A relation is a set of maps.  And guess what?  If
 you build relations, there is a whole library of stuff for that, like
 relational algebra stuff, like joins.
+
+[Time 0:56:52]
 
 [Audience: When you get that union there, what determined the order of
 the new union?]
@@ -1791,6 +1805,8 @@ hash table, or vector, you should have in Lisp, because you want to do
 the same kinds of programming with these other data structures that
 you do with lists.
 
+[Time 1:02:04]
+
 And so often, you have this beautiful thing you did with lists, then
 you try to scale it up, and ugh, lists are really not the right thing.
 Then what do you do?  Completely change your program!  Because using
@@ -1871,6 +1887,8 @@ semantics are the semantics of rebinding.
 
 [Audience: What is going to happen to all this if the JVM actually
 gets tail calls?]
+
+[Time 1:04:52]
 
 Well, this recur happens to target this, but you can have recur's that
 target the function arguments themselves, if there was no enclosing
@@ -1963,6 +1981,8 @@ stuff.  There is still Java stuff.  Java stuff has plenty of broken
 equals, and I cannot fix them.  So if you call equal on some Java
 things, it is going to map to equals, and it will be broken sometimes,
 because they are broken.
+
+[Time 1:08:14]
 
 [Audience: That maps to Java dot equals object?]
 
@@ -2079,6 +2099,8 @@ which is like Common Lisp's.  It is also like Scheme's.  Of course,
 this seems to be inherently wrong.  If you are going to do this, then
 do it.
 
+[Time 1:11:39]
+
 [Audience: what is your objection to false?]
 
 I do not have an objection to false.  I have an objection to, if you
@@ -2110,6 +2132,8 @@ empty bucket is not "no bucket".
 
 [Audience: I am not getting the distinction.  Common Lisp has a
 specific empty list.  Clojure does not have an empty list?]
+
+[Time 1:13:00]
 
 It does not have a singleton empty list.  You can have ten different
 ones whose identity differs.
@@ -2253,6 +2277,8 @@ they have real thread-local semantics.  It is guaranteed a binding in
 a thread will be distinct and invisible to any other thread.  And you
 can use that in concurrency programming.  That is a hard promise.
 
+[Time 1:18:16]
+
 [Audience: When you bind a new (upper function?) that you set! and you
 fork off into a new thread TBD]
 
@@ -2302,6 +2328,8 @@ would matter to languages like this.  They all were highly informed by
 the presentations.  They were, "Ooh, we do not do that simple escape
 analysis, and if we did, all of these boxed numbers could disappear."
 And various other things could happen.
+
+[Time 1:20:41]
 
 [Audience: TBD Do you sometimes have to locally re-bind something?]
 
@@ -2498,6 +2526,8 @@ Var that is in the namespace, that has the value in it.  So we name
 them like this.  And the Var is called user/foo.  A Var _always_ has a
 namespace-qualified name.
 
+[Time 1:27:06]
+
 [Audience: Vars are not objects?]
 
 Everything is an object, but Vars are the places where stuff gets
@@ -2537,7 +2567,7 @@ pointers.  That is a cool thing.  It has a huge cost.
 
 [Audience: Can you elaborate on that?  ??? What can read pointers?]
 
-If I read, right, I read a symbol.  It is interned.  It is storage.
+If I read, right, I read a symbol.  It gets interned.  It is storage.
 If I read that in another file, I get the same storage.  Just by
 reading, I have two pointers to the same storage.  Which is cool, and
 there is some Common Lisp code that leverages that.  You cannot do
@@ -2547,6 +2577,8 @@ that in Clojure.  It is a cost.
 can switch tapes.]
 
 OK
+
+[Time 1:28:58]
 
 [All time values below are relative to beginning of Part 2 of video.]
 
@@ -2725,8 +2757,10 @@ do was avoid marrying dispatch to types.  I am sort of tired of types.
 I am tired of having these rigid type systems that really incur a lot
 of accidental complexity for you.  Every time you make a class, you
 have all this complexity.  You do not necessarily realize any more.
-And fixing valuable feature like polymorphism to a type system, which
+And fixing valuable features like polymorphism to a type system, which
 usually you only get one taxonomy for your arguments.
+
+[Time 0:06:19]
 
 So what Clojure's multimethods are is a complete generalization of
 dispatch.  What is generic dispatch?  It is ...  there are these
@@ -2825,6 +2859,8 @@ it have to be a map?  No.  You could have species 1 and species 2, and
 you could pass 2 vectors.  That would work.  You know, whatever you
 need to do.
 
+[Time 0:10:01]
+
 So then we define a bunch of data, and then the encounter things do
 what you want.  I have not had time to update this slide, but I have
 enhanced this system substantially by making it such that the values
@@ -2868,6 +2904,8 @@ bad.
 ambiguity based on the ...]
 
 Yes.  Yes.
+
+[Time 0:11:49]
 
 You could.  Let us just talk a little bit about that.  I am sorry I do
 not have it on the slide.  So isa? works between any two names.  You
@@ -2963,6 +3001,8 @@ do not want to talk about that right now, because it is too confusing.
 have an object, and then there is this hash table that maps the
 objects to, I do not know]
 
+[Time 0:15:22]
+
 Everybody has to know about that hash table.  It does not flow through
 your call chain.  Nobody can go an inspect it.  They have to play.
 Metadata you do not have to play.  And a real hash table where
@@ -3004,6 +3044,8 @@ from precincts.  Now I am in the middle of a calculation.  Do I have
 to say precinct map of this, county map of this?  Putting it on types
 is wrong.  It is just where I got it from.  So I can flow that
 through.
+
+[Time 0:17:14]
 
 So essentially any of the Clojure data structures support the
 attachment of a map of metadata, and you can use it for whatever you
@@ -3489,6 +3531,8 @@ data part.
 [Audience: So if you were to send a function to an agent, it will
 produce a ...]
 
+[Time 0:32:47]
+
 Ah.  No, no, no.  No.  In fact, I have not talked about agents yet.
 So hang on to that question.  No, that is beautiful.
 
@@ -3535,6 +3579,8 @@ three times and be like, hmm, Oh!  I am in a transaction.  I got
 retried.  And if you are in a dynamic language, you are used to
 dealing with problems that way.  There is no enforcement.  I cannot
 enforce it.
+
+[Time 0:34:27]
 
 I am not anti-enforcement.  There are languages that try to enforce
 it.  They come with very intricate type systems that are not yet
@@ -3646,7 +3692,11 @@ says: whenever I am done, do this.
 
 So it is nice.  It is a functional interface.  You say apply this
 function to the value that is in that reference, and that result of
-that function becomes the new value in the reference.  So we do this:
+that function becomes the new value in the reference.
+
+[Time 0:38:00]
+
+So we do this:
 
   (commute foo assoc :a "lucy")
   -> IllegalStateException: No transaction running
@@ -3731,6 +3781,8 @@ value, do the inc concurrently, and both write back the same value,
 ending up with 1 more than the original, instead of the desired two
 more than the original.]
 
+[Time 0:41:15]
+
 They do not commit at the same time.  What ends up happening is
 commutes get all the way through.  Any transaction that involves a
 commute happens all the way through to commit time.  Now typically, if
@@ -3768,6 +3820,8 @@ conflict with each other.  With commute they are not.
 You do whatever you like.  I am just saying you have this facility and
 it has this property, and you can leverage that in your designs to get
 more throughput.
+
+[Time 0:42:40]
 
 [Audience: So you could also use this to do I/O conditionally, say]
 
