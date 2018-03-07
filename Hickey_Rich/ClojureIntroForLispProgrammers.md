@@ -1,7 +1,7 @@
 # Clojure - An Introduction for Lisp Programmers
 
 * **Speaker: Rich Hickey**
-* **Event: [Bost Lisp meeting 2008](http://2016.clojure-conj.org) - Sep 29, 2008**
+* **Event: [Boston Lisp meeting 2008](http://2016.clojure-conj.org) - Sep 29, 2008**
 * **Video: Part 1: [https://www.youtube.com/watch?v=cPNkH-7PRTk](https://www.youtube.com/watch?v=cPNkH-7PRTk) Part 2: [https://www.youtube.com/watch?v=7mbcYxHO0nM](https://www.youtube.com/watch?v=7mbcYxHO0nM)**
 
 ```
@@ -462,7 +462,7 @@ cannot even see the difference between these things.
 slide title: What makes Clojure a Different Lisp, and Why?
 
 + More first-class data structures
-+ Defined in terms of abstrations
++ Defined in terms of abstractions
 + Functional
 + Host-embracing
 + Thread aware
@@ -1738,7 +1738,7 @@ And we all know how to ignore this.
 [Audience laughter]
 
 As do our editors.  In fact, we know the superiority about being able
-to move these pieces around, vs. something that is whitespace based.
+to move these pieces around, vs. something that is white space based.
 
 So it is kind of neat.  You know, def and blah, and you see again
 where we are using lists for, what we would have used lists for, data,
@@ -2969,7 +2969,7 @@ your call chain.  Nobody can go an inspect it.  They have to play.
 Metadata you do not have to play.  And a real hash table where
 everybody had their metadata is a concurrency disaster.
 
-It belongs on the object, so it should flow.  It should be copyable.
+It belongs on the object, so it should flow.  It should be copiable.
 And if you do that, it has to be associated with identity.  These
 things are associated with values.  I can have 1, 2, 3, and then say I
 found it on the Internet.  I could have 1, 2, 3, and say I got it out
@@ -4463,7 +4463,7 @@ easy to be wrong.
 
 [Audience: Could you explain your logo?]
 
-My brother did it for me.  It is pretty.  It is a little ying yang, a
+My brother did it for me.  It is pretty.  It is a little yin yang, a
 little lambda.  Yeah, he is good.
 
 [Time 1:04:57]
