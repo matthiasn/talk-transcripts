@@ -12,7 +12,6 @@ slide title: Design, Composition, and Performance
 
 Rich Hickey
 ```
-![00.00.00 title page](DesignCompositionPerformance/00.00.00.jpg)
 
 Hi.  Thanks for coming.  I am very excited about this conference.  It
 is always great, and I would like to thank the organizers for inviting
@@ -26,8 +25,6 @@ slide:
 
 Analogies are like equivalencies, except when they are not
 ```
-
-![00.00.18 Analogies](DesignCompositionPerformance/00.00.18.jpg)
 
 So we start with a legal disclaimer prepared by lawyers.
 
@@ -50,8 +47,6 @@ _designare_ - to mark out
 
 make a plan, write it down
 ```
-
-![00.00.30 Design](DesignCompositionPerformance/00.00.30.jpg)
 
 So, design is something we talk about a lot in software development.
 
@@ -96,8 +91,6 @@ slide title: But...
   + plans, not good ones
 ```
 
-![00.01.53 Design - build slide](DesignCompositionPerformance/00.01.53.jpg)
-
 And, of course, here is where everybody is like, ugh, you know, we did
 this.  We did this in the '80s, and we had all this stuff, and it was
 terrible.  We had these phonebook-sized specifications and nothing got
@@ -128,8 +121,6 @@ slide title: Good Design
 + Composing them to solve a problem
 + Iterative
 ```
-
-![00.02.58 Good Design](DesignCompositionPerformance/00.02.58.jpg)
 
 And so what I want to talk about today is a little bit about what do
 we want out of a design, and when we encounter in the world, what do
@@ -175,8 +166,6 @@ slide title: Design is taking things apart
 + solutions
 ```
 
-![00.04.19 Design is taking thing apart](DesignCompositionPerformance/00.04.19.jpg)
-
 So, what kinds of things would we take apart?  There are a whole bunch
 of things that we could take apart and, in fact, you are constantly
 finding more things.
@@ -199,8 +188,6 @@ slide title: Take apart requirements
 + cause / symptom
 + unstated
 ```
-
-![00.04.41 Take apart requirements](DesignCompositionPerformance/00.04.41.jpg)
 
 So let us just look at each of these in turn.
 
@@ -258,8 +245,6 @@ slide title: Take apart time / order / flow
 + transactions
 ```
 
-![00.06.42 Take apart time/order/flow](DesignCompositionPerformance/00.06.42.jpg)
-
 Other things, just completely different dimension of things we can
 take apart when we do design, which is time.  You can take apart the
 order of things, how things are going to flow from one to the other.
@@ -291,8 +276,6 @@ slide title: Take apart place, participants
   + independent development etc
 ```
 
-![00.07.34 Take apart place, participants](DesignCompositionPerformance/00.07.34.jpg)
-
 We can take apart place and participants.  And there is a certain
 sense in which design is always about this.  But there is this old
 adage: you just add indirection.
@@ -314,8 +297,6 @@ slide title: Information vs Mechanism
 + Set of logged-in users
 + Set collection class / construct
 ```
-
-![00.08.12 Information vs Mechanism](DesignCompositionPerformance/00.08.12.jpg)
 
 This one is kind of interesting, because I do not see it talked about
 often enough, which is to separate information versus mechanism.  So
@@ -352,8 +333,6 @@ slide title: Take apart solutions
 + Problem fit
 ```
 
-![00.09.15 Take apart solutions](DesignCompositionPerformance/00.09.15.jpg)
-
 And then, finally, once we think we have an answer, we have a
 potential solution, we have not implemented it yet, but we are looking
 at it, or maybe we have implemented some of it.  You want to take
@@ -383,8 +362,6 @@ slide title: Why Design?
 + Testing
 + _Efficiency_
 ```
-
-![00.09.57 Why Design?](DesignCompositionPerformance/00.09.57.jpg)
 
 So I am a big fan of design.  I think that we need to do a lot more of
 it, and we need to talk about it more, and we need to spend more time
@@ -465,8 +442,6 @@ slide:
 Composition and Performance
 ```
 
-![00.13.22 Composition and Performance](DesignCompositionPerformance/00.13.22.jpg)
-
 The talk is about design, composition, and performance, and so I am
 going to take composition and performance together.
 
@@ -512,8 +487,6 @@ slide title: Composition
   + a plane or design addressing those challenges
 ```
 
-![00.14.20 Composition](DesignCompositionPerformance/00.14.20.jpg)
-
 So composition -- music composition and other kinds of art creation --
 is about addressing constraints.  It is about addressing problems, but
 not real world problems.  Art does not solve real world problems, in
@@ -552,8 +525,6 @@ slide title: Specificity and Scale
   + increased latitude for performers
   + increased responsibility
 ```
-
-![00.15.40 Specificity and Scale](DesignCompositionPerformance/00.15.40.jpg)
 
 And it is quite interesting that, when you look at music composition,
 you end up immediately seeing a tremendous variety in the specificity
@@ -638,8 +609,6 @@ slide title: Constraints
 + Larger works, more structural components
 ```
 
-![00.18.18 Constraints](DesignCompositionPerformance/00.18.18.jpg)
-
 So I talked a little bit about constraints.  And, again, it is quite
 interesting to see how this lines up.
 
@@ -676,8 +645,6 @@ slide title: Improvisation
 + _Tremendous preparation, practice, study_
 + Deep musical knowledge and vocabulary
 ```
-
-![00.19.27 Improvisation](DesignCompositionPerformance/00.19.27.jpg)
 
 When we move to the performer side of the coin -- the improvisation
 side like Coltrane -- I think it is quite interesting.  Again, it is
@@ -732,8 +699,6 @@ slide title: Harmony
 + _Harmonic sensibility is a key design skill_
 ```
 
-![00.21.48 Harmony](DesignCompositionPerformance/00.21.48.jpg)
-
 So another thing that sort of crosses the lines in composition and
 performance in music is this notion of harmony.  And again, we get
 this nice word for it, which is accord or congruity.  How do things
@@ -774,8 +739,6 @@ slide title: Bartók and Coltraine
 + New systems that preserve / explore harmonic essence
 + Towering intellectual effort, while totally rocking
 ```
-
-![00.23.17 Bartok and Coltrane](DesignCompositionPerformance/00.23.17.jpg)
 
 So I think both Bartok and Coltrane are interesting, even though they
 are in completely different genres of music, in that they were both
@@ -827,8 +790,6 @@ slide title: What does this have to do with our Langs and Libs?
 + Is it like a symphony?
 + More like an instrument
 ```
-
-![00.25.26 Langs and Libs](DesignCompositionPerformance/00.25.26.jpg)
 
 But what does this have to do with anything that we do?  In
 particular, what does it have to do with languages and libraries?
@@ -966,8 +927,6 @@ slide title: Instruments are limited
             DSL?
 ```
 
-![00.28.09 Instruments are limited](DesignCompositionPerformance/00.28.09.jpg)
-
 But instruments have a lot of other characteristics, and one of them
 that is quite striking is that instruments are limited.  They are
 _very_ limited.
@@ -1032,8 +991,6 @@ slide:
 No one wants to play a choose-a-phone
 ```
 
-![00.30.31 Choose-a-phone](DesignCompositionPerformance/00.30.31.jpg)
-
 And there is another good reason why we do not fix everything, which
 is that no one wants to play choose-a-phone.  No one wants to play an
 instrument that does everything.  You could push here, and it makes a
@@ -1070,8 +1027,6 @@ slide:
 
 No one wants to compose for choose-a-phone ensemble
 ```
-
-![00.31.05 choose-a-phone ensemble](DesignCompositionPerformance/00.31.05.jpg)
 
 But no one, I bet, wants to compose for a choose-a-phone ensemble.
 
@@ -1168,8 +1123,6 @@ slide title: Beginners are not yet players
   + have green / red lights when you are in / out of tune?
   + not make any sound until you play the entire piece correctly?
 ```
-
-![00.33.19 Beginners](DesignCompositionPerformance/00.33.19.jpg)
 
 We have this problem, right?  Beginners are not players yet.  This is
 going to cause the world to stop.  If you cannot have a website with
@@ -1276,8 +1229,6 @@ slide title: Humans are Incredible
 + Teachers
 + Neither effort-free
 ```
-
-![00.36.03 Humans are Incredible](DesignCompositionPerformance/00.36.03.jpg)
 
 So we should not sell humanity short.  Humans are incredible.  In
 particular, they are incredible learners.
@@ -1404,8 +1355,6 @@ blue portion is about 10%. ]
      -- Twyla Tharp.  The Creative Habit.
 ```
 
-![00.39.14 Planning/Performance](DesignCompositionPerformance/00.39.14.jpg)
-
 So it begs the question.  What ratio of time should we have between
 planning and performance?  Which is which in programming?  Which one
 is typing the code in?  It is yellow.  It is.
@@ -1437,8 +1386,6 @@ Coltrane couldn't build a web site in a day
 
 Software isn't made of wood or metal
 ```
-
-![00.40.20 But…](DesignCompositionPerformance/00.40.20.jpg)
 
 But there is a sense in which -
 
@@ -1517,7 +1464,7 @@ believe. ]
 Human vs machine interface
 ```
 
-![00.42.28 Modularity](DesignCompositionPerformance/00.42.28.jpg)
+![00.43.48 Modularity - build slide](DesignCompositionPerformance/00.43.48.jpg)
 
 Then things grew up.
 
@@ -1578,7 +1525,7 @@ Another photo on the right is of a device with a piano-like keyboard
 and many other controls above that. ]
 ```
 
-![00.44.44 Design stack](DesignCompositionPerformance/00.44.44.jpg)
+![00.45.49 Design stack - build slide](DesignCompositionPerformance/00.45.49.jpg)
 
 So we are seeing this thing, this stacking that occurs.  This guy,
 whose name I am going to mess up, Yves Usson, is somebody who is
@@ -1630,7 +1577,7 @@ add solder to an electronic board. ]
 "You should use emacs!"
 ```
 
-![00.46.38 no music today](DesignCompositionPerformance/00.46.38.jpg)
+![00.46.52 no music today - build slide](DesignCompositionPerformance/00.46.52.jpg)
 
 And it is quite an important thing because, for him, he has different
 days.  He has days when he is patching stuff together.  Maybe he has
@@ -1653,8 +1600,6 @@ slide title: Code all the way down
 + Doesn't mean we can do filter design
 + Distraction, expansion
 ```
-
-![00.47.05 Code all the way down](DesignCompositionPerformance/00.47.05.jpg)
 
 And why does that happen to us?  The reason is because, for us, it is
 the same stuff all the way down.  In that space, it is very different.
@@ -1696,8 +1641,6 @@ slide:
 + The impetus of constraint
 + _Constraint is a driver of creativity_
 ```
-
-![00.48.25 The paralysis of choice](DesignCompositionPerformance/00.48.25.jpg)
 
 There is a sense in which having so much control over so many parts of
 the stack, it gives us this paralysis.  There is so much we can do at
@@ -1783,11 +1726,8 @@ slide:
 [ Photo of a woman playing a Theremin. ]
 
 Carolina Eyck
-http://www.youtube.com/watch?v=719YcewEumw
+https://www.youtube.com/watch?v=7l9YcewEumw
 ```
-
-[ I could not get that link to work, but you can search for her name
-on YouTube and find many other performances by her. ]
 
 ![00.50.28 Carolina](DesignCompositionPerformance/00.50.28.jpg)
 
@@ -1859,8 +1799,6 @@ slide title: Design is making decisions
 + Leaving all options open is avoiding design
 ```
 
-![00.52.26 Design is making decisions](DesignCompositionPerformance/00.52.26.jpg)
-
 However, actually designing is about making decisions, which means you
 try to think up 100 times as many things as you actually use, way more
 things than you use.
@@ -1895,8 +1833,6 @@ slide title: Performing is preparing
 + _Developing design sensibilities you can deploy on the fly_
 ```
 
-![00.53.23 Performing is preparing](DesignCompositionPerformance/00.53.23.jpg)
-
 So performing is preparing.  It is planning.  You have to practice.
 You have to study.
 
@@ -1918,8 +1854,6 @@ slide title:
 + Langs and libs like instruments
 + Pursue harmony
 ```
-
-![00.53.52 Take things apart](DesignCompositionPerformance/00.53.52.jpg)
 
 So design is taking things apart in order to be able to put them back
 together.  And that is really all it is.  Every time I encounter
