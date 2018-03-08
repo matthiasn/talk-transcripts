@@ -1761,8 +1761,6 @@ slide title: Design is imagining
 + Imagine a lot
 ```
 
-![00.51.18 Design is imagining](DesignCompositionPerformance/00.51.18.jpg)
-
 So what is design?  If we take a step back and sort of merge all of
 these things together.  There is a sense in which design is imagining.
 If it is not just regurgitating something that is already happened
