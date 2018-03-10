@@ -8,17 +8,19 @@
 [Time 0:00:00]
 
 ```
-slide title: Transducers
+slide:
+
+[Clojure logo]
+
+Transducers
 
 Rich Hickey
 ```
 
-![0:00 Transducers](Transducers/00.00.00.jpg)
-
 Transducers.
 
 
-[Time 0:00:00]
+[Time 0:00:03]
 
 ```
 slide title: What are They?
@@ -47,8 +49,6 @@ slide title: What are They?
 + so they can be used elsewhere
 + recasting them as _process transformations_
 ```
-
-![00:28 What are They?](Transducers/00.00.28.jpg)
 
 All right, so what are transducers?  The basic idea is to go and look
 again at map and filter, and see if there is some idea inside of them
@@ -80,8 +80,6 @@ slide title: What Kinds of Processes?
 + _seeded left reduce_ is the generalization
 ```
 
-![01:30 What Kind of Processes?](Transducers/00.01.30.jpg)
-
 So when I talk about processes, what am I saying?  It is not every
 kind of process.  There are all kinds of processes that cannot be
 modeled this way, but there are ton of processes that can.  And the
@@ -109,7 +107,7 @@ just run indefinitely.
 [Time 0:02:48]
 
 ```
-slide title: Why 'transducer'
+slide title: Why 'transducer'?
 
 + _reduce_
   'lead back'
@@ -120,11 +118,9 @@ slide title: Why 'transducer'
 + _transduce_
   'lead across'
 
-+ on the way back/in, will carry _inputs_across a series
++ on the way back / in, will carry _inputs_ across a series
   of _transformations_
 ```
-
-![02:48 Why 'transducer'?](Transducers/00.02.48.jpg)
 
 So we made up words.  Actually we did not make up a word.  Again, this
 is _actually_ a word.  But why this word?
@@ -159,8 +155,6 @@ slide title: Transducers in the Real World
   + remove bags that smell like food
   + label heavy bags
 ```
-
-![03:55 Transducers in the Real World](Transducers/00.03.55.jpg)
 
 So this is not a programming thing.  This is a thing that we do all
 the time in the real world.  We do not call them "transducers".  We
@@ -198,8 +192,6 @@ slide title: Conveyances, sources, sinks are _irrelevant_
   _Rules don't care_
 ```
 
-![04:59 Conveyances, sources, sinks are irrelevant](Transducers/00.04.59.jpg)
-
 One of the really important things about the way that was just said,
 and the way you talk to luggage handlers and your kids and anybody
 else you need to give instructions to, is that the conveyance and the
@@ -229,8 +221,6 @@ slide title: Transformation in the Programming World
     (partial filter non-food?)
     (partial mapcat unbundle-pallet))
 ```
-
-![05:56 Transformation in the Programming World](Transducers/00.05.56.jpg)
 
 Then we have programming.  What do we do in programming?  We have
 collection function composition.  We are so cool.  We have lists.  We
@@ -266,8 +256,6 @@ slide title: Conveyances are _everywhere_
 + 'rules' only work on sequences
 + creates sequences between steps
 ```
-
-![06:56 Conveyances are everywhere](Transducers/00.06.56.jpg)
 
 Because "map" is a function from whatever, collection to collection,
 or sequence to sequence.  Pick your programming language.  But it is
@@ -310,8 +298,6 @@ slide:
 it meaning "no". ]
 ```
 
-![08:01 trolleys](Transducers/00.08.01.jpg)
-
 And we wait for a sufficiently smart supervisor to come and say, "What
 are you guys doing?".
 
@@ -333,8 +319,6 @@ slide title: No reuse
   + Observable -> Observable ...
 + Composed algorithms are needlessly _specific and inefficient_
 ```
-
-![08:02 No reuse](Transducers/00.08.02.jpg)
 
 We do not have any reuse.  Every time we do this, we end up writing a
 new thing.  You write a new kind of stream, we have a new set of these
@@ -383,8 +367,6 @@ def map[B, That](f: A => B)(implicit bf:
 CanBuildFrom[Repr, B, That]): That
 ```
 
-![09:06 {map in Scala}](Transducers/00.09.06.jpg)
-
 [Audience laughter, then applause]
 
 Yeah.  So that may fix some of this, but in general it does not solve
@@ -396,7 +378,15 @@ the inputs.  Here is how you are going to transform them while you are
 doing the bigger thing, which could change.  It could change from
 conveyor belts to trolleys and stuff like that.
 
-![09:43 Stop talking about the entire job](Transducers/00.09.43.jpg)
+[Time 0:09:43]
+
+```
+slide:
+
+[ Same as previous slide, with new line at the bottom. ]
+
+Stop talking about entire job
+```
 
 So we want to just take a different approach.  If we have something
 that is about the steps, we can build things that are about the whole
@@ -418,8 +408,6 @@ slide title: Creating Transducers
 + process-bags _is a_ _transducer_
 + transducers _modify_ a process by transforming its reducing function
 ```
-
-![09:56 Creating Transducers](Transducers/00.09.56.jpg)
 
 OK, this is just going to be some usages here, and then I will explain
 the details in a little bit.  Because usually I do it the opposite
@@ -474,8 +462,6 @@ slide title: Using Transducers
 ;; it's an open system
 (observable process-bags pallet-source)
 ```
-
-![11:23 Using Transducers](Transducers/00.11.23.jpg)
 
 Having made those instructions, we can go into completely different
 contexts, and reuse them.
@@ -546,12 +532,10 @@ And that is the idea.
 slide title: Transducible Processes
 
 + into, sequence, transduce, chan etc accept transducers
-+ use the transducers to transform their (internal, encapsulated)
++ use the transducer to transform their (internal, encapsulated)
   reducing function
 + do their job with the transformed reducing function
 ```
-
-![14:43 Transducible Processes](Transducers/00.14.43.jpg)
 
 So we call all of these things -- into, and sequence, and transduce,
 and chan - transducible processes.  They satisfy that definition of
@@ -585,11 +569,9 @@ transducer, modifies its own step function, and proceeds with that.
 slide title: Deriving Transducers
 
          Lectures on
-
 Constructive Functional Programming
 
              by
-
           R. S. Bird
 
                        A tutorial on the universality and
@@ -600,8 +582,6 @@ Constructive Functional Programming
 http://www.cs.ox.ac.uk/files/3390/PRG69.pdf
 http://www.cs.nott.ac.uk/~gmh/fold.pdf
 ```
-
-![16:03 Deriving Transducers](Transducers/00.16.03.jpg)
 
 So as I said before, there is nothing new.  Two papers I find useful
 for helping you think about these things are this Lectures on
@@ -628,15 +608,13 @@ slide title: Many list fns can be defined in terms of _foldr_
 + easier to reason about and transform
 
 (defn mapr [f coll]
-  (foldr (fn [x r] (cons f x) r))
-         () coll)
+  (foldr (fn [x r] (cons (f x) r))
+         () coll))
 
 (defn filterr [pred coll]
-  (foldr (fn [x r] (if (pred x) (cons x r)r))
+  (foldr (fn [x r] (if (pred x) (cons x r) r))
          () coll))
 ```
-
-![16:37 Many list fns can be defined in terms of foldr](Transducers/00.16.37.jpg)
 
 So one of the fundamental things that the Bird paper and the work that
 preceded it talk about is the relationship between these lists
@@ -698,8 +676,6 @@ slide title: Similarly, via reduce (foldl)
   (reduce (fn [r x] (reduce conj r (f x)))
           [] coll))
 ```
-
-![18:45 Similarly, via reduce (foldl)](Transducers/00.18.45.jpg)
 
 So it ends up that you can similarly define these functions in terms
 of "foldl".  And "foldl" is just left reduce.  And here are some
@@ -780,8 +756,6 @@ slide title: Transducers
     (comp (map f) cat))
 ```
 
-![21:41 Transducers](Transducers/00.21.41.jpg)
-
 So to turn those inner functions into transducers, we are just going
 to parameterize that conj.  We are going to parameterize the old
 fashioned way: with a function argument.  We are not going to have
@@ -829,8 +803,6 @@ slide title: reduce-based map et al redux
           [] coll))
 ```
 
-![23:27 reduce-based map et al redux](Transducers/00.23.27.jpg)
-
 So we can take these transducer returning functions.  So "mapping"
 returns a transducer.  "filtering" returns a transducer.  "cat" _is_ a
 transducer.  And "mapcatting" returns a transducer.
@@ -860,8 +832,6 @@ slide title: Transducers are Fully Decoupled
   otherwise _must know nothing of r_
 + can transform input arg
 ```
-
-![24:19 Transducers are Fully Decoupled](Transducers/00.24.19.jpg)
 
 Transducers are fully decoupled.  They do not know what they are
 doing.  They do not know what process they are modifying.  The step
@@ -902,8 +872,6 @@ slide title: Backwards comp?
 [ Figure with step in the middle, label-heavy surrounding it,
 non-food? surrounding that, and unbundle-pallet surrounding that. ]
 ```
-
-![25:29 Backwards comp?](Transducers/00.25.29.jpg)
 
 So let us talk a little bit about the backwards part, because this is
 a frequent question I get.  What did you do?  "Does transducers change
@@ -950,8 +918,6 @@ slide title: Transducers are Fast
 + No interim collections
 + No extra boxes
 ```
-
-![27:14 Transducers are Fast](Transducers/00.27.14.jpg)
 
 OK.  So the other nice thing about transducers is that there is no
 intermediate stuff.  They are just a stack of function calls.  They
@@ -1039,8 +1005,6 @@ slide title: Early Termination
   (mapping label-heavy))
 ```
 
-![30:12 Early Termination](Transducers/00.30.12.jpg)
-
 So there are other interesting things that happen in processes.
 Ordinary reduction processes everything, but we want this to be
 usable in cases that run arbitrarily long.  We are not just talking
@@ -1085,8 +1049,6 @@ slide title: Reduced
   (deref (reduced x)) -> x
 ```
 
-![31:30 Reduced](Transducers/00.31.30.jpg)
-
 So how do we do that?  It ends up, in Clojure, we already have support
 for this idea in reduce.  There is a constructor of a special wrapper
 object called "reduced", which says, "I do not want to see any more
@@ -1122,8 +1084,6 @@ slide title: Transducers Support _reduced_
 	  (reduced r)))))
 ```
 
-![32:23 Transducers Support reduced](Transducers/00.32.23.jpg)
-
 So like reduce, transducers also must support reduced.  That means
 that the step functions are allowed to return a reduced value.  And
 that if a transducing process or a transducer gets a reduced value, it
@@ -1151,8 +1111,6 @@ slide title: Processes Must Support Reduced
   to _completion_ (more later)
 ```
 
-![33:13 Processes Must Support Reduced](Transducers/00.33.13.jpg)
-
 And so the reducing processes must also play this game.  The
 transducer has to follow the rule from before, and the reducing
 process similarly has to support reduced.  If it ever sees a reduced
@@ -1173,7 +1131,7 @@ slide title: Transducer Types, Thus Far
 ![33:43 Transducer Types, Thus Far](Transducers/00.33.43.jpg)
 
 So now we get new pictorial types in the graphical type language that
-is Omnigraffle.
+is OmniGraffle.
 
 [Audience laughter]
 
@@ -1200,8 +1158,6 @@ slide title: State
   another (potentially stateful) process, which should not be aliased
 + Pass transducers around and let processes apply them
 ```
-
-![34:26 State](Transducers/00.34.26.jpg)
 
 So some interesting sequence functions require state.  And in the
 purely functional implementations, they get to use the stack or
@@ -1261,8 +1217,6 @@ slide title: A Stateful Transducer
 		(step r x))))))))
 ```
 
-![36:36 A Stateful Transducer](Transducers/00.36.36.jpg)
-
 So here is an example of a stateful transducer: dropping-while a
 predicate is true.  So we start with our flag that says it is true.
 As long as it is still true, we are going to drop.
@@ -1283,8 +1237,6 @@ slide title: Completion
 + All step functions _must_ have an arity-1 variant
   that does not take an input
 ```
-
-![37:00 Completion](Transducers/00.37.00.jpg)
 
 I talked before completion.  So we have the idea of early termination.
 The other idea that transducers support is completion.  Which is that,
@@ -1330,8 +1282,6 @@ slide title: Completion Operation
   prior to calling the nested complete*.  _partition-all_ and
   _partition-while_ are examples.
 ```
-
-![38:39 Completion Operation](Transducers/00.38.39.jpg)
 
 We will talk about what that does, or how that gets used.  If the
 process itself, if the overall job has finished, it has exhausted
@@ -1402,8 +1352,6 @@ slide title: Init
   42
 ```
 
-![40:45 Init](Transducers/00.40.45.jpg)
-
 OK, there is a third kind of operation that is associated with
 processing in general, which is Init.  We have had talks before that
 mention monoids and things like that.  The basic idea is just,
@@ -1463,8 +1411,6 @@ slide title: Clojure Implementation
   cat, dedupe, random-sample ...
 ```
 
-![42:36 Clojure Implementation](Transducers/00.42.36.jpg)
-
 In Clojure, we just used arity to do this.  A transducer enclosure
 then is just something that takes a reducing function and returns one,
 where a reducing function has these three arities.
@@ -1496,8 +1442,6 @@ slide title: Filter, returning a Transducer
       (sequence (filter pred) coll)))
 ```
 
-![43:09 Filter, returning a Transducer](Transducers/00.43.09.jpg)
-
 So this is the final example of filter returning a transducer.  It
 takes a predicate and returns us a step modifying function, which
 takes a reducing function, which presumably has these three arities,
@@ -1522,7 +1466,6 @@ this, which shows that transducer is more primitive than the other.
 
 ```
 slide title: The Goal
-
 ```
 
 ![43:52 The Goal](Transducers/00.43.52.jpg)
@@ -1553,8 +1496,6 @@ slide title: Transducers
 + Efficient
 + Tasty
 ```
-
-![44:27 Transducers](Transducers/00.44.27.jpg)
 
 So, transducers are context-independent.  There is tremendous value in
 that.  They are concretely reusable.  So someone can make this and not
