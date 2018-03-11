@@ -57,7 +57,7 @@ map and filter being implemented over and over again in different
 contexts.  We have map and filter on collections.  We have map and
 filter on streams.  We have map and filter on observables.  We were
 starting to write map and filter, and so on, on channels.  And there
-was just no sharing here.  there is no ability to create reusable
+was just no sharing here.  There is no ability to create reusable
 things.  So we want to take the essence out and see if we can reuse
 them.
 
@@ -97,10 +97,10 @@ incorporate the new input into the collection, and you keep going.
 
 But that is a specialization of the idea.  The general idea is the
 idea of a seeded left reduce.  Of taking something that you are
-building up and a new thing and continually building up.  But we want
-to get away from the idea that the reduction is about creating a
+building up, and a new thing, and continually building up.  But we
+want to get away from the idea that the reduction is about creating a
 particular thing, and focus more on it being a process.  Some
-processes build particular things; other processes are infinite, they
+processes build particular things; other processes are infinite.  They
 just run indefinitely.
 
 
@@ -131,7 +131,7 @@ means "to lead back", to bring something back.  The word has come to
 mean over time "to bring something down" or "to make something
 smaller".  It does not necessarily mean that.  It just means "to lead
 it back to some mother-ship", and in this case, we are going to say,
-the process that we are trying to accomplish.
+this process that we are trying to accomplish.
 
 The word "ingest" means "to carry something into", so it is the same
 kind of idea, but that is about one bite.  Reduction is about a series
@@ -162,8 +162,8 @@ call them "instructions".
 
 And so, we will talk about this scenario through the course of this
 talk, which is, "put the baggage on the plane".  That is the overall
-thing we are doing, but I have this transformation that I want you do
-to the baggage.
+thing that we are doing, but I have this transformation that I want
+you do to the baggage.
 
 While you are putting the baggage on the plane, break apart the
 pallets.  We are going to have pallets, big wooden things with a pile
@@ -205,6 +205,8 @@ trolley".  And then tomorrow when we switch to conveyor belts, have
 them say, "We did not know what to do".  "It came on a conveyor belt
 and like, you did not ...  I have rules for trolleys".
 
+[Audience laughter]
+
 So the rules do not care.  The instructions do not care.  This is the
 real world.
 
@@ -231,10 +233,10 @@ Every bag comes through and it gets a label or does not.  But for
 every bag that comes through, there is a bag that comes out.  Maybe it
 has a label or it does not.
 
-And taking out the non-food bags, or keeping the non-food bags, is a
-filter.  it is analogous to filter.  Is it food?  We do not want it.
-If it is not food, we are going to keep it.  So we may or may not have
-an input, depending on this predicate.
+And keeping the non-food bags is a filter.  It is analogous to filter.
+Is it food?  We do not want it.  If it is not food, we are going to
+keep it.  So we may or may not have an input, depending on this
+predicate.
 
 And unbundling the pallets is like mapcat.  There is some function
 that given a pallet, gives you a whole bunch of individual pieces of
@@ -243,7 +245,7 @@ luggage.
 So we already know how to do this.  We are done.  We are finished.
 Programming can model the real world.
 
-Except there is a big difference between this and what I just
+Except there is a big difference between this, and what I just
 described happens in the real world.
 
 
@@ -282,11 +284,11 @@ arrows from one to the next in a sequence. ]
 And in addition, we have all this in-between stuff.  It is as if we
 said to the luggage guys, "Take everything off the trolley, and
 unbundle the pallet, and put it on another trolley.  And then take it
-off that trolley.  And see if it smells like food.  And if it does
-not, put it on another trolley.  And then take it off that trolley,
-and if it is heavy, put a label on it and put it on another trolley".
-This is what we are doing in programming.  This is what we do all the
-time.
+off that trolley.  And then see if it smells like food.  And if it
+does not, put it on another trolley.  And then take it off that
+trolley, and if it is heavy, put a label on it and put it on another
+trolley".  This is what we are doing in programming.  This is what we
+do all the time.
 
 
 [Time 0:07:50]
@@ -334,7 +336,7 @@ inefficiency here.  Maybe there are sufficiently smart compilers, and
 maybe for some context, they can make the intermediate stuff go away.
 Maybe they cannot.
 
-The problem is our initial statement really does not like what we
+The problem is: our initial statement really does not like what we
 normally do.  It is not general.  It is specific.  We are relying on
 something else to fix it.
  
@@ -369,24 +371,29 @@ CanBuildFrom[Repr, B, That]): That
 
 [Audience laughter, then applause]
 
-Yeah.  So that may fix some of this, but in general it does not solve
-the problem.  And the problem is mostly about the fact that we are
-talking about the entire job.  Those instructions, they were about the
-step.  They were not about the entire job.  The entire job was around
-it.  While are you doing this thing, here is what you going to do to
-the inputs.  Here is how you are going to transform them while you are
-doing the bigger thing, which could change.  It could change from
-conveyor belts to trolleys and stuff like that.
+Yeah.
 
-[Time 0:09:43]
+
+[Time 0:09:19]
 
 ```
 slide:
 
-[ Same as previous slide, with new line at the bottom. ]
+[ Same photo and code snippet as previous slide, with big red circle
+and a slash across it meaning "no".  Also a new line of text at the
+bottom. ]
 
 Stop talking about entire job
 ```
+
+So that may fix some of this, but in general it does not solve the
+problem.  And the problem is mostly about the fact that we are talking
+about the entire job.  Those instructions, they were about the step.
+They were not about the entire job.  The entire job was around it.
+While are you doing this thing, here is what you going to do to the
+inputs.  Here is how you are going to transform them while you are
+doing the bigger thing, which could change.  We could change from
+conveyor belts to trolleys and stuff like that.
 
 So we want to just take a different approach.  If we have something
 that is about the steps, we can build things that are about the whole
@@ -487,16 +494,18 @@ it lazily produces results.  So we can get laziness out of this.
 There is a function called "transduce", which is just like "reduce"
 except it also takes a transducer.  So that takes a transducer, an
 operation, an initial value, and a source, so the transducer is a
-modification of process-bags -- we will talk about in a second.  The
+modification of process-bags I will talk about in a second.  The
 operation is sum, the initial value is 0, and the source are the
 pallets.
 
+[Time 0:12:53]
+
 So what does this composition do?  What is this going to do?  It is
 going to sum the weight of the bags.  This is the weight of all the
-bags.  So it is cool.  We can take the process we already have and
-modify it a little bit.  We can add "weighing the bags" at the end of
-that set of instructions.  And that gives us a number and we can use
-that number with plus to build a sum.  So that is "transduce".
+bags.  So it is cool.  We can take the process that we already had,
+and modify it a little bit.  We can add "weighing the bags" at the end
+of that set of instructions.  And that gives us a number, and we can
+use that number with plus to build a sum.  So that is "transduce".
 
 The other thing we can do is go to a completely different context now.
 So we have some channels.  We are going to be sending pallets of
@@ -508,9 +517,10 @@ end on a continuous basis.
 But the critical thing here is that these things are not
 parameterized.  They are not "I am a thing that you can tell me later
 ...  you are going to tell me if it is trolleys or conveyor belts".
-This is the exact same process bags I defined here, this concrete
-thing, being reused in a completely different context.  So this is
-concrete reuse, not parameterization.
+This is the exact same process bags I defined here [on previous
+"Creating Transducers" slide], this concrete thing, being reused in a
+completely different context.  So this is concrete reuse, not
+parameterization.
 
 So we can use transducers on channels.  The channel constructor now
 optionally takes a transducer, and it will transduce everything that
@@ -617,7 +627,7 @@ slide title: Many list fns can be defined in terms of _foldr_
 ```
 
 So one of the fundamental things that the Bird paper and the work that
-preceded it talk about is the relationship between these lists
+preceded it talk about is the relationship between these list
 processing operations and fold.  In fact, there is a lot of
 interesting mathematics that shows that they are the same thing.  That
 you can go backwards and forwards between a concrete list and the
@@ -627,10 +637,10 @@ other.
 So many of the list functions that we have can be redefined in terms
 of fold.  There has already been a definition of "map" in several
 talks here, I think, but the traditional definition of "map" says: if
-it is empty, return empty sequence.  If you are getting a new input,
-cons that input onto the result of mapping to the rest of the input.
-It is recursive and calls itself.  But map does that, filter does
-that, mapcat does that.  They all sort of have these structures.
+it is empty, return an empty sequence.  If you are getting a new
+input, cons that input onto the result of mapping to the rest of the
+input.  It is recursive and calls itself.  But map does that, filter
+does that, mapcat does that.  They all sort of have these structures.
 
 But filter is a little bit different.  It has a predicate inside.  It
 has a conditional branch, and then it recurses in two parts of the
@@ -681,7 +691,7 @@ So it ends up that you can similarly define these functions in terms
 of "foldl".  And "foldl" is just left reduce.  And here are some
 what-if definitions of "map" and "filter", and we added "mapcat", that
 are left folds that use left reduce.  So the trade-off between left
-reduce and right reduce is that right reduce sort of puts you on the
+reduce and right reduce is: right reduce sort of puts you on the
 laziness path, and left reduce puts you on the loop path.  It ends up
 that the loop path is better and faster and more general for the kinds
 of things we want to apply this to, especially if we can get laziness
@@ -707,20 +717,31 @@ through.  It is very general.  That is mapping.  They get that.  We
 get that.  We are all human beings.  We understand the same thing.
 
 As programmers, we have mucked this up, because look at what is
-happening here.  "map" says: there is this fundamental thing you do to
-everything as it comes through.  "filter" says: there is this
-fundamental tiny thing you do to everything as it comes through.  And
-"mapcat" says: there is this fundamental tiny thing you do to
+happening here.  "map" says: there is this fundamental thing that you
+do to everything as it comes through.  "filter" says: there is this
+fundamental tiny thing that you do to everything as it comes through.
+And "mapcat" says: there is this fundamental tiny thing that you do to
 everything as it comes through.
 
 What is the problem?
 
+
+[Time 0:20:44]
+
+```
+slide:
+
+[ Same as previous slide, except with the three occurrences of "conj"
+having red arrows pointing to them from the new text in red: "We want
+to get rid of these". ]
+```
+
 conj!  conj is basically like saying "to the trolley", or "to the
 conveyor belt".  It is something about the outer job that is leaked,
-it is inside the middle of the idea.  Inside the middle of the idea of
-mapping is this conj.  It does not belong.  Inside the middle of the
-idea of filter is this conj.  It should not be there.  Same thing with
-mapcat.
+or it is inside the middle of the idea.  Inside the middle of the idea
+of mapping is this conj.  It does not belong.  Inside the middle of
+the idea of filter is this conj.  It should not be there.  Same thing
+with mapcat.
 
 This is specific stuff in the middle of a general idea.  The general
 idea is just take stuff out.  We do not want to know about conj.
@@ -760,26 +781,31 @@ So to turn those inner functions into transducers, we are just going
 to parameterize that conj.  We are going to parameterize the old
 fashioned way: with a function argument.  We are not going to have
 anything higher-order blah blah blah.  We are going to take an
-argument, which is the step.  So right in the middle body of this
-mapping -- this is the same as it was in the last slide.  This is
-where it said conj.  Now we say step.  We put that inside a function
-that takes the step.  So this is a function.  "mapping" takes the
-thing that you are going to map, label the baggage.  And it returns
-something that is a function that expects a step.  What are we doing?
-Putting stuff on conveyor belts.  What are we doing?  We are putting
-stuff on trolleys.  And it says, before I do that, I am going to call
-f on the luggage.  I am going to put a label on the luggage.  But I do
-not know about luggage anymore.  The step, you are going to tell me
-later.  What are we doing today?  Conveyor belts or trolleys?
-Conveyor belts, cool.  I got the rules, I understand how to do mapping
-and filtering and mapcatting.
+argument, which is the step.
+
+So right in the middle body of this mapping -- this is the same as it
+was in the last slide.  This is where it said conj.  Now we say step.
+We put that inside a function that takes the step.  So this is a
+function.
+
+"mapping" takes the thing that you are going to map, label the
+baggage.  And it returns something that is a function that expects a
+step.  What are we doing?  Putting stuff on conveyor belts.  What are
+we doing?  We are putting stuff on trolleys.
+
+And it says, before I do that, I am going to call f on the luggage.  I
+am going to put a label on the luggage.  But I do not know about
+luggage anymore.  The step, you are going to tell me later.  What are
+we doing today?  Conveyor belts or trolleys?  Conveyor belts, cool.  I
+got the rules, I understand how to do mapping and filtering and
+mapcatting.
 
 So same thing: filter.  And what is beautiful about this is: what is
 the essence of filtering?  Apply a predicate.  Then maybe you do this
 step, or maybe you do not.  There is no stuff here.  It is a choice
 about activity.  It is a choice about action.
 
-Same thing with concatenating, cat.  What does it do?  It basically
+Same thing with concatenate, cat.  What does it do?  It basically
 says: do this step more than once.  I am giving you an input that is
 really a set of things.  Do it to each thing.  And mapcatting is just
 composing map and cat.  Which it should be.  OK.
@@ -833,19 +859,21 @@ slide title: Transducers are Fully Decoupled
 + can transform input arg
 ```
 
-Transducers are fully decoupled.  They do not know what they are
+Transducers are _fully_ decoupled.  They do not know what they are
 doing.  They do not know what process they are modifying.  The step
 function is completely encapsulated.
 
 They have some freedom; they can call the step function not at all,
 once exactly per input, or more than once per input.  But they do not
 really know what it does, so that is what they are limited to doing:
-using it or not using it.  That is pretty much it, except they do have
-access to the input.  So when we said mapcat unbundle-pallet, the
-function we are supplying there is something that knows about pallets.
-It does not know about conveyor belts.  It does not know what the
-overall job is, but it knows about pallets.  It is going to know how
-to turn a pallet into a set of pieces of luggage.
+using it or not using it.
+
+That is pretty much it, except they do have access to the input.  So
+when we said mapcat unbundle-pallet, the function we are supplying
+there is something that knows about pallets.  It does not know about
+conveyor belts.  It does not know what the overall job is, but it
+knows about pallets.  It is going to know how to turn a pallet into a
+set of pieces of luggage.
 
 There is a critical thing about how they use that step function that
 they have been passed, and it goes back to that successor notion I
@@ -874,7 +902,7 @@ non-food? surrounding that, and unbundle-pallet surrounding that. ]
 ```
 
 So let us talk a little bit about the backwards part, because this is
-a frequent question I get.  What did you do?  "Does transducers change
+a frequent question I get.  What did you do?  "Do transducers change
 comp?" is the first thing.  They ruin comp, or something like that.
 
 And so what we have to do is look at what transducers do.  A
@@ -946,31 +974,33 @@ slide title: Transducer Types, Thus Far
 So the other thing that was sort of interesting was ...  I started
 talking about transducers, and a lot of people in Haskell were trying
 to figure out what the actual types were, because I had shorthand in
-my blog post and I am not going to get into that right now, except to
-say that I think it is a very interesting type problem and I am very
-excited to see how people do with it in their various languages.  I
-have seen results that were sort of, "It works pretty well" to "Man,
-these types are killing me", depending on whether the user's type
-system could deal with it.
+my blog post.
+
+And I am not going to get into that right now, except to say that I
+think it is a very interesting type problem, and I am very excited to
+see how people do with it in their various languages.  I have seen
+results that were sort of, "It works pretty well" to "Man, these types
+are killing me", depending on whether the user's type system could
+deal with it.
 
 But let us just try to capture what we know so far graphically, and
 somebody who reviewed these slides for me said these should have been
-subscripts, but computers are so hard to use.  I could not switch them
+subscripts.  But computers are so hard to use, I could not switch them
 in time.  So they are superscripts.
 
 But the idea is that if you are trying to produce the next process N,
-you must supply the result from step N-1 as the input.  If you try to
-model this in your type system saying R to R, that is wrong.  Because
-I can call the step function 5 times, and then on the 6th time, take
-the return value from the first time and pass it as the first thing.
-That is wrong.  So you have got to make the type system make that
-wrong.  So figure that out.
+you _must_ supply the result from step N-1 as the input.  If you try
+to model this in your type system saying R to R, that is wrong.
+Because I can call the step function 5 times, and then on the 6th
+time, take the return value from the first time and pass it as the
+first thing.  That is wrong.  So you have got to make your type system
+make that wrong.  So figure that out.
 
 Also, if you make the black box and the black box the same thing, that
-is also arbitrarily restrictive.  You can have a state machine that
+is also arbitrarily restrictive.  You could have a state machine that
 every time it was given X, returned Y.  Every time it was given Y,
 returned Z.  Every time it was given Z, returned X.  That is a
-perfectly valid step function.  It has 3 separate input types and 3
+perfectly valid step function.  It has 3 _separate_ input types and 3
 separate output types.  It only happened at particular times.  There
 is nothing wrong with that state machine.  It is a perfectly fine
 reducing function.  It may be tough to model in a type system.  And do
@@ -982,7 +1012,7 @@ So seems like a good project for the bar, later on.
 
 [Audience laughter]
 
-But the thing we are capturing here is that the new step function
+But the thing that we are capturing here is that the new step function
 might take a different kind of input.  It might take a B instead of an
 A.  Now, our first step does that.  It takes a pallet and returns a
 set of pieces of luggage, but each step returns a piece of luggage.
@@ -1013,7 +1043,7 @@ A transducer that is running on a channel has got an arbitrary amount
 of stuff coming through.  A transducer on an event stream has an
 arbitrary amount of stuff coming through.
 
-But sometimes you want either the reducing process or somebody says
+But sometimes you want either the reducing process, or somebody, says
 "Whoa!  I have had enough.  I do not want to see anymore input.  we
 are done.  I want to say we are done now, even though you may have
 more input".
@@ -1061,7 +1091,7 @@ So you can say, is the reduced thing reduced?  That will always return
 true.  And you can deref a reduced thing and get the thing that is
 inside it.
 
-This is not the same thing as "maybe".  Because "maybe" also wraps the
+This is not the same thing as "Maybe".  Because "Maybe" also wraps the
 other things that are not reduced.  Or "either", or all of those other
 boxy kind of things.  So we do not do that.  We only wrap when we are
 doing this special termination.
@@ -1137,8 +1167,8 @@ is OmniGraffle.
 
 So we can have a process that takes some black box at the prior step
 and an input and returns a black box at the next step, or maybe it
-returns a reduced version of that.  So one of those two things could
-happen.  Vertical bar is "or" [|].
+returns a reduced version of that.  So one of those two things can
+happen.  Vertical bar [|] is "or".
 
 And it returns another step function that similarly can take a
 different kind of input, a black box, returns a black box or a reduced
@@ -1175,28 +1205,31 @@ Each transducer that needs state, must create it.
 So examples of sequence functions that need state are take,
 partition-all, partition-by and things like that.  They are counting,
 or they are accumulating some stuff to spit it out later.  Where is
-that going to go?  And it has to go inside the transducer object.
-They have to make state.  And there is some rules about that.  If you
-need state as a transducer author, you have to create it every time
-uniquely.  And again, every time you are asked to transform a step
-function.  So anew you are going to create state every time you
-transform a step function.
+that going to go?
+
+And it has to go inside the transducer object.  They have to make
+state.  And there is some rules about that.  If you need state as a
+transducer author, you have to create it every time uniquely.  And
+again, every time you are asked to transform a step function.  So anew
+you are going to create state every time you transform a step
+function.
 
 That means that if you build up a transducer stack, some of which are
 stateful transducers, and you apply it -- not when you build it, no
 state exists then.  Now, after you have called comp, there is no
 state.  When you have applied it, you now have a new process step.
 But as we should be thinking about all transducer process steps,
-including the ones at the bottom, that may be stateful.  We do not
-know the very bottom process has not launched stuff into space.
+including the ones at the bottom, that may be stateful.  You do not
+know that the very bottom process has not launched stuff into space.
+So you should _always_ treat an applied transducer stack as if it
+would return a stateful process, which means you should not alias it.
 
-So you should always treat an applied transducer stack as if it would
-return a stateful process, which means you should not alias it.  What
-ends up happening in practice is: all of the transducible processes,
-they do the applying.  It is not in the user's hands to do it.  You
-pass around a transducer, and input to the job, the job applies the
-transducer to its process.  It gets a fresh set of state when it does
-that, and there is no harm.  But you do have to do this by convention.
+What ends up happening in practice is: all of the transducible
+processes, they do the applying.  It is not in the user's hands to do
+it.  You pass around a transducer, and input to the job, to the job.
+The job applies the transducer to its process.  It gets a fresh set of
+state when it does that, and there is no harm.  But you do have to do
+this by convention.
 
 
 [Time 0:36:36]
@@ -1238,24 +1271,25 @@ slide title: Completion
   that does not take an input
 ```
 
-I talked before completion.  So we have the idea of early termination.
-The other idea that transducers support is completion.  Which is that,
-at the end of input, which may not happen.  There will be plenty of
-jobs that do not complete.  They do not have ends.  They are not
-consuming a finite thing like a collection.  They are processing
-everything that comes through a channel, or everything that comes
-through an event source.  There is no end.
+I talked before about completion.  So we have the idea of early
+termination.  The other idea that transducers support is completion.
+Which is that, at the end of input, which may not happen.  There will
+be plenty of jobs that do not complete.  They do not have ends.  They
+are not consuming a finite thing like a collection.  They are
+processing everything that comes through a channel, or everything that
+comes through an event source.  There is no end.
 
 But for things that have an end, there is a notion of completion,
 which is to say: if either the innermost process step wants to do
-something finally when everything is finished.  They can, or if any
-other transducers have some flushing they need to do, they can do it.
+something finally when everything is finished, they can.  Or if any of
+the transducers have some flushing they need to do, they can do it.
+
 So the process may want to do a final transformation on the output.
 Any stateful transducer, in particular a transducer like partition, it
 is aggregating to return aggregates.  You say, partition 5 and it
-collects five things and spits it out.  If you say we are done, it is
-got three things.  It wants to spit out the three things.  But you
-need to be able to tell it, "we have exhausted input".
+collects five things and spits it out.  If you say "we are done", and
+it has got three things, it wants to spit out the three things.  But
+you need to be able to tell it, "we have exhausted input".
 
 In order to do that, the way that is implemented in the Clojure
 implementation of transducers is that all the step functions must have
@@ -1283,11 +1317,11 @@ slide title: Completion Operation
   _partition-while_ are examples.
 ```
 
-We will talk about what that does, or how that gets used.  If the
-process itself, if the overall job has finished, it has exhausted
-input or it has a notion of being finished -- this is not bailing out
--- this is like there is nothing more to do.  There is no more input
-ordinarily.  It must call a completion operation exactly once on the
+So we will talk about what that does, or how that gets used.  If the
+process itself, if the overall job has finished, if it has exhausted
+input, or it has a notion of being finished -- this is not bailing
+out; this is like there is nothing more to do; there is no more input
+ordinarily -- it must call a completion operation exactly once on the
 accumulated value.  So there is no more inputs, I am going call you
 once with no input.  Do whatever you want.
 
@@ -1300,7 +1334,7 @@ like partition that has accumulated some stuff along the way, it can
 call the ordinary step function, and then call complete on the result.
 And that is how we accomplish flushing.
 
-There is just one caveat here, which is that it you are a stateful
+There is just one caveat here, which is that if you are a stateful
 thing like partition, and you have ever seen reduced come up, the
 earlier rule says you can never call the input function.  So you just
 drop whatever you have hanging around, because somebody bailed out on
@@ -1319,7 +1353,7 @@ So we can look at our types again in OmniGraffle 2000, the latest
 programming innovation.  And think about a reducing function as a pair
 of operations.  They will be different in each programming language.
 It is not really important.  In Clojure, it ends up a single function
-can capture both of these arities.  Whatever you need to do to take
+can capture both of these arities, but whatever you need to do to take
 two operations.
 
 The first one up there that takes no input is the completion
@@ -1368,9 +1402,9 @@ one thing it definitely does not know how to do is to make a black box
 out of nothing.  Cannot do it.  So all it can ever do is call down to
 the nested function.  So transducers must support arity-0, init, and
 they just define it in terms of a call to the nested step.  They
-cannot really do it but they can carry it forward so that the
-resulting transducer also has an init, if the bottom transducer has an
-init.
+cannot really do it, but they can carry it forward so that the
+resulting transducer also has an init, _if_ the bottom transducer has
+an init.
 
 I have talked about the arity overloading, and so here is an example.
 Plus [+] from Lisp.  This is old.  This is older than transducers.
@@ -1415,12 +1449,12 @@ In Clojure, we just used arity to do this.  A transducer enclosure
 then is just something that takes a reducing function and returns one,
 where a reducing function has these three arities.
 
-We have not actually called the reducing functions mapping and
-filtering and -ing this and -ing that.  We think that is an English-ism
-that is not going to carry over very well.  And we have available to
-us arity overloading because we do not have currying.  So map of f
-with no collection argument returns the transducer.  And we modified,
-so far, all of these sequence functions to do that.
+We have not actually called the reducing functions "mapping" and
+"filtering" and -ing this and -ing that.  I think that is an
+English-ism that is not going to carry over very well.  And we have
+available to us arity overloading because we do not have currying.  So
+"map" of f with no collection argument returns the transducer.  And we
+have modified, so far, all of these sequence functions to do that.
 
 
 [Time 0:43:09]
@@ -1442,7 +1476,7 @@ slide title: Filter, returning a Transducer
       (sequence (filter pred) coll)))
 ```
 
-So this is the final example of filter returning a transducer.  It
+So this is the final example of "filter" returning a transducer.  It
 takes a predicate and returns us a step modifying function, which
 takes a reducing function, which presumably has these three arities,
 and defines a function with three arities.
@@ -1476,9 +1510,11 @@ today, observables tomorrow, whatever the next day.  You just make it
 accept transducers, and every specific implementation of these things,
 you get for free.  And every recipe that somebody creates, that is a
 composition of those transducing operations, works with your thing
-right away.  That is what we want, right?  we are going to take Perlis
-and just say it is even better.  We want a hundred functions with _no_
-data structure.
+right away.
+
+That is what we want, right?  we are going to take Perlis and just say
+it is even better.  We want a hundred functions with _no_ data
+structure.
 
 * in reference to "It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures." - [Alan Perlis](http://www.cs.yale.edu/homes/perlis-alan/quotes.html)
 
@@ -1498,9 +1534,9 @@ slide title: Transducers
 ```
 
 So, transducers are context-independent.  There is tremendous value in
-that.  They are concretely reusable.  So someone can make this and not
-how you are going to use it.  That has tremendous value.  It is much
-stronger than parameterization.  Because you can flow it.
+that.  They are concretely reusable.  So somebody can make this and
+not how you are going to use it.  That has tremendous value.  It is
+much stronger than parameterization.  Because you can flow it.
 
 They support early termination and completion.  You can compose them
 just as easily as you can compose the other ones.  They are efficient
