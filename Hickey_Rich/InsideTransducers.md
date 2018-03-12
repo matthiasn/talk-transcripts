@@ -240,7 +240,7 @@ We have a helping function called completing, which will take any function that'
 
 All right.
 
-![00.32.44 screenshot](InsideTransducers/00.32.44.jpg)
+![00.44.43 screenshot](InsideTransducers/00.44.43.jpg)
 
 So let me just show you one more thing here, which is the real implementation of transduce is a little bit more involved, but I wanted to just introduce this because this is another piece of novelty in Clojure that people are wondering about what is this reduce init thing.
 
@@ -325,8 +325,6 @@ You can say, I know about how much of this much of the work to do. I had the sou
 ![00.44.42 Code](InsideTransducers/00.44.42.jpg)
 
 It's just all work.
-
-![00.44.43 screenshot](InsideTransducers/00.44.43.jpg)
 
 So, we can look at this.
 
