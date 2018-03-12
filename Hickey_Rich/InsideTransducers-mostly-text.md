@@ -18,8 +18,6 @@ Inside Transducers
    Rich Hickey
 ```
 
-![00.00.00 Inside Transducers](InsideTransducers/00.00.00.jpg)
-
 Hi.  Thanks.  Thanks for coming.  Thanks for using Clojure.  Every
 year this gets bigger, this event, and this community, and this thing
 that has become Clojure, and it could not be more exciting to see
@@ -61,8 +59,8 @@ also a little bit about some new stuff we are doing in core.async.
 ```
 slide title: Transducers
 
-[ Two photos, one of a close-up of a guitar's strings near the bottom
-of the fret board, and another of a speaker. ]
+[ Two photos, one a close-up of a guitar's strings near the bottom of
+the fret board, and another of a speaker. ]
 ```
 
 ![00.02.18 Transducers](InsideTransducers/00.02.18.jpg)
@@ -85,8 +83,6 @@ slide title: What are They?
 + so they can be used elsewhere
 + recasting them as _process transformations_
 ```
-
-![00.02.32 What are They?](InsideTransducers/00.02.32.jpg)
 
 So I am actually not going to spend a lot of time describing what
 transducers are, but just as a show of hands, how many people saw the
@@ -126,8 +122,6 @@ slide title: What Kinds of Processes?
 + _seeded left reduce_ is the generalization
 ```
 
-![00.04.00 What Kinds of Processes?](InsideTransducers/00.04.00.jpg)
-
 So when we talk about being able to modify a process, what kind of
 process?  I mean, there are a lot of processes with a lot of different
 shapes, and it ends with the transducers can transduce one particular
@@ -164,8 +158,6 @@ slide title: Why 'transducer'?
   of _transformations_
 ```
 
-![00.04.55 Why 'transducer'?](InsideTransducers/00.04.55.jpg)
-
 You know we like our words in Clojure.  So "reduce" means "to lead
 back".  I am not going to talk much about the ingestion part in the
 rest of this talk, but "transduce" means "to lead across", and that is
@@ -188,8 +180,6 @@ slide title: Transducers
 
   _return_ transducers
 ```
-
-![00.05.27 Transducers](InsideTransducers/00.05.27.jpg)
 
 In Clojure, moving forward, we are going to have transducers be
 returned by all the sequence functions that you are used to.  So "map"
@@ -219,8 +209,6 @@ slide title: Implementing Transducers
 + arity-2 is reducing step, you can morph input, call nested (or not),
   expand etc
 ```
-
-![00.06.27 Implementing Transducers](InsideTransducers/00.06.27.jpg)
 
 What I want to talk about today is sort of the insides.  Maybe
 hopefully you will leave this talk feeling comfortable being able to
@@ -288,8 +276,6 @@ slide:
 Code
 ```
 
-![00.09.21 Code](InsideTransducers/00.09.21.jpg)
-
 Everybody says I do not have enough code in my talks.  So now I have a
 big slide that says Code.
 
@@ -314,8 +300,6 @@ slide:
 	([result input]
 	  (rf result (f input)))))))
 ```
-
-![00.09.34 screenshot](InsideTransducers/00.09.34.jpg)
 
 That is a little bit tiny, isn't it?  I had this all worked out so the
 page downs take me to the next thing.  If I make this bigger, that is
@@ -391,8 +375,6 @@ slide:
 	    result))))))
 ```
 
-![00.12.09 screenshot - build slide](InsideTransducers/00.12.09.jpg)
-
 If we move on -- oh, look at that.  It is still working.  So the first
 example is "map", one-to-one.  "filter" is one of the sort of the
 three cases.  "map" is one-to-one.  That is sort of the easiest.
@@ -446,8 +428,6 @@ slide:
 		(ensure-reduced result)
 		result))))))))
 ```
-
-![00.13.36 screenshot - build slide](InsideTransducers/00.13.36.jpg)
 
 That is what we do.  I am not going to dig totally into "take", but I
 wanted to show you an example of a stateful transducer.  So "take" has
@@ -525,8 +505,6 @@ slide title:
       ([result input]
         (reduce rrf result input)))))
 ```
-
-![00.16.51 screenshot - build slide](InsideTransducers/00.16.51.jpg)
 
 "mapcat" is the other kind of transducer.  So we have seen one-to-one.
 We have seen elision, maybe we will not use the input.  We have seen
@@ -606,8 +584,6 @@ slide:
                ;; complete
                (rf result)))
 ```
-
-![00.20.09 screenshot - build slide](InsideTransducers/00.20.09.jpg)
 
 OK.  And the final and most complex one I want to show you is
 partition-by.  Again, I do not really want to have you think through
@@ -694,8 +670,6 @@ slide:
 		    ret))))))))))
 ```
 
-![00.23.49 screenshot - build slide](InsideTransducers/00.23.49.jpg)
-
 Then some tips on your actual step function.  So partition-by is also
 interesting in that it is incorporating input, and it is building this
 interim result.  It ends up every time it produces an output, it
@@ -733,8 +707,6 @@ slide:
       (xf ret))))
 ```
 
-![00.25.11 screenshot - build slide](InsideTransducers/00.25.11.jpg)
-
 All right.  Look, that was code.
 
 
@@ -748,8 +720,6 @@ slide title: Transducible Contexts
 + sequence
 + channels
 ```
-
-![00.25.17 Transducible Contexts](InsideTransducers/00.25.17.jpg)
 
 OK, so that is writing a transducer.  What about writing a
 transducible context?  What does that even mean?
@@ -788,8 +758,6 @@ slide title: Implementing a Transducible Context
 + iff you have a notion of 'done'
   + call arity-1
 ```
-
-![00.26.22 Implementing](InsideTransducers/00.26.22.jpg)
 
 So what do you need to do if you are implementing a transducible
 context?  You have to figure out some way to talk about what you are
@@ -854,8 +822,6 @@ slide title: transduce
   + _completing_ - helper that adds it
 ```
 
-![00.28.50 transduce](InsideTransducers/00.28.50.jpg)
-
 All right, so let us look inside a couple of these.  "transduce" is
 the most basic.  It is just like reduce, except it has a transducer
 and it transforms the reducing function.  It also has to add the
@@ -870,8 +836,6 @@ slide:
 
 Code
 ```
-
-![00.29.10 Code](InsideTransducers/00.29.10.jpg)
 
 Let us look at code.  Do I have code?  Oh, look - code.
 
@@ -889,8 +853,6 @@ slide:
       ;; completion
       (xf ret))))
 ```
-
-![00.29.13 screenshot](InsideTransducers/00.29.13.jpg)
 
 All right, code.  I talked too much about this before showing it.  OK,
 so what does "transduce" do?  It calls reduce.  All right, but before
@@ -960,8 +922,6 @@ slide title: transduce
   + _completing_ - helper that adds it
 ```
 
-![00.32.13 transduce](InsideTransducers/00.32.13.jpg)
-
 So we have a helping function called "completing", which will take any
 function that is just a plain reducing function, so it only has the
 2-arity: result, input, returning result.  And it will add arity-1
@@ -982,8 +942,6 @@ slide title: IReduceInit
   but would be breaking to change IReduce
 ```
 
-![00.32.43 IReduceInit](InsideTransducers/00.32.43.jpg)
-
 All right.
 
 
@@ -1001,6 +959,8 @@ slide:
 		(clojure.core.protocols/coll-reduce coll f init))]
       (f ret))))
 ```
+
+[TBD: The slide image below is wrong, I think.  Double check.]
 
 ![00.32.44 screenshot](InsideTransducers/00.32.44.jpg)
 
@@ -1048,8 +1008,6 @@ slide title: IReduceInit
   but would be breaking to change IReduce
 ```
 
-![00.34.44 IReduceInit](InsideTransducers/00.34.44.jpg)
-
 All right.  So IReduce did too much.  It has the no init flavor, which
 I really do not like, but I cannot just change it, because people have
 implemented it and they have code that depends on it.  So I cannot
@@ -1086,8 +1044,6 @@ slide title: sequence (LazyTransformer)
   a particular input
   + thus to satisfy pull, must loop
 ```
-
-![00.36.00 sequence](InsideTransducers/00.36.00.jpg)
 
 All right.  Another transducing context is "sequence".  We always had
 "sequence".  I do not know if anybody ever used it.  It basically was
@@ -1131,8 +1087,6 @@ slide title: Lazy vs Pushy
 + thus sequence not as lazy as lazy-seq
   but still usefully lazy in practice
 ```
-
-![00.37.52 Lazy vs Pushy](InsideTransducers/00.37.52.jpg)
 
 The other thing that is tricky about this is: it sort of changes the
 notion of what it means to be lazy.  And I do not really want to
@@ -1208,8 +1162,6 @@ slide title: educe / Eduction
   no caching, unlike seqs / sequence
 + Subsequent transductions combine work w/o intermediates
 ```
-
-![00.40.34 educe](InsideTransducers/00.40.34.jpg)
 
 OK.  I do not think I showed any -- yeah, I do not show you the code
 for that.
@@ -1305,8 +1257,6 @@ slide:
 Code
 ```
 
-![00.44.42 Code](InsideTransducers/00.44.42.jpg)
-
 It is just all work.
 
 
@@ -1315,8 +1265,11 @@ It is just all work.
 ```
 slide:
 
-TBD ?
+TBD
 ```
+
+TBD - should the slide image below be shown here, or several minutes
+earlier instead?
 
 ![00.44.43 screenshot](InsideTransducers/00.44.43.jpg)
 
@@ -1347,8 +1300,6 @@ slide:
   [xform coll]
   (Eduction. xform coll))
 ```
-
-![00.44.45 screenshot - build slide](InsideTransducers/00.44.45.jpg)
 
 That is what an educt does.  This is all of it right here.  So
 Eduction is just a deftype.  It implements Iterable.  Now the key
@@ -1388,8 +1339,6 @@ slide title: channels + transducers
 + new buffer semantics due to expansion
   if not full?, one input may add more than one item to buffer
 ```
-
-![00.46.12 channels](InsideTransducers/00.46.12.jpg)
 
 All right.  And finally, we have channels as the last example of
 transducible contexts.  This is really the whole point.  A lot of what
@@ -1466,8 +1415,6 @@ slide title: More...
 + functional stateful transducers?
 ```
 
-![00.49.20 More…](InsideTransducers/00.49.20.jpg)
-
 All right.  There are many places we want to take this.  Certainly I
 am hoping to get to the point where we are going to take the
 parallelism that we built for reducers and sort of bring it into this
@@ -1503,8 +1450,6 @@ slide title: more.async
 + all works-in-progress
 ```
 
-![00.50.20 more.async](InsideTransducers/00.50.20.jpg)
-
 Maybe we can talk about that last bit.
 
 All right.  I am running out of time, but I just want to take you
@@ -1525,8 +1470,6 @@ slide title: Channels become deref-able
 + timeout flavor of deref also supported
   will read _or_ timeout (not both)
 ```
-
-![00.50.40 Channels](InsideTransducers/00.50.40.jpg)
 
 And just all this stuff is in progress.  So if you are following along
 with the alphas, you are seeing some of this stuff happen.
@@ -1575,8 +1518,6 @@ slide title: Promise channels
 + all readers unblocked by first write
   always readable once written
 ```
-
-![00.52.05 Promise channel](InsideTransducers/00.52.05.jpg)
 
 The other thing that is coming are promise channels.  Promise is cool,
 but channels are cooler, because they support alt and things like
@@ -1633,8 +1574,6 @@ slide title: Endpoints
 
   return nil if no room / no item
 ```
-
-![00.53.42 Endpoints](InsideTransducers/00.53.42.jpg)
 
 If you think a little bit about that use case of being a supplier to a
 promise-chan, you get into the third category I wanted to talk about
@@ -1727,8 +1666,6 @@ slide title: pipeline
 + use pipeline instead
 ```
 
-![00.57.20 pipeline](InsideTransducers/00.57.20.jpg)
-
 I am not going to have enough time to talk about "pipeline", except to
 say "pipeline" is awesome.
 
@@ -1756,8 +1693,6 @@ slide title: pipeline
 + with user-specified parallelism (first arg)
 + always in-order results
 ```
-
-![00.58.07 pipeline - build slide](InsideTransducers/00.58.07.jpg)
 
 So there is a new set of three functions called "pipeline" that I
 think encapsulate a whole bunch of what is pretty hard work to get
@@ -1792,8 +1727,6 @@ slide title: pipeline
 + pipeline and pipeline-blocking take transducer
   (pipeline [n to-ch xf from-ch] ...)
 ```
-
-![00.59.03 pipeline - build slide](InsideTransducers/00.59.03.jpg)
 
 I am going to go five minutes late.
 
@@ -1846,8 +1779,6 @@ slide title: pipeline parallelism
 + can still be filtering or expansive
 ```
 
-![01.00.31 pipeline parallelism](InsideTransducers/01.00.31.jpg)
-
 Something to be aware of is the fact that because pipeline is
 parallelized.  Well, first of all, it is going to do the right thing.
 For async stuff, it is going to use go blocks, and for compute stuff,
@@ -1891,8 +1822,6 @@ slide title: pipeline-async
   result-ch and closes it
 ```
 
-![01.02.04 pipeline-async](InsideTransducers/01.02.04.jpg)
-
 All right.  "pipeline-async" I really will not have time to go into.
 It is a little bit different.  It does not take a transducer, because
 it needs a way to get an asynchronous result, and it uses channels to
@@ -1912,9 +1841,9 @@ slide:
 + keep it coming
 + more cool stuff on the way for 1.7
 + Thanks!
-```
 
-![01.02.33 Thanks](InsideTransducers/01.02.33.jpg)
+                            [Clojure logo]
+```
 
 To wrap up, how many people are using transducers?
 
