@@ -5,7 +5,7 @@ Talks by Rich Hickey
 * **[Spec-ulation (12/2016)](Spec_ulation.md)**
 * **[clojure.spec (11/2016)](ClojureSpec.md)**
 * **[Clojure, Made Simple (06/2015)](ClojureMadeSimple.md)**
-* **[Inside Transducers (11/2014)](InsideTransducers.md)**
+* **[Inside Transducers (11/2014)](InsideTransducers.md)** [[version with text for most slides]](InsideTransducers-mostly-text.md)
 * **[Transducers (09/2014)](Transducers.md)** [[version with text for most slides]](Transducers-mostly-text.md)
 * **[Implementation details of core.async Channels (06/2014)](ImplementationDetails.md)** [[version with text for most slides]](ImplementationDetails-mostly-text.md)
 * **[Design, Composition and Performance (11/2013)](DesignCompositionPerformance.md)** [[version with text for most slides]](DesignCompositionPerformance-mostly-text.md)
