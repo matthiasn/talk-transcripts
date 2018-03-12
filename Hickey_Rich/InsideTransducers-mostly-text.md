@@ -18,7 +18,7 @@ Inside Transducers
    Rich Hickey
 ```
 
-Hi.  Thanks.  Thanks for coming.  Thanks for using Clojure.  Every
+Hi.  Thanks.  Thanks for coming.  And thanks for using Clojure.  Every
 year this gets bigger, this event, and this community, and this thing
 that has become Clojure, and it could not be more exciting to see
 this, and see all the old friends here.  And a lot of new people have
@@ -32,11 +32,11 @@ fantastic.
 This year is especially exciting for me because, finally, someone has
 been able to come to the Conj who has been critical in Clojure's
 development.  I think it is very difficult to understand what it takes
-to make Clojure, and I am not talking about my own activity, but just
+to make Clojure.  And I am not talking about my own activity, but just
 what is involved in sort of dropping what you are doing, and spending
 your retirement money, and having your spouse watch all that and be
 like, "Go for it!" and be supportive of that, and to listen endlessly
-to minutia about Clojure and transducers, and all this stuff that
+to minutiae about Clojure and transducers, and all this stuff that
 nobody should ever have to listen to.
 
 [Audience laughter]
@@ -65,8 +65,8 @@ the fret board, and another of a speaker. ]
 
 ![00.02.18 Transducers](InsideTransducers/00.02.18.jpg)
 
-Transducers are great, because you could probably put a new picture up
-every time you talk about them, and it would still be a valid
+So transducers are great, because you could probably put a new picture
+up every time you talk about them, and it would still be a valid
 transducer.  Actually, these are much better examples of transducers
 than burritos are.
 
@@ -135,9 +135,10 @@ and you put it, and you add it to the end.  But it is just one
 example.
 
 And I think too much thinking about "map" and "filter" has been
-connected to collection processing or list processing or sequences for
-too long, and that is not the bottom.  I think the bottom is the step,
-not the stuff.  So seeded left reduce is the generalization of this.
+connected to collection processing, or list processing, or sequences,
+for too long, and that is not the bottom.  I think the bottom is the
+step, not the stuff.  So seeded left reduce is the generalization of
+this.
 
 
 [Time 0:04:55]
@@ -183,17 +184,17 @@ slide title: Transducers
 
 In Clojure, moving forward, we are going to have transducers be
 returned by all the sequence functions that you are used to.  So "map"
-of f is no longer -- I mean, it can still take a collection and do
-what it always did, but when it is not passed a collection, it returns
-a transducer.  So it returns a function that takes a step-like
-function, a reducing function, and returns one.  So "map" f returns a
+of f is no longer -- it can still take a collection and do what it
+always did.  But when it is not passed a collection, it returns a
+transducer.  So it returns a function that takes a step-like function,
+a reducing function, and returns one.  So "map" f returns a
 transducer.  "filter" with a predicate returns a transducer.  That
 transducer modifies the process.  A filtering transducer takes the
 inputs and maybe does not use them sometimes.  That is what filtering
 is.
 
 Mapping is taking the inputs and applying a function to them before
-you use them.  It is modifying a process.  And similarly "take",
+you use them.  It is modifying a process.  And similarly "take", and
 "mapcat", and whatever.  They all return transducers.  So "map" is not
 a transducer.  "map" of f returns a transducer.
 
@@ -222,17 +223,17 @@ function you have to return, and the one you can be expected to be
 passed, have three arities.
 
 The first one is optional, arity-0.  When it is used at the bottom, it
-is used to fabricate the initial result, so you can think of plus,
+is used to fabricate the initial result.  So you can think of plus,
 when you call it with no arguments, returns the identity for plus,
 which is zero.  And multiplication returns one, which is the identity
-value for multiplication.  If that is present, we want the transducers
-to preserve it.  So far, that is the only use of arity-0 in
-transducers, so we just flow it through.
+value for multiplication.  So if that is present, we want the
+transducers to preserve it.  So far, that is the only use of arity-0
+in transducers, so we just flow it through.
 
 Arity-1 is used for completion.  And if you do not have any completion
 to do -- a lot of transducers will not.  You do not have any
 accumulated state.  You are not keeping track of something as you go
-along like every step is its own world -- then you have nothing to do
+along, like every step is its own world -- then you have nothing to do
 with arity-1.
 
 In other words, somebody says, "We have this value.  Do you have
@@ -252,7 +253,7 @@ passing nil around, and nobody knows better from that.
 But one way to think about it is that there is this something that is
 standing in for the process.  It may be the result that is being built
 up.  It may be something the process needs in order to do the next
-step.  Whatever that is is passed along with a new input.  And your
+step.  Whatever that is, is passed along with a new input.  And your
 job as a transducer is to preserve the result so far.  You cannot mess
 with that.  And maybe you do something with the input.
 
@@ -276,12 +277,12 @@ slide:
 Code
 ```
 
-Everybody says I do not have enough code in my talks.  So now I have a
-big slide that says Code.
+So everybody says I do not have enough code in my talks.  So now I
+have a big slide that says Code.
 
 [Audience laughter]
 
-You can imagine -- no.
+And you can imagine -- no.
 
 [Audience laughter]
 
@@ -338,15 +339,15 @@ this arity is always just call the nested function.
 [Points at arity-1 definition on slide]
 
 When I am passed a result to complete, I have nothing to do.  "map"
-has no more work to do, so you just call the reducing function of the
+has no more work to do, so you just call the reducing function on the
 result.  Maybe they have something to do.  It is not up to you.
 
 [Points at arity-2 definition on slide]
 
-Then finally, there is the actual step.  And this is the essence of
-mapping is in this step.  Given a result and an input so far, and some
-function you want to transform, mapping is taking that function, the
-result so far, and passing a transformed input to that function.
+And then finally, there is the actual step.  And this is the essence
+of mapping is in this step.  Given a result and an input so far, and
+some function you want to transform, mapping is taking that function,
+the result so far, and passing a transformed input to that function.
 Calling f.  We imagined we were calling "map" with "inc".  "inc" would
 flow down here.  You increment the input before you use the wrapped
 reducing function.
@@ -375,10 +376,10 @@ slide:
 	    result))))))
 ```
 
-If we move on -- oh, look at that.  It is still working.  So the first
-example is "map", one-to-one.  "filter" is one of the sort of the
-three cases.  "map" is one-to-one.  That is sort of the easiest.
-"filter" needs to use the result or not.  Again we see arity-0.  So
+If we move on -- ooh, look at that.  It is still working.  So the
+first example is "map", one-to-one.  "filter" is one of the sort of
+the three cases.  "map" is one-to-one.  That is sort of the easiest.
+"filter" needs to use the result, or not.  Again we see arity-0.  So
 "filter" takes a predicate.  It says, if this predicate is true of the
 input, do the work; otherwise, do not.
 
@@ -389,7 +390,7 @@ are not supposed to use it, then give me nothing.  That is a data
 orientation.  That is not really what filtering is.  Filtering is
 ignoring, and that is exactly what we are going to do.
 
-Again the first two arities are the same as "map".  When we are given
+Again, the first two arities are the same as "map".  When we are given
 a result and an input, we say, "if the input satisfies the predicate,
 use it; call the nested reducing function with that input".  In other
 words, it is OK input.  It passes the predicate.  We use it.
@@ -429,24 +430,22 @@ slide:
 		result))))))))
 ```
 
-That is what we do.  I am not going to dig totally into "take", but I
-wanted to show you an example of a stateful transducer.  So "take" has
-some logic that crosses across execution.  As you go, you are only
-supposed to use so many of the inputs, and then you are not supposed
-to use anymore.  But I wanted to show you a few things just so you
-have some rules of thumb about creating a stateful transducer.
+So that is what we do.
+
+I am not going to dig totally into "take", but I wanted to show you an
+example of a stateful transducer.  So "take" has some logic that
+crosses across execution.  As you go, you are only supposed to use so
+many of the inputs, and then you are not supposed to use anymore.  But
+I wanted to show you a few things just so you have some rules of thumb
+about creating a stateful transducer.
 
 I think there have been some blog posts that sort of made a lot of
 stateful transducers.  The fact that we can do stateful transducers is
 great.  That does not make stateful transducers sort of the most
 important thing about transducers, or where the emphasis should be.
 
-But if you are to write a stateful transducer, some rules you need to
-follow are: Make sure you -- no, it was supposed to be "anew." I am
-just looking at one word and not the sentence.
-
 When you have a stateful transducer, if you have some local state,
-make sure you create it anew every time you are asking to modify the
+make sure you create it anew every time you are asked to modify the
 reducing function.  So you will note that this "let" that creates a
 volatile variable here is inside, is underneath, the call.  So every
 time you are asking to transform a new reducing function, there is a
@@ -458,18 +457,20 @@ state is independent.
 
 Like the others, there is no accumulation in "take".  "take" does keep
 track of a counter, but it is not accumulating values that need to be
-flushed out during completion, so both init and complete are just
-dummy implementations.  But there are some interesting things.  In
-particular, you can only be so lazy with a transducer.  So "take" 0
-cannot be lazy, because none of the logic of a transducer runs until
-an input has been supplied.  So there has to be some input supplied.
+flushed out during completion.  So both init and complete are just
+dummy implementations.
+
+But there are some interesting things.  In particular, you can only be
+so lazy with a transducer.  So "take" 0 cannot be lazy, because none
+of the logic of a transducer runs until an input has been supplied.
+So there has to be some input supplied.
 
 But here it is the basic logic of just saying, "Are we done yet?"  The
 one other thing you want to see here is that: "take" is something that
 aborts the process, so we are going to take until a certain point.
 Then we are not going to go anymore.  The way we do that is with
 reduced, which is something we already had in Clojure as a way of
-saying, "Stop reduction."  We are saying transduce and transduction
+saying, "stop reduction".  We are saying transduce and transduction
 and transducers are sort of an abstraction of reduction.  But we still
 use reduced as a way to signal that we want early termination of this
 process.
@@ -480,8 +481,7 @@ it more.  We just want to make sure it has just got a single wrapper.
 So ensure-reduced is another helper that is present I wanted to call
 your attention to.
 
-All right.  OK.  What just happened to me?  Here we go.  It is my
-cursor.  I have to use the right keys.  All right, so that is "take".
+All right, so that is "take".
 
 
 [Time 0:16:51]
@@ -510,15 +510,17 @@ slide title:
 We have seen elision, maybe we will not use the input.  We have seen
 early termination in "take".  And now we have expansion.
 
-What does "mapcat" do?  It says I have a function.  I am going to call
-it on something, and presume that that result is itself a collection,
-and I am going to integrate that collection in the result.  Now
-"mapcat" itself sort of streams the answer into a resulting sequence,
-but "mapcat" the transducer sort of concatenates into the transduction,
-which may be sequence building or something else -- whatever is
-produced by calling f on an input.  You call f on an input; you get a
-collection.  What you want to say is: all of that collection now gets
-incorporated as input.  That is what we want it to feel like.
+What does "mapcat" do?  It says: I have a function.  I am going to
+call it on something, and presume that that result is itself a
+collection, and I am going to integrate that collection in the result.
+
+Now "mapcat" itself sort of streams the answer into a resulting
+sequence, but "mapcat" the transducer sort of concatenates into the
+transduction, which may be sequence building or something else --
+whatever is produced by calling f on an input.  So you call f on an
+input; you get a collection.  What you want to say is: all of that
+collection now gets incorporated as input.  That is what we want it to
+feel like.
 
 So we get to see an example of transducer composition here.  "mapcat"
 is just a composition of "map" and "cat".  If we "mapcat" f, we get
@@ -529,33 +531,37 @@ sequences alone, but it certainly is one with transducers.
 So "cat" is a little bit different in that the "cat" function is a
 transducer.  It is not a function of some argument that returns a
 transducer.  "cat" _is_ a transducer, because it has nothing else to
-do.  So it just takes a reducing function, and takes its input and
-reduces it into the result.  So it is going to take a reducing
-function, and take input, which is presumed to be a collection, and
-incorporates it as input, which means it uses each piece of that
-collection as an argument to the reducing function.  We are just going
-to reduce, with the reducing function, all those inputs.
+do.
+
+So it just takes a reducing function, and takes its input and reduces
+it into the result.  So it is going to take a reducing function, and
+take input, which is presumed to be a collection, and incorporates it
+as input.  Which means it uses each piece of that collection as an
+argument to the reducing function.  We are just going to reduce, with
+the reducing function, all those inputs.
 
 [Time 0:18:59]
 
 We got one collection of five things as an input.  We took each of
 those fives things and used them as an input to the function we are
-wrapping.  That is what catenation is.  And so "cat" is a useful
-transducer.  Although, once you have "mapcat", you will probably end
-up using that alone, but you can use "cat" directly.  If you do not
-have a function that returns a collection -- you just have collections
--- you can just "cat" them if you are composing transducers, and so
-"cat" is kind of cool as a transducer.
+wrapping.  That is what catenation is.
 
-So this gives you expansion.  "cat" gives you the ability to say I had
-one input, and it yielded multiple inputs to the next stage, so it
-expanded.  We had one-to-one.  Filtering is potentially reductive.
-Taking is abortive, and catenation is expansive.  That is sort of the
-whole flavor of things.  We can be one-to-one.  We can have fewer
-things than we have got.  We can have more things than we have got.
-And we can not use everything that we get.
+And so "cat" is a useful transducer.  Although, once you have
+"mapcat", you will probably end up using that alone, but you can use
+"cat" directly.  If you do not have a function that returns a
+collection -- you just have collections -- you can just "cat" them if
+you are composing transducers, and so "cat" is kind of cool as a
+transducer.
 
-Oops.  I just lost my whole system here.  Let us just do this.
+So this gives you expansion.  "cat" gives you the ability to say: I
+had one input, and it yielded multiple inputs to the next stage.  So
+it expanded.
+
+So we had one-to-one.  Filtering is potentially reductive.  Taking is
+abortive, and catenation is expansive.  That is sort of the whole
+flavor of things.  We can be one-to-one.  We can have fewer things
+than we got.  We can have more things than we got.  And we can not use
+everything that we get.
 
 
 [Time 0:20:09]
@@ -588,12 +594,14 @@ slide:
 OK.  And the final and most complex one I want to show you is
 partition-by.  Again, I do not really want to have you think through
 and understand all the implementation of this, but I just want to
-point out a couple things.  Again, it has state, so we are going to
-create that state anew each time we are asked to wrap a reducing
-function.  This is the first case in which we are going to be building
-up some intermediate results that need to be flushed during
-completion, so this is the first transducer I am showing you that has
-an implementation body of any merit inside complete.
+point out a couple things.
+
+Again, it has state, so we are going to create that state anew each
+time we are asked to wrap a reducing function.  This is the first case
+in which we are going to be building up some intermediate results that
+need to be flushed during completion.  So this is the first transducer
+I am showing you that has an implementation body of any merit inside
+complete.
 
 So partition-by, if you do not recall, is a function that takes a
 function, and it calls it on every input.  And as long as it is
@@ -621,10 +629,10 @@ we are done.  What am I supposed to do with this stuff?"
 
 [Time 0:22:08]
 
-And the answer is, "now is your chance."  You get one more use of the
+And the answer is, "now is your chance".  You get one more use of the
 result.  You can use the 2-arity version as much as you need.  So it
 ends up that what is going to happen in partition-by is: it is going
-to take the collection that is been building up.  And you do not have
+to take the collection it has been building up.  And you do not have
 to see the details of that.  But it is going to pass it to the wrapped
 reducing function one more time with a value.
 
@@ -636,10 +644,10 @@ are going to make one more, or maybe you will reduce, but you are
 going to make a set of calls to the step function, the two-argument
 step function, in order to flush your results.  And you have to be
 aware of the fact that that may itself call return reduced saying, "I
-have seen enough from you.  I do not want anymore input."
+have seen enough from you.  I do not want any more input."
 
-Then, finally, you have to complete.  If you have been building up a
-result, and you are asked to complete, you can call the wrapped
+And then, finally, you have to complete.  If you have been building up
+a result, and you are asked to complete, you can call the wrapped
 reducing function as many times as you want, ordinarily, to flush out
 what you have been building up.  And then you must call the reduced
 argument on that, the reduced flavor or arity of this to complete with
@@ -670,27 +678,28 @@ slide:
 		    ret))))))))))
 ```
 
-Then some tips on your actual step function.  So partition-by is also
-interesting in that it is incorporating input, and it is building this
-interim result.  It ends up every time it produces an output, it
+And then some tips on your actual step function.  So partition-by is
+also interesting in that it is incorporating input, and it is building
+this interim result.  It ends up every time it produces an output, it
 clears the array it has been building up so far.  But it may, when it
-is passed that down, have the function it is wrapping say, "I have
+has passed that down, have the function it is wrapping say, "I have
 seen enough."  It returns reduced.
 
-At that point, we do not want to add anymore to the input.  In other
+At that point, we do not want to add any more to the input.  In other
 words, if you are accumulating, as soon as the function under you --
 the function you are transforming -- has told you it is done, it has
-seen enough -- in other words it is terminated early -- you should not
-accumulate anymore.  You should put yourself in a state so that when
-you are asked to complete, you say, "I do not have anything to flush,"
-because you know the function underneath you does not want to see it.
-It does not want to see any more from you.  It said, "I am done".  So
-that is what this bit does here.  So that would be typical of that.
+seen enough -- in other words it has terminated early -- you should
+not accumulate anymore.  You should put yourself in a state so that
+when you are asked to complete, you say, "I do not have anything to
+flush," because you know the function underneath you does not want to
+see it.  It does not want to see any more from you.  It said, "I am
+done".  So that is what this bit does here.  So that would be typical
+of that.
 
 Again, no one is forcing you to write stateful reducing functions or
-transformers, transducers.  They are tricky, so you can just use the
-ones other people write.  But if you are interested in doing it, these
-are the caveats and tips.
+transducers.  They are tricky, so you can just use the ones other
+people write.  But if you are interested in doing it, these are the
+caveats and tips.
 
 
 [Time 0:25:11]
@@ -738,7 +747,7 @@ everything coming from one collection gets transduced and then put in.
 "sequence" will take a collection and produce a lazy view of that
 collection, having pulled it through a transducer.
 
-And finally, there are channels that will accept transducers.
+And finally, channels will accept transducers.
 
 So these are all examples of transducible contexts.  Again, it is even
 less likely you are going to write your own transducible context, but
@@ -793,11 +802,12 @@ function.  And you just keep that to yourself.
 
 Then, every time you have a new input, maybe you are proactive.  You
 have got a collection in hand.  Your job is to reduce it, so you just
-have your stuff already.  Or maybe you are reactive.  A channel is
-reacting to stuff coming in from somewhere else.  Well, every time
-there is a new thing, you are just going to call the step function,
-the transform step function on it.  Maybe it is data source or it may
-be an event.
+have your stuff already.
+
+Or maybe you are reactive.  A channel is reacting to stuff coming in
+from somewhere else.  Well, every time there is a new thing, you are
+just going to call the step function, the transform step function, on
+it.  Maybe it is data source or it may be an event.
 
 If, and only if -- you do not have to do this -- if you have a notion
 of being done.  If you are processing a collection, you will have the
@@ -837,7 +847,7 @@ slide:
 Code
 ```
 
-Let us look at code.  Do I have code?  Oh, look - code.
+Let us look at code.  Do I have code?  Oh, look, code.
 
 
 [Time 0:29:13]
@@ -854,10 +864,11 @@ slide:
       (xf ret))))
 ```
 
-All right, code.  I talked too much about this before showing it.  OK,
-so what does "transduce" do?  It calls reduce.  All right, but before
-it calls reduce, so it supports the same form of reduce here, but it
-actually has different semantics of reduce.
+All right, code.  I talked too much about this before showing it.
+
+OK, so what does "transduce" do?  It calls reduce.  All right, but
+before it calls reduce, so it supports the same form of reduce here,
+but it actually has different semantics of reduce.
 
 Who knows what the semantics of reduce are when you call it with a
 collection and no initial value?
@@ -869,9 +880,11 @@ is one of the worst things I ever copied from Common Lisp was
 definitely the semantics of reduce.  It is very complex.  If there is
 nothing, it does one thing.  If there is one thing, it does a
 different thing.  If there is more than one thing, it does another
-thing.  It is much more straightforward to have it be monoidal and
-just use f to create the initial value.  That is what transduce does,
-so transduce says, "If you do not supply me any information, f with no
+thing.
+
+It is much more straightforward to have it be monoidal, and just use f
+to create the initial value.  That is what transduce does, so
+transduce says, "If you do not supply me any information, f with no
 arguments better give me an initial value."
 
 Note though, there is no requirement that you support that.  You do
@@ -881,20 +894,22 @@ good made up from nothing initial value.  Somebody needs to think
 about an initial value, or supply some inputs to your process to get a
 starting value.  Not everything can be made from nothing.  It is easy
 to come up with zero from nothing.  But it is not easy to come up with
-a channel from nothing or other kinds of things, event systems.  You
+a channel from nothing, or other kinds of things, event systems.  You
 do not have to support this.
 
 [Time 0:30:43]
 
-What will happen is if somebody gives you an f and it does not support
-this arity, it will not work.  That is OK.  But the normal form takes
-an initial value and a collection, so it is just the same shape as
-reduce, except it has this new first argument: transform.  This is the
-reason.  This different treatment of f is the reason why we did not
-just slap transform into reduce.  That is why we have transduce.
+So what will happen is if somebody gives you an f and it does not
+support this arity, it will not work.  That is OK.
 
-This is just what I said verbally before.  First take the function you
-are supposed to be using.  In the case of transduce, f is the step
+But the normal form takes an initial value and a collection, so it is
+just the same shape as reduce, except it has this new first argument:
+transform.  This is the reason.  This different treatment of f is the
+reason why we did not just slap transform into reduce.  That is why we
+have transduce.
+
+So this is just what I said verbally before.  First take the function
+you are supposed to be using.  In the case of transduce, f is the step
 function.  It is the reducing function.  It is just like reduce.
 Somebody gave you a step to use.  So you just transform it.  You have
 not told anybody else about this.
@@ -902,10 +917,12 @@ not told anybody else about this.
 "xf" is now a private transducer stack that has been constructed
 around this step function.  Then "transduce" just pawns off the job to
 reduce to do this work, and passes the initial value and the
-collection.  It gets a return value, but this is another piece that is
-different.  It must call completion.  Reduce does have a notion of
-being done.  This collection is going to become exhausted.  Therefore,
-it should call completion, so one last call.
+collection.
+
+It gets a return value, but this is another piece that is different.
+It must call completion.  Reduce does have a notion of being done.
+This collection is going to become exhausted.  And therefore, it
+should call completion, so one last call.
 
 This does imply, however, that the step function support arity-1,
 which again not all existing step functions do.
@@ -984,6 +1001,7 @@ represented the second part of IReduce.  Remember, I said Common Lisp,
 who knows what the no init value thing does in reduce?  Nobody.  And
 so to force everyone to keep implementing both, where the first one
 has these tricky semantics about no values and one value, was tough.
+
 So IReduceInit only has the version of reduce that takes an initial
 value, and it is implemented by collections.  It is going to come up
 later, because we are going to see "educe" use it.
@@ -1044,19 +1062,20 @@ slide title: sequence (LazyTransformer)
 All right.  Another transducing context is "sequence".  We always had
 "sequence".  I do not know if anybody ever used it.  It basically was
 just a way to explicitly say: I want to get a sequence out of this
-collection.  Now it takes a transformer and it has become
-substantially more interesting, because the collection might not be
-lazy, but the return value from sequence _is_, and its use of the
-transducer is also sort of lazy.  And we will see what "sort of" means
-in a second.
+collection.
 
-What is this step of "sequence"?  Essentially it is building a linked
-list.  So the transform step is sort of list append.  We do not really
-use list append, and usually list append is really expensive, so it
-must be doing some fancy modifying version that is efficient of list
-append that actually can add to the end of a list.  And that is what
-it does.  And that is what "lazy-seq" did as well.  "lazy-seq" just
-knew how to attach things to the end of the last cell.
+Now it takes a transformer and it has become substantially more
+interesting, because the collection might not be lazy, but the return
+value from sequence _is_, and its use of the transducer is also sort
+of lazy.  And we will see what "sort of" means in a second.
+
+So what is this step of "sequence"?  Essentially it is building a
+linked list.  So the transform step is sort of list append.  We do not
+really use list append, and usually list append is really expensive,
+so it must be doing some fancy modifying version that is efficient of
+list append that actually can add to the end of a list.  And that is
+what it does.  And that is what "lazy-seq" did as well.  "lazy-seq"
+just knew how to attach things to the end of the last cell.
 
 The tricky bit -- if you think about making a lazy list out of a
 transduced collection -- is the fact that that collection might
@@ -1131,7 +1150,7 @@ work.  If you have something that, in a single step, expands to
 something that consumes all of your memory, that is also not going to
 work.  In particular, it is not going to work because, even if your
 result produces something lazy, it is going to be eagerly consumed.
-_Nothing_ inside any of the transducers uses laziness at all because
+_Nothing_ inside any of the transducers uses laziness at all, because
 we want to be able to have these other semantics.
 
 So that is something to be aware of.  A lot of people initially trip
@@ -1142,7 +1161,7 @@ I still think this is a useful granularity for laziness.  I do not
 think people are consuming all their memory in a single step.  And
 otherwise, this gives you the best of both worlds, because you get
 very high performance and only as much caching as you need per step.
-And it still is sort of windowed, so I think it would work for most
+And it still is sort of windowed.  So I think it would work for most
 things, but it is something to be aware of.
 
 
@@ -1202,10 +1221,10 @@ uses IReduceInit.
 [Time 0:42:34]
 
 It is iterable.  So you can use it anywhere you need something that is
-iterable.  It is seq-able, so you can use it.  You can call "seq" on
-it, get a seq, and use it in existing code that is expecting lazy
-sequences.  And it is sequential, which is just a tag thing, because
-it is a sequence of things.
+iterable.  It is seq-able, so you can call "seq" on it, get a seq, and
+use it in existing code that is expecting lazy sequences.  And it is
+sequential, which is just a tag thing, because it is a sequence of
+things.
 
 The most important thing about eductions and "educe" is that every
 time you ask for a seq and walk through it, or every time you ask for
@@ -1221,28 +1240,28 @@ This is not really what this stuff is for.
 So the work happens with every use.  And this is one of those
 tradeoffs.  You probably do not want to hand around an eduction and
 have ten copies where the work is really expensive.  You should
-probably pour that into a collection and share the results.  But you
-may very well want to give away an eduction if it is pretty
+probably pour that into a collection and share the results.
+
+But you may very well want to give away an eduction if it is pretty
 inexpensive and you do not know how much of it is going to be consumed
 by each user.  Then it is worth doing.
 
-Also, the nice thing is you can have an eduction as long as you are
+Also, the nice thing is: you can have an eduction as long as you are
 not really ready to use it.  The cool thing about eductions is that if
 you subsequently transduce them, then the recipes fold together, and
 it is as if you put them, as if you composed both sets of transducers
 together.  And there is no intermediate stuff created.  And you can do
 that over and over again.
 
-So you can say: I know about how much of this much of the work to do.
-I had the source material, so I cannot just give you a transducer.  I
-know what the source was.  I had the initial set of transformations.
-But now I am handing it to another stage that I do not want to know
-about, and it does not want to know about me.  It knows it can
-transduce that some more, hand it to the next guy who can transduce it
-some more, and then finally someone can pour it into a collection,
-reduce it, or something like that.  And all those intermediate
-operations are going to fold together, and there will be _no_
-intermediate data created.
+So you can say: I know about this much of the work to do.  I had the
+source material, so I cannot just give you a transducer.  I know what
+the source was.  I had the initial set of transformations.  But now I
+am handing it to another stage that I do not want to know about, and
+it does not want to know about me.  It knows it can transduce that
+some more, hand it to the next guy who can transduce it some more, and
+then finally someone can pour it into a collection, reduce it, or
+something like that.  And all those intermediate operations are going
+to fold together, and there will be _no_ intermediate data created.
 
 
 [Time 0:44:42]
@@ -1287,10 +1306,8 @@ thing here is it just uses "sequence" to do that.  It implements
 Seqable.  It also used "sequence" to do that.  It implements
 IReduceInit.  It used "transduce" to do that.
 
-What is this ... weird?
-
-Oh, yeah.  It uses transduce to do that.  And it is a tag.  Sequential
-is just a tagging interface, so you see there is nothing inside this.
+And Sequential is just a tagging interface.  So you see there is
+nothing inside this.
 
 But other tricky aspects of this is: it is not a collection.
 Unfortunately, java.util.Collection is this giant interface, and
@@ -1302,7 +1319,7 @@ vastly better had they said, "I take an Iterable", because that is all
 they really need to know.
 
 So that is a little bit tricky, but we are enhancing, say, "vec", so
-that it will be able to quickly and efficiently with both.  Using
+that it will be able to quickly and efficiently with both ...  using
 "reduce" will build up a value quickly given an eduction.  And
 "eduction" just makes one of these things, so nothing to it.
 
@@ -1335,18 +1352,18 @@ thing comes by with some input.
 
 These are the opposite parts of programming.  They are opposite.  But
 transducers connect the two.  You do not need a different transducer.
-You can use the same transducer.
+You can use the same transducer.  So this is the point of transducers,
+is the fact that they cross across this.
 
-So this is the point of transducers, is the fact that they cross
-across this.  So if we look at transducing a channel, we need to think
-about channels as if they were a step function.  And it ends up in the
+So if we look at transducing a channel, we need to think about
+channels as if they were a step function.  And it ends up in the
 bottom of channels is this function that looks like this.  It takes a
 buffer and an input, and returns a buffer.  It is just a matter of
 sort of looking at that function and saying, "that is a reducing
 function".  "reduce" was not called inside channels because it does
-not have all the stuff.  It is getting one thing at a time, but there
-is this step, and it is called sequentially.  It follows all the rules
-I talked about before, so it is perfect.
+not have all this stuff.  It is getting one thing at a time.  But
+there is this step, and it is called sequentially.  It follows all the
+rules I talked about before, so it is perfect.
 
 [Time 0:47:43]
 
@@ -1370,10 +1387,11 @@ going to go through a transducer, and what could come out?
 
 More than one thing.  And it ends up that buffers, now the semantics
 are, if you are not yet full, you are going to accept one or more
-things.  And all the buffers have been modified to do that.  It ends
-up that that is, again, sort of a nice fit.  If you are going to
-consume all of memory, it will not work.  But otherwise, the notion --
-as soon as you have done that with one step, it is going to report
+things.  And all the buffers have been modified to do that.
+
+It ends up that that is, again, sort of a nice fit.  If you are going
+to consume all of memory, it will not work.  But otherwise, the notion
+-- as soon as you have done that with one step, it is going to report
 full until it drains all the way down to what its target was.
 
 So you cannot use fixed sized buffers, but on the other hand, I think
@@ -1459,7 +1477,8 @@ is very useful, again, for existing code.  How many people have code
 where the contract of the code is, "Give me something deref-able"?
 And you are kind of independent then of whether or not that thing is
 actually one of the reference types or a promise.  There are lots of
-things that are deref-able.  People have made new deref-able things.
+things that are deref-able.  And people have made new deref-able
+things.
 
 This would make it so that a channel is a valid thing to be
 deref-able.  That will have blocking semantics, so deref will be
@@ -1507,7 +1526,7 @@ that using a channel as a promise was not a pile of convention that
 you had to get right over and over again.
 
 So we are going to have a function called "promise-chan", which will
-return a promise channel.  it is a write-once read-many channel.  So
+return a promise channel.  It is a write-once read-many channel.  So
 as soon as somebody has written a value to it, that value will be
 returned over and over and over again, permanently.
 
@@ -1529,8 +1548,8 @@ everybody who is awaiting that value to succeed, not just the first
 one or the lucky one to succeed.  So that is a new semantic.  It is
 not actually a different semantic of the channel.  It is the semantic
 of the buffer that is used to create it, which is kind of neat.  In
-other words, we implement the promise channels just by making a new
-kind of buffer.  So that is coming.
+other words, we implemented promise channels just by making a new kind
+of buffer.  So that is coming.
 
 
 [Time 0:53:42]
@@ -1562,16 +1581,17 @@ way, or a more API-like way.  I think there are sort of two
 fundamental ways to use channels.
 
 One is you are building a flow network in your program.  So channels
-are the interface points of subsystem boundaries, and you say this
+are the interface points of subsystem boundaries.  And you say: this
 subsystem has an input channel, and that is where it gets its stuff
 from, as opposed to calling a function on it.  And it uses one or more
 output channels to distribute its results, as opposed to sort of
 somebody having called the function and getting the results.  That
-decoupling is import for building systems.  That is why we like
-channels, and you are going to compose a system out of channels
-orchestrating ... out of processes, orchestrating the channels to wire
-them together.  But you end up with a stable network of relationships
-that are used to flow data.
+decoupling is import for building systems.
+
+That is why we like channels, and you are going to compose a system
+out of channels orchestrating ... out of processes, orchestrating the
+channels to wire them together.  But you end up with a stable network
+of relationships that are used to flow data.
 
 But if you think about something like a promise-chan, or using a
 channel for RPC, that is not that kind of enduring relationship.  You
@@ -1607,10 +1627,10 @@ happen.
 As an API author, as an author of somebody who is using RPC with
 channels or filling promises, you are going to tell the user, "I am
 going to offer you a value."  Now that is a way to tell them quite
-clearly they better have room for it, or they better be willing to
-have it get dropped, because now you cannot get blocked.  If you call
-offer!, it will not block, which means you can use it in "go" blocks.
-It will not block.
+clearly: they better have room for it, or they better be willing to
+have it get dropped, because now _you_ cannot get blocked.  If you
+call offer!, it will not block, which means you can use it in "go"
+blocks.  It will not block.
 
 And this is definitely a _much_ better semantic for those kinds of
 scenarios.  You can say, "I will offer you values," and that is what
@@ -1631,7 +1651,9 @@ Nobody.  Right?  That is why it is called poll!.  If you put this in a
 loop, you are polling, and everyone will know because you just said,
 "poll!"  I am polling.  So I think this should be pretty rare, but I
 would not say that there is no good use for it, but there is no good
-use for polling, so neither of these block.
+use for polling.
+
+So neither of these block.
  
 
 [Time 0:57:20]
@@ -1658,9 +1680,8 @@ in the part that transfers values in and out of the buffer, which is
 the part that runs under the lock of the channel, which means that you
 will impede other activity on that channel for the duration of your
 transducer, which means we are back to the old, "do not do too much
-work in your channel transducer ... or in your callback function."  So
-now it is in your channel transducer.  All right, because of these two
-things.
+work in your callback function."  So now it is in your channel
+transducer, because of these two things.
 
 
 [Time 0:58:07]
@@ -1781,7 +1802,7 @@ transducer compatible format.
 Of course, right?  You should think, "Of course not".  That is not a
 problem.  They have utility in one context.  They do not in another.
 All right.  That is OK.  There should still be round holes even though
-that there are square pegs.
+there are square pegs.
 
 Because of that, your transducer is a "one operation at a time"
 transducer, no state allowed.  But they can still be filtering or
@@ -1807,9 +1828,11 @@ It is a little bit different.  It does not take a transducer, because
 it needs a way to get an asynchronous result, and it uses channels to
 do that.  It will soon tell you it is going to offer your results to
 the channel.  But basically it is going to give you your input and a
-place to put, a channel to put the result.  Then it collapses all that
-stuff and effectively streams it out the other side.  Between the
-three of these, that should cover all your pipelining needs.
+channel to put the result.  Then it collapses all that stuff and
+effectively streams it out the other side.
+
+So between the three of these, that should cover all your pipelining
+needs.
 
 
 [Time 1:02:33]
@@ -1829,7 +1852,7 @@ To wrap up, how many people are using transducers?
 
 [Audience response]
 
-All right.  How many people are using core.async?
+How many people are using core.async?
 
 [Audience response]
 
