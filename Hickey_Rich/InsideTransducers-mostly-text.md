@@ -960,10 +960,6 @@ slide:
       (f ret))))
 ```
 
-[TBD: The slide image below is wrong, I think.  Double check.]
-
-![00.32.44 screenshot](InsideTransducers/00.32.44.jpg)
-
 So let me just show you one more thing here, which is the real
 implementation of "transduce" is a little bit more involved, but I
 wanted to just introduce this because this is another piece of novelty
@@ -1257,23 +1253,7 @@ slide:
 Code
 ```
 
-It is just all work.
-
-
-[Time 0:44:43]
-
-```
-slide:
-
-TBD
-```
-
-TBD - should the slide image below be shown here, or several minutes
-earlier instead?
-
-![00.44.43 screenshot](InsideTransducers/00.44.43.jpg)
-
-So we can look at this.
+It is just all work.  So we can look at this.
 
 
 [Time 0:44:45]
