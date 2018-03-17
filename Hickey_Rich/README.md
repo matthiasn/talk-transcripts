@@ -5,11 +5,12 @@ Talks by Rich Hickey
 * **[Spec-ulation (12/2016)](Spec_ulation.md)**
 * **[clojure.spec (11/2016)](ClojureSpec.md)**
 * **[Clojure, Made Simple (06/2015)](ClojureMadeSimple.md)**
-* **[Inside Transducers (11/2014)](InsideTransducers.md)**
+* **[Inside Transducers (11/2014)](InsideTransducers.md)** [[version with text for most slides]](InsideTransducers-mostly-text.md)
 * **[Transducers (09/2014)](Transducers.md)** [[version with text for most slides]](Transducers-mostly-text.md)
 * **[Implementation details of core.async Channels (06/2014)](ImplementationDetails.md)** [[version with text for most slides]](ImplementationDetails-mostly-text.md)
 * **[Design, Composition and Performance (11/2013)](DesignCompositionPerformance.md)** [[version with text for most slides]](DesignCompositionPerformance-mostly-text.md)
 * **[Clojure core.async Channels (09/2013)](CoreAsync.md)** [[version with text for most slides]](CoreAsync-mostly-text.md)
+* **[The Functional Database (06/2013)](FunctionalDatabase.md)**
 * **[The Language of the System (11/2012)](LanguageSystem.md)** [[version with text for most slides]](LanguageSystem-mostly-text.md)
 * **[Deconstructing the Database (11/2012)](DeconstructingTheDatabase.md)**
 * **[The Value of Values (30 min version) (07/2012)](ValueOfValues.md)** [[version with text for most slides]](ValueOfValues-mostly-text.md)
