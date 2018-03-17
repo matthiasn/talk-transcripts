@@ -351,7 +351,7 @@ Reproducible results?
 How to use more than one db?
 ```
 
-![0:10:13 DB as Process](DB-as-Process.jpg)
+![0:10:13 DB as Process](FunctionalDatabase/DB-as-Process.jpg)
 
 But let us look at what this looks like.  So this is the traditional
 thing, where I am going to say the entirety of a database is just one
@@ -403,7 +403,7 @@ Where's computation?
 Separate from process!
 ```
 
-![0:12:01 Function DB Process](Functional-DB-Process.jpg)
+![0:12:01 Function DB Process](FunctionalDatabase/Functional-DB-Process.jpg)
 
 So we will contrast that with a functional database process, where
 obviously it is still the same thing.  It is accreting novelty.
