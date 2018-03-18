@@ -485,7 +485,7 @@ HTML processor can read any HTML.  If everything was a negotiated
 contract, it just simply would not work, so you really have to
 understand.  It is not to say that Protocol Buffers are bad.  I am not
 saying that.  But what I am saying is that there is a spectrum of
-choice and tradeoffs that is _really_ import	 ant here.
+choice and tradeoffs that is _really_ important here.
 
 It is as important as choosing a language when you pick your
 programming language.  But picking any programming language now leaves
