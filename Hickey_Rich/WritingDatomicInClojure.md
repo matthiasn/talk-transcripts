@@ -1626,7 +1626,7 @@ first place, because it is generative.
 
 And _you_ missed the talk, and it was awesome.
 
-[ "you" is probably Stuart Halloway, since a voice that sounds
+[ "you" is probably Stuart Halloway, since a voice that sounds like
 Stuart's responds: I was comfortably asleep, I am sure.]
 
 It was great.  Really great.
