@@ -1235,7 +1235,12 @@ This might be one of the academic research papers involved, found by
 searching for the list of author names from the page at the first of
 the two links above: Stonebraker Abadi Helland Madden Pavlo Zdonik
 
-https://dl.acm.org/citation.cfm?id=1325981 ]
+https://dl.acm.org/citation.cfm?id=1325981
+
+See also this Wikipedia page on H-Store, which later became VoltDB,
+and links to research articles in its "References" section:
+
+https://en.wikipedia.org/wiki/H-Store ]
 
 It is actually the same research that is behind Volt, which takes a
 similar approach, but Volt still combines reads and writes, where we
