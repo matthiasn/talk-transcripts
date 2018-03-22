@@ -157,7 +157,7 @@ correct       types                  state, flow
 agile     IDE refactoring     +       simplicity
           local concision         systemic generality
 
-robust         TBD?                 immutable data
+robust                              immutable data
                                   systemic generality
 ```
 
