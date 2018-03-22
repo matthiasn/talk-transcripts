@@ -620,25 +620,16 @@ code, and show you what it looks like using it.
 slide title: spec Leverage
 
              What                           How
-
+---------------------------------    ---------------------
 what are the building blocks?        declarative structure
-
 what invariants hold?                arbitrary predicates
-
 how do I check?                           validation
-
 what went wrong?                         explanation
-
 what went right?                         conformance
-
 docs please                                autodoc
-
 examples please                        sample generator
-
 am I using this right?                  instrumentation
-
 is my code correct?                   generative testing
-
 can I recombine pieces like this?          assertion
 ```
 
@@ -694,25 +685,16 @@ slide title: Declaration
 [Several boxes colored green in the slide are marked [green] below.]
 
              What                           How
-
+---------------------------------    ---------------------
 what are the building blocks?        declarative structure  [green]
-
 what invariants hold?                arbitrary predicates   [green]
-
 how do I check?                           validation
-
 what went wrong?                         explanation
-
 what went right?                         conformance
-
 docs please                                autodoc
-
 examples please                        sample generator
-
 am I using this right?                  instrumentation
-
 is my code correct?                   generative testing
-
 can I recombine pieces like this?          assertion
 ```
 
@@ -922,15 +904,11 @@ meaning out of something.
 slide title: spec Syntax with Regexes
 
 What                  How
-
+-------------------   -----
 order                 s/cat
-
 choice                s/alt
-
 optionality           s/?
-
 repetition            s/+
-
 optional repetition   s/*
 ```
 
@@ -1072,8 +1050,6 @@ it returns nil.  So this is pretty cool.  This allows you not to just
 talk about data, but to talk about functions.
 
 
-[TBD - continue double-checking here]
-
 [Time 0:30:16]
 
 ```
@@ -1085,9 +1061,8 @@ slide title: Function Semantics
         :fn (s/or
              :not-found #(nil? (:ret %))    <--- not found :nil
   two -----> :found #(<= (:ret %)
- categoric               (-> % :args :source count))))
- outcomes                   ^
-                            |
+categoric                (-> % :args :source count))))
+outcomes                    ^
                             |
                      ret is bound by size of input source
 ```
@@ -1098,7 +1073,7 @@ semantics of a function?  The semantics of a function are the
 relationship between its arguments and its return value.  This is
 fundamentally a dynamic thing.  You have to run the function to see.
 
-And in this case, I am going to specify the function index-of has two
+And in this case, I am going to specify that index-of has two
 categoric outcomes.  Either I can find something, or I can not find
 it.  Because I have the "or" form, I can give those things names.  And
 then I can say what each of those looks like.
@@ -1111,10 +1086,11 @@ implementation.  That could not possibly be true.  So these are
 predicates of the actual behavior of the system.
 
 Now, notice at this point that I have given you a painfully whirlwind
-tour of a bunch of things that you can say with spec, but I have not
-actually said what happens in your program when you say all of these
-things.  And the answer is: nothing.  You say all of those things, and
-now you have a set of descriptions of data sitting on your shelf.
+tour of a bunch of different things that you can say with spec, but I
+have not actually said what happens in your program when you say all
+of these things.  And the answer is: nothing.  You say all of those
+things, and now you have a set of descriptions of data in your system,
+sitting on your shelf.
 
 
 [Time 0:31:34]
@@ -1123,32 +1099,23 @@ now you have a set of descriptions of data sitting on your shelf.
 slide title: When?
 
              What                           How                When?
-
+---------------------------------    ---------------------   ---------
 what are the building blocks?        declarative structure   up to you
-
 what invariants hold?                arbitrary predicates    up to you
-
 how do I check?                           validation         up to you
-
 what went wrong?                         explanation         up to you
-
 what went right?                         conformance         up to you
-
 docs please                                autodoc            autogen
-
 examples please                        sample generator      up to you
-
 am I using this right?                  instrumentation      up to you
-
 is my code correct?                   generative testing     up to you
-
 can I recombine pieces like this?          assertion         up to you
 ```
 
-You can do stuff with those descriptions.  When can you do stuff with
-those descriptions?  It is absolutely up to you.  Which of the things
-do you want to do with those descriptions?  It is also absolutely up
-to you.
+And you can do stuff with those descriptions.  When can you do stuff
+with those descriptions?  It is absolutely up to you.  Which of the
+things do you want to do with those descriptions?  It is also
+absolutely up to you.
 
 So we are going to dive in and take a look at them.
 
@@ -1161,25 +1128,16 @@ slide title: Execution
 [Several boxes colored green in the slide are marked [green] below.]
 
              What                           How
-
+---------------------------------    ---------------------
 what are the building blocks?        declarative structure
-
 what invariants hold?                arbitrary predicates
-
 how do I check?                           validation  [green]
-
 what went wrong?                         explanation  [green]
-
 what went right?                         conformance  [green]
-
 docs please                                autodoc
-
 examples please                        sample generator
-
 am I using this right?                  instrumentation
-
 is my code correct?                   generative testing
-
 can I recombine pieces like this?          assertion
 ```
 
@@ -1254,7 +1212,7 @@ So it is nice to know how things went wrong,
 slide title: Conformance
 
 (s/conform
- :clojure.core.specs.alpha/defn-args
+ :clojure.core.specs/defn-args
  '(greet
     "Returns a friendly greeting"
     [your-name]  <--------------------------+
@@ -1267,15 +1225,17 @@ slide title: Conformance
 ```
 
 but you might also want to know how things went right.  So you can say
-"conform".  "conform" takes a spec and some data.  In this case the
+"conform".  "conform" takes a spec and some data.  In this case this
 data is actually program code.  And it tells you, and you can follow
 the red here, the red line, it tells you how the value matched.
+
+[The red line refers to the one beginning with :bs]
 
 Well the symbol "your-name" was in the :bs branch of the "or".  It was
 in the ":arity-1" branch of another "or".  It was in the :args branch
 of the :args branch, with a :sym branch.  Every one of those 5 things
-in red represents a point at which this could have been a valid
-function that looks different.  And the spec for "defn" is a pretty
+in red represents a point at which this thing could have been a valid
+function, but looked different.  And the spec for "defn" is a pretty
 rich thing.  There are a lot of different things that happen that are
 legal in "defn".  So it is a complicated spec.
 
@@ -1288,7 +1248,7 @@ call it on an a la carte basis.
 
 If you are an experienced Clojure programmer, think of this as
 destructuring on steroids.  This is data driven destructuring where
-you can sort of drive the destructuring anywhere you want.
+you can drive the destructuring anywhere you want.
 
 
 [Time 0:34:23]
@@ -1299,25 +1259,16 @@ slide title: Dev Assistance
 [Several boxes colored green in the slide are marked [green] below.]
 
              What                           How
-
+---------------------------------    ---------------------
 what are the building blocks?        declarative structure
-
 what invariants hold?                arbitrary predicates
-
 how do I check?                           validation
-
 what went wrong?                         explanation
-
 what went right?                         conformance
-
 docs please                                autodoc       [green]
-
 examples please                        sample generator  [green]
-
 am I using this right?                  instrumentation
-
 is my code correct?                   generative testing
-
 can I recombine pieces like this?          assertion
 ```
 
@@ -1372,10 +1323,10 @@ slide title: Example Data
    value
 ```
 
-I can also get sample data.  So you can say: well I am going to define
-that a grade is a number.  This is American.  At least the grading
-system that I had when I was in high school.  A grade is a number that
-is between 0 and 100.  And then I can say "exercise" grade for me.
+You can also get sample data.  So you can say: well I am going to
+define that a grade is a number.  This is American.  At least the
+grading system that I had when I was in high school.  A grade is a
+number between 0 and 100.  And then I can say "exercise" grade for me.
 
 When you ask Clojure to exercise a spec, it will generate examples
 that conform to that spec, and show you how they conform.  So the
@@ -1386,31 +1337,38 @@ interesting, because it can only do one thing, so there is nothing in
 that second value that is interesting in that case.
 
 
-[Time 0:00:00]
+[Time 0:35:24]
 
 ```
 slide title: Example Fn Invocations
 
 (s/exercise-fn #'letter-grade 25)
 
-[TBD - copy output]
+=> ([(0) :F] [(0) :F] [(1) :F] [(2) :F] [(0) :F]
+    [(0) :F] [(0) :F] [(10) :F] [(1) :F] [(3) :F]
+    [(52) :F] [(1) :F] [(0) :F] [(2) :F] [(11) :F]
+    [(26) :F] [(60) :D] [(60) :D] [(61) :D] [(68) :D]
+    [(94) :A] [(52) :F] [(63) :D] [(7) :F] [(50) :F])
+                ^    ^
+                |    |
+             args   return
 ```
 
 You can also, if you have spec'd a function, exercise that function.
 So here there is some function letter-grade that takes a numeric grade
 and returns a letter.  I can say exercise this function for me.  And
-spec can generate data that represents inputs to the function, call
-the function for you as many times as you want, then return the output
+spec can generate data that represent inputs to the function, call the
+function for you as many times as you want, and then return the output
 that results.
 
-And you could eyeball this and say: yes, 94 should be an :A, and 60
+And you could eyeball this and go: yes, 94 should be an :A, and 60
 should be a :D.  That all looks pretty good.
 
 Well once you have this ability to generate data, including function
 calls, in your system
 
 
-[Time 0:35:56]
+[Time 0:35:55]
 
 ```
 slide title: Robustness
@@ -1418,34 +1376,24 @@ slide title: Robustness
 [Several boxes colored green in the slide are marked [green] below.]
 
              What                           How
-
+---------------------------------    ---------------------
 what are the building blocks?        declarative structure
-
 what invariants hold?                arbitrary predicates
-
 how do I check?                           validation
-
 what went wrong?                         explanation
-
 what went right?                         conformance
-
 docs please                                autodoc
-
 examples please                        sample generator
-
 am I using this right?                  instrumentation   [green]
-
 is my code correct?                   generative testing  [green]
-
 can I recombine pieces like this?          assertion      [green]
-
 ```
 
 you have access to some powerful capabilities for making your system
 more robust.
 
 
-[Time 0:36:02]
+[Time 0:36:01]
 
 ```
 slide title: Instrumentation
@@ -1465,23 +1413,24 @@ In: [0 :port] val: :default fails spec: :user/port
   bad value        pinpoint invalid call                 failed
 ```
 
-So here is a scenario where I have a development time switch that says
-"start-server" is going to be instrumented.  I do not even know how it
-works.  And then I am going to call it.  I am going to call it
-incorrectly.  It turns out :port :default is not legal.  When
-instrumentation is turned on, I am going to get a specific error that
-says :port was the problem, that this spec failed, that the problem
-happened in this line of this module of my program.
+You can instrument your system.  So here is a scenario where I have a
+development time switch that says "start-server" is going to be
+instrumented.  I do not even know how it works.  And then I am going
+to call it.  I am going to call it incorrectly.  It turns out :port
+:default is not legal.  When instrumentation is turned on, I am going
+to get a specific error that says :port was the problem, that this
+spec failed, that the problem happened in this line of this module of
+my program.
 
 And this is not a static thing.  This is a running thing.  This is
-not: you are limited to what you can do at static time.  This is; you
+not: you are limited to what you can do at static time.  This is you
 are running your program and you can turn this up to 11 and say:
 something is going wrong here.  I do not understand how this other
 subsystem is using what I am calling.  Maybe I am not calling it
 correctly.
 
 
-[Time 0:36:47]
+[Time 0:36:46]
 
 ```
 slide title: Generative Testing
@@ -1495,7 +1444,7 @@ slide title: Generative Testing
  {:clojure.spec/problems
   [{:path [:ret], :pred nat-int?,   <--- find problem
     :val nil, :via [], :in []}],
-  :clojure.spec.test/args {"" "0"},  <--- shrink test case
+  :clojure.spec.test/args ("" "0"),  <--- shrink test case
   :clojure.spec.test/val nil,             to smallest repro
   :clojure.spec/failure :check-failed}}
 ```
@@ -1503,9 +1452,9 @@ slide title: Generative Testing
 Similarly, you can test automatically.  So you can say: please check
 this for me.  When you ask spec to check something for you, it is
 going to say: generate an arbitrary number of inputs, until you get
-tired.  I think we default to 100.  It is going to invoke the function
-for you.  And then it is going to check the return predicate to make
-sure the thing is structurally sound.
+tired.  I think the default is 100.  It is going to invoke the
+function for you.  And then it is going to check the return predicate
+to make sure the thing is structurally sound.
 
 And then it is going to check the function predicate to make sure that
 the thing's semantics are sound.  And if it finds a problem, it is
@@ -1514,12 +1463,8 @@ going to find some big hairy example that shows that your program is
 broken, and then it is going to heuristically shrink that down to a
 tiny example.
 
-And then it is going to check the function predicate to make sure that
-the thing's semantics are sound.  And if it finds a problem, it is
-going to shrink to a small repro before it goes back to you.
-
-So here it found a buggy , a deliberately buggy program, with a really
-tiny string, and the string "0".
+So here it found a bug in a deliberately buggy program, with a really
+tiny argument set of the empty string, and the string "0".
 
 
 [Time 0:37:33]
@@ -1554,28 +1499,19 @@ time footprint.
 ```
 slide title: Power
 
-[Entire "When?" column of table boxes are colored green in the slide.]
+[Entire "When" column of table boxes are colored green in the slide.]
 
-             What                           How                When?
-
+             What                           How                When
+---------------------------------    ---------------------   ---------
 what are the building blocks?        declarative structure   up to you
-
 what invariants hold?                arbitrary predicates    up to you
-
 how do I check?                           validation         up to you
-
 what went wrong?                         explanation         up to you
-
 what went right?                         conformance         up to you
-
 docs please                                autodoc           automatic
-
 examples please                        sample generator      up to you
-
 am I using this right?                  instrumentation      up to you
-
 is my code correct?                   generative testing     up to you
-
 can I recombine pieces like this?          assertion         up to you
 ```
 
@@ -1588,7 +1524,7 @@ conformance, in testing, and add exactly the parts of value that you
 want.
 
 
-[Time 0:38:27]
+[Time 0:38:26]
 
 ```
 slide title: Experience Report
@@ -1603,15 +1539,16 @@ slide title: Experience Report
 ```
 
 So where are we with this?  We are on Clojure alpha12 of Clojure 1.9.
-So we have done 12 alphas here.  I expect we will go beta soon.  So we
-will be beta soon.  People are already using it in production, but it
-is early days.  We are eager to get people's experience reports.
-There is just a ton of really cool stuff that people at Strange Loop
-are doing, and we would like to know how it works with spec.
+So we have done 12 alphas here.  I expect we will go beta soon.  So
+this will be beta soon.  People are already using it in production,
+but it is early days.  We are eager to get people's experience
+reports.  There is just a ton of really cool stuff that people at
+Strange Loop are doing, and we would like to know how it works with
+spec.
 
 Having said that, take advantage of the dynamic nature of spec.  This
 is not an all or nothing thing that you have to jump into with both
-feet and do everywhere.  Try doing little bits of it here and little
+feet and do everywhere.  Try using little bits of it here and little
 bits of it there.
 
 Be thoughtful about the danger areas.  And one danger area is
@@ -1638,7 +1575,7 @@ clojure.org/about/spec
 ```
 
 If you want to learn more about Clojure spec, you can see the web site
-clojure.org about spec, and I will be out in the hall.  We do not have
+clojure.org/about/spec, and I will be out in the hall.  We do not have
 time for questions here, but I will be out in the hall for the next
 couple of hours, and if you are interested in talking more, I would
 love to hear from you.
