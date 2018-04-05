@@ -83,7 +83,7 @@ ecosystem? Right, worked on any kind of tool? So, a lot of interesting tools in 
 there are a lot of interesting tools about editing, about debugging, about visualization of data, about 
 visualization of flow, people have built a lot of different things.
 
-<img src="DebuggingWithTheScientificMethod/0004.jpg" alt="" id="slide-0005">
+<img src="DebuggingWithTheScientificMethod/0005.jpg" alt="" id="slide-0005">
 
 And this talk is not about that. And I want to make it clear upfront that this talk is not anti-that. 
 I'm a huge proponent of using tools. That being said, if you do a Google search for debugging, I did this, 
@@ -166,7 +166,7 @@ actually saying the number of words in your hypothesis is going to go up or down
 of it is going to be focusing in on what the actual problem is. And then, you know, eventually - and I'm not 
 going to promise this happens after 2 or 5 iterations - but eventually, you have a hypothesis, sorry a theory:
 
-<img src="DebuggingWithTheScientificMethod/0014.jpg" alt="" id="slide-0015">
+<img src="DebuggingWithTheScientificMethod/0015.jpg" alt="" id="slide-0015">
 
 And a theory is a hypothesis that has been validated by predictions. This does not mean a theory is guaranteed to be true. It does mean, though, that it is true given all the information we have so far.
 And so this is another place where I see people go wrong, and I see this all the time: "I have 99 pieces 
@@ -228,9 +228,9 @@ But the important thing to realize here, is that science is more general-purpose
 
 So let's try that, we're going to go down this road, and I'm going to do this as I said in a very slapdash way.
 
-<img src="DebuggingWithTheScientificMethod/0024.jpg" alt="" id="slide-0025">
+<img src="DebuggingWithTheScientificMethod/0025.jpg" alt="" id="slide-0025">
 
-My hypothesis is "well, look, there's only 3 things here: 'why is this partial not working'". Well, `join` doesn't do what I expected, so it's a very fuzzy hypothesis, _or_ `partial` doesn't do what I expected, _or_ `def` doesn't do what I expected. Right, it has to be one of those 3 things; those are the only things there, it's a very small problem to check. 
+My hypothesis is "well, look, there's only 3 things here: 'why is this partial not working'". Well, `join` doesn't do what I expected, so it's a very fuzzy hypothesis, _or_ `partial` doesn't do what I expected, _or_ `def` doesn't do what I expected. Right, it has to be one of those 3 things; those are the only things there, it's a very small problem to check.
 
 And so, the experimental approach to this - I will propose a heuristic for problems like this, which is: you should do a bottom-up check from the REPL. Right: pick the form that's at the bottom, or on the inside, and check that:
 
@@ -339,9 +339,9 @@ So I'm gonna give you a quiz on this: if you have a bug, let's say you  want to 
 
 clojure.test / Cursive / prismatic schema /  Midje / Potemkin / nREPL / Leiningen / Leiningen plugins / core.type / test.generative ? Unless you think the bug is in one of these things, which one of these really stands out as "boy you really wouldn't want to have that in a repro case"? And the answer is: it's a trick question. You don't want any of these in your repro case, unless your theory is that, you know, "the shopping cart on my system doesn't work when i'm developing inside Cursive and using clojure.test", then your repro case shouldn't have anything to say about Cursive and clojure.test, and Colin and other people will thank you for that because he doesn't want to get bug reports about Cursive that about that kind of thing either. 
 
-So it's incredibly important to remove things that do not contribute to your hypothesis statement, and it's a freebie. Right I was saying earlier that you have to have this like mental model of the universe, to allow you to narrow down the things that aren't it, right, this is a freebie! In your bug these things are not it, so start by taking them out: make a really tiny thing that shows the  problem.
+So it's incredibly important to remove things that do not contribute to your hypothesis statement, and it's a freebie. Right I was saying earlier that you have to have this like mental model of the universe, to allow you to narrow down the things that aren't it, right, this is a freebie! In your bug these things are not it, so start by taking them out: make a really tiny thing that shows the problem.
 
-<img src="DebuggingWithTheScientificMethod/0034.jpg" alt="" id="slide-0035">
+<img src="DebuggingWithTheScientificMethod/0035.jpg" alt="" id="slide-0035">
 
 Now when you're making observations, what's that all about? Well  one thing you need to do is you need to understand all the outputs. If your system has outputs, right, if your system has 4 or 5 outputs that you understand, and then it has one that's unrelated to your current problem and you don't understand it: brakes screech. If you don't understand it, how do you know if it's  related to your problem or not? So you need to understand the outputs from your system, and you need to be suspicious of  correlations. Where's the bug? It's in the last five lines of code you wrote. Quite often - and so if anything correlates with  the problem with a failure appearing then you want to suspect that, and in order to  make observations you need good tools. You need debuggers, you need logging, you need metrics, all the kinds of things that let you - then basically all those things give you more outputs. They turn things that are blackbox into things that are  whitebox and it's amazing that we have this inversion that when you do a Google search for debugging, more than 50% of it is about just this one sub-bullet  of one sub-point. 
 
@@ -385,7 +385,7 @@ So I'll give you an example: we had a Datomic system that had a large query, hig
 
 And there's another important philosopher of debugging who can really help us out here in a couple of steps, and that is House. _(laughter)_ So  House says it's never Lupus, well in Clojure programming on the JVM, we have a kind of 'anti-Lupus'. We have the thing that it _always_ is, but it doesn't look like it at first,  and the thing that it always is is Garbage Collection.
 
-<img src="DebuggingWithTheScientificMethod/0044.jpg" alt="" id="slide-0045">
+<img src="DebuggingWithTheScientificMethod/0045.jpg" alt="" id="slide-0045">
 
 The actual bug is always Garbage Collection - just as in House "it's never Lupus", in Clojure and in Java it's always Garbage Collection. And there's several reasons for that: one is most  applications are not designed to deliberately induce OutOfMemory errors; because they're not designed to deliberately induce those, those code paths are not checked very much. So you're in kind of uncharted territory. 
 
@@ -398,8 +398,6 @@ And finally OutOfMemory-related problems tend to cascade. So always be suspiciou
 Now another piece of software-specific advice is to read the entire fracking manual:
 
 <img src="DebuggingWithTheScientificMethod/0046.jpg" alt="" id="slide-0046">
-
-TODO 40:10
 
 And so the thing is that a bug, almost by definition, starts out as an unknown unknown. Right? If you knew more about it you'd already be well on the way to fixing it. You don't know what's wrong, so you don't know which part of the manual you need to read. And this means that if you want a set of docs that are good for debuggers, that set of docs ideally is short and specification-like. Now this goes against other objectives, right: short docs may be very difficult to consume, they may not be very narrative, they may not be very tutorial; but they are a good place to say, you know, 'if I have to read the whole thing, I would like for it to be 50 pages long and not repeat itself". If I want to learn in a more, you know, tutorial kind of environment, I'd like for it to be a thousand pages long, and repeat itself in various ways, and anticipate problems that people have every day. So good docs for debuggers are specs. And we'll go back to the partial problem again: 
 
@@ -452,7 +450,7 @@ So that's the software specifics:
 
 And you know I've been told that six bullets is too many to remember at the end of a long day so I'll make that even simpler:
 
-<img src="DebuggingWithTheScientificMethod/0054.jpg" alt="" id="slide-0055">
+<img src="DebuggingWithTheScientificMethod/0055.jpg" alt="" id="slide-0055">
 
 ...and say let's back up and talk about science a little bit. It's really easy: know where you're going, right - remember Yogi Berra:  if you're heading into a particular direction, you have a much better chance of getting there; and then make well-founded choices. This is where developers, both beginner and expert, make the most frequent mistakes: they're under pressure, and something's not working, and you say - and we've all done it - and you say "you know what, I'm gonna try this". Stop and ask yourself: "why should I try that?" Stop and ask Plushy Cthulhu - you don't even have to talk to another person _(picks up a stuffed toy and pretends to talk to it)_, you could say: "Plushy Cthulhu, I had this idea about what's going wrong, and why my Keynote presentation didn't do what it was supposed to do during the middle of the talk, maybe you and I can sit down afterwards, I'm gonna talk you through, I'm gonna give you a hypothesis...".
 
