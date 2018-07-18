@@ -116,7 +116,7 @@ But here we're talking about possibly the whole process of building something. R
 
 ![00.07.45 Take apart place, participants - build slide](DesignCompositionPerformance/00.07.45.jpg)
 
-Having a design is a thing that let's two teams work independently or people work in two independent languages. Taking apart things is what facilitates the participants, the authors, as well as the participants, for instance the systems. By breaking things apart you're able to say, well, run this on this machine here, or run this in this tier, or we'll put that on the Web.
+Having a design is a thing that lets two teams work independently or people work in two independent languages. Taking apart things is what facilitates the participants, the authors, as well as the participants, for instance the systems. By breaking things apart you're able to say, well, run this on this machine here, or run this in this tier, or we'll put that on the Web.
 
 ![00.08.12 Information vs Mechanism](DesignCompositionPerformance/00.08.12.jpg)
 
