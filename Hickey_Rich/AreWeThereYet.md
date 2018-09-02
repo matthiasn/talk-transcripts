@@ -249,7 +249,7 @@ So they’re pretty well set up for doing parallel algorithms. I think persisten
 
 <img src="AreWeThereYet/00.43.50.jpg" alt="00:43:50 “It’s the performance, stupid!”" id="slide-38">
 
-Okay. I mean, I’m not going to lie to you. Right? [Imperceptible 43:53] performance models and everything else. They’re slower! They are slower, especially for serial use. And especially for writing. For reading, you will be very much surprised at how good the performance can be. Some of the good performance I see, I completely do not understand, but it’s there. Reading is actually pretty solid. Writing though is a problem. You have that path copy and everything else.
+Okay. I mean, I’m not going to lie to you. Right? Everybody's like "performance models!" and everything else. They’re slower! They are slower, especially for serial use. And especially for writing. For reading, you will be very much surprised at how good the performance can be. Some of the good performance I see, I completely do not understand, but it’s there. Reading is actually pretty solid. Writing though is a problem. You have that path copy and everything else.
 
 But, I am not a fundamentalist. I’m a pragmatist. So if there’s this F, right? And if no one can ever see what happens there, right? In other words, if it’s going to take something immutable and it’s going to produce something immutable and those are two discrete instances of time and everything else about this is atomic, then nobody cares what happens inside F. Okay?
 
@@ -324,11 +324,11 @@ You can still do a non-transaction scan. You can pan. You can look at this part 
 
 Yes?
 
-[Audience member] Do you think that all the procedures should agree on the order that transactions [imperceptible 56:50]?
+[Audience member] Do you think that all the procedures should agree on the order that transactions commit, or...?
 
 We’ll have to save that [Laughs].
 
-[Audience member] How far do you want to take [imperceptible 56:53], kind of? Because you would say for just normal memory operations you’d probably say, “No, they don’t need to agree.” So yeah.
+[Audience member] How far do you want to take relativity, kind of? Because you would say for just normal memory operations you’d probably say, “No, they don’t need to agree.” So yeah.
 
 No, they don’t need to agree. They don’t. But you could have multiple STMs. Right? Because STM sort of constitutes a little universe. 
 
@@ -400,19 +400,19 @@ Do we have time for questions? I know we’re running late. Okay. Any questions?
 
 [Rich Hickey] But I am inspired definitely by that, by those notions. That I think they’re really important for fixing the model we have. Yes?
 
-[Audience member 3] So, have you read a paper called “[Time, Clocks, and the Ordering of Events in a Distributed System](http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf)” by Lamport in ’78?
+[Joshua Bloch] So, have you read a paper called “[Time, Clocks, and the Ordering of Events in a Distributed System](http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf)” by Lamport in ’78?
 
 [Rich Hickey] Yes, I have. Yes.
 
-[Audience member 3] So, I think that that’s exactly the same set of ideas.
+[Joshua Bloch] So, I think that that’s exactly the same set of ideas.
 
 [Rich Hickey] Yes, it is. I mean, I think there’s lots of cool things. I think that’s interesting. I think the whole wave, what’s happening in wave right now, those operational transforms, are a really interesting way to think about this. I mean, there’s a lot more to this. For instance, the composability of transformations and things like that that are very interesting. But yes, Lamport is...
 
-[Audience member 3] There’s one fascinating difference between Lamport’s treatment of it and yours, is Lamport’s is very much communication-oriented. He says time advances when one entity communicates something to another. Whereas in your framework, time advances when the outputs of one function are used as the inputs to the next function. But, it’s really the same thing.
+[Joshua Bloch] There’s one fascinating difference between Lamport’s treatment of it and yours, is Lamport’s is very much communication-oriented. He says time advances when one entity communicates something to another. Whereas in your framework, time advances when the outputs of one function are used as the inputs to the next function. But, it’s really the same thing.
 
 [Rich Hickey] It is. I mean, the communications part gets tricky, I think. I like the fact that this is sort of communication-free. But maybe time constructs are different from communication. And I don’t know if they are different.
 
-[Audience member 3] Different words for the same thing.
+[Joshua Bloch] Different words for the same thing.
 
 [Rich Hickey] Yes. They may be. They may be.
 
