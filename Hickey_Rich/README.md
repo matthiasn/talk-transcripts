@@ -1,6 +1,7 @@
 Talks by Rich Hickey
 --------------------
 
+* **[Datomic Ions (9/2018)](DatomicIons.md)**
 * **[Effective Programs (10/2017)](EffectivePrograms.md)** [[version with text for most slides]](EffectivePrograms-mostly-text.md)
 * **[Spec-ulation (12/2016)](Spec_ulation.md)**
 * **[clojure.spec (11/2016)](ClojureSpec.md)**
