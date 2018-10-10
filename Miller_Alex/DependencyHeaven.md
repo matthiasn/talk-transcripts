@@ -5,11 +5,11 @@
 * **Video: [https://www.youtube.com/watch?v=sStlTye-Kjk](https://www.youtube.com/watch?v=sStlTye-Kjk)**
 
 [Time 0:00:00]
-
-[slide title: Dependency Heaven
+```
+slide title: Dependency Heaven
 
 Alex Miller, Cognitect
-]
+```
 
 So I am Alex Miller, and I have been working with Clojure for about
 seven years, and working _on_ Clojure for about four years at
@@ -26,23 +26,23 @@ So this talk is called "Dependency Heaven", which maybe is not a place
 that we will actually reach.  That may be an unattainable goal.
 
 [Time 0:00:37]
-
-[slide title: Dependency Hell
+```
+slide title: Dependency Hell
 
 Entire slide background is covered with yellow and orange flames.
-]
+```
 
 But it is really in opposition to dependency hell.  This was really
 just a fun opportunity to make the slide.
 
 [Time 0:00:43]
-
-[slide title: What are the problems?
+```
+slide title: What are the problems?
 
 + Version resolution
 + Artifact-focus
 + Getting started
-]
+```
 
 Which is something that a lot of developers describe as sort of the
 nuts and bolts of their daily existence of managing dependencies on
@@ -60,8 +60,8 @@ bucketed these into version resolution, our artifact focus, and
 getting started.
 
 [Time 0:01:33]
-
-[slide title: Version management and resolution
+```
+slide title: Version management and resolution
 
 + See: Rich's Spec-ulation keynote
 tbd link
@@ -71,7 +71,7 @@ tbd link
 + If software only grows, the newer version is always ok to use
 + Avoid breakage by making new names (-> accretion)
 + Use specs to make commitments
-]
+```
 
 So this is a one slide summary of Rich's Spec-ulation keynote from the
 Conj last year.  It is well worth your time to go watch the hour plus
@@ -109,6 +109,8 @@ more serious about, and would like other people to be more serious
 about, too.  Because breaking software sucks, and so we should just
 stop doing that.
 
+[Time: 0:03:32]
+
 So one way to avoid breakage is by making new names.  So we should not
 be afraid to make a new name for an existing function, give it some
 new name, and leave the old one there.  Existing consumers continue to
@@ -138,12 +140,12 @@ broken, in that it allows breakage.  You do not have to break things.
 You can just add instead.
 
 [Time 0:05:10]
-
-[slide title: Dependencies
+```
+slide title: Dependencies
 
 + Dependencies declared at the artifact level
 + Artifacts are stored in Maven repos
-]
+```
 
 So dependencies.  This is moving into the second part, around artifact
 focus.  Right now we declare dependencies at the artifact level.  We
@@ -165,26 +167,26 @@ distributed system that has to deal with updates and deletes, things
 like that.
 
 [Time 0:06:14]
-
-[slide title: The good
+```
+slide title: The good
 
 + Maven repo is an immutable append-only distributed store
 + Access to vast Java ecosystem of libraries
-]
+```
 
 The Maven repo system also gives us access to the vast Java ecosystem
 of libraries that already exist.  That is goodness.  We do not want to
 get rid of those things.
 
 [Time 0:06:24]
-
-[slide title: The bad
+```
+slide title: The bad
 
 + Clojure doesn't care at all about artifacts
 + Clojure doesn't need to be "built" to be useful
 + Yet we force all code to be bundled into artifacts
 + We have entangled dependency mgmt and artifact production
-]
+```
 
 The bad things.  Clojure does not actually care about artifacts.  When
 you start the JVM, you do not talk about artifacts.  You are building
@@ -229,14 +231,14 @@ we could get to, and we do not really care about the fact that they
 get packaged into artifacts.  They might be useful without that.
 
 [Time 0:08:46]
-
-[slide title: The ugly
+```
+slide title: The ugly
 
 + Our dependency declarations are lies
 + We rely on Maven to select versions to put in our uberjar or
   classpath
 + Version selections are subject to (broken) semantic version rules
-]
+```
 
 And the ugly part of it is that our dependency declarations are lies.
 They are actually not even true.  What we say when we specify a
@@ -262,13 +264,13 @@ to do that.  That is just a thing that is useful, and there are lots
 of cases for that.
 
 [Time 0:09:57]
-
-[slide title: Getting started
+```
+slide title: Getting started
 
 + As of Clojure 1.9, Clojure itself has multiple artifacts
 + A new user is now immediately confronted with how to build a
   classpath
-]
+```
 
 So moving on to the third set of problems: the getting started
 experience.  For a long time you have been able to just download the
@@ -290,13 +292,13 @@ out the door, and this is in the way of that.  That is the reason I
 have been working on it lately.
 
 [Time 0:11:00]
-
-[slide title: What are we going to do about it?
+```
+slide title: What are we going to do about it?
 
 + Working on a new contrib library tools.deps.alpha
 + A Clojure installer that uses tools.deps.alpha
 + System-specific installer packages (brew, apt, chocolatey, etc)
-]
+```
 
 So what are we going to do about it?  So we have been working on a new
 contrib library tools.deps.  Dot alpha initially.  I expect that
@@ -319,16 +321,17 @@ portion of this now exists and works, and will be released soon,
 whenever I have time to do all of that.
 
 [Time 0:12:03]
+```
+slide title: tools.deps.alpha
+```
 
-[slide title: tools.deps.alpha
-]
-
-[slide title: What are the high-level constraints?
+```
+slide title: What are the high-level constraints?
 
 + JVM needs a classpath
 + Have to do transitive dependency traversal
 + Download artifacts from Maven repos
-]
+```
 
 So tools.deps.alpha.  The high level constraints here are -- the sort
 of ground truth of what we have to deal with is that when we start the
@@ -341,8 +344,8 @@ be able to download artifacts from Maven repos.  So those are all
 things that we know we are going to have to do.
 
 [Time 0:12:28]
-
-[slide title: High-level process
+```
+slide title: High-level process
 
 +--------------+        +-------------+         +-----------+
 | Initial deps | =====> | Library map |  =====> | Classpath |
@@ -359,7 +362,7 @@ things that we know we are going to have to do.
              add extra deps           override path
              override deps
 	     default deps
-]
+```
 
 Sort of the high level process that we have settled on after a lot of
 discussion is: starting from an initial set of dependencies, applying
@@ -380,13 +383,13 @@ initial deps, expand the transitive dependency graph, resolve these
 version differences, and return this library map.
 
 [Time 0:13:25]
-
-[slide title: What are the use cases we currently see?
+```
+slide title: What are the use cases we currently see?
 
 + Add extra deps - add things to initial deps
 + Override deps - override selected version
 + Default deps - default version in the case where none is specified
-]
+```
 
 Three extra use cases that we have drilled into -- we looked at a lot
 of ways that people use Leiningen profiles, and different features out
@@ -419,13 +422,13 @@ that in depth, so I will table that one.
 
 
 [Time 0:14:54]
-
-[slide title: Library map
+```
+slide title: Library map
 
 + Represents the complete set of all resolved libraries
   + Key = a library (user's intent)
   + Value = a coordinate (version + impl to use) + path on disk
-]
+```
 
 So the output of all of this is a library map.  The library map has,
 as a key, the library -- the user's intent to use Compojure.  As the
@@ -436,13 +439,13 @@ doing resolve-deps is that it has actually got to download a jar, or
 make a path available somewhere on disk.
 
 [Time 0:15:28]
-
-[slide title: Making a classpath
+```
+slide title: Making a classpath
 
 + What do we need?  A classpath.
 + What is the classpath?
 + What are its characteristics?
-]
+```
 
 So making a class path.  Our goal here is to generate a class path,
 which is just a path separated string.  What is a class path?  A class
@@ -456,12 +459,12 @@ looked at.  And one of the things that you notice immediately when you
 look at it is:
 
 [Time 0:16:02]
-
-[slide title: Classpath order
+```
+slide title: Classpath order
 
 + Is classpath order important?
 + What use cases are actually important?
-]
+```
 
 a class path has an order.  It is a sequence of things.  And that
 order is important because that is the order that the JVM will look in
@@ -479,6 +482,8 @@ the same class in multiple jar files?  That is awful, right?  It is
 really hard to figure out, and it most commonly happens when you
 accidentally AOT compile a downstream dependency class into your jar
 file, or something like that.
+
+[Time 0:17:01]
 
 So I am going to contend that that is a bug, and we should not do
 that.  And if it does happen, it is a problem, not an intended use
@@ -506,14 +511,14 @@ the ordering in a class path, and instead try to provide other
 operations that give us that same functionality.
 
 [Time 0:18:20]
-
-[slide title: clj
+```
+slide title: clj
 
 + New script for invoking clojure.main
 + Goal: java <jvm-args> -classpath <cp> clojure.main <args>
 + clojure.main can run a repl, run a -main, run test, eval exprs
 + Main question: how do we construct <cp>?
-]
+```
 
 So around tools.deps we have a script.  The script is called clj.  The
 real point of clj is effectively to run clojure.main.  And you run
@@ -532,8 +537,8 @@ So that is all useful.  The main question here is: how do we construct
 the class path?
 
 [Time 0:19:16]
-
-[slide title: deps.edn
+```
+slide title: deps.edn
 
 + clj will use a deps.edn file in the current directory if it exists
 
@@ -543,8 +548,7 @@ the class path?
     org.clojure/core.async {:type :mvn :version "0.3.442"}
   }
 }
-
-]
+```
 
 And the first thing we need is some way to remember which dependencies
 we care about in the current context, the current directory.  And we
@@ -565,8 +569,8 @@ imagine there are other kinds of types there as well, like files, and
 maybe Github.  Things like that.
 
 [Time 0:20:18]
-
-[slide title: Aliases
+```
+slide title: Aliases
 
 + deps.edn can include aliases to cover any combination of
   resolve-deps args:
@@ -582,8 +586,7 @@ maybe Github.  Things like that.
     }
   }
 }
-
-]
+```
 
 deps.edn can also include aliases, to cover any combination of these
 different use cases that I talked about.  :override-deps, :extra-deps,
@@ -601,8 +604,8 @@ It could be done even at a sort of user wide level, rather than at a
 project level.
 
 [Time 0:21:01]
-
-[slide title: Coordinates
+```
+slide title: Coordinates
 
 + Library version coordinates contain a type indicator
 
@@ -612,7 +615,7 @@ project level.
 
 + This system is open and can be further extended to other artifact
   sources
-]
+```
 
 I mentioned coordinates a little bit.  The library version coordinates
 contain this :type indicator.  I have already mentioned most of this
@@ -620,15 +623,14 @@ stuff.  That :type flag ends up flowing down through some multimethods
 to an extensible system.
 
 [Time 0:21:17]
-
-[slide title: clj aliases
+```
+slide title: clj aliases
 
 + resolve-deps aliases can be used with clj -R (concatenated alias
   names):
 
 clj -R:bench:1.9
-
-]
+```
 
 So this Clojure script also takes some extra arguments that allow you
 to activate aliases that are used to build the class path.  And so
@@ -645,8 +647,8 @@ aware of out there.
 
 
 [Time 0:22:08]
-
-[slide title: Classpath overrides
+```
+slide title: Classpath overrides
 
 + Either specified using aliases with -C
 
@@ -655,8 +657,7 @@ aware of out there.
 clj -C:dev
 
 clj -Porg.clojure/clojure=/Users/alex/code/clojure/target/classes
-
-]
+```
 
 You can also specify these last minute class path overrides.  The
 overrides that you get in making the class path, to say I want to
@@ -671,8 +672,8 @@ something like that.
 
 
 [Time 0:22:44]
-
-[slide title: Classpath caching
+```
+slide title: Classpath caching
 
 + Both the intermediate libs map and the final classpath are cached
 
@@ -680,8 +681,7 @@ something like that.
   then cache file is used instead
 
 + In this way, can often avoid invoking JVM with tools.deps.alpha
-
-]
+```
 
 Another benefit we get here is that, one reason we built all of this
 stuff into aliases is to have names for single or combination of these
@@ -699,14 +699,14 @@ line that is going to start Java.
 
 
 [Time 0:23:33]
-
-[slide title: What clj does NOT do
+```
+slide title: What clj does NOT do
 
 + Compile
 + Package
 + Deploy
 + etc
-]
+```
 
 What clj does not do is AOT compile things.  It does not package
 things into jars.  It does not deploy things to Clojars.  It does not
@@ -728,8 +728,8 @@ best way is to do those kinds of things, and where they make sense.
 
 
 [Time 0:24:40]
-
-[slide title: Installer
+```
+slide title: Installer
 
 + Needed some way to get initial Clojure and tools.deps.alpha onto a
   machine
@@ -743,8 +743,7 @@ best way is to do those kinds of things, and where they make sense.
     directory
 
   + writes the classpath for using tools.deps.alpha itself
-
-]
+```
 
 We also need some way to get all of this stuff onto the actual system,
 and so we have a new Clojure installer.  This is a Java app that
@@ -776,13 +775,13 @@ you need to.  So this is sort of a bootstrapping operation.
 
 
 [Time 0:26:33]
-
-[slide title: brew et al
+```
+slide title: brew et al
 
 + brew formula for OS X (will be published to main brew tap):
 
 + Would welcome help making installers for other systems too
-]
+```
 
 I have written a brew formula for OS X.  I am on OS X, so that is what
 I care about most immediately, and what I can easily test.  And so
@@ -809,14 +808,14 @@ is, at least, the goal.
 
 
 [Time 0:27:54]
-
-[slide title: Future
+```
+slide title: Future
 
 + More work on different provider types
 + Additional command-line assistance
 + More installers
 + Integration with build tools
-]
+```
 
 So there is more work to do on the different provider types.  I have
 done some tinkering.  We have started to do some serious work around
@@ -840,8 +839,8 @@ I have already mentioned.  So those are all things for the future.
 
 
 [Time 0:29:01]
-
-[slide title: Thanks!
+```
+slide title: Thanks!
 
 + Coming soon:
   + https://github.com/clojure/tools.deps.alpha
@@ -850,7 +849,7 @@ I have already mentioned.  So those are all things for the future.
 + Contact:
   + alex.miller@cognitect.com
   + @puredanger
-]
+```
 
 And I think that is it.  That is all I have.  And these things do not
 exist yet, but they will as soon as I get a chance to make them.  And
