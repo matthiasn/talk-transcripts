@@ -846,9 +846,9 @@ I have already mentioned.  So those are all things for the future.
 slide title: Thanks!
 
 + Coming soon:
-  + [https://github.com/clojure/tools.deps.alpha](https://github.com/clojure/tools.deps.alpha)
-  + [https://github.com/clojure/clojure-install](https://github.com/clojure/clojure-install)
-  + [https://github.com/clojure/brew-install](https://github.com/clojure/brew-install)
+  + https://github.com/clojure/tools.deps.alpha
+  + https://github.com/clojure/clojure-install
+  + https://github.com/clojure/brew-install
 + Contact:
   + alex.miller@cognitect.com
   + @puredanger
