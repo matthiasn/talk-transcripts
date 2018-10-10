@@ -73,6 +73,9 @@ tbd link
 + Use specs to make commitments
 ```
 
+[ [transcript](https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/Spec_ulation.md)
+of Rich Hickey's Spec-ulation talk]
+
 So this is a one slide summary of Rich's Spec-ulation keynote from the
 Conj last year.  It is well worth your time to go watch the hour plus
 talk version of Rich talking about these subjects, much better than I
@@ -845,7 +848,7 @@ slide title: Thanks!
 + Coming soon:
   + https://github.com/clojure/tools.deps.alpha
   + https://github.com/clojure/clojure-install
-  + https://github.com/clojure/brew-installer
+  + https://github.com/clojure/brew-install
 + Contact:
   + alex.miller@cognitect.com
   + @puredanger
