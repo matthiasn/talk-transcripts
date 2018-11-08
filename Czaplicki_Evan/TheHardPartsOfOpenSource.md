@@ -38,10 +38,13 @@ experience with typed functional programming that was really joyful.
 [Time 0:00:40]
 ```
 slide title: 
-
 [new text added to previous slide:]
 
+Getting set up is easy
+
 Writing programs is fun
+
+Community is friendly
 ```
 
 And what I wanted to get out with Elm was like I wanted to take that
@@ -62,8 +65,10 @@ not, because you are dumb.  I did not relate to that.  I just had a
 nice time programming, and I wanted to share that nice time, in the
 same way that I like sushi, and I might say, "Hey, you should try it
 out.  It is pretty nice."  And someone might say, "No thanks".  Oh,
-OK.  That is the kind of interactions I wanted to have, because it was
-just about having this experience.
+OK.  You know?  That is the kind of interactions I wanted to have,
+because it was just about having this experience.
+
+[Time 0:01:45]
 
 So as I have talked to more open source developers, people who design
 languages, people who work on databases, people who work on machine
@@ -77,20 +82,30 @@ be at the technical stuff, ultimately you cannot control what is going
 to happen.  And if someone is going to yell, it is like "ooohhhh, I
 wish that did not happen."
 
-[Time 0:02:24]
-```
-slide title: 
-```
-
 So I have been doing this for about seven years now, and I have
 started to notice some patterns of behavior that I think probably a
 lot of people who have worked in open source with larger projects
 [tbd?] will relate to.
 
+[Time 0:02:35]
+```
+slide title: Pattern
+
+"Why don't you just ..."
+
+copy the JS API directly?
+
+release 0.18.1 now instead?
+
+derive JSON decoders?
+
+It is more complex than it sounds.
+```
+
 So one is this, "Why don't you just ..."
 
 And in Elm it is like, "Why don't you just get the JS API directly?"
-Or release an incremental version, instead of a bigger release.  Or,
+Or release an incremental version, instead of a bigger release?  Or,
 hey, can we derive JSON decoders?
 
 And the short answer in all of these cases is that it is more complex
@@ -102,10 +117,12 @@ have a problem with that, that is not obvious to you.
 
 So when you are doing design, "Why don't you just ..."  It is like
 there are all these different parties that we have to make things work
-for.  And I can do the best on my intuition, but ultimately even after
+for.  And I can do my best on my intuition, but ultimately even after
 I spend like a week trying to design something that way, I need to go
 out and show it to people, and see what objections they bring.  And
 then maybe do it with another design.
+
+[Time 0:03:32]
 
 So this "Why don't you just ..." is quite frustrating.  And one thing
 that happens is there are a lot of people who are new to the project.
@@ -123,16 +140,16 @@ said this in 2013."  And it is like, "Aaahhhh, yeah, I said that in
 2013.  Yeah."
 
 So one thing that is common is like, well if it is so much work, why
-don't you just delegate the work?  So this is a comment I got in real
-life, and the italics are from the person talking to me.
+don't you just delegate the work?  Right?  So this is a comment I got
+in real life, and the italics are from the person talking to me.
 
 [Time 0:04:31]
 ```
-slide title: 
+slide title: Pattern
+[new text added to previous slide:]
 
-"There's another way to deal with this that can improve the current
-situation and keep everyone (most of the people?) happy:
-_delegation_."
+There's another way to deal with this that can improve the current
+situation and keep everyone (most of the people?) happy: _delegation_.
 ```
 
 They said, "There is another way to deal with this.  Delegation."  And
@@ -140,17 +157,19 @@ then they go on to describe how delegation works, and what benefits it
 might have.  And I was like, "Oh, very interesting.  Yes.  I had not
 thought about that."
 
-[Time 0:00:00]
+[Time 0:04:44]
 ```
-slide title: 
+slide title: Pattern
+[new text added to previous slide:]
 
 "This _somebody_ can also be a "reverse proxy" who's gathering
 feedback."
 ```
 
-And they describe a person who can do all of this work, and this
-_somebody_, again, that is their italics, can also be a proxy who is
-gathering feedback, so you do not have to be in these discussions.
+And they describe a person who can do all of this work, and they say
+this _somebody_ -- again, that is their italics -- can also be a proxy
+who is gathering feedback, so you do not have to be in these
+discussions.
 
 So I was initially very upset about this.  So the unfiltered, in my
 own mind, version, was like [gestures as if holding a telephone up to
@@ -172,6 +191,8 @@ is actually a pretty reasonable assumption going on here, which is:
 "Free rice means you can take as much as you want."  The rice is free.
 I will take a lot of rice.
 
+[Time 0:06:02]
+
 And so does that imply that free labor means you can use as much as
 you want?  Well the labor is free.  But in fact, this is not how labor
 works.  If you do not pay for labor, you get less.  And so I think
@@ -187,8 +208,7 @@ even if you can work with anybody you want, there are still these
 limitations on who is going to be really effective in doing the right
 stuff.
 
-[Time 0:00:00]
-
+[Time 0:06:47]
 https://discourse.elm-lang.org/t/building-trust-what-has-worked/975
 
 So I wrote about that a little bit in this post.  Or no, sorry,
@@ -214,29 +234,33 @@ community.  And the post started out "F*** Clojure"
 "I say it with much admiration and respect to all the community
 members."
 
-And then they go on to say some criticisms, and talk about the
+And then they go on to say some criticisms, and talk about their
 relationship with women.  And it is quite a roller coaster of a post.
 
 But what is interesting besides sort of like it as a journal entry is
 that it gets a lot of engagement, right?  So 320 comments on the
 Reddit thread.  I am sure people talked about it in other contexts as
-well, where there would have been more comments.  And as someone who
-has been working on an open source project for a bunch of years now,
-enough people have told me that Elm is going to die next month that I
-am like, "I don't think they are right this time."
+well, where there would have been more comments.
 
-You know, like that fear does not speak to me any more, because I have
-the experience.  But there are other people in the community who do
-not have that same experience, and this can be like a scary thing.
-"Man, people are not liking this thing.  Are we doing something
-wrong?"  They feel like maybe it could be better.  They might get
-defensive.
+[Time 0:08:08]
 
-So in one of these 320 comments the creator of Clojure says, "I found
-out about this while sitting down to spend my weekend contributing to
-the Clojure ecosystem.  Time spent in lieu of spending time with my
-wife, having already spent my work week on other Clojure related
-stuff."
+And as someone who has been working on an open source project for a
+bunch of years now, enough people have told me that Elm is going to
+die next month that I am like, "I don't think they are right this
+time."  You know, like that fear does not speak to me any more,
+because I have the experience.
+
+But there are other people in the community who do not have that same
+experience, and this can be like a scary thing.  "Man, people are not
+liking this thing.  Are we doing something wrong?"  They feel like
+maybe it could be better.  They might get defensive.
+
+So in one of these 320 comments the creator of Clojure says:
+
+    "I found out about this while sitting down to spend my weekend
+    contributing to the Clojure ecosystem.  Time spent in lieu of
+    spending time with my wife, having already spent my work week on
+    other Clojure related stuff."
 
 And I relate to this a lot.  I have definitely written like, "Hey, I
 get that there are different viewpoints, but we can't yell our
@@ -244,13 +268,15 @@ viewpoints at each other."  And that was my Saturday.  And as you work
 over the course of the years, there can only be so many Saturdays that
 are like that before it starts to hurt you in larger ways.
 
+[Time 0:09:25]
+
 So Rich Hickey goes on to say:
 
-    Every time I have to process a diatribe like this, and its
+    "Every time I have to process a diatribe like this, and its
     aftermath, the effects on myself, my family, and my coworkers, I
     have to struggle back from "Why should I bother?", and every time
     it gets harder to justify to myself and my family that it's worth
-    the time, energy, and emotional burden.
+    the time, energy, and emotional burden."
 
 Now I have talked to some people about this post, and they thought
 different things stood out.  To me, this last part is what stands out,
@@ -544,6 +570,8 @@ So I want to start with a quote:
 Do people relate to that?  Holiday trips being stressful?  I feel
 that.  Or I struggle with that, at least.  I try to take a break, or
 whatever.
+
+[Time 0:24:07]
 
     "Great political, industrial, and financial crises carry this
     excitement into far wider areas of the population than ever
