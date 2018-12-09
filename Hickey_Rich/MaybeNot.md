@@ -869,3 +869,83 @@ those things, and they wrote really goofy predicates inside to try to
 reuse some stuff.
 
 [Time 0:35:55]
+
+Because you see, the other problem with not being able to reuse: it is
+a recipe for error.  If you have to define car, and I have to define
+car, maybe you will call it make and model, and maybe I will call it
+brand and model.  And now we have got no connection, where we
+absolutely should have had a connection, because we have had to
+restate the same ideas.
+
+So that is a context.  Another context which is quite common is a
+pipeline of information building.  So you think about ring request
+chains and things like that, where each handler can sort of adorn the
+request with more information, or to fill out default information.
+Things like that.  We have a bunch of handlers that work that way.
+Well what would the spec be for each stage?  Again, it is sort of like
+an explosion.
+
+What we want is a name for this overall idea of "this herd is coming
+through", but the herd may start small, and then I walk by with my
+sheep I added to the herd, and you added your sheep to the herd.  We
+are acquiring information.  Acquiring information should not be hard.
+And we were doing it already in Clojure, and Clojure programs are
+actually really good at both of these things, but spec was not as good
+as Clojure was in allowing you to talk about, orthoganally, the
+information set, the information schema, and the actual requirements
+and provisions of, for instance, stages in a pipeline.
+
+How many people have felt tension applying spec in these kinds of
+contexts?  Yeah.  Eventually, if you get to become -- you are doing
+more, you will feel this more.
+
+
+[Time 0:37:36]
+```
+slide title: Schemas are deep
+
++ can nest
+  + and thus roots potentially describe trees
++ attribute values can be collections
++ optionality specs should be deep
+```
+
+It is even harder than this, right?  Because the thing is, schemas
+nest.  You can have a schema that is an aggregate, and one or more of
+the things in the aggregate are themselves aggregates.  And this is
+where you truly realize that putting in aggregates is impossibly
+wrong.  Because essentially, schema means shape.  If I give you a
+schema that says "A B C D" and C and D are themselves "X Y Z", "FOO
+BAR BAZ", what is the shape?  It is not a four thing vector, is it?
+That shape described by that schema, which has pointers to other
+aggregates, describes a tree.  The shape of the thing is actually a
+tree.  And the thing you get passed will be a tree.  And the thing you
+return will be a tree.  It is deep.  And it means the optionality spec
+should be deep.
+
+Because you cannot talk about a tree only by putting annotations on
+the root.  There is no place for it.  If I said C has "X Y Z", and you
+need X, where are you going to put that in a definition of the top?
+You cannot.
+
+
+[Time 0:39:07]
+```
+slide title: Fixing it
+
++ split apart _schema_ - shape
++ from _selection_ - what's required / provided in a context
+```
+
+So we want it to be deep.  We want this to be deep.
+
+So like all design things, this is just: what was wrong?  Two things
+were combined that should not have been combined.  And how do you fix
+it?  You take them apart.  The rest of this -- that is all it is.  The
+whole thing is this.  You get a dictionary, and the idea of taking
+things apart, and you are done.
+
+[Audience laughter]
+
+So talking about forms is "schema".  Just the overall shape.  And then
+talking about subsets of the schema.
