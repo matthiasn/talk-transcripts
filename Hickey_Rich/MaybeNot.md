@@ -577,7 +577,7 @@ slide title: spec/keys
 ```
 
 But of course that is true until you add spec.  The idea is that spec
-is an orthoganal way to add that kind of communication, expression,
+is an orthogonal way to add that kind of communication, expression,
 validation, testing, around statements you would make about your
 aggregates.
 
@@ -692,7 +692,7 @@ maybe types now in slots.
 
 Because the thing is, there is no such thing as a maybe thing.  If
 names are strings, names are always strings.  You either know the
-name, or you do not know the name.  That is an orthoganal idea from
+name, or you do not know the name.  That is an orthogonal idea from
 "what is a name?"  A name is a string.  Knowing a name is a different
 idea.  If type systems make you jam those two things together, they
 are wrong, because they are separate ideas.  We would like to keep
@@ -891,7 +891,7 @@ sheep I added to the herd, and you added your sheep to the herd.  We
 are acquiring information.  Acquiring information should not be hard.
 And we were doing it already in Clojure, and Clojure programs are
 actually really good at both of these things, but spec was not as good
-as Clojure was in allowing you to talk about, orthoganally, the
+as Clojure was in allowing you to talk about, orthogonally, the
 information set, the information schema, and the actual requirements
 and provisions of, for instance, stages in a pipeline.
 
@@ -948,4 +948,278 @@ things apart, and you are done.
 [Audience laughter]
 
 So talking about forms is "schema".  Just the overall shape.  And then
-talking about subsets of the schema.
+talking about subsets of the schema, subsets of the shape in context
+is "selection".  What things are we going to pick as being required,
+or as being provided?  And we do selections in context.  And that
+gives us this orthogonality, and two things we can combine.
+
+
+[Time 0:40:01]
+```
+slide title: _schema_ - shapes only, no requirements
+
+(s/def ::street string?)
+(s/def ::city string?)
+(s/def ::state state-code?)
+(s/def ::zip int?)
+(s/def ::addr (s/schema [[::street ::city ::state ::zip]]))
+
+(s/def ::id int?)
+(s/def ::first string?)
+(s/def ::last string?)
+(s/def ::user (s/schema [[::id ::first ::last ::addr]]))
+
+(get-movie-times user) needs ::id and ::zip
+(place-order user ...) needs first, last and full address
+...
+optionality specs in top level alone can't express these
+```
+
+So let us look at how we would do this.  So we have this schema.  This
+is shapes only, pseudo future code.  And the idea here is that this
+does not apply required or optional or all.  That is not what it is
+talking about.  It is only talking about: in this herd, we can have
+sheep, and we do not have helicopters.  That is the idea.  We are just
+talking about that.
+
+So we can have an idea of an address that has a street, a city, a
+state, and a zip.  I am not advocating any of these things as canonic
+whatever, and I know zip codes are hard, and blah blah blah.  So we
+say street describes its range, city describes its range, etc. etc.
+So state has an arbitrary predicate state-code?  They are a thing.
+Zip code could be its own function, right?
+
+And then address is a schema that says you could have streets or
+cities or states or zips in addresses.  That is all that says.  And
+that is a useful thing to be able to say, and to name.
+
+And then we have a user.  We have a user in our system.  People make
+systems with users all the time.  And so a user has an id, a first and
+last name, or _can_ have an id, a first name, and last name, and an
+address.  So we are going to define new attributes for id, first name,
+and last name, and then we are going to say user could have id, first
+name, last name, or address, which was the other aggregate.  So this
+describes a little tree.
+
+Now we have some imaginary usage contexts.  So maybe we are building a
+system.  We have users in our system, and our system can let you get
+movie times, and it lets you buy popcorn.
+
+So get-movie-times -- in order to get you the movie times, I need, or
+want to see, your user id and your zip code.  That is all I need.  I
+am going to use that, and I am going to go find the stuff.  So I want
+a user to be passed, but all I need to know about it are these two
+things.
+
+Now the user id is up high in the root definition of user, but the zip
+code is an attribute of the address of a user, inside a nested
+aggregate, further down the tree.
+
+What about placing orders?  Placing an order, I want to see your first
+and last name, and I am going to ship it to you, so I am going to need
+your whole address.  So these are both functions of users that have
+different requirements, in different contexts.  These are the kinds of
+things we want to model.  The important thing is that there is no way,
+there is no optionality spec at the top level, that can represent
+saying these things.  You cannot say it, which means nobody can say
+it.
+
+We just had a GraphQL talk.  Guess who cannot say it?  Yeah.  But you
+will be the first to be able to say it.  This will be awesome.
+
+
+[Time 0:43:06]
+```
+slide title: 
+
+(get-movie-times user =>
+  (s/select ::user [::id ::addr {::addr [::zip]}]))
+               ^
+               |
+               +------------------------  reusing schema in
+                                  ------  different contexts
+(place-order user =>             /
+  (s/select ::user  <------------
+            [::first ::last ::addr
+	     {::addr [::street ::city ::state ::zip]}]))
+
++ _select_ - deep requirements
+  + still an open system, can have more
++ separates requiring attr from reqs _of_ attr
++ can spec into members of colls
++ syntax TBD
+```
+
+So how will this work?  And again, this is not syntax yet.  But
+imagine you could say that the spec for user will be this selection.
+It will say: from the herd user, from the shape, the schema, user, I
+am interested, and I must have, the id and the address.  And of the
+address, I need the zip code.
+
+And then to place an order, we are saying again, I am interested in
+user information here.  This is what I am expecting to see.  And I
+need the first and last name, and the address, and from the address I
+need the whole thing: street, city, state, and zip.
+
+This select notion is a deep requirements thing.  If you have ever
+used Datomic pull, this should smell like some pizza.  It is a similar
+pizza.  You need a language for talking about trees and recursion, and
+things like that.
+
+So this separates requiring the attribute, from the requirements _of_
+an attribute.  You saw address, and then zip of address.  That seems
+like, what?  Why do I have to say that?  That is like four more
+characters.  This is so hard.
+
+But it ends up, they are different things, because there are
+definitely contexts in which you say: addresses are optional, but if
+you give me an address, you have to give me a whole address.  Those
+are two different ideas.  I need an address, or: I do not need an
+address, but when you give me addresses, I need this part.  Those are
+two separate things, so they are said separately in this model.  Does
+that make sense?  OK.
+
+And this allows you to spec into members of a collection, because that
+is what you need.  What you are actually accepting as an argument is a
+tree implied by the schema.  It is the whole tree.  The context
+specifications you need to supply have to be about the whole tree.
+Because otherwise, how are you going to compose this?  If you need
+different fractions of addresses in different contexts.  Think about
+the explosion.  The combinatorial explosion of root things with
+different kinds of nested things, so that the roots could have the
+right stuff.  You just cannot do this job on the aggregates
+themselves.  You have to be able to talk about the trees.  It just
+took a long time to figure out.
+
+The other thing that this will be able to do, that I am not showing on
+this slide, is spec into members of collections.  So sometimes you
+will say: the spec for something will be: I have friends.  And friends
+is a collection of person, and persons have whatever.  And so you want
+to be able to say: of every friend you are telling me about, for each
+friend, I need this information.  So to be able to spec not only into
+nested schemas, but also nested collections of things.  So you will be
+able to talk down into nested schemas, as well as each member of a
+nested collection.
+
+This is the kind of power you need to apply spec really everywhere,
+because obviously function it data in and out is one thing.  And it
+gets pretty complex, but how many people use spec for wire stuff, and
+APIs, and things like that?  It is definitely intended to be used
+there.  That is part of the value proposition of it.  Those kinds of
+things definitely need this kind of stuff.  So I am really happy about
+being able to go there.
+
+
+[Time 0:46:52]
+```
+slide title: Don't repress me, man!
+
+  (s/select ::user)
+
++ This (no requirements) is ok!
++ Why bother?
+  + communication
+  + test generation
+```
+
+What about this?  Is this saying anything?  You are not forcing me to
+do anything.  Where is the fun in that?  What are the points of types,
+if you are not forcing some thing?
+
+Well there are two good reasons.  So anyway, this is going to be ok.
+You are just saying: what I expect to see is user information.
+
+And the thing also to remember about these selects: this is just
+minimal requirements.  You can always have more stuff.  You can have
+way more stuff coming in.  There may be way more stuff coming back.
+And there may be stuff not in user.  Spec is an open system.  Having
+more is ok.  I am not going to help you write closed, brittle,
+breaking systems.  I am not going to do it no matter how much you
+complain on Twitter.  It is not going to happen.  It is just not going
+to happen.
+
+So this is like minimal requirements, minimal provision.  It is not a
+boundary around things.
+
+So saying this just says: I have an expectation of seeing user data,
+stuff from the user flock.  I want to see sheep.  I do not want to see
+helicopters.  Or, I cannot do anything with helicopters.  I am
+expecting sheep.  You could send me a helicopter, and maybe my job is
+to pass it along to the next thing, which is going to air lift the
+sheep to somebody else.  That is not what I do, but they do it.  I
+think that that is an important part of making flexible systems: that
+you can flow information through things that just do not even know it
+is happening.  That is important.  That is how transportation networks
+are built.  You cannot _not_ have that.  You cannot have trucks that
+only hold certain kinds of things that run on roads that only hold
+trucks of certain kinds of things.  The world does not work that way.
+
+So why would you say something like this?  It helps you communicate.
+The user gets a sense of: what am I supposed to pass?  Or what will I
+get?  And it will help us with test generation.  Your function does
+expect to see user data.  I will generate tests that give you user
+data.  And in this case, various random subsets of anything that a
+user could, that is implied by user, deeply down the tree.  But you
+already do the trees, and all that work.
+
+And that is another part of why this makes sense.  When we generate
+user stuff, we do not generate roots only.  We generate trees, right?
+We go down into the nested specs.  And if they are collections, we
+generate down into those.  This lack of symmetry between selection and
+generation, that was a warning sign.
+
+
+[Time 0:049:42]
+```
+slide title: 
+
+[ Figure showing attributes near the top, schemas in the middle, and
+selections near the bottom, with many boxes and arrows between them. ]
+```
+
+Is that super tiny?  It does not really matter.  It is exactly what I
+was talking about before, so you do not need to read the text in the
+boxes.  This is still the same users and addresses, and whatnot.  But
+what I am trying to show here is the split.  We start with RDF style
+attribute, and they map to RDF properties.  Definitions that describe
+their own ranges.  They are just floating around, waiting to be
+gathered up in herds, and herded around in your programs.
+
+And you can gather them up, and of course that creates other
+attributes, which point to the gatherings, the aggregates.  But we are
+going to call those schemas.  They still do not have any requirement
+provision subsetting.
+
+And then finally we have selections, which you will tend to use only
+at the edges of usage contexts.  It is unlikely, although it will not
+be impossible, for you to make named specs that point to selections,
+but I will probably prohibit nested selections, because then you are
+just back to the thing I just fixed.  I do not want to let you make
+that, and do it to yourself.  But it would fall out of this being
+fully general that you could, so we will probably close that door.
+
+So now you have these separate ideas, which are the way you think
+about things anyway, but now you get to say it the way you think about
+it.  And this is going to make systems a lot more reusable.
+
+
+[Time 0:51:27]
+```
+slide title: Coming up
+
++ this _schema_ / _select_ work replacing keys
++ better programmatic manipulation of specs
++ refined _fn_ specs
+  + looking askance at argument-independent return type descriptions
+```
+
+And extensible.  That is part of the idea of spec, is that you can
+make systems that you can change, that you can enhance over time.
+That _is_ the game.  Saying today you could do X or Y, it is not
+enough.  Every program changes.  Every program grows.  You _need_ the
+ability to talk about type-like things in ways that are compatible
+with program evolution.  That is the idea behind spec.
+
+So this is coming.
+
+[Time 0:51:59]
