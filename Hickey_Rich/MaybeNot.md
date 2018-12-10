@@ -15,8 +15,15 @@ Thank you.  Hi.  Everybody can hear me?  All right.
 
 Once again, it is wonderful to see everybody here.  A lot of friends.
 How many people have been here every time?  How many people it is the
-first time?  Nice.  How many newlyweds?  Yes.  Oh, two!  Woo!  Yeah.
-That is awesome.
+first time?  Nice.
+
+[Audience applause]
+
+How many newlyweds?  Yes.  Oh, two!  Woo!
+
+[Audience applause]
+
+Yeah.  That is awesome.
 
 Before I get started, there has been a lot of controversy about what
 we are working on, and how much we are working on it, and road maps.
@@ -37,15 +44,16 @@ scarves.
 [Audience laughter]
 
 OK.  Actually we have been working on a ton of stuff, and it is mostly
-getting spoken about at the conj, but the thing we did not quite get
-out in time for conj was 1.10.  But it represents a ton of work.  And
-in particular, it represents a ton of work by someone who is not
-getting to speak, who you just heard speak, but I would really like to
-hear a super recognition for the work of Alex Miller.
+getting spoken about at the conj, but the thing we did not _quite_ get
+out in time for conj was [Clojure version] 1.10.  But it represents a
+ton of work.  And in particular, it represents a ton of work by
+someone who is not getting to speak, who you just heard speak, but I
+would really like to hear a super recognition for the work of Alex
+Miller.
 
 [Audience applause]
 
-All right.  Maybe not.
+All right.  Maybe not.  So yeah.
 
 [Time 0:02:27]
 ```
@@ -57,14 +65,14 @@ slide title: $N Mistakes
                    -- Tony Hoare
 ```
 
-So yeah.  It is tricky working at the bottom of everybody else's
-stuff.  Being a language designer, and working on languages.  And it
-is something that anyone who does it takes very seriously.  And it is
-super stressful, because you just do not want to make mistakes.
+It is tricky working at the bottom of everybody else's stuff, being a
+language designer, and working on languages.  And it is something that
+anyone who does it takes very seriously.  And it is super stressful,
+because you just do not want to make mistakes.
 
-But they happen.  So let us talk about N dollar mistakes.  So I am
+But they happen.  So let us talk about N dollar mistakes.  So we are
 going to start with this quote from Tony Hoare, who said that null
-references were his billion dollar mistake.  And they led to all kind
+references were his billion dollar mistake.  And they led to all kinds
 of exploits in languages like C, and things like that down the line.
 And of course they still exist.  And we still have nulls, although we
 have Java's memory system, which makes them not necessarily exploit
@@ -72,7 +80,7 @@ vectors, but certainly still things that we are not happy to see at
 run time, null pointer errors or whatnot.
 
 
-[Time 0:03:25]
+[Time 0:03:24]
 ```
 slide title: Where are nulls / options used?
 
@@ -83,10 +91,10 @@ slide title: Where are nulls / options used?
   + not idiomatic in Clojure
 ```
 
-And there are many reasons why you might have put null references in a
-language back when he did that had nothing to do with design
+And there were many reasons why you might have put null references in
+a language back when he did that had nothing to do with design
 intention, or user intention.  Things like: it was easy to implement,
-or it is efficient to implement, or he did not have another idea.
+or it is efficient to implement, or they did not have another idea.
 
 And in this talk, what I want to talk about is the fact that we still
 use things like this.  We still have the desire to say that something
@@ -98,15 +106,15 @@ So when do we do it, and why?  Well the first is that we might
 optionally require something.  So you could give me this, or not.  If
 you give it to me, maybe I will have an extended set of features I
 provide, but I do not need it.  So this is an argument to my function
-I might not need.  And of course if you have no variadic args, and you
-have a fixed number of slots and some have to be optional, you are
-going to have to put your optional thing as one of the types of args.
-Or if you are using something like spec, you are going to have to say
-that there.
+I might not need.  And of course if you have got no variadic args, and
+you have a fixed number of slots and some have to be optional, you are
+going to have to put your optional thing as one of the types of the
+args.  Or if you are using something like spec, you are going to have
+to say that there.
 
 Now we do that less often in Clojure, because we have a couple of
 other ways to accommodate optionality.  For instance, we have
-variadics.  You can just not pass me those extra args.  I will put
+variadics.  So you can just not pass me those extra args.  I will put
 them on the end, and I will have different overloads of arity, and
 that is how you can get them.
 
@@ -115,16 +123,16 @@ another way to do that that does not have you having a nominal thing
 which is a nilable, nullable, optional, maybe kind of thing in there.
 But that is a place, certainly, argument lists are kind of product
 types.  They have places in them.  The first argument, the second
-argument, and whatnot.  If you have places, you have to put things in
-places.
+argument, and whatnot.  When you have places, you have to put things
+in places.
 
 [Time 0:05:25]
 
 Another place where we use optionality is in returns.  I am going to
-try to find that thing for you, and if I find it I will return it, and
-if I cannot find it I will return null, did not find it, some other
-kind of thing.  So I might or might not provide something to you.
-That is in the return value spot.
+go try to find that thing for you, and if I find it I will return it,
+and if I cannot find it I will return null, did not find it, some
+other kind of thing.  So I might or might not provide something to
+you.  That is in the return value spot.
 
 And pretty much there we do the null thing.  And we have nil punning
 and everything else, because we are still having the nil party in
@@ -171,11 +179,11 @@ Scala
 So of course nils were bad, so other people fixed them for us, and we
 are philistines for not yet using this.  And there are many floating
 around.  This is not like: there is one answer.  There are many
-answers, so probably they are not all the best.
+answers.  So probably they are not all the best.
 
-So in Haskell there is a type called Maybe.  It is a parameterized
-type, Maybe of some type a.  And it has two constructors.  You can
-have just an A, or you can have nothing, which is our nil.
+But in Haskell there is a type called Maybe.  It is a parameterized
+type, Maybe of some type A.  And it has two constructors.  You can
+have just an A, or you can have "Nothing", which is our nil.
 
 And then Scala uses a lot of things to make that same kind of thing
 ish, somewhat.  So I think we will stick with the Haskell version
@@ -202,9 +210,9 @@ slide title: Making an arg optional
 And you will hear this said: this is the way to do this.  This fixes
 the problem.  What is great about it is: it forces you to check.  And
 of course that is the most important thing in programming: that
-somebody is watching you and making sure you are checking for nils, no
-matter what the cost.  And the problem is: no one can articulate the
-costs.  No one ever mentions costs.  It is all benefit.
+somebody is watching you and making sure you are checking for nils,
+_no matter what the cost_.  And the problem is: no one can articulate
+the costs.  No one ever mentions costs.  It is all benefit.
 
 But it is not.  So when do you see the cost of Maybe?  You see them in
 program maintenance.
@@ -220,7 +228,7 @@ be a compatible change, I think.
 So we make this change.  We say foo now takes a Maybe X.  This is the
 way you write optionality.  And returns a Y.  And the compiler, inside
 foo, will make sure that the code in foo does not accidentally fail to
-consider nothing.  Woo!  That is all win.
+consider Nothing.  Woo!  That is _all_ win.
 
 Except what?  This breaks existing callers.  This is a breaking
 change.  It should be a compatible change, but it is a breaking
@@ -245,25 +253,26 @@ slide title: Providing a stronger return promise
 ```
 
 Let us talk about providing a stronger return type.  So yesterday, I
-was not sure I could do the job in all cases.  I was not sure I could
-provide a meaningful return value.  So I took an X, and returned a
-Maybe Y.
+was not sure if I could do the job in all cases.  I was not sure I
+could provide a meaningful return value.  So I took an X, and I
+returned a Maybe Y.
 
-But today, I figured out how I could give you an answer in all cases.
-And so because when I was giving you that Maybe Y you had to deal with
+But today, I figured out how to give you an answer in all cases.  And
+so, because when I was giving you that Maybe Y you had to deal with
 it, I want future callers to have more certainty about what they are
 getting.  So I want to make a compatible change of strengthening my
 promise.
 
 So relaxing a requirement should be a compatible change.
-Strengthening a promise should be a compatible change.  So I do this.
-I say: I am definitely going to give you a Y.  Guess what happened?  I
-broke all of my callers again.  I broke my callers.  Because now they
-have code that deals with Maybe, and they are not getting a Maybe any
-more.
+Strengthening a promise should be a compatible change.
+
+So I do this.  I change it.  I say: I am definitely going to give you
+a Y.  Guess what happened?  I broke all of my callers again.  I broke
+my callers.  Because now they have code that deals with Maybe, and
+they are not getting a Maybe any more.
 
 
-[Time 0:10:22]
+[Time 0:10:21]
 ```
 slide title: What's happening?
 
@@ -288,8 +297,8 @@ does not mean "or".  It has got a left and a right.  It should have
 been called "left right thingy", because then you would have a better
 sense of the true semantics.  There are no semantics, except what you
 superimpose on top of it.  And using English words to try to give you
-some impression is not good, especially in this case where you are so
-failing to come close to "or".
+some impression is not good, _especially_ in this case where you are
+so failing to come close to "or".
 
 It has none of the mathematical properties.  It is not associative.
 It is not commutative.  And it is not symmetric.  Actually, better
@@ -326,10 +335,10 @@ to the same questions.
 
 Here is Kotlin.  Kotlin has nullable and non-null types.  So if you
 say "String", it is assignable from a string.  That is pretty good.
-But if you try to assign null to it, it is a compilation error.  So
+But if you try to assign null to it, it says "compilation error".  So
 they have strengthened the reference types in Kotlin.  They have said:
 you know what?  Null is not an OK value of all reference types, even
-though the Java JVM allows you to have null as the value of a string,
+though the Java JVM allows you to have a null as the value of string,
 we are not going to allow it in the surface language of Kotlin, even
 though it compiles to byte code.
 
@@ -340,7 +349,7 @@ sets.  So it is all of the strings -- that set -- and one more thing.
 And then it is assignable from both.  You can assign it from "abc" and
 you can assign it from null.
 
-If you made the changes I just described in Kotlin, you would not
+If you made the same changes I just described in Kotlin, you would not
 break callers.  Subject to how Kotlin links, and I do not know how
 Kotlin links.
 
@@ -368,7 +377,7 @@ slide title: What about Clojure?
 So let us get to the harder problems.  First of all, let us talk about
 Clojure's versions of those things.  Obviously we are dynamically
 typed, so we do not get into the "are you doing the right thing?" game
-until you add spec.  But once we add spec, we are exactly in the same
+until we add spec.  But once we add spec, we are exactly in the same
 place.  We are trying to enforce, in testing, the same kinds of
 things.  Are you making sure you are dealing with what you expect?
 Are people passing you what you expect?  Are you returning what they
@@ -398,7 +407,7 @@ or supplying aggregates.  So in Clojure, we would be talking about
 sending around maps.  In object oriented languages you would be
 talking about sending around objects, instances of classes.  You might
 have a language that has record types.  It could be that.  Or it could
-be Haskell style types.
+be Haskell-style types.
 
 Of course we have our definition: aggregate.  And the thing that is
 cool -- more secrets of giving talks -- is that it seems like I know
@@ -417,7 +426,7 @@ communication.  We are gathering a set of fields, sets of information,
 things we know, and we are passing them around.  It is going to travel
 together.
 
-So the notion of aggregates is I think super important, and the notion
+So the notion of aggregates I think is super important, and the notion
 of an aggregate being a herd is really beautiful.  So we want to stick
 to that.  No matter how you make aggregations in your programs, you
 are doing the same thing.  You are trying to name your herds, your
@@ -445,7 +454,7 @@ Of course, you can already tell which one is better.
 [Audience laughter]
 
 
-[Time 0:17:39]
+[Time 0:17:38]
 ```
 slide title: Maps vs Records / Fields
 
@@ -469,22 +478,22 @@ fact that they are essentially mappings, but they are essentially
 abstract.  And in programming, we only get mappings via code.
 
 That is not true, actually.  We have an even more primitive way to get
-from a mapping from one set to another.  And it is the literal map.
-It is saying: if you give me this, I will give you that.  If you give
-me this other thing, I will give you that other thing.  And if you
-give me this third thing, I will give you this third thing.  I am
-saying specifically, declaratively, with no executable code, no
-functions being run, nothing, a definition of a function.  A
-mathematical function.  A mapping between a set and another set.  It
-is a concrete thing.
+from a mapping of one set to another.  And it is the literal map.  It
+is saying: if you give me this, I will give you that.  If you give me
+this other thing, I will give you this other thing.  And if you give
+me this third thing, I will give you this third thing.  I am saying
+specifically, declaratively, with no executable code, no functions
+being run, nothing, a definition of a function.  A mathematical
+function.  A mapping between a set and another set.  It is a concrete
+thing.
 
 It is the best function in programming, because it is the easiest one
 to understand.  It should be a function.  It should be something that
 you can call, if it is a function.  And we can call the keys, right?
 We do this all day long.  Maps are the most fundamental functions in
 programming.  They should not be denigrated.  They should be exalted.
-This is the first place to start.  This is the simplest thing you can
-do.
+This is the first place to start.  This is the simplest thing that you
+can do.
 
 There is no code associated with it.  There are no categorical
 statements that need to be made about it.  It is not like: something
@@ -517,22 +526,23 @@ is still place oriented programming.  There is a place for the name.
 There is a place for the address.  There is a place for the other
 thing.  This is not a function any more.  And in general, because even
 when the fields are named, and sometimes they are not, if you just
-have raw product types you have got no names.  But even when the
-fields are named, so for instance a Java class, you have got names for
-your fields, they are still not first class.  You cannot say: give me
-this object, give me this name, give me the thing.  Obviously, you can
-use Java reflection and make six function calls to get the same
-effect, but it is not an invokable entity.  So they are not functions.
-You do not get to use your information as a functional mapping.
+have raw product types you have got no names.
 
-And a straight product type just completely complects the meaning of
+But even when the fields are named -- so for instance a Java class,
+you have got names for your fields -- they are still not first class.
+You cannot say: given this object and this name, give me the thing.
+Obviously, you can use Java reflection and make six function calls to
+get the same effect, but it is not an invokable entity.  So they are
+not functions.  You do not get to use your information as a functional
+mapping.
+
+And a straight product type just completely complects the _meaning_ of
 things with their position in a list.  Now I know Haskell has a record
 syntax, and I am going to show that.  So I am not trying to say they
-do not have a way to put names on these things.  But the fact is you
-have to know the second string is different from the first because, I
-do not know what.  It is not in the types.
-
-So this is place oriented programming.
+do not have a way to put names on these things.  But the fact is, you
+have to know the second string is different from the first string
+because, I do not know what.  It is not in the types.  So this is
+place oriented programming.
 
 And it matters, right?  Because what is the challenge of having a
 place?  There always has to be something in the place, right?  There
