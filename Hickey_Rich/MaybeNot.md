@@ -43,9 +43,11 @@ scarves.
 
 [Audience laughter]
 
+[Time 0:01:39]
+
 OK.  Actually we have been working on a ton of stuff, and it is mostly
-getting spoken about at the conj, but the thing we did not _quite_ get
-out in time for conj was [Clojure version] 1.10.  But it represents a
+getting spoken about at the Conj, but the thing we did not _quite_ get
+out in time for Conj was [Clojure version] 1.10.  But it represents a
 ton of work.  And in particular, it represents a ton of work by
 someone who is not getting to speak, who you just heard speak, but I
 would really like to hear a super recognition for the work of Alex
@@ -64,6 +66,7 @@ slide title: $N Mistakes
 
                    -- Tony Hoare
 ```
+[ https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare ]
 
 It is tricky working at the bottom of everybody else's stuff, being a
 language designer, and working on languages.  And it is something that
@@ -277,9 +280,9 @@ they are not getting a Maybe any more.
 slide title: What's happening?
 
 + Maybe/Either are not type system's 'or/union' type
-  + rather, evidence of _lack_ of first-class union types
-+ 'Either' is -malarkey- [strike-through] misnomer
-  + not associative / commutative / composable / symmetric
+    + rather, evidence of _lack_ of first-class union types
+  + 'Either' is -malarkey- [strike-through] misnomer
+    + not associative / commutative / composable / symmetric
 ```
 
 So what is happening here?  What is happening is that Maybe and
@@ -349,6 +352,8 @@ sets.  So it is all of the strings -- that set -- and one more thing.
 And then it is assignable from both.  You can assign it from "abc" and
 you can assign it from null.
 
+[Time 0:12:59]
+
 If you made the same changes I just described in Kotlin, you would not
 break callers.  Subject to how Kotlin links, and I do not know how
 Kotlin links.
@@ -415,6 +420,8 @@ all of this Latin stuff.  But what happens is: I look it up, and I see
 this great definition, and I am like: "oh my goodness!"  I mean, we
 have known it all along.  Like our languages embed essential concepts.
 
+[Time 0:16:01]
+
 And so when I looked up "aggregate", I discovered that "gregare",
 which is the same root as "gregarious", it means "flock" or "herd".
 And flocks or herds mean animals that travel together.  This is a
@@ -441,6 +448,7 @@ slide title: Sets vs Slots
 grassy field.  Right picture shows a collection of small square pens
 bounded by short walls, with one sheep inside each pen. ]
 ```
+![00.17.04 Sets vs Slots](MaybeNot/sheep-in-field-and-pens.png)
 
 So now we get to sort of a fundamental difference in how you model
 this.  It is sets versus slots.
@@ -487,6 +495,8 @@ being run, nothing, a definition of a function.  A mathematical
 function.  A mapping between a set and another set.  It is a concrete
 thing.
 
+[Time 0:18:51]
+
 It is the best function in programming, because it is the easiest one
 to understand.  It should be a function.  It should be something that
 you can call, if it is a function.  And we can call the keys, right?
@@ -517,7 +527,8 @@ slide title: Records / Fields / Product Types
   + thus are not functions
 + Product types complect meaning and place
 
-  data Person = Person String String Int Float String String
+  data Person =
+    Person String String Int Float String String
 ```
 
 All right.  Records, fields, product types, blugh!  The stuff you did
@@ -641,6 +652,8 @@ string", that actually does not really help you understand: "if I gave
 you this string, what string would I get?"  Categoric descriptions do
 not really tell you what is happening in the function.
 
+[Time 0:25:06]
+
 But maps as functions, you can do that.  You can say: "exactly what
 things can you take?"  And "keys" tells you.  Exactly what things can
 you return?  "vals" tells you.
@@ -680,7 +693,7 @@ slide title: Context
   + in some context
 + nothing is inherently a Maybe string
 
-  (spec/def ::model (spec/nilable string?))  [strike-through line through that line]
+  (spec/def ::model (spec/nilable string?))  [strike-through that entire line]
 ```
 
 So how do we know it is not a thing?  How do we get to: "it is not a
@@ -701,6 +714,8 @@ cannot decide then, because you know this is a building block.  And
 that is how you know "Maybe" is not a good idea, Maybe types.  And I
 do not care what they are, they are not really a great idea.
 Especially maybe types now in slots.
+
+[Time 0:28:04]
 
 Because the thing is, there is no such thing as a maybe thing.  If
 names are strings, names are always strings.  You either know the
@@ -789,6 +804,8 @@ this return value".  There is like a baked in context in the fact that
 you are talking about foo's arguments, and foo's return.  The context
 is: when calling foo, this is required and that is not.
 
+[Time 0:31:06]
+
 Making an aggregate definition that you are going to use all over the
 place -- it may be an argument sometimes.  It may be a return
 sometimes.  It may be arguments to five different functions that do
@@ -857,6 +874,8 @@ What happens when you do that?  Well first of all, besides having a
 proliferation of types, which -- how many people have worked in typed
 languages and had a proliferation of types?  Yeah, I mean it is like
 what happens.
+
+[Time 0:33:55]
 
 The problem with that is that is not really helping you.  Those names
 do not help you.  And they drive down the reusability of your
@@ -1030,6 +1049,8 @@ and last name, and then we are going to say user could have id, first
 name, last name, or address, which was the other aggregate.  So this
 describes a little tree.
 
+[Time 0:41:38]
+
 Now we have some imaginary usage contexts.  So maybe we are building a
 system.  We have users in our system, and our system can let you get
 movie times, and it lets you buy popcorn.
@@ -1060,7 +1081,7 @@ will be the first to be able to say it.  This will be awesome.
 
 [Time 0:43:06]
 ```
-slide title: 
+slide title: [None]
 
 (get-movie-times user =>
   (s/select ::user [::id ::addr {::addr [::zip]}]))
@@ -1101,6 +1122,8 @@ an attribute.  You saw address, and then zip of address.  That seems
 like, what?  Why do I have to say that?  That is like four more
 characters.  This is so hard.
 
+[Time 0:44:25]
+
 But it ends up, they are different things, because there are
 definitely contexts in which you say: addresses are optional, but if
 you give me an address, you have to give me a whole address.  Those
@@ -1121,6 +1144,8 @@ different kinds of nested things, so that the roots could have the
 right stuff.  You just cannot do this job on the aggregates
 themselves.  You have to be able to talk about the trees.  It just
 took a long time to figure out.
+
+[Time 0:45:40]
 
 The other thing that this will be able to do, that I am not showing on
 this slide, is to spec into members of collections.  So sometimes you
@@ -1181,6 +1206,8 @@ expecting sheep.  You could send me a helicopter, and maybe my job is
 to pass it along to the next thing, which is going to air lift the
 sheep to somebody else.  That is not what I do, but they do it.
 
+[Time 0:48:27]
+
 I think that that is an important part of making flexible systems:
 that you can flow information through things that just do not even
 know it is happening.  That is important.  That is how transportation
@@ -1206,13 +1233,10 @@ generation, that was a warning sign.
 
 [Time 0:49:42]
 ```
-slide title: 
-
-[ Figure showing attributes near the top, schemas in the middle, and
-selections near the bottom, with many boxes and arrows between them. ]
-
-[TBD: Make an image of this slide]
+[Figure showing attributes near the top, schemas in the middle, and
+selections near the bottom, with many boxes and arrows between them.]
 ```
+![00.49.42 Attributes, Schemas, and Selections](MaybeNot/attributes-schemas-selections.png)
 
 Is that super tiny?  It does not really matter.  It is exactly what I
 was talking about before, so you do not need to read the text in the
@@ -1245,7 +1269,7 @@ it.  And this is going to make systems a lot more reusable.
 ```
 slide title: Coming up
 
-+ this _schema_ / _select_ work replacing keys
++ this _schema_ / _select_ work replacing _keys_
 + better programmatic manipulation of specs
 + refined _fn_ specs
   + looking askance at argument-independent return type descriptions
@@ -1259,7 +1283,7 @@ ability to talk about type-like things in ways that are compatible
 with program evolution.  That is the idea behind spec.
 
 So this is coming.  Of all of the things we are working on, this one
-was least far along by conj, but this is the next thing coming in
+was least far along by Conj, but this is the next thing coming in
 spec.  It will eventually replace keys, but these are obviously two
 different names, so there may be a migration world where all three
 names exist.
@@ -1273,6 +1297,8 @@ I know a lot of people want to write programs that write specs.  That
 has room to grow more, but the underpinnings are in that system.  Also
 it is a cool system to make extensible macro libraries, so have a
 look.
+
+[Time 0:52:54]
 
 And other things I have been thinking about have been refining the
 function specs.  So I am of course very wary right now about any other
@@ -1306,6 +1332,8 @@ specifications to be dependent on your arguments.  In other words, the
 fn specs.  The fn specs are the real deal, because you can derive the
 trivialities from that.
 
+[Time 0:55:01]
+
 But it also means that you do not need something like parameterization
 to say: I take a collection.  I do not care what it is, but it will
 satisfy some set of predicates.  If I could say I return that same
@@ -1331,6 +1359,8 @@ You are still adding rigor to your system.  And you are still helping
 people understand what it does.  Maybe it is a combination of a
 partial specification of the result, and documentation, that helps
 them totally put it together.
+
+[Time 0:56:38]
 
 Which is another thing I would just sort of say generally about spec
 is: there is often a desire to completely nail everything down.  That
