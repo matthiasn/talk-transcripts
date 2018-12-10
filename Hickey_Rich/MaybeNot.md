@@ -65,7 +65,7 @@ super stressful, because you just do not want to make mistakes.
 But they happen.  So let us talk about N dollar mistakes.  So I am
 going to start with this quote from Tony Hoare, who said that null
 references were his billion dollar mistake.  And they led to all kind
-of expoits in languages like C, and things like that down the line.
+of exploits in languages like C, and things like that down the line.
 And of course they still exist.  And we still have nulls, although we
 have Java's memory system, which makes them not necessarily exploit
 vectors, but certainly still things that we are not happy to see at
@@ -105,7 +105,7 @@ Or if you are using something like spec, you are going to have to say
 that there.
 
 Now we do that less often in Clojure, because we have a couple of
-other ways to accomodate optionality.  For instance, we have
+other ways to accommodate optionality.  For instance, we have
 variadics.  You can just not pass me those extra args.  I will put
 them on the end, and I will have different overloads of arity, and
 that is how you can get them.
@@ -269,7 +269,7 @@ slide title: What's happening?
 
 + Maybe/Either are not type system's 'or/union' type
   + rather, evidence of _lack_ of first-class union types
-+ 'Either' is -malarkey- [strikethrough] misnomer
++ 'Either' is -malarkey- [strike-through] misnomer
   + not associative / commutative / composable / symmetric
 ```
 
@@ -525,7 +525,7 @@ use Java reflection and make six function calls to get the same
 effect, but it is not an invokable entity.  So they are not functions.
 You do not get to use your information as a functional mapping.
 
-And a straight product type just completely complects the meanig of
+And a straight product type just completely complects the meaning of
 things with their position in a list.  Now I know Haskell has a record
 syntax, and I am going to show that.  So I am not trying to say they
 do not have a way to put names on these things.  But the fact is you
@@ -668,7 +668,7 @@ slide title: Context
   + in some context
 + nothing is inherently a Maybe string
 
-  (spec/def ::model (spec/nilable string?))  [strikethrough line through that line]
+  (spec/def ::model (spec/nilable string?))  [strike-through line through that line]
 ```
 
 So how do we know it is not a thing?  How do we get to: "it is not a
@@ -686,7 +686,7 @@ destined to be combined in myriad ways in many different aggregates,
 to be part of many different herds, who knows that it is maybe?  That
 you might not need it, or will need it, definitely will need it?  You
 cannot decide then, because you know this is a building block.  And
-that is how you know maybe is not a good idea, maybe types.  And Ido
+that is how you know maybe is not a good idea, maybe types.  And I do
 not care what they are, they are not really a great idea.  Especially
 maybe types now in slots.
 
@@ -697,7 +697,7 @@ name, or you do not know the name.  That is an orthogonal idea from
 idea.  If type systems make you jam those two things together, they
 are wrong, because they are separate ideas.  We would like to keep
 them separate.  We are trying to use our programs to model the world
-and communicate with each other, and when we communictate with each
+and communicate with each other, and when we communicate with each
 other you never say "I have got six maybe sheep in my truck".  Never
 ever.  Nothing is inherently a maybe string.
 
@@ -861,7 +861,7 @@ in form.  That is quite a common thing.
 
 But with spec, if you had to say, well the thing I require is you must
 give me the id and the database something context, and what I provide
-will definitely inclujde the names and phone numbers, but maybe not
+will definitely include the names and phone numbers, but maybe not
 these other things, they were forced to become two different specs.
 One was the spec for what is required, and the other is the spec for
 what was provided.  And everybody wanted to reuse the specs across
@@ -1188,7 +1188,7 @@ gathered up in herds, and herded around in your programs.
 And you can gather them up, and of course that creates other
 attributes, which point to the gatherings, the aggregates.  But we are
 going to call those schemas.  They still do not have any requirement
-provision subsetting.
+provision sub-setting.
 
 And then finally we have selections, which you will tend to use only
 at the edges of usage contexts.  It is unlikely, although it will not
@@ -1220,6 +1220,99 @@ enough.  Every program changes.  Every program grows.  You _need_ the
 ability to talk about type-like things in ways that are compatible
 with program evolution.  That is the idea behind spec.
 
-So this is coming.
+So this is coming.  Of all of the things we are working on, this one
+was least far along by conj, but this is the next thing coming in
+spec.  It will eventually replace keys, but these are obviously two
+different names, so there may be a migration world where all three
+names exist.
 
-[Time 0:51:59]
+We also have been working on better programmatic manipulation of
+specs.  If anybody is looking at alpha2 on this pretty cool system, I
+think, for defining macros on top of multi-methods, which now gives us
+the sort of intermediate step that is program accessible that does not
+involve generating the shape of a macro form and eval'ing it, because
+I know a lot of people want to write programs that write specs.  That
+has room to grow more, but the underpinnings are in that system.  Also
+it is a cool system to make extensible macro libraries, so have a
+look.
+
+And other things I have been thinking about have been refining the
+function specs.  So I am of course very wary right now about any other
+type system-y gook getting into spec, and the next thing I was going
+to work on a year and a half ago in spec was trying to refine the idea
+of a return specs.  I know people are struggling to say: it takes a
+collection of X, and returns a collection of X.  This kind of thing
+you would say with parameterized types.  The amazing type signature
+for "reverse".  It takes a list of A and returns a list of A.  And the
+problem is: when A is predicative, that is harder to say.  But there
+is a bigger problem: it is pointless to say that.  That is not
+something you want to say.  That "reverse" takes a list of A and
+returns a list of A, it does not communicate anything about what
+reverse does.  If I asked you what "reverse" did, and you told me
+that, I would not be happy.  If you needed to implement "reverse" and
+I told you that, you would not be happy, because it does not
+communicate anything.  What do you want to say about "reverse"?  At
+least you want to say: it reverses the list it was given.  So if that
+list was all of strings, what could you possibly derive using the most
+basic logic about the return, if what you said was: the stuff that was
+in the collection that came in.  Well you would know if that was all
+strings, that it would return all strings.  The categoric declaration
+of that is almost information free.  You almost always want your
+return specifications to be dependent on your arguments.  In other
+words, the fn specs.  The fn specs are the real deal, because you can
+derive the trivialities from that.
+
+But it also means that you do not need something like parameterization
+to say: I take a collection.  I do not care what it is, but it will
+satisfy some set of predicates.  If I could say I return that same
+stuff, or a subset of the stuff that you gave me, you would know those
+same predicates applied.  You could use logic to do that.  You would
+not need some icky category language to talk about return types,
+because it does not really say what is happening at all.  The fact
+that you return the same stuff, or a subset of the stuff, says way
+more.  And of course then you could do more with spec.  You could
+start talking about what "reverse" actually does.  What are the
+properties of the reversed thing compared to the incoming thing.  What
+did "reverse" do?  Which is what fn specs allow you to say.
+
+So I am starting to smell "ret" in fn specs, but I want to make it
+concise to sort of do something without _having_ to fully define your
+fn spec, because sometimes that is a challenging thing to do.  But the
+fact is, if you could just say: returns the stuff from the collection
+it was given, you would be saying more than type systems let you say.
+And if you cannot say everything about the nature of your algorithm,
+and all of the transformations, it is OK.  You are still adding value.
+You are still adding rigor to your system.  And you are still helping
+people understand what it does.  Maybe it is a combination of a
+partial specification of the result, and documentation, that helps
+them totally put it together.
+
+Which is another thing I would just sort of say generally about spec
+is: there is often a desire to completely nail everything down.  That
+is not necessary in a lot of cases.  There is a spectrum of what you
+can communicate.  What is straightforward to communicate, and what is
+not.  And all along that spectrum, pretty much after the very first
+spec step, you are saying more than type systems ever let people say.
+And you are letting things be tested in an automatic way more than you
+were ever getting.  So do not go crazy if you cannot completely spec
+the entire nature of your inner algorithm, because sometimes it is
+challenging.
+
+Other things about making return types talk about the inputs is that a
+lot of people in spec are struggling with talking about functions that
+rely on external state.  Reifying external state as an additional
+input, which is what it is, is another thing that I have been thinking
+about.
+
+So that is really future thinking kind of stuff, but the important
+thing is: I have been working on spec.  New things are coming.  They
+are going to make spec better.  We are extremely sensitive to breaking
+programs that you spec, and making the transition of Clojure's use of
+the current spec to the next spec straightforward.  So we are thinking
+about those things.  And we are working on it.
+
+And that is it!
+
+[Audience applause]
+
+[Time 0:58:11]
