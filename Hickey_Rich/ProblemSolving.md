@@ -1,9 +1,8 @@
 # CaSE podcast - Problem Solving and Clojure 1.9
 
 * **Speakers: Joy Clark interviews Rich Hickey**
-* **Meeting: [Conversations about Software Engineering (CaSE) podcast (https://www.case-podcast.org) - May 3, 2018**
-* **Audio: [https://www.case-podcast.org/20-problem-solving-and-clojure-19-with-rich-hickey](https://www.case-podcast.org/20-problem-solving-and-clojure-19-with-rich-hickey)**
-* **Show notes: [https://www.case-podcast.org/20-problem-solving-and-clojure-19-with-rich-hickey](https://www.case-podcast.org/20-problem-solving-and-clojure-19-with-rich-hickey)**
+* **Meeting: [Conversations about Software Engineering (CaSE) podcast](https://www.case-podcast.org) - May 3, 2018**
+* **Audio and show notes: [https://www.case-podcast.org/20-problem-solving-and-clojure-19-with-rich-hickey](https://www.case-podcast.org/20-problem-solving-and-clojure-19-with-rich-hickey)**
 
 Edited slightly from the transcript linked below, which is licensed
 as: CC BY-NC-ND 4.0
