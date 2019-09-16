@@ -3,7 +3,7 @@
 * **Speaker: Evan Czaplicki**
 * **Meeting: [Strange Loop 2018](https://www.thestrangeloop.com/2018/sessions.html) - September 2018**
 * **Video: [https://www.youtube.com/watch?v=o_4EX4dPppA](https://www.youtube.com/watch?v=o_4EX4dPppA)**
-* **Slides: [https://prezi.com/oowcpzsnwp-8/the-hard-parts-of-open-source/?webgl=0](https://prezi.com/oowcpzsnwp-8/the-hard-parts-of-open-source)**
+* **Slides: [https://prezi.com/oowcpzsnwp-8/the-hard-parts-of-open-source](https://prezi.com/oowcpzsnwp-8/the-hard-parts-of-open-source)**
 
 [ References to videos, books, and articles mentioned in this talk:
 https://gist.github.com/evancz/b29d1ce4166a557d03474278b2b44514 ]
