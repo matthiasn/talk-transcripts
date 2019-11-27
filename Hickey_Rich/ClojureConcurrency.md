@@ -1977,6 +1977,14 @@ and as you will see, pretty simple.
 
 [Time 1:18:37]
 
+[One place you can find the source code for the program described here
+is: https://github.com/jafingerhut/clojure-ants-simulation
+
+Names of things in `this font` (inside backquotes in the MarkDown
+source) are symbols that you can search for in the program, or in a
+few cases Clojure function or Java class names that are mentioned in
+the talk, but not used in the program.]
+
 So, why should I update iTunes?  I do not think so.
 
 All right.  So, what we have here is some Clojure source code for this
@@ -2064,10 +2072,17 @@ Java.  Every one of them would have been change the program, recompile
 it, reload it.  So it is fun to bring that interactive development
 experience into the Java world.
 
-So let us look at what we have here.  We are going to have a square
-world.  It will be 80 units wide.  We are going to keep track of the
-number of ants as the square root of the number of ants, which just
-makes some things later easier.  So there are going to be 49 ants.
+So let us look at what we have here.
+
+```clojure
+(def dim 80)
+```
+
+We are going to have a square world.  It will be 80 units wide.
+
+We are going to keep track of the number of ants as the square root of
+the number of ants, which just makes some things later easier.  So
+there are going to be 49 ants.
 
 [Time 1:24:06]
 
