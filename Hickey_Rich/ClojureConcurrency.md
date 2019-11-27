@@ -2,11 +2,25 @@
 
 * **Speaker: Rich Hickey**
 * **Meeting: [Western Massachusetts Developer's Group](https://lists.owasp.org/pipermail/owasp-hartford/2008-February/000015) - March 2008**
-* **Video: [https://www.youtube.com/watch?v=dGVqrGmwOAw](https://www.youtube.com/watch?v=dGVqrGmwOAw)**
+* **Video 1: [https://www.youtube.com/watch?v=dGVqrGmwOAw](https://www.youtube.com/watch?v=dGVqrGmwOAw)**
+* **Video 2, side by side video and slides, thus smaller original video: [https://www.youtube.com/watch?v=nDAfZK8m5_8&t=77s](https://www.youtube.com/watch?v=nDAfZK8m5_8&t=77s)**
+* **Slides: [ClojureConcurrency/ClojureConcurrency.pdf](ClojureConcurrency/ClojureConcurrency.pdf)**
 
-TBD: add link to slides, preferably copying the file from this URL
-into the talk-transcripts repository:
-https://github.com/dimhold/clojure-concurrency-rich-hickey/blob/master/ClojureConcurrencyTalk.pdf
+[Video 1 is somewhat better if you want to try to follow it for the
+discussion of the program, since it is larger and somewhat better
+resolution of the original video.
+
+Video 2 is worse for that, but nicer for the parts of the talk where
+Rich is using the slides.]
+
+[Historical note written in 2019: This talk was given in March 2008,
+before Clojure 1.0 was released in 2009.  Amazingly, even the few
+deprecated things that are in the example program still work in the
+latest versions of Clojure in 2019, due to Rich Hickey's commitment to
+backwards compatibility.  There will be editor notes within square
+brackets in a few places that mention when there is more up to date
+information that will be helpful to readers in, or not too many years
+after, 2019.]
 
 
 [Time 0:00:00]
@@ -83,7 +97,7 @@ early going, but at any point you have a question, don't stay stuck.
 slide title: Introduction
 
 + Who are you?
-  + Know/use Lisp?
+  + Know / use Lisp?
   + Java / C# / Scala?
   + ML / Haskell?
   + Python, Ruby, Groovy?
@@ -478,7 +492,7 @@ access arrays, create arrays, fill them up.  Anything you want to talk
 to Java.
 
 In addition, you can create proxies for interfaces and classes, which
-essetially allows you to "implement" those classes.  And we will see a
+essentially allows you to "implement" those classes.  And we will see a
 little bit of that in the demo program.
 
 The whole sequence library, because it is written in terms of these
@@ -1327,7 +1341,7 @@ do right, because you lay your plans, and you do that, and then what
 happens in all programs?  Things change.  New requirements are added.
 And remembering what your strategy was when you go back and have to
 add these new requirements, and making sure you account for
-everything, is extremely hard.  And in fac, I would almost go to say
+everything, is extremely hard.  And in fact, I would almost go to say
 it is almost impossible.  And I sit and help people who are working on
 multi-threaded programs, and you just have stare at it and work it
 through your mind the possible interactions, all day long.  It is
@@ -2073,6 +2087,13 @@ that is supplied.  Again, if you know Common Lisp, it is a lot like
 Here we have `defstruct` cell.  And all `defstruct` does is define
 something that is called a struct map.
 
+[`defstruct` still exists in Clojure.  In 2019, the clojure.org
+reference documentation says "Most uses of StructMaps would now be
+better served by records."
+https://clojure.org/reference/data_structures -- the code still works
+as described, so this note is mainly to new Clojure developers who
+wonder why almost no code they see uses `defstruct`.]
+
 And let me see.  We should just do this as we go.  So if I do this
 keystroke, I am sending these guys to the bottom to be evaluated,
 without having to copy them and type them.  We will make `running`
@@ -2104,9 +2125,10 @@ oh, every cell has this, and these will always be false, or some
 ridiculous value you do not need because they do not -- it does not
 really have an ant.  It either has one or it does not.
 
-So the world is a two D vector of refs to cells.  There are not
-actually two D vectors in Clojure.  There are only vectors of vectors,
-just like there are arrays of arrays in Java.
+So the world is a two D [i.e. two dimensional, like a matrix from
+mathematics] vector of refs to cells.  There are not actually two D
+vectors in Clojure.  There are only vectors of vectors, just like
+there are arrays of arrays in Java.
 
 So this is just a little function inside.  We can look at it.  We are
 going to map.  A `fn` is a literal.  It is like `lambda`.  It is a
@@ -2208,35 +2230,43 @@ world, place a new map where there is an ant in it.  Do not change the
 map that was there.  That is going to get swapped out.  So no maps
 ever change.  No data structures in Clojure ever change.  We are just
 saying: this reference is going to point to a new map, which is the
-map that was there, with the association with this ant.  So just like
-we saw `assoc` before.  So this is going to create a new map, taking
-what was in `p`, associating `:ant` with `a`, then replacing `p` with
-that.  That is what `alter` does.  It calls a function of the state of
-the thing, yields a new state, puts that back in the reference.
+map that was there, with the association with this ant.
+
+So just like we saw `assoc` before.  So this is going to create a new
+map, taking what was in `p`, associating `:ant` with `a`, then
+replacing `p` with that.  That is what `alter` does.  It calls a
+function of the state of the thing, yields a new state, puts that back
+in the reference.
 
 And then we are going to return an agent -- which is the other kind of
 reference in Clojure; we had refs and agents -- an agent that tracks
-the location.  So the idea here is that the world is a set of
-references to cells, and the cells have food, pheromones, maybe ants,
-maybe they are marked as home.  That is going to be a transactional
-world.  We can only change it in a transaction.
+the location.  So the idea here is: the world is a set of references
+to cells, and the cells have food, pheromones, maybe ants, maybe they
+are marked as home.  That is going to be a transactional world.  We
+can only change it in a transaction.
 
 Then we are going to have agents, an agent per ant.  And agents are
-asynchronous guys that are going to do work.  Their state is going to
-be the location where their ant is.  So there is a presumption here
-that no two ants in the same place.  Not allowed.  No two ants can
-occupy the same space.  Now that would be potentially a hard thing to
-maintain if you were to write this manually with locks and everything
-like that.  You would have to make sure that no two ants can be in the
-same place.  That is going to happen in this system.  And these agents
-are going to be in charge of making sure that that is the case.
+these asynchronous guys that are going to do work.  Their state is
+going to be the location where their ant is.  So there is a
+presumption here that no two ants in the same place.  Not allowed.  No
+two ants can occupy the same space.
 
-So we are going to take the location that we are passed and we are
-going to wrap it in an agent, and that is what we are going to return
-when we create an ant.  We should try creating an ant.
+Now that would be potentially a hard thing to maintain if you were to
+write this manually with locks and everything like that.  You would
+have to make sure no two ants can be in the same place.  That is going
+to happen in this system.  And these agents are going to be in charge
+of making sure that that is the case.
+
+So we are going to take the location we are passed and we are going to
+wrap it in an agent, and that is what we are going to return when we
+create an ant.  We should try creating an ant.
 
 So we are going to define `a` to be: create an ant at 0 0 in direction
-0.  Oh, wait.  I did not evaluate `create-ant`.  Now we have defined
+0.
+
+[Time 1:34:00]
+
+Oh, wait.  I did not evaluate `create-ant`.  Now we have defined
 `create-ant`.  Now I can call `create-ant`.  So I am evaluating this
 line here.  `create-ant`.  `a`.  And then we can see `a` is -- it is
 just an agent.  Agents can be deref'ed like references can, and we see
@@ -2246,6 +2276,8 @@ But now if we want to look at that place `[0 0]`, what should we see?
 An ant.  Cool!  And really it was this much fun when I first did it, I
 promise.
 
+[Audience laughter]
+
 I am going to move a little bit more quickly here, so there is an
 offset for where home is.  And a range.  That is where I have the ants
 square root now, because what I need is a little square in part of the
@@ -2254,10 +2286,10 @@ therefore look how convenient this is to have counted the ants by
 their square root.  So we get a nice square big enough to hold the
 ants.
 
-OK.  We have a setup function that is going to place the initial food
-and ants, and it is going to return a sequence of ant agents.  So if
-we are placing food and ants, we are definitely modifying the world.
-We better be in a transaction.  So there is our `sync`.
+OK.  So we have a setup function that is going to place the initial
+food and ants, and it is going to return a sequence of ant agents.  So
+if we are placing food and ants, we are definitely modifying the
+world.  We better be in a transaction.  So there is our `sync`.
 
 Then we are going to go through for the number of food places -- that
 was one of those variables earlier.  For each food place, we are going
@@ -2268,13 +2300,14 @@ we saw before.  We are finding a place.
 
 But this transaction -- well first of all, it is manipulating a lot of
 places.  The number of foods.  And it is also going through the home
-range.  This is the list comprehension of Clojure, called `for`.  It
-says for each `x` in this sequence, whatever it is, and each `y` in
+range.  This is the list comprehension of Clojure, called `for`.
+
+[Time 1:36:01]
+
+It says for each `x` in this sequence, whatever it is, and each `y` in
 that sequence.  They are truly nested, so `y`'s sequence could refer
 to `x`.  `y`'s sequence expression could refer to `x`.  For each of
 those, we are going to do some work.
-
-[Time 1:36:15]
 
 The real job of `for` returns a lazy sequence, but I do not have time
 to talk about sequences.  `doall` means: make sure we touch everything
@@ -2288,11 +2321,11 @@ of the ants in the square.  OK?  In a transaction.  So a whole bunch
 of things changed in that transaction.
 
 `bound`, this is just a helper function for me, often in this world.
-Well first of all the world a torus, so I am going to connect the
+Well first of all the world is a torus, so I am going to connect the
 sides around to each other, and I am going to connect the top to the
 bottom.  Everybody who has written cheesy games knows how to do this.
-And you end up with a donut.  So we have a donut world.  The top wraps
-around to the bottom.  The sides wrap around to each other.
+And then you end up with a donut.  So we have a donut world.  The top
+wraps around to the bottom.  The sides wrap around to each other.
 
 So between the donut world having to go from one end to the other, and
 the direction world having to wrap around, this `bound` function makes
@@ -2300,43 +2333,43 @@ it easy to say: take a number and make sure it fits in between these
 two numbers, by wrapping.
 
 `wrand`, did I do `bound`?  `wrand` is a weighted random thing.  So
-this is a way often times when you are doing systems simulations where
-you need a random number, you need a way to make a random selection,
+this is a way often times when you are doing systems and simulations
+where you need a random number, you need to make a random selection,
 and the things you are picking from have different probabilities.  You
 pretend you have a roulette wheel, where each slice on the wheel is a
 different size.  Then you spin the wheel, and of course bigger slices
-have bigger chances of getting picked, than smaller slices.  `wrand`
-does that.
+have bigger chances of getting picked, and smaller slices have smaller
+slices.  `wrand` does that.
 
-[Time 1:38:00]
+[Time 1:38:02]
 
 Given a vector of slice sizes, it returns the index of a slice given a
 random spin, with a probability proportioned to the size of the
 compartments.  That is a mouthful.  We should try this one, because I
-have no idea.  But it takes a vector.  So if we say `[1 2 3 4]`, and
-this is going to return the index.  We can keep trying this, and I
+have no idea.  But it takes a vector.  So if we said `[1 2 3 4]`, and
+this is going to return the index.  I can keep trying this, and I
 should get higher numbers more often, because they have bigger
 probabilities.  Now if I change this to a really high number, I am
 almost always going to get 3.  So that is working.
 
 `direction-delta`.  This is another helper function.  It just says: if
-I need it to walk in this direction, what would the X and Y offsets
-be?  What is cool about this function is what?  How did we define all
-of the other functions?  `defn`.  `defn`.  What is wrong with this
+I needed to walk in this direction, what would the X and Y offsets be?
+What is cool about this function is what?  How did we define all of
+the other functions?  `defn`.  `defn`.  What is wrong with this
 function?  It is not a function.  What did we say about maps?  Maps
 are functions of their keys.  Direction delta, it does not need to be
-anything other than a map.  You are going to pass it a number.  You
-are going to get back one of these things.  And it is going to work
-just like a function.  Let us try it.  Yay!  That looks a lot like a
+anything more than a map.  You are going to pass it a number.  You are
+going to get back one of these things.  And it is going to work just
+like a function.  Let us try it.  Yay!  That looks a lot like a
 function call.  But that is a really cool thing to be able to do.  You
 can write programs much more simply that way.
 
-Delta location `delta-loc` takes a location and applies the delta and
-gives you the new X and Y positions of the location.  You can just
-trust me that that one works.
+Delta location [`delta-loc`] basically takes a location and applies
+the delta and gives you the new X and Y positions of the location.
+You can just trust me that that one works.
 
 Then I got tired of writing `sync` nil, so I wrote a little macro that
-does sync nil, and I called it `dosync`.  From now on I will only use
+does sync nil, and I call it `dosync`.  From now on I will only use
 `dosync`.
 
 OK.  Ant agent functions.  We have a bunch of small behaviors.
@@ -2347,13 +2380,17 @@ want to see what happens at the end?  OK.
 
 So `turn`.  `turn` turns an ant at the location.  At this point, all
 of these ant functions are going to affect the world, so they are all
-going to be transactional.  So `turn` is going to take a location and
-an amount.  It is going to start a transaction.  It is going to find
-the place where the ant is, and in particular these functions `turn`,
-`move`, whatever, these are functions of the ant agent.  What did we
-say that the state of an ant agent is?  Remember?
+going to be transactional.
 
-It is just a location.  Right.  So you will see that these are all
+[Time 1:40:03]
+
+So `turn` is going to take a location and an amount.  It is going to
+start a transaction.  It is going to find the place where the ant is,
+and in particular these functions `turn`, `move`, whatever, these are
+functions of the ant agent.  What did we say the state of an ant agent
+is?  Remember?
+
+It is just a location.  Right.  So you will see these are all
 functions of at least a location.  They may have some other data, but
 all of these functions about the ants are functions of locations.
 Because these functions are going to become actions of the ant agents.
@@ -2361,10 +2398,10 @@ So remember, an action of an agent is a function of its state,
 possibly and some other values.  But at least a function of its state.
 
 So all of these things we are going to see about ant actions, are
-actually ant agent functions.  So it just takes a location, and an
-amount to turn.  We are going to find the place, get the ant that is
-there, which is just a piece of data now.  Then we are going to alter
-the place, associating the ant with the result of altering the ant by
+actually ant agent functions.  So it just takes a location and amount
+to turn.  We are going to find the place, get the ant that is there,
+which is just a piece of data now.  Then we are going to alter the
+place, associating the ant with the result of altering the ant by
 changing its direction that amount.
 
 So we create a new ant.  We do not change anything really.  Create a
@@ -2378,8 +2415,10 @@ think, when you get the hang of it.  Does everybody see how `turn`
 works?  And note also: it returns location.  This thing does not
 change the location.  But remember, an action is a function of the
 state of the thing, so it better take a location, and return a
-location.  Because the return value will be the new state of the
-agent.
+location.  Because the return value of this will be the new state of
+the agent.
+
+[Time 1:41:57]
 
 Now `move`.  We move an ant in the direction it is heading.  There is
 a caveat here that says: you must call this in a transaction that has
@@ -2395,7 +2434,7 @@ that there is no ant in the way, thus enforcing the no two ants in the
 same space.
 
 So how does this work?  We get what I will call the old `p`, where we
-were.  We are going to move from that place.  That is where we are
+were.  We are going to move from this place.  That is where we are
 now.  We are going to get the ant that is there.  We are going to get
 a new location by calling that delta function that figures out the new
 location.
@@ -2408,8 +2447,8 @@ says the new location is `[22 23]` from where you are, pointing in the
 direction of the ant.  And we find the place there, and that is going
 to be our target spot.  We are going to alter the new place and put
 the ant there.  We are going to alter the old place and `dissoc` --
-that says remove this key from a map.  So there is no more ant in the
-other one.
+that says remove this key from the map.  So there is no more ant in
+the other one.
 
 And then if it is not home -- we do not want to spread pheromones all
 around home, because it just causes everybody to just stay home.  So
@@ -2418,11 +2457,16 @@ leave pheromones behind.  So this just says: if the place where we
 were is not home, alter it, incrementing its pheromone.
 
 So a lot of work in there.  A couple of places altered.  This is a
-hard job with locks.  Locks, what are you going to do?  What order do
-you lock places in a world like this?  Very hard.  Very hard problem.
-Very easy.  Well here I did not even show you how easy it was, because
-this function does not even do the transaction.  Everybody good with
-that one?
+hard job with locks.  Locks, what are you going to do?
+
+[Time 1:44:00]
+
+What order do you lock places in a world like this?  Very hard.  Very
+hard problem.
+
+Very easy [the Clojure version].  Well here I did not even show you
+how easy it was, because this function does not even do the
+transaction.  Everybody good with that one?
 
 Remind me of this, because my program will not work if I do not
 evaluate all of these.
@@ -2432,10 +2476,11 @@ transaction that figured out there is food there.  There is more than
 0 food in this place when this is called.  And the same thing: find
 out where we are, get the ant there, alter the place, decrementing its
 food, and give the food to the ant.  And put that ant back in there.
-Notice this alter, this assoc, took two key/value pairs.  `assoc`
+
+Notice this `alter`, this `assoc`, took two key/value pairs.  `assoc`
 takes as many as you need.  So this is changing two attributes of the
-map, and yielding a new map, and putting that back in p.  Returns the
-same location.
+map, and yielding a new map, and putting that back in `p`.  Returns
+the same location.
 
 Oh, yeah.  Note `move` returned a new location.  That is the new state
 of the agent.  It is the new place.  So that is one of the few that
@@ -2446,7 +2491,7 @@ So `take-food` does not move you.  Like that.
 `drop-food`, same story.  You have to figure it out in a transaction
 that you have food, and you are going to put it where you are.  Same
 kind of thing.  You are going to increment the food at the place where
-you are, and disassociate the food from you.  The ant has no food now.
+you are, and disassociate `:food` from you.  The ant has no food now.
 
 Now we get to the behavior.  This is a little bit more involved, but
 it is as complicated as this program gets.  I need a helper function
@@ -2461,12 +2506,14 @@ sort order.  Just trust me that that works, because it is not that
 interesting.  It calls `reduce` and some other things, but it is
 really not that interesting.
 
+[Time 1:46:04]
+
 So `behave`.  So this is the main loop for ant behavior.  And the ant
 agent is going to be executing `behave`, over and over and over again.
 Each ant agent is going to be executing `behave`.
 
 So what happens?  We are going to find all of our places.  Where are
-we?  What is the ant at the place we are at.  What is ahead of us?
+we?  What is the ant at the place we are at?  What is ahead of us?
 What is to the left?  What is to the right?  And we are going to make
 a list of places that are in front of us, kind of, which is ahead,
 ahead slightly to the left, ahead slightly to the right.  We are going
@@ -2487,60 +2534,67 @@ that will tell me that.
 
 So if I have food, I am going home.  So what are the cases, the
 conditions, here?  One is: I am home.  If this place is marked as
-home, I am there.  So the ant is going to drop the food.  Oh, have got
-to explain this.  It is going to drop the food and turn around.  The
-arrow is a really neat macro.  It basically is like a threading thing.
-It says take location, and pour it into the first function.  Now this
-is not even wrapped in a function, so it is going to make a function
-out of it.  `drop-food` is going to say drop food on the location, and
-then take the result of that, and thread it in to `turn`.  And that
-will be the value of the first argument to `turn`.
+home, I am there.  So the ant is going to drop the food.  Oh, I have
+got to explain this.  It is going to drop the food and turn around.
+
+The arrow is a really neat macro.  It basically is like a threading
+thing.  It says take location, and pour it into the first function.
+Now this is not even wrapped in a function, so it is going to make a
+function out of it.  `drop-food` is going to say drop food on the
+location, and then take the result of that, and thread it in to
+`turn`.  And that will be the value of the first argument to `turn`.
+
+[Time 1:48:00]
 
 Essentially, the effect of this is to say: drop food of location, and
 then turn of that, 4.  But this is a more straightforward way to write
 it.  It is kind of a chaining thing.  That is right.
 
-So it is a function of location.  `drop-food` at the location, and
-then turn that thing by 4, which is the location.
+So it is a function of location.  `drop-food` at the location, then
+turn that thing by 4, which is the location.
 
 So that is what happens.  We find home.  We drop the food.  We turn
 around 180 degrees.
 
 If we see that there is home in front of us, and there is no ant
-there, we call move.  Remember that it is a requirement of `move` that
-we be in a transaction, which we are, and we know that there is no ant
-in front of us.  So those are true, and we can call `move`.  These
-functions cooperate sort of very symbiotically.
+there, we call `move`.  Remember that it is a requirement of `move`
+that we be in a transaction, which we are, and we know that there is
+no ant in front of us.  So those are true, and we can call `move`.
+These functions cooperate sort of very symbiotically.
 
 Otherwise it is not one of those two things.  So now we have to do
 some sort of selection.  And this is probably too complicated to
 explain well, but I will explain it quickly, which is that I need to
 rank the possibilities, three possibilities: moving forward, turning
-slightly left, or turning slightly right.  Those are the things I can
-do now, or I am letting the ants do.  So I am going to rank the
-choices two ways.
+slightly left, or turning slightly right.  Those are the three things
+I can do now, or that I am letting the ants do.  So I am going to rank
+the choices two ways.
 
 One is: I am going to rank it by if there is home in front of us, that
 is worth 1.  And this is a bunch of little neat Clojure stuff.  One is
-sharp open paren is a function literal.  So instead of having to say
-`fn` something, and then write this, and that something there, I can
-say sharp, the body, and then just use percent, `%1`, `%2`, `%3` as
-the positional arguments of this anonymous function.  It is just the
-most succinct way to write an anonymous function in Clojure.
+sharp [meaning `#`] open paren is a function literal.  So instead of
+having to say `fn` something, and then write this, and then that
+something there, I can say sharp, the body, and just use percent,
+`%1`, `%2`, `%3`, as the positional arguments of this anonymous
+function.  It is just the most succinct way to write an anonymous
+function in Clojure.
 
-But this is the same as `fn` of `x`, if home `x`, otherwise 0.  It is
-just two fewer parens.  It ends up being seven characters shorter to
-do it this way.  So when it is a short function, this is neat.  Bigger
-functions, do not bother with this.  Write `fn`.  It is not that hard.
+But this is the same as `fn` of `x`, if home `x`, 1, otherwise 0.  It
+is just two fewer parens.  It ends up being seven characters shorter
+to do it this way.  So when it is a short function, this is neat.
+Bigger functions, do not bother with this.  Write `fn`.  It is not
+that hard.
+
+[Time 1:50:00]
 
 So we are composing that little function with `deref`, because we need
 to get something out of the places.  But essentially we are sorting
 the places by their home content.  And then we are also making another
 map, which is the places sorted by their pheromone content.  Then we
-are merging these two maps with plus, which means we are going to
-combine at each key with plus.  So we are going to add together the
-two scores with these weightings, and we are going to use that to be
-the ranks.
+are merging these two maps with plus [meaning `+`], which means we are
+going to combine at each key with plus.  So we are going to add
+together the scores from these two weightings, and we are going to use
+that to be the ranks.
 
 So we have ranked now the three choices.  Then we are going to call a
 vector, and like maps are functions of their keys, vectors are
@@ -2560,8 +2614,8 @@ right.  That is the whole case for going home.
 
 If I am foraging, it is very similar.  If I have found food where I
 am, and I am not at home, because you do not want to take food back
-out of your home.  So if I have found food and I am not at home, then
-I am going to take the food and turn around.  Hopefully turning around
+out of your home.  So if I have found food and I am not home, then I
+am going to take the food and turn around.  Hopefully turning around
 points me sort of towards home.
 
 Otherwise, if there is food ahead of me, and that is also not home,
@@ -2570,13 +2624,16 @@ move.  I will go there, and then of course on the next cycle I will
 take that food.
 
 Otherwise, exactly the same kind of logic, except -- and the only
-reason I duplicated it is that because I thought I might tweak it, but
-I ended up not.  Same kind of logic, except for I am going to rank the
-choices in front of me by their food content and their pheromone
-content.  So I am looking for food, instead of looking for home.  And
-the pheromones also, I try to stay on the path, because theoretically
-the paths should lead to good things.  That is why all of the ants are
-on them.
+reason why I duplicated it is that because I thought I might tweak it,
+but I ended up not.
+
+[Time 1:51:58]
+
+Same kind of logic, except for I am going to rank the choices in front
+of me by their food content and their pheromone content.  So I am
+looking for food, instead of looking for home.  And the pheromones
+also, I try to stay on the path, because theoretically the paths
+should lead to good things.  That is why all of the ants are on them.
 
 So that is `behave`.  That is the biggest function in there, and that
 is the main loop of the agents, the ant agents.
@@ -2602,8 +2659,8 @@ simultaneity in a second.  We are going to be running and walking
 through, and making all of the pheromones evaporate, while everything
 else is going on.
 
-
-Rich Hickey:
+[Audience member: Is there a small threshold where it just zeroes
+out?]
 
 Well eventually you are multiplying by zeroes, so ... but I do not
 force it to zero.  So you just keep getting smaller and smaller, and
@@ -2613,17 +2670,22 @@ Another use of the `for`.  Again `dorun` because `for` is lazy, so I
 need to force this to happen.  That is what `dorun` does.  And there
 is a mini-transaction.  Note that this is not a transaction around the
 whole loop.  That would really pin down the world, because this is a
-writing transaction.  But I do not really care.  I am just supposed to
-evaporate everything, so I can do that in little jobs.  There are a
-lot of little jobs to evaporate across the whole world.
+writing transaction.
+
+[Time 1:54:00]
+
+But I do not really care.  I am just supposed to evaporate everything,
+so I can do that in little jobs.  There are a lot of little jobs to
+evaporate across the whole world.
 
 That is all of the logic of the program.  That is the entire
 simulation logic, up there.
 
 So, let us have fun.  UI!  I need to use some Java stuff to do some
-UI.  I need Color, Graphics, and Dimension from there, BufferedImage
-from there.  And you will notice already that this is smaller than
-Java.  Yes?  To do the same job?  A bunch of lines in Java.
+UI.  I need `Color`, `Graphics`, and `Dimension` from there,
+`BufferedImage` from there.  And you will notice already that this is
+smaller than Java.  Yes?  To do the same job?  A bunch of lines in
+Java.
 
 I do not want 80 by 80.  That would be too tiny for us to see.  I need
 to scale the world, so in pixels, it is going to be each cell is five
@@ -2632,10 +2694,10 @@ pixels.  That is what `scale` is.
 And then I am going to do this backwards from `render`, because
 Clojure requires you to define things before they are used, so you are
 seeing definitions that are used later, but let us look at the overall
-picture in `render`, which is that we are going to be given a graphic
+picture in `render`, which is that we are going to be given a graphics
 context.  Anybody ever done Swing?  The idea is: there is a painting
 thread, and it calls you.  And it says: here is a graphics context to
-paint into, and you have to use it.
+paint into, and then you have to use it.
 
 So the cool thing about `render` is: what is the Java render going to
 have to do?  `render` is going to paint the whole world.  So painting
@@ -2653,10 +2715,14 @@ the values add up.  And now you are saying: Aw!  I would have to lock
 everything in order to have a valid report where everything is
 synchronized!
 
+[Time 1:56:00]
+
 Guess what?  STM does this kind of stuff, and that is a very, very
 hard thing to do.  So what do we do?  We make a little transaction,
 and we rip through every place and put it in a vector.  Boom, like
-that.  Now what did we say about transactions?  When you read in a
+that.
+
+Now what did we say about transactions?  When you read in a
 transaction, everything you read is as if a point in time.  So even
 though you will see the ants are going to be moving around, and the
 evaporator is going to be evaporating things, this renderer is going
@@ -2666,7 +2732,7 @@ cell.  You will never see a little crisscross of ants.  If you counted
 the ants, they would all be there.
 
 And you will have to trust me on that, but that is the deal.  So we
-will not be holding the transaction open while we are painting,
+are not going to hold the transaction open while we are painting,
 because that is time consuming.  So we are going to create a
 transaction, and we are going to run through every place.  Right, that
 is the whole range.  And apply `vector` to that.  So we will copy them
@@ -2676,69 +2742,76 @@ Now we do not need to make copies of the maps, right?  Because they
 are never going to change, so only the references end up in this
 vector.
 
-[Audience member: So then you also have the ants tbd south tbd]
+[Audience member: So you could also have the ants moving multiple
+cells between paint operations]
 
 Oh, no.  This is all going to happen at the same time.  Yeah.
 Everything is happening at the same time.  While this is happening,
 everything is changing.
 
 [Audience member: But then if the paint takes a long time, before the
-next one happens, the ants may have moved multiple tbd]
+next one happens, the ants may have moved multiple cells.]
 
 That is right.  As in most animations of simulations, it is not a
 one-to-one relationship between -- I mean, it would be easy to do that
-the old way.  In the loop way, I would tick every ant, then paint, and
-tick every ant, then paint.  And I would know that every paint cycle
-would show everything that happened in one cycle of the world.  But I
-really want a more simultaneous world.
+the old way.  In the loop way, I would tick every ant, then paint,
+then tick every ant, then paint.  And I would know that every paint
+cycle would show everything that happened in one cycle of the world.
+But I really want a more simultaneous world.
 
-tbd
+[Audience member: tbd cycles falling down tbd]
+
+[Time 1:58:00]
 
 Well the other thing is: some of these ants -- I mean, this behavior
 is pretty consistent, but some of these behavior branches take longer
 than others.  So in a real simulation, some ants may take more time to
-do their action than other ants.  So there is not really a notion of
-frame, frame, frame, in the activity world.  So we really have that
+do their action than other ants.  So there is really is not a notion
+of frame, frame, frame, in the activity world.  So we really have that
 independence.  There is the activity world.  Then there is the
 animation, which are snapshots.
 
 But that is a very real world thing.  If you have a real world system
-that needs to do reporting, you have this problem.  And if that real
+that has to do reporting, you have this problem.  And if that real
 world system is multi-threaded, you have a very difficult problem.  I
 have yet to see an elegant solution to: lock the world and give me a
 valid report.  And what ends up happening is: most systems have this
-copious logging, and then time points, and they recreate things
+copious logging, and then time points, and then they recreate things
 backwards.
 
 So, we copy the world very quickly, and then a lot of this is just
-basic Swing stuff.  We are going to create a BufferedImage, which is
+basic Swing stuff.  We are going to create a `BufferedImage`, which is
 not where we are drawing.  We are going to create the image there.
+
 `doto` is a way to do multiple operations to a Java thing.  It is as
-if I called `. bg setColor`, `. bg fillRect`.  But I can say `doto
-bg`, and I do not have to say `. bg` over and over and over again,
-which is already better than Java.
+if I called `. bg setColor`, blah, `. bg fillRect`.  But I can say
+`doto bg`, and I do not have to say `. bg` over and over and over
+again, which is already better than Java.
 
 So I set the background color to white, and I fill the rectangle.  I
 am going to blank out the whole thing.  Then for every cell, I am
-going to render the place.  I am going to render the place is a helper
-function, we will see.  And then we are going to go create a box
-around home, in blue.  So `fillRect` draws a solid rect that is a
-white background.  We are going to look at `render-place` in a second.
-Then we draw a rectangle around home.  Then we take that BufferedImage
-and we put it into the Panel, which is the thing we actually see on
-the screen.  So we draw off in the background, and then we paint onto
-the foreground.  And that makes it animation, as opposed to drawing
-while you are showing, and then you get all flickery and nasty.  So
-that is `render`.
+going to render the place, and render the place is a helper function,
+we will see.  And then we are going to go and create a box around
+home, in blue.
+
+So `fillRect` draws a solid rect.  That is a white background.  We are
+going to look at `render-place` in a second.  Then we draw a rectangle
+around home.  Then we take that `BufferedImage` and we put it into the
+`Panel`, which is the thing we actually see on the screen.  So we draw
+off in the background, and then we paint onto the foreground.  And
+that makes it animation, as opposed to drawing while you are showing,
+and then you get all flickery and nastiness.  So that is `render`.
+
+[Time 2:00:03]
 
 So `render` called `render-place`.  `render-place` says -- it is
 called once for each place, and this takes the graphics context, the
 place, and the X and Y locations, and says: if there is pheromone
 there, draw some green scaled by the amount of pheromone and that
-scale factor.  I said that before.  If there is food there, draw some
-food.  Same thing, there is a food scale factor.  It is going to draw
-that.  And if there is an ant there, we are going to call `render-ant`
-and draw the ant.
+scale factor I said before.  If there is food there, draw some food.
+Same thing, there is a food scaling factor.  It is going to draw that.
+And if there is an ant there, we are going to call `render-ant` and
+draw the ant.
 
 Then we have `render-ant`.  This is more complicated.  In fact, I do
 not even use half of this, but the bottom line is: an ant is a little
@@ -2747,58 +2820,66 @@ ant does not.  It is pointing in the direction.  Believe me, it is not
 very exciting looking.  It is like a dash.  But we draw a dash for the
 ant.
 
-And finally we have a helper function we saw filled cells in green and
-red and whatever, and so `fill-cell` is a helper function that just
-takes a graphics context and does this.
+And finally we have a helper function we saw we filled cells in green
+and red and whatever, and so `fill-cell` is a helper function that
+just takes a graphics context and does this.
 
 This is an interesting thing right here, we have not seen before,
-which is sharp caret.  This is a metadata literal.
+which is sharp caret [sharp caret meaning `#^`.  That is an older
+syntax that still works fine in 2019, but is more often written `^`
+without the `#`].  This is a metadata literal.
 
-[Audience member: tbd]
+[Audience member: Can you scroll up tbd]
 
 Is that OK?
 
 So this is a metadata literal.  This is metadata actually being
-supplied to the compiler.  This is associating the metadata tag flag
-to Graphics for the symbol `g`.  When the compiler sees that, it says:
-this `g` is going to be representing a `Graphics`.  It is a type hint.
-And we have not seen any types so far.  I mean, Clojure is dynamically
-typed.  But Clojure also supports type hints.  And given just the hint
-that this is a `Graphics`, all of the code in here will not use
-reflection.  It will generate calls to Java that do not use
+supplied to the compiler.  This is associating the metadata flag
+`:tag` to `Graphics` for the symbol `g`.  When the compiler sees that,
+it says: this `g` is going to be representing a `Graphics`.  It is a
+type hint.  And we have not seen any types so far.  I mean, Clojure is
+dynamically typed.  But Clojure also supports type hints.  And given
+just the hint that this is a `Graphics`, all of the code in here will
+not use reflection.  It will generate calls to Java that do not use
 reflection.
 
-And you will see that there are only one, two .... two!  Two type
-hints in this whole program.  And that is all it takes to have this
-program run fast enough to work.  Given that this is a `Graphics`, it
-knows the signatures of these functions, and they are called directly.
-No reflection.
+And you will see there are only one, two .... two!  Two type hints in
+this whole program.  And that is all it takes to have this run fast
+enough to work.  Given that this is a `Graphics`, it knows the
+signatures of these functions, and they are called directly.  No
+reflection.
+
+[Time 2:02:06]
 
 So what did we say?  We did scale, so fill cell, render an ant, render
-a place, render the whole world.  I need a panel.  That is a graphics
-thingy, right?  JPanel, Paint.  I have just defined an instance of a
-derived class of JPanel and defined the Paint function.  That is it.
-That is all it takes.  So you say `proxy`, you put one class, and zero
-or more interfaces, and you will get a proxy class defined that is a
-derivee of that class, and implements those interfaces.  And then you
-can supply closures in here that define the function.  So we only care
+a place, render the whole world.
+
+I need a `Panel`.  That is a graphics thingy, right?  `JPanel`,
+`paint`.  I have just defined an instance of a derived class of
+`JPanel` and defined the `paint` function.  That is it.  That is all
+it takes.  So you say `proxy`, you put one class, and zero or more
+interfaces, and you will get a proxy class defined that is a derivee
+of that class, and implements those interfaces.  And then you can
+supply closures in here that define the function.  So we only care
 about `paint`.  `paint` is a Java function now.  This is going to be
-called from Java.  This is passed a graphics context, and it is going
+called from Java.  It gets passed a graphics context, and it is going
 to call that `render` function.
 
-So this little bit between here and there is all it takes to define a
+So this little, between here and there, is all it takes to define a
 derived Java class in Clojure, and implement its function.
 
 And then this `doto` is that same thing.  I am going to create a new
-one of these, and then I am immediately going to set its preferred
-size.  So `doto` this new proxy, setPreferredSize this dimension.  OK?
-So I will make one of those.
+one of these, and then I am going to immediately set its preferred
+size.  So `doto` this new proxy, `setPreferredSize` this dimension.
+OK?  So I will make one of those.
 
 So I have to be here.  I have two panels now.
 
 `frame` is make a new `JFrame`.  So also use `doto`.  Look how fast
-and easy this is.  Not multiple lines.  `doto` a `JFrame`, add a
+and easy this is.  Not multiple lines.  `doto` a new `JFrame`, add a
 panel, pack it, and show it.
+
+[Time 2:03:58]
 
 Cool!  I wonder what would happen if I called that?  Wait.  I just
 did.  Oh!  Woah, cool!  We have a world.  Oh, we have the ant we put
@@ -2810,28 +2891,30 @@ incrementally like this there, and this is so much fun.
 Oh, what is happening?  I am not seeing that.  So is this going to be
 a good place for it?  OK.  Cool!  So we are drawing.  I like that.
 
-And now we just need to do the agents part.  Like nothing is really
+And now we need to just do the agents part.  Like nothing is really
 happening.  This is a pretty boring world.  We have not populated it.
-We did not call setup.  And we did not start any activities up.
+We did not call `setup`.  And we did not start any activities up.
 
 So we saw the `behave` function, which is the main action of the ant
 agent.  We are also going to have an animation agent, whose job it is
-to call `repaint` essentially.  So we will make an agent for that, and
-he does not really have any useful state.  So `animator` is an agent
-with `nil` as its state.  His job is really just to perform side
+to call `repaint`, essentially.  So we will make an agent for that,
+and he does not really have any useful state.  So `animator` is an
+agent with `nil` as its state.  His job is really just to perform side
 effects.  And this is going to be his main action.
 
 We are ignoring the running part now.  His main action is to call
-repaint, and then sleep.  That is what the `animation` action does.
+`repaint`, and then sleep.  That is what the `animation` action does.
 
 And then there is another agent.  Again, he does not have very useful
 state, because he is mostly being run for side effects.  The
 `evaporator`.  And his main action is `evaporation`.  And he is just
 going to call `evaporate` and then sleep.
 
-So we have an `animator` agent, with an activity for him, and an
+So we have an `animator` agent, with an activity for him, an
 `evaporator` agent and an activity for him.  We already defined the
 behavior for the ant agents.  A bunch of those.
+
+[Time 2:06:04]
 
 So now we have seen this run.  We just want to go check up here.
 `running` is true.  I do not know if I ever did this, but let us make
@@ -2842,21 +2925,23 @@ So we can look now at those lines I told you to ignore.  Sorry I am
 scrolling so much.  Which is: now we are inside the `behave`.  Oh
 wait.  There we go.  We are inside `behave`.  And we said `dosync`,
 and we said when we are running, `send-off`, which is one of these
-send an action, send off to `*agent*`.  `*agent*` is this agent that
-is currently running.  Because on any particular thread, there can
-only be one agent at a time.  We know that this `behave` function is
-an action, which means that it is going to be called on an agent,
-which means that this value of `*agent*` will be bound, in this
-action, to the agent this action is being called on.
+send an action, `send-off` to `*agent*`.
+
+`*agent*` is this agent that is currently running.  Because on any
+particular thread, there can only be one agent at a time.  We know
+that this `behave` function is an action, which means that it is going
+to be called on an agent, which means that this value of `*agent*`
+will be bound, in this action, to the agent this action is being
+called on.
 
 So this is basically saying: send me, send myself, this same function
 again.  Do it again.  So each agent is going to be told to do
 something, and when he does it, he is going to tell himself to do it
-again one more time.  Those all get queued, because we know when we
+again one more time.  Those all get queued, because we know when you
 dispatch an action inside an action, when does it go off?  After your
 state changes.  So that is when this is going to happen.  Even though
 it comes at this point in the code, it is only going to happen after a
-state changes.  So he is going to `behave` once, and having sent
+state changes.  So he is going to `behave` once, and he will have sent
 himself a message or reminder, `behave` again, as long as `running` is
 true.
 
@@ -2868,23 +2953,27 @@ thing.  Send the agent that is currently executing `animation`,
 And the `evaporator` does the same thing.  So these guys are going to
 be in infinite loops, broken by `running`.
 
+[Time 2:08:02]
+
 OK so far?
 
-tbd
+[Audience member: Is that `*agent*` a magic variable?]
 
 `*agent*` is an example of a Var, which I did not talk about, but Vars
 get bound thread-locally, and the agent system will bind the Var
 `*agent*` to the currently executing agent.  That is part of the agent
 system.
 
-So remember, because agent functions are functions of their state,
+So because, remember agent functions are functions of their state,
 they do not really have access to their reference, except this way.
 It is a nice way to do it, because most functions of agents are really
 just functions of their state, and they do not need to access this.
 And you can test them independently by making them functions of data,
 as opposed to functions of references.
 
-tbd
+[Audience member: This may be a dumb one, but to me the `def
+evaporator` and the `def evaporation`, they look like separate
+expression.  So what is tying them together?]
 
 Nothing.  I am going to send the `evaporator` the `evaporation` action
 in a minute.  They are not connected.
@@ -2899,27 +2988,35 @@ put ants in home, and it returned a sequence of the ant agents.  So if
 I called `setup`, I would like to keep track of that in `ants`.  I am
 going to do that here.
 
-So I am going to call `setup`, and capture the list of agents into the
+So I am going to call `setup`, and capture the list of agents into
 `ants`.  Woohoo!  So what is in `ants`?  Wow.  A lot of agents.  Cool.
 So we have 49 ant agents now.
 
 Now we have the first use of agent actions.  We are going to send the
-`animator` the action `animation`.  Remember, actions are functions.
-The `animator` is an agent.  We created him before.  So we are going
-to send him `animate`.  So he will do that over and over.
+`animator` the action `animation`.
+
+[Time 2:10:00]
+
+Remember, actions are functions.  The `animator` is an agent.  We
+created him before.  So we are going to send him `animate`.  And he
+will do that over and over.
 
 Woah!  Cool.  He is animating now.  I should have done thread counts
-before.  Let us see.  I do not even know where we are yet.  We will
-have the most threads soon.  Let us just put it that way.
+before.  Let us see.  I do not even know where we are yet [looking for
+the JVM process in the Mac's Activity Monitor, he does not find it in
+the list of the first few with the most threads].  We will have the
+most threads soon.  Let us just put it that way.
+
+[Audience laughter]
 
 But there was a thread created, and that thread is running this
 animation loop.  But nothing is changing yet, because we have not set
 the ants off.
 
-So now what I am going to do, again, is run this `dorun` is because
-`map` is lazy.  So if I said `map` this function across the `ants`, it
-would do the first one, but if I never consumed the result, none of
-the other side effects would happen.  So `dorun` just forces the side
+So now what I am going to do is, again, this `dorun` is because `map`
+is lazy.  So if I said `map` this function across the `ants`, it would
+do the first one, but if I never consumed the result, none of the
+other side effects would happen.  So `dorun` just forces the side
 effects of what would otherwise be a lazy functional thing.
 
 So we are mapping `send-off` to this ant, `behave`.  This is just a
@@ -2936,6 +3033,8 @@ And there we go.  Ants turn red, remember, when they have food.  So
 there are red ants, and the green is the pheromone build up.  And we
 have an animation.  And that is multi-threaded programming in Clojure.
 
+[Time 2:12:00]
+
 No locks.  Some of what is happening in here would be extremely
 difficult to do with locks, or impossible.  The graphics rendering has
 got a consistent view of the world.  It is not necessarily the latest,
@@ -2943,9 +3042,9 @@ but when you really think about worlds, there is no such thing as the
 latest, without stopping it.  But it has a consistent view of the
 world.
 
-`evaporation` is this big time consuming job running in the
+`evaporation` is this big time consuming job.  It is running in the
 background.  Each ant is looking at a set of things, a set of places,
-and making a decision about what to do.  Those sets of places can
+and making decisions about what to do.  Those sets of places can
 overlap, and those decisions can conflict.  But by running them in
 transactions, the constraints of the system's logic are enforced.  So
 no two ants in the same place, no taking food from home, and etc. etc.
@@ -2954,19 +3053,21 @@ And the drawing is not impeded by the ant motion.  It is not impeded
 by the evaporation.  There are 51 threads associated with this: 49
 ants, an evaporator, and an animator.
 
-Does anybody have any questions?
+We will let that go.  Does anybody have any questions?
 
-I remember reading that there was a thread pool for agents?
+[Audience member: I remember reading that there was a thread pool for
+agents?]
 
 Oh, yeah, there are thread pools behind this.
 
-But it is not one.
+[Audience member: But it is not one.]
 
 Oh yeah, so there is a thread pool.  There are actually two thread
 pools in the agent system.  One is used by the function `send`.  The
-function `send` uses a fixed thread pool.  That is a function of the
-number of processors.  Well, it is related to the number of
-processors.
+function `send` uses a fixed thread pool.  That is a multiple of the
+processors.  Well, it is related to the number of processors.
+
+[Time 2:14:06]
 
 There is also `send-off`, and `send-off` will allocate a thread per
 request.  And the idea is that if you had requests that might block,
@@ -2975,10 +3076,12 @@ pool with `send`.  So any time you might block you should use
 `send-off`.
 
 Because these ant threads are sleeping, that is technically blocking,
-and the right thing to do is use `send-off`.  So what I have done here
-is use `send-off`.  I could rearchitect this to use `send`, and make
-the waits much smaller than they are, because now each ant will be
-waiting in a shared set of threads, and get exactly the same behavior.
+and the right thing to do is use `send-off`, and so what I have done
+here is use `send-off`.
+
+I could rearchitect this to use `send`, and make the waits much
+smaller than they are, because now each ant will be waiting in a
+shared set of threads, and get exactly the same behavior.
 
 But that is a choice you have to make.  If you only had a fixed thread
 pool, you could not have blocking operations.  If you only have a
@@ -2996,32 +3099,46 @@ use.  All we did was put `sync` around stuff, pretty much.
 
 Any other questions?  Any other questions about Clojure generally?
 
-Not a question, but since the recording got screwed up, you might want
-to plug your tbd screencast.
+[Audience member: Not a question, but since the recording got screwed
+up, you might want to plug your blip.tv screencast.]
 
-Yes, blip.tv is good.  Oh, I should just put up my.  Yeah, you can
-find out what is really just -- go to clojure.org.  On there are links
-to the Google group, which is the main way we communicate.  There is
-an IRC.  There is also blip.tv, which is a place where I put
-screencasts, like maybe I will put the first half of this talk, if it
-ended up on my hard drive intact, which is probably not the case.  But
-I am doing a series of things.  It is likely I will give this talk
-again, because I prepped all of the slides.  And I will make the
-slides available.
+Yes, blip.tv is good.  Oh, I should just put up my ...
+
+[Time 2:16:00]
+
+Yeah, you can find out what really is just -- go to clojure.org.  On
+there are links to the Google group, which is the main way we
+communicate.  There is an IRC.  There is also blip.tv, which is a
+place where I put screencasts, like maybe I will put the first half of
+this talk, if it ended up on my hard drive intact, which is probably
+not the case.  But I am doing a series of things.  It is likely I will
+give this talk again, because I prepped all of the slides.  And I will
+make the slides available.
+
+[As of 2019, the Clojure and ClojureScript Google group are still used
+a little bit, but not as much as in the past.  Other more common
+places for discussion and questions are the Clojurians Slack channel
+at https://clojurians.slack.com and Q&A forum at
+https://ask.clojure.org]
 
 And basically everything Clojure you can get through the site.  If you
 look in the upper right, you will see nav to the wiki, blip.tv, which
-has a bunch of talks I have given on sequences, and some of the core
-data structures of Clojure.  If you want to start from scratch with
-Clojure, some of those can be useful, if somewhat informal.  They are
-like lunch time talks I gave.
+has a bunch of talks I have given on sequences, and some of the other
+core data structures of Clojure.  If you want to start from scratch
+with Clojure, some of those can be useful, if somewhat informal.  They
+are like lunch time talks I gave.
+
+[As of 2019, I do not think blip.tv exists any longer.  The
+clojure.org home page has a link to "Clojure TV", which is a YouTube
+channel containing many videos about Clojure:
+https://www.youtube.com/user/ClojureTV/videos ]
 
 Yes?
 
-That is awesome.  Thank you.  You mentioned Erlang a couple of times.
-I am just curious, one of the things that the Erlang community
-differentiates distinctive to the Erlang community is to distribute
-tbd.
+[Audience member: That is awesome.  Thank you.  You mentioned Erlang a
+couple of times.  I am just curious, one of the things that the Erlang
+community differentiates, or is distinctive to the Erlang community is
+the distributed part tbd.]
 
 Yes.  Clojure does not yet have a distributed concurrency story.
 Erlang made a very conscious decision to unify their concurrency
@@ -3037,9 +3154,13 @@ local, it worked.  And now that it is across the thin wire, it does
 not work so well.
 
 There are some good papers from Sun, I think, that are critical of
-transparent distribution.  I happen to be sympathetic with those
-papers.  But I think for the problem domain they were in, they valued
-the transparent distribution more than the others.
+transparent distribution.
+
+[Time 2:18:01]
+
+I happen to be sympathetic with those papers.  But I think for the
+problem domain they [i.e. Erlang language designers] were in, they
+valued the transparent distribution more than the others.
 
 The other thing about having transparent distribution is that all of
 your failure modes are failure modes of distributed systems, which are
@@ -3048,67 +3169,91 @@ where every interaction is as if it could have the failures you have
 with a distributed system.
 
 The other major difference I would say between the actors of Erlang,
-because Erlang is really an actor system.  It is actually a really
-pure rendition of the original actor model.  The difference between
-actors and agents is: there is no access to actor state except via a
-message send.  And that is because that is the only thing you can
-distribute.  Clojure agent state is directly accessible.  That cannot
-be distributed.
+because Erlang is really an actor system.  It is actually kind of a
+very pure rendition of the original actor model.  The difference
+between actors and agents is: there is no access to actor state except
+via a message send.  And that is because that is the only thing you
+can distribute.  Clojure agent state is directly accessible.  That
+cannot be distributed.
 
-So there is a tradeoff there.  I find that the ease of use with
+So there is a tradeoff there.  I find that the ease of use of
 programming with direct accessibility to that state is worth
 distinguishing the two systems: a distributed messaging system, and an
 asynchronous messaging system for in process.  So that is what I did
 in Clojure.  I anticipate looking at a distributed system for Clojure,
 but it will not be a unification of agents, and it will be distinct.
 
-So it will be like a fourth kind of ...
+[Audience member: So it will be like a fourth kind of ...]
 
 Correct.  It will be like a fourth thing.  I do not know if it will
 even feel like references, because at a certain point it may be even
 easier to wrap JMS, or something like that.
 
+[I am not certain, but suspect that JMS refers to Java Message
+Service: https://en.wikipedia.org/wiki/Java_Message_Service ]
+
 But those are the tradeoffs.  That is why I said agents are not
 actors, because they are different.  And they are strictly not better
 or worse.  There are tradeoffs.  They have different characteristics.
 
-Just talking about Erlang, too.  One of the nice features of it is hot
-swapping out code, because you are passing all of the state pretty
-much every ...
+[Audience member: Just talking about Erlang, too.  One of the nice
+features of it is hot swapping out code, because you are passing all
+of the state pretty much every tbd around.]
 
 Uh huh.
 
-Can you do something like that with Clojure.
+[Time 2:20:04]
+
+[Audience member: Can you do something like that in Clojure?]
 
 Oh, yeah.  I can change this program right now.
 
-So as it is running, older agents can be running.
+[Audience member: So as it is running, older agents can be running.]
 
 Well, it is not the same.  Essentially what they do is they down
 processes to start them anew with new functions.  So they are like the
 system keeps running, but the system keeps running because the system
-is designed to tolerate processes dying and then restarting.  That is
-how they keep running in Erlang.
+is designed to tolerate processes dying and they are restarting.  That
+is how they keep running in Erlang.
 
 Here this will literally keep running.  There are other big
 differences with actors and agents, and one of the things I like about
 agents is: an actor is waiting in a message loop for things it
 anticipated having been sent.  You are in a loop.  You have got a
-pattern match against messages you were predefined to receive.  I can,
-right now, send a different, a new action to any of these agents that
-are running, that it never knew about.  In other words, I can define a function that is a function of the behavior of an ant -- like I could call `drop-food` on all ants, and they would drop their food wherever they are.  They are not waiting to be told `drop-food`.  Like no one is waiting to be told "fall down" or "get hit over the head".  So in simulations I think building something that knows it could do X, Y, and Z means limiting a system to doing X, Y, and Z.  Or, downing the system, downing the processes, and starting it with a new function.  So they have code loading.  It is tied into process regeneration.
+pattern match against messages you were predefined to receive.
+
+I can, right now, send a different, a new action to any of these
+agents that are running, that it never knew about.  In other words, I
+can define a function that is a function of the behavior of an ant --
+like I could call `drop-food` on all ants, and they would drop their
+food wherever they are.  They are not waiting to be told `drop-food`.
+Like no one is waiting to be told "fall down" or "get hit over the
+head".  So in simulations I think building something that knows it
+could do X, Y, and Z means limiting a system to doing X, Y, and Z.
+Or, downing the system, downing the processes, and starting it with a
+new function.  So they have code loading.  It is tied into process
+regeneration.
 
 Whereas in Clojure, I could change the function that draws the ants
 right now, to draw them in a different color.  Let us just do it.
 
-Those are just a bunch of lines.  I cannot even see ants.
+[Audience member: Those are just a bunch of lines.  I cannot even see
+ants.]
+
+[Audience laughter]
 
 Well, I am not going to change them to be graphics or anything like
 that.  So what is a color.  What is this?  Red?  This is my red one.
-Yeah.  Red, green, blue.  So I can make them purple, right?  Everybody
-see red?  Some red?  Woah!  Purple!
+Yeah.  Red, green, blue.  So I can make them purple, right?
 
-No problem.  No problem changing the functions of this thing at all.  I can change any of these functions while they are running.  They will be instantly used.  And they will not start, and they will not drop their state.
+[Time 2:22:00]
+
+Everybody see red?  Some red?  Woah!  Purple!
+
+No problem.  No problem changing the functions of this thing at all.
+I can change any of these functions while they are running.  They will
+be instantly used.  And they will not start, stop, and they will not
+drop their state.
 
 So it is different.  I do not want to beat up on Erlang.  I think
 Erlang is very cool.  I looked a lot at Erlang.  But in all of these
@@ -3121,29 +3266,32 @@ On the other hand, I would find it extremely tedious to have to wait
 for messages in order to read state of agents.  And I think that is a
 recipe in Erlang, and they will admit it, for manual deadlocks,
 because you have to set up: I sent you this, and I am waiting for you
-to reply back to me.  And you go into this nested: I am waiting for
-this response from Fred.  And it is possible to write deadlocks that
-way.
+to reply back to me.  And you go into this nested: I am waiting for a
+response from Fred.  And it is possible to write deadlocks that way.
 
 You can write deadlocks with `await` in Clojure, but `await` you are
-using really strictly for synchronization.  In order to read
+really using strictly for synchronization.  In order to read
 somebody's state, you do not need that.  So it is a little bit
-different, in every way there are distinctions between the two.
+different.  In every way there are distinctions between the two.
 
 But yeah, hot code loading.  Sure.  Change the behaviors as they are
 running, no problem.
 
-When you do a hot code load like that, `render-ant` is a Var, right?
+[Audience member: When you do a hot code load like that, `render-ant`
+is a Var, right?]
 
 Yes.
 
-And you are changing the binding of the Var when the compiler
-recompiles the byte code?
+[Audience member: And you are changing the binding of the Var when the
+compiler recompiles the byte code?]
 
 Correct.  That is one of the reasons why Vars are mutable at the root,
 globally, so that you can redefine functions.
 
-What if two people were trying to do that in the same thing?
+[Time 2:24:08]
+
+[Audience member: What if two people were trying to do that in the
+same thing?]
 
 Don't do that.
 
@@ -3158,7 +3306,8 @@ So in programs in nested contexts, when you want to call `set!`, you
 better have a thread local binding or it will fail.  So you have to
 distinguish between `def` and `set!`.
 
-Would you disallow that, when you do that programmatically?
+[Audience member: Would you disallow that, when you do that
+programmatically?]
 
 You cannot do the wrong thing with `set!`, but `def` is an absolute "I
 know what I am doing".  I am in charge of the world, and I am defining
@@ -3170,12 +3319,13 @@ way.
 
 Other questions?  Yes.
 
-In some of Simon Peyton Jones talks about Haskell, he draws this chart
-where you have safe languages.  I do not remember what the axes are,
-but he is talking about features coming over in to C# and Java from
-those other languages, sort of functional stuff coming over.  Do you
-see some of this stuff, especially because of your interop tbd into
-Java?  I do not care about using Java, but I am just curious.
+[Audience member: In some of Simon Peyton Jones talks about Haskell,
+he draws this chart where you have safe languages.  I forget what the
+axes are, but he is talking about features coming over in to C# and
+Java from those other languages, sort of functional stuff coming over.
+Do you see some of this stuff, especially because of your interop
+being amenable to being tbd into Java?  I do not care, because I do
+not use Java, but I am curious.]
 
 I would hope not.  I would really love for Java to not change at all
 any more, because right now Java is my infrastructure language.  If
@@ -3184,10 +3334,14 @@ they make it more complex, they make my interop job more complex.
 But I do think that there are fundamental problems with languages like
 Java, in that when you say class blah, you start with a mutable thing.
 You have to expend effort to do the right thing.  And even then --
-like the Java book talks about concurrency.  But if you do that, and
-you do not have the persistent data structures of Clojure, you really
-cannot effectively use large immutable collections, because to change
-them means to copy them.  So it is a bigger story.
+like the Java book talks about concurrency.
+
+[Time 2:26:02]
+
+But if you do that, and you do not have the persistent data structures
+of Clojure, you really cannot effectively use large immutable
+collections, because to change them means to copy them.  So it is a
+bigger story.
 
 You can use the Clojure class library from Java.  I mean, it is a very
 nice class library, and I am really proud of it.  And it is somewhat
@@ -3195,39 +3349,53 @@ awkward and non-idiomatic to use it from Java.  But you can.  You can
 use all of this from Java.  You can write Java programs that use all
 of the Clojure stuff.
 
-tbd toy languages, just curious like from IDEA to getting the REPL working, how long of a span was it?  How long have you been working on it?
+[Audience member: I have done a couple of little toy languages.  Just
+curious from, like, idea to getting the REPL working, how long of a
+span was it?  How long have you been working on it?]
 
 I have been working on Clojure for a couple of years.  Two years.  I
 mean, I have been playing around with the idea of trying to make Lisp
 and Java interoperate for four or five.  But Clojure as a language, it
 has been through a large genesis.  It supported C# for a while.  It
 was a compiler written in Common Lisp that generated C# and Java
-source code.  And it was only over the summer that I decided to stop
-supporting .NET, and to try to focus on compilation to byte code.
-Because that is where they differ.  When I was generating source code,
-they were pretty similar.  I mean, annoyingly different, but not
-appreciably different.  But then I decided to generate byte code, and
-it greatly accelerated the completion of Clojure, and it has ended up
-much more dynamic.  And intimacy with Java is a big payoff.  And now
-that Java is open source and the libraries are so available, I am
+source code.
+
+And it was only over the summer that I decided to stop supporting
+.NET, and to try to focus on compilation to byte code.  Because that
+is where they differ.  When I was generating source code, they were
+pretty similar.  I mean, annoyingly different, but not appreciably
+different.  But then I decided to generate byte code, and it greatly
+accelerated the completion of Clojure, and it has ended up much more
+dynamic.  And the intimacy with Java is a big payoff.  And now that
+Java is open source and the libraries are so available, I am
 completely happy with where it has ended up.
 
 But it is a huge amount of work.  The thing with Clojure is: it is
 less the compiler.  I mean one of the things -- I am presuming some
 knowledge of Lisp, but almost all of the things you are seeing in
 Clojure, `for` and the destructuring binding, those things are all
-written in Clojure.  I added `for`.  You could have added `for`.  That
-is just a macro.  Destructuring is also just a macro.  I did not
-change the compiler one bit.  There is nothing there.  The compiler is
-a super primitive Lisp.  It has `if`, `set!`, `def`, lambda -- `fn`,
-and seven other things, plus five for Java.  There are about a dozen
-primitive things, and the rest of Clojure the language is written in
-Clojure.  There is a boot.clj.  It is like a tour of a language self
-constructing.  `when` is defined, and `cond`.  Nothing exists before
-that thing starts, pretty much.
+written in Clojure.
 
-But a big thing about Clojure, this class library, was a huge job.
-The persistent data structures are a big deal.  And they are a big
+[Time 2:28:00]
+
+I added `for`.  You could have added `for`.  That is just a macro.
+Destructuring is also just a macro.  I did not change the compiler one
+bit.  There is nothing there.  The compiler is a super primitive Lisp.
+It has `if`, `set!`, `def`, lambda -- `fn`, and seven other things,
+plus five for Java.  There are about a dozen primitive things, and the
+rest of Clojure the language is written in Clojure.  There is a
+boot.clj.  It is like a tour of a language self constructing.  `when`
+is defined, and `cond`.  Nothing exists before that thing starts,
+pretty much.
+
+[Since about 2010 or so, the file boot.clj mentioned above is called
+core.clj, here:
+https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj
+There is no need to read it in order to understand and use Clojure,
+but some people may like to read and learn from it.]
+
+But a big part of Clojure, this class library, was a huge job.  The
+persistent data structures are a big deal.  And they are a core
 underpinning in how Clojure works.  It is a big class library.  So
 that was a big job.  A much bigger job than the Lisp compiler, I
 think.
@@ -3240,7 +3408,12 @@ any of those, by a significant amount.  And with hints, in every area
 other than arithmetic, because all numbers are boxed in Clojure,
 calling speed should be equivalent to Java.  On my desktop machine, I
 can make ten million function calls a second in Clojure.  So it is
-suitable or real applications.
+suitable for real applications.
+
+[Somewhere somewhere in or near 2010, there has been support for Java
+primitive long and double values for loops, function arguments, and
+return values, so numbers are not all boxed, i.e. inside of a `Long`
+or `Double` Java object, now.]
 
 The persistent data structures are in striking distance of all of the
 Java data structures.  That is, within a factor of 2 to 3 or 4, but
@@ -3248,16 +3421,18 @@ the benefits from using them are immense.  Just try thinking about
 doing this program the way you would have with cells that you would
 change in place and locks.
 
+[Time 2:30:04]
+
 Because the immutability, it is kind of subtle.  For instance, this
 `render`, it snapshotted the world.  Well, it could not have if those
 cells, if those maps inside the cells were really changing.  But they
 are not.  They are getting swapped out.  So when it scans the world,
 it captures maps that will never change.  That scales up globally to
-the way you think about writing programs.  When you know that your
-data can never change out from underneath you, everything is
-different.
+the way you think about writing programs.  When you know your data can
+never change out from underneath you, everything is different.
 
-And there is still garbage collection for all of that.
+[Audience member: And there is still garbage collection for all of
+that.]
 
 Absolutely.
 
@@ -3265,38 +3440,48 @@ Correct.  If you do not track your trail, it goes away.  And one of
 the other key things there, if you are thinking about targeting Java
 with a language, the ephemeral garbage collection in Java is
 stunningly good.  It is really, really good.  And it is a premise of
-Clojure that it be considered free.  For instance, there is the
-sequence operation in Clojure, which is like cons, but it is an
-abstraction.  When you use that abstraction on a vector, for instance,
-you have to allocate memory every step.  That is so cheap, it is just
-a pointer bump.  And because it all ends up in gen 0, it is nothing to
-GC.  And the things I see HotSpot doing with Clojure are really great.
-It loves all final classes.  It just loves Clojure code.  So it is
-really good.
+Clojure that it be considered free.
+
+For instance, there is the sequence operation in Clojure, which is
+like cons, but it is an abstraction.  When you use that abstraction on
+a vector, for instance, you have to allocate memory every step.  That
+is so cheap, it is just a pointer bump.  And because it all ends up in
+gen 0, it is nothing to GC [gen 0 refers to where objects are first
+'put' when allocated by a generational garbage collector].  And the
+things I see HotSpot doing with Clojure are really great.  It loves
+all final classes.  It just loves Clojure code.  So it is really good.
 
 Anything else?
 
 Well, look.  They work!  They have put all of this food around home.
 You know, I cannot actually say they would not have done it if they
 were behaving randomly.  I mean, just from encountering home, I do not
-know that I have a decent behavior.  I just know that they do not get
-stuck banging into each other like they did the first few times I
-tried.
+really know that I have a decent behavior.  I just know that they do
+not get stuck banging into each other like they did the first few
+times I tried.
 
-Well thank you.  I really appreciate you hanging out.
+[Audience laughter]
+
+[Time 2:32:00]
+
+Well thank you.  I really appreciate you hanging out here.
 
 [Audience applause]
 
-How did you come up with the name?
+[Audience member: How did you come up with the name?]
 
-I did a Google search, and I had 0 hits.  I grabbed the domains.  I
+I did a Google search, and I had zero hits.  I grabbed the domains.  I
 was so happy.  My brother did the logo.
 
-Much better than the Haskell logo.   tbd
+[Audience member: Much better than the Haskell logo.  I think that is
+a big selling point.]
 
 You have got to have a good logo.
 
-It has it all.  Good.  You saw it all.  Peace and the Yin Yang.
+It has it all.  Good.  You saw it all.  Peace and the Yin Yang.  That
+is right.
+
+[Time 2:32:35]
 
 
 [Time 2:14:21]
