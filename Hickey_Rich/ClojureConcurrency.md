@@ -4,7 +4,7 @@
 * **Meeting: [Western Massachusetts Developer's Group](https://lists.owasp.org/pipermail/owasp-hartford/2008-February/000015) - March 2008**
 * **Video 1: [https://www.youtube.com/watch?v=dGVqrGmwOAw](https://www.youtube.com/watch?v=dGVqrGmwOAw)**
 * **Video 2, side by side video and slides, thus smaller original video: [https://www.youtube.com/watch?v=nDAfZK8m5_8&t=77s](https://www.youtube.com/watch?v=nDAfZK8m5_8&t=77s)**
-* **Slides: [ClojureConcurrency/ClojureConcurrency.pdf](ClojureConcurrency/ClojureConcurrency.pdf)**
+* **Slides: [ClojureConcurrency/ClojureConcurrencyTalk.pdf](ClojureConcurrency/ClojureConcurrencyTalk.pdf)**
 
 [Video 1 is somewhat better if you want to try to follow it for the
 discussion of the program, since it is larger and somewhat better
@@ -18,9 +18,8 @@ before Clojure 1.0 was released in 2009.  Amazingly, even the few
 deprecated things that are in the example program still work in the
 latest versions of Clojure in 2019, due to Rich Hickey's commitment to
 backwards compatibility.  There will be editor notes within square
-brackets in a few places that mention when there is more up to date
-information that will be helpful to readers in, or not too many years
-after, 2019.]
+brackets in a few places that mention information that is current as
+of 2019.]
 
 
 [Time 0:00:00]
@@ -2077,20 +2076,34 @@ So let us look at what we have here.
 ```clojure
 (def dim 80)
 ```
-
 We are going to have a square world.  It will be 80 units wide.
 
+```clojure
+(def nants-sqrt 7)
+```
 We are going to keep track of the number of ants as the square root of
 the number of ants, which just makes some things later easier.  So
 there are going to be 49 ants.
 
 [Time 1:24:06]
 
+```clojure
+(def food-places 35)
+(def food-range 100)
+(def pher-scale 20.0)
+(def food-scale 30.0)
+(def evap-rate 0.99)
+```
 We have values for the number of places of food.  The range of amount
 of food that goes in a place.  Some scaling values for the drawing the
 rendering of pheromones and food, and evaporation rate.  That is
 pretty low, right?
 
+```clojure
+(def animation-sleep-ms 100)
+(def ant-sleep-ms 40)
+(def evap-sleep-ms 1000)
+```
 And some other factors here.  Times for how long we are going to sleep
 in the animation loop, and in this ant behavior, and evaporation
 agents.
@@ -2099,6 +2112,9 @@ So `def` basically defines a global thing of that name with the value
 that is supplied.  Again, if you know Common Lisp, it is a lot like
 `defvar`.
 
+```clojure
+(defstruct cell :food :pher) ;may also have :ant and :home
+```
 Here we have `defstruct` cell.  And all `defstruct` does is define
 something that is called a struct map.
 
@@ -2145,14 +2161,23 @@ mathematics] vector of refs to cells.  There are not actually two D
 vectors in Clojure.  There are only vectors of vectors, just like
 there are arrays of arrays in Java.
 
+```clojure
+;world is a 2d vector of refs to cells
+(def world 
+     (apply vector 
+            (map (fn [_] 
+                   (apply vector (map (fn [_] (ref (struct cell 0 0))) 
+                                      (range dim)))) 
+                 (range dim))))
+```
 So this is just a little function inside.  We can look at it.  We are
-going to map.  A `fn` is a literal.  It is like `lambda`.  It is a
-literal function whose argument we do not care about.  We are going to
-create a struct cell object with no food and no pheromones, zero zero.
-And we are going to call `ref` on that, which means we are going to
-create a reference around that data structure.  And that reference is
-those refs I talked about earlier.  That is something now that can
-only be changed inside a transaction.
+going to map.  A `fn` is a literal.  It is like `lambda` [from Common
+Lisp or Scheme].  It is a literal function whose argument we do not
+care about.  We are going to create a struct cell object with no food
+and no pheromones, zero zero.  And we are going to call `ref` on that,
+which means we are going to create a reference around that data
+structure.  And that reference is those refs I talked about earlier.
+That is something now that can only be changed inside a transaction.
 
 So we are going to end up with 6400 references to these cell maps.
 
@@ -2173,6 +2198,10 @@ am going to make a helper function called `place`, and that will let
 me find a spot in the world, a particular cell in this two dimensional
 thing, by passing --
 
+```clojure
+(defn place [[x y]]
+  (-> world (nth x) (nth y)))
+```
 Woah!  That is a weird looking argument list.  Because it is not just
 symbols, right?  What is it?  This is an argument list, and then
 inside that is a vector.  This is an example of destructuring that I
@@ -2193,6 +2222,9 @@ macro `@`, which wraps whatever you pass as `deref`.  So I can look
 inside that place and I see one of those cells.  That is good.
 Everything is good so far.
 
+```clojure
+(defstruct ant :dir) ;may also have :food
+```
 Now I have the same thing, ants.  An ant has a direction, always.  The
 direction is, 0 is north, and then it is clockwise through 8, so it is
 a square world with square cells.  So an ant has a direction, but we
@@ -2202,6 +2234,16 @@ but that is optional.
 
 [Time 1:30:00]
 
+```clojure
+(defn create-ant 
+  "create an ant at the location, returning an ant agent on the location"
+  [loc dir]
+    (sync nil
+      (let [p (place loc)
+            a (struct ant dir)]
+        (alter p assoc :ant a)
+        (agent loc))))
+```
 Now we can create an ant.  Now so here is the first instance where
 creating an ant is a destructive operation, because what is going to
 happen is ants are going to live in the world, and that is really
@@ -2293,6 +2335,10 @@ promise.
 
 [Audience laughter]
 
+```clojure
+(def home-off (/ dim 4))
+(def home-range (range home-off (+ nants-sqrt home-off)))
+```
 I am going to move a little bit more quickly here, so there is an
 offset for where home is.  And a range.  That is where I have the ants
 square root now, because what I need is a little square in part of the
@@ -2301,6 +2347,21 @@ therefore look how convenient this is to have counted the ants by
 their square root.  So we get a nice square big enough to hold the
 ants.
 
+```clojure
+(defn setup 
+  "places initial food and ants, returns seq of ant agents"
+  []
+  (sync nil
+    (dotimes [i food-places]
+      (let [p (place [(rand-int dim) (rand-int dim)])]
+        (alter p assoc :food (rand-int food-range))))
+    (doall
+     (for [x home-range y home-range]
+       (do
+         (alter (place [x y]) 
+                assoc :home true)
+         (create-ant [x y] (rand-int 8)))))))
+```
 OK.  So we have a setup function that is going to place the initial
 food and ants, and it is going to return a sequence of ant agents.  So
 if we are placing food and ants, we are definitely modifying the
@@ -2335,6 +2396,15 @@ start at home.  So it is going to create a little square, and put all
 of the ants in the square.  OK?  In a transaction.  So a whole bunch
 of things changed in that transaction.
 
+```clojure
+(defn bound 
+  "returns n wrapped into range 0-b"
+  [b n]
+    (let [n (rem n b)]
+      (if (neg? n) 
+        (+ n b) 
+        n)))
+```
 `bound`, this is just a helper function for me, often in this world.
 Well first of all the world is a torus, so I am going to connect the
 sides around to each other, and I am going to connect the top to the
@@ -2347,6 +2417,19 @@ the direction world having to wrap around, this `bound` function makes
 it easy to say: take a number and make sure it fits in between these
 two numbers, by wrapping.
 
+```clojure
+(defn wrand 
+  "given a vector of slice sizes, returns the index of a slice given a
+  random spin of a roulette wheel with compartments proportional to
+  slices."
+  [slices]
+  (let [total (reduce + slices)
+        r (rand total)]
+    (loop [i 0 sum 0]
+      (if (< r (+ (slices i) sum))
+        i
+        (recur (inc i) (+ (slices i) sum))))))
+```
 `wrand`, did I do `bound`?  `wrand` is a weighted random thing.  So
 this is a way often times when you are doing systems and simulations
 where you need a random number, you need to make a random selection,
@@ -2367,22 +2450,43 @@ should get higher numbers more often, because they have bigger
 probabilities.  Now if I change this to a really high number, I am
 almost always going to get 3.  So that is working.
 
-`direction-delta`.  This is another helper function.  It just says: if
-I needed to walk in this direction, what would the X and Y offsets be?
-What is cool about this function is what?  How did we define all of
-the other functions?  `defn`.  `defn`.  What is wrong with this
-function?  It is not a function.  What did we say about maps?  Maps
-are functions of their keys.  Direction delta, it does not need to be
-anything more than a map.  You are going to pass it a number.  You are
-going to get back one of these things.  And it is going to work just
-like a function.  Let us try it.  Yay!  That looks a lot like a
-function call.  But that is a really cool thing to be able to do.  You
-can write programs much more simply that way.
+```clojure
+(def dir-delta {0 [0 -1]
+                1 [1 -1]
+                2 [1 0]
+                3 [1 1]
+                4 [0 1]
+                5 [-1 1]
+                6 [-1 0]
+                7 [-1 -1]})
+```
+Direction delta [`dir-delta`].  This is another helper function.  It
+just says: if I needed to walk in this direction, what would the X and
+Y offsets be?  What is cool about this function is what?  How did we
+define all of the other functions?  `defn`.  `defn`.  What is wrong
+with this function?  It is not a function.  What did we say about
+maps?  Maps are functions of their keys.  Direction delta, it does not
+need to be anything more than a map.  You are going to pass it a
+number.  You are going to get back one of these things.  And it is
+going to work just like a function.  Let us try it.  Yay!  That looks
+a lot like a function call.  But that is a really cool thing to be
+able to do.  You can write programs much more simply that way.
 
+```clojure
+(defn delta-loc 
+  "returns the location one step in the given dir. Note the world is a torus"
+  [[x y] dir]
+    (let [[dx dy] (dir-delta (bound 8 dir))]
+      [(bound dim (+ x dx)) (bound dim (+ y dy))]))
+```
 Delta location [`delta-loc`] basically takes a location and applies
 the delta and gives you the new X and Y positions of the location.
 You can just trust me that that one works.
 
+```clojure
+(defmacro dosync [& body]
+  `(sync nil ~@body))
+```
 Then I got tired of writing `sync` nil, so I wrote a little macro that
 does sync nil, and I call it `dosync`.  From now on I will only use
 `dosync`.
@@ -2393,6 +2497,16 @@ How are we doing for time.  Do I need to wrap this?  Is everybody OK?
 Are we going to get kicked out of the room?  Is this pace OK?  Do you
 want to see what happens at the end?  OK.
 
+```clojure
+(defn turn 
+  "turns the ant at the location by the given amount"
+  [loc amt]
+    (dosync
+     (let [p (place loc)
+           ant (:ant @p)]
+       (alter p assoc :ant (assoc ant :dir (bound 8 (+ (:dir ant) amt))))))
+    loc)
+```
 So `turn`.  `turn` turns an ant at the location.  At this point, all
 of these ant functions are going to affect the world, so they are all
 going to be transactional.
@@ -2435,6 +2549,23 @@ the agent.
 
 [Time 1:41:57]
 
+```clojure
+(defn move 
+  "moves the ant in the direction it is heading. Must be called in a
+  transaction that has verified the way is clear"
+  [loc]
+     (let [oldp (place loc)
+           ant (:ant @oldp)
+           newloc (delta-loc loc (:dir ant))
+           p (place newloc)]
+         ;move the ant
+       (alter p assoc :ant ant)
+       (alter oldp dissoc :ant)
+         ;leave pheromone trail
+       (when-not (:home @oldp)
+         (alter oldp assoc :pher (inc (:pher @oldp))))
+       newloc))
+```
 Now `move`.  We move an ant in the direction it is heading.  There is
 a caveat here that says: you must call this in a transaction that has
 already figured out there is no ant in the way.  And you will see this
@@ -2448,7 +2579,7 @@ then call `move`.  Absolutely, we can move, because I already checked
 that there is no ant in the way, thus enforcing the no two ants in the
 same space.
 
-So how does this work?  We get what I will call the old `p`, where we
+So how does this work?  We get what I will call the `oldp`, where we
 were.  We are going to move from this place.  That is where we are
 now.  We are going to get the ant that is there.  We are going to get
 a new location by calling that delta function that figures out the new
@@ -2486,6 +2617,17 @@ transaction.  Everybody good with that one?
 Remind me of this, because my program will not work if I do not
 evaluate all of these.
 
+```clojure
+(defn take-food [loc]
+  "Takes one food from current location. Must be called in a
+  transaction that has verified there is food available"
+  (let [p (place loc)
+        ant (:ant @p)]    
+    (alter p assoc 
+           :food (dec (:food @p))
+           :ant (assoc ant :food true))
+    loc))
+```
 `take-food`.  So here it says, again, you have to call this in a
 transaction that figured out there is food there.  There is more than
 0 food in this place when this is called.  And the same thing: find
@@ -2503,11 +2645,30 @@ returns a different value here.
 
 So `take-food` does not move you.  Like that.
 
+```clojure
+(defn drop-food [loc]
+  "Drops food at current location. Must be called in a
+  transaction that has verified the ant has food"
+  (let [p (place loc)
+        ant (:ant @p)]    
+    (alter p assoc 
+           :food (inc (:food @p))
+           :ant (dissoc ant :food))
+    loc))
+```
 `drop-food`, same story.  You have to figure it out in a transaction
 that you have food, and you are going to put it where you are.  Same
 kind of thing.  You are going to increment the food at the place where
 you are, and disassociate `:food` from you.  The ant has no food now.
 
+```clojure
+(defn rank-by 
+  "returns a map of xs to their 1-based rank when sorted by keyfn"
+  [keyfn xs]
+  (let [sorted (sort-by (comp float keyfn) xs)]
+    (reduce (fn [ret i] (assoc ret (nth sorted i) (inc i)))
+            {} (range (count sorted)))))
+```
 Now we get to the behavior.  This is a little bit more involved, but
 it is as complicated as this program gets.  I need a helper function
 to rank things by some sorting function.  So I do not want them
@@ -2523,10 +2684,27 @@ really not that interesting.
 
 [Time 1:46:04]
 
+```clojure
+(defn behave 
+  "the main function for the ant agent"
+  [loc]
+
+[This is a fairly long function, so I will not copy and paste it all
+here, but instead paste parts of it below just before those parts are
+discussed.]
+```
 So `behave`.  So this is the main loop for ant behavior.  And the ant
 agent is going to be executing `behave`, over and over and over again.
 Each ant agent is going to be executing `behave`.
 
+```clojure
+  (let [p (place loc)
+        ant (:ant @p)
+        ahead (place (delta-loc loc (:dir ant)))
+        ahead-left (place (delta-loc loc (dec (:dir ant))))
+        ahead-right (place (delta-loc loc (inc (:dir ant))))
+        places [ahead ahead-left ahead-right]]
+```
 So what happens?  We are going to find all of our places.  Where are
 we?  What is the ant at the place we are at?  What is ahead of us?
 What is to the left?  What is to the right?  And we are going to make
@@ -2539,6 +2717,9 @@ does.  Name, value, name, value.  We are going to start a transaction.
 We are going to ignore these next two lines, the next three lines, for
 the moment.  And we are going to look at the logic.
 
+```clojure
+     (if (:food ant)
+```
 Basically, an ant is doing one of two things.  It has either got food
 and it is trying to get home, or it is foraging.  So we are going to
 say if the ant has food -- and Clojure has Common Lisp style truth
@@ -2547,11 +2728,30 @@ for Java, means false, and anything else means true.  So I do not care
 about the value of food in the ant, I just care that it is there.  And
 that will tell me that.
 
+```clojure
+       ;going home
+       (cond 
+        (:home @p)                              
+          (-> loc drop-food (turn 4))
+        (and (:home @ahead) (not (:ant @ahead))) 
+          (move loc)
+        :else
+          (let [ranks (merge-with + 
+                        (rank-by (comp #(if (:home %) 1 0) deref) places)
+                        (rank-by (comp :pher deref) places))]
+          (([move #(turn % -1) #(turn % 1)]
+            (wrand [(if (:ant @ahead) 0 (ranks ahead)) 
+                    (ranks ahead-left) (ranks ahead-right)]))
+           loc)))
+```
 So if I have food, I am going home.  So what are the cases, the
 conditions, here?  One is: I am home.  If this place is marked as
 home, I am there.  So the ant is going to drop the food.  Oh, I have
 got to explain this.  It is going to drop the food and turn around.
 
+```clojure
+          (-> loc drop-food (turn 4))
+```
 The arrow is a really neat macro.  It basically is like a threading
 thing.  It says take location, and pour it into the first function.
 Now this is not even wrapped in a function, so it is going to make a
@@ -2571,12 +2771,26 @@ turn that thing by 4, which is the location.
 So that is what happens.  We find home.  We drop the food.  We turn
 around 180 degrees.
 
+```clojure
+        (and (:home @ahead) (not (:ant @ahead))) 
+          (move loc)
+```
 If we see that there is home in front of us, and there is no ant
 there, we call `move`.  Remember that it is a requirement of `move`
 that we be in a transaction, which we are, and we know that there is
 no ant in front of us.  So those are true, and we can call `move`.
 These functions cooperate sort of very symbiotically.
 
+```clojure
+        :else
+          (let [ranks (merge-with + 
+                        (rank-by (comp #(if (:home %) 1 0) deref) places)
+                        (rank-by (comp :pher deref) places))]
+          (([move #(turn % -1) #(turn % 1)]
+            (wrand [(if (:ant @ahead) 0 (ranks ahead)) 
+                    (ranks ahead-left) (ranks ahead-right)]))
+           loc)))
+```
 Otherwise it is not one of those two things.  So now we have to do
 some sort of selection.  And this is probably too complicated to
 explain well, but I will explain it quickly, which is that I need to
@@ -2586,10 +2800,14 @@ I can do now, or that I am letting the ants do.  So I am going to rank
 the choices two ways.
 
 One is: I am going to rank it by if there is home in front of us, that
-is worth 1.  And this is a bunch of little neat Clojure stuff.  One is
-sharp [meaning `#`] open paren is a function literal.  So instead of
-having to say `fn` something, and then write this, and then that
-something there, I can say sharp, the body, and just use percent,
+is worth 1.  And this is a bunch of little neat Clojure stuff.
+
+```clojure
+#(if (:home %) 1 0)
+```
+One is sharp [meaning `#`] open paren is a function literal.  So
+instead of having to say `fn` something, and then write this, and then
+that something there, I can say sharp, the body, and just use percent,
 `%1`, `%2`, `%3`, as the positional arguments of this anonymous
 function.  It is just the most succinct way to write an anonymous
 function in Clojure.
@@ -2602,6 +2820,11 @@ that hard.
 
 [Time 1:50:00]
 
+```clojure
+          (let [ranks (merge-with + 
+                        (rank-by (comp #(if (:home %) 1 0) deref) places)
+                        (rank-by (comp :pher deref) places))]
+```
 So we are composing that little function with `deref`, because we need
 to get something out of the places.  But essentially we are sorting
 the places by their home content.  And then we are also making another
@@ -2611,6 +2834,12 @@ going to combine at each key with plus.  So we are going to add
 together the scores from these two weightings, and we are going to use
 that to be the ranks.
 
+```clojure
+          (([move #(turn % -1) #(turn % 1)]
+            (wrand [(if (:ant @ahead) 0 (ranks ahead)) 
+                    (ranks ahead-left) (ranks ahead-right)]))
+           loc)))
+```
 So we have ranked now the three choices.  Then we are going to call a
 vector, and like maps are functions of their keys, vectors are
 functions of their indices.  So we have a vector of the three actions.
@@ -2627,17 +2856,35 @@ That yields a function, that expression, and the function I am calling
 on the location.  So I am either going to move, turn left, or turn
 right.  That is the whole case for going home.
 
+```clojure
+        (and (pos? (:food @p)) (not (:home @p))) 
+          (-> loc take-food (turn 4))
+```
 If I am foraging, it is very similar.  If I have found food where I
 am, and I am not at home, because you do not want to take food back
 out of your home.  So if I have found food and I am not home, then I
 am going to take the food and turn around.  Hopefully turning around
 points me sort of towards home.
 
+```clojure
+        (and (pos? (:food @ahead)) (not (:home @ahead)) (not (:ant @ahead)))
+          (move loc)
+```
 Otherwise, if there is food ahead of me, and that is also not home,
 and there is no ant there -- remember that was a caveat, then I can
 move.  I will go there, and then of course on the next cycle I will
 take that food.
 
+```clojure
+        :else
+          (let [ranks (merge-with + 
+                                  (rank-by (comp :food deref) places)
+                                  (rank-by (comp :pher deref) places))]
+          (([move #(turn % -1) #(turn % 1)]
+            (wrand [(if (:ant @ahead) 0 (ranks ahead)) 
+                    (ranks ahead-left) (ranks ahead-right)]))
+           loc)))))))
+```
 Otherwise, exactly the same kind of logic, except -- and the only
 reason why I duplicated it is that because I thought I might tweak it,
 but I ended up not.
@@ -2653,6 +2900,16 @@ should lead to good things.  That is why all of the ants are on them.
 So that is `behave`.  That is the biggest function in there, and that
 is the main loop of the agents, the ant agents.
 
+```clojure
+(defn evaporate 
+  "causes all the pheromones to evaporate a bit"
+  []
+  (dorun 
+   (for [x (range dim) y (range dim)]
+     (dosync 
+      (let [p (place [x y])]
+        (alter p assoc :pher (* evap-rate (:pher @p))))))))
+```
 And finally we have an `evaporate` function.  What happens is: the
 pheromones accumulate everywhere, but fresh pheromones are more
 valuable than really old ones, so letting them accumulate indefinitely
@@ -2696,12 +2953,22 @@ evaporate across the whole world.
 That is all of the logic of the program.  That is the entire
 simulation logic, up there.
 
+```clojure
+(import 
+ '(java.awt Color Graphics Dimension)
+ '(java.awt.image BufferedImage)
+ '(javax.swing JPanel JFrame))
+```
 So, let us have fun.  UI!  I need to use some Java stuff to do some
 UI.  I need `Color`, `Graphics`, and `Dimension` from there,
 `BufferedImage` from there.  And you will notice already that this is
 smaller than Java.  Yes?  To do the same job?  A bunch of lines in
 Java.
 
+```clojure
+;pixels per world cell
+(def scale 5)
+```
 I do not want 80 by 80.  That would be too tiny for us to see.  I need
 to scale the world, so in pixels, it is going to be each cell is five
 pixels.  That is what `scale` is.
@@ -2714,6 +2981,26 @@ context.  Anybody ever done Swing?  The idea is: there is a painting
 thread, and it calls you.  And it says: here is a graphics context to
 paint into, and then you have to use it.
 
+```clojure
+(defn render [g]
+  (let [v (dosync (apply vector (for [x (range dim) y (range dim)] 
+                                   @(place [x y]))))
+        img (new BufferedImage (* scale dim) (* scale dim) 
+                 (. BufferedImage TYPE_INT_ARGB))
+        bg (. img (getGraphics))]
+    (doto bg
+      (.setColor (. Color white))
+      (.fillRect 0 0 (. img (getWidth)) (. img (getHeight))))
+    (dorun 
+     (for [x (range dim) y (range dim)]
+       (render-place bg (v (+ (* x dim) y)) x y)))
+    (doto bg
+      (.setColor (. Color blue))
+      (.drawRect (* scale home-off) (* scale home-off) 
+                 (* scale nants-sqrt) (* scale nants-sqrt)))
+    (. g (drawImage img 0 0 nil))
+    (. bg (dispose))))
+```
 So the cool thing about `render` is: what is the Java render going to
 have to do?  `render` is going to paint the whole world.  So painting
 the whole world means finding out where all of the food is, where all
@@ -2732,6 +3019,10 @@ synchronized!
 
 [Time 1:56:00]
 
+```clojure
+  (let [v (dosync (apply vector (for [x (range dim) y (range dim)] 
+                                   @(place [x y]))))
+```
 Guess what?  STM does this kind of stuff, and that is a very, very
 hard thing to do.  So what do we do?  We make a little transaction,
 and we rip through every place and put it in a vector.  Boom, like
@@ -2794,37 +3085,94 @@ valid report.  And what ends up happening is: most systems have this
 copious logging, and then time points, and then they recreate things
 backwards.
 
+```clojure
+        img (new BufferedImage (* scale dim) (* scale dim) 
+                 (. BufferedImage TYPE_INT_ARGB))
+        bg (. img (getGraphics))]
+```
 So, we copy the world very quickly, and then a lot of this is just
 basic Swing stuff.  We are going to create a `BufferedImage`, which is
 not where we are drawing.  We are going to create the image there.
 
+```clojure
+    (doto bg
+      (.setColor (. Color white))
+      (.fillRect 0 0 (. img (getWidth)) (. img (getHeight))))
+```
 `doto` is a way to do multiple operations to a Java thing.  It is as
 if I called `. bg setColor`, blah, `. bg fillRect`.  But I can say
 `doto bg`, and I do not have to say `. bg` over and over and over
 again, which is already better than Java.
 
 So I set the background color to white, and I fill the rectangle.  I
-am going to blank out the whole thing.  Then for every cell, I am
-going to render the place, and render the place is a helper function,
-we will see.  And then we are going to go and create a box around
-home, in blue.
+am going to blank out the whole thing.
 
-So `fillRect` draws a solid rect.  That is a white background.  We are
+```clojure
+    (dorun 
+     (for [x (range dim) y (range dim)]
+       (render-place bg (v (+ (* x dim) y)) x y)))
+```
+Then for every cell, I am going to render the place, and render the
+place is a helper function, we will see.
+
+```clojure
+    (doto bg
+      (.setColor (. Color blue))
+      (.drawRect (* scale home-off) (* scale home-off) 
+                 (* scale nants-sqrt) (* scale nants-sqrt)))
+```
+And then we are going to go and create a box around home, in blue.  So
+`fillRect` draws a solid rect.  That is a white background.  We are
 going to look at `render-place` in a second.  Then we draw a rectangle
-around home.  Then we take that `BufferedImage` and we put it into the
-`Panel`, which is the thing we actually see on the screen.  So we draw
-off in the background, and then we paint onto the foreground.  And
-that makes it animation, as opposed to drawing while you are showing,
-and then you get all flickery and nastiness.  So that is `render`.
+around home.
+
+```clojure
+    (. g (drawImage img 0 0 nil))
+    (. bg (dispose))))
+```
+Then we take that `BufferedImage` and we put it into the `Panel`,
+which is the thing we actually see on the screen.  So we draw off in
+the background, and then we paint onto the foreground.  And that makes
+it animation, as opposed to drawing while you are showing, and then
+you get all flickery and nastiness.  So that is `render`.
 
 [Time 2:00:03]
 
+```clojure
+(defn render-place [g p x y]
+  (when (pos? (:pher p))
+    (fill-cell g x y (new Color 0 255 0 
+                          (int (min 255 (* 255 (/ (:pher p) pher-scale)))))))
+  (when (pos? (:food p))
+    (fill-cell g x y (new Color 255 0 0 
+                          (int (min 255 (* 255 (/ (:food p) food-scale)))))))
+  (when (:ant p)
+    (render-ant (:ant p) g x y)))
+```
 So `render` called `render-place`.  `render-place` says -- it is
 called once for each place, and this takes the graphics context, the
-place, and the X and Y locations, and says: if there is pheromone
-there, draw some green scaled by the amount of pheromone and that
-scale factor I said before.  If there is food there, draw some food.
-Same thing, there is a food scaling factor.  It is going to draw that.
+place, and the X and Y locations, and says:
+
+```clojure
+  (when (pos? (:pher p))
+    (fill-cell g x y (new Color 0 255 0 
+                          (int (min 255 (* 255 (/ (:pher p) pher-scale)))))))
+```
+If there is pheromone there, draw some green scaled by the amount of
+pheromone and that scale factor I said before.
+
+```clojure
+  (when (pos? (:food p))
+    (fill-cell g x y (new Color 255 0 0 
+                          (int (min 255 (* 255 (/ (:food p) food-scale)))))))
+```
+If there is food there, draw some food.  Same thing, there is a food
+scaling factor.  It is going to draw that.
+
+```clojure
+  (when (:ant p)
+    (render-ant (:ant p) g x y)))
+```
 And if there is an ant there, we are going to call `render-ant` and
 draw the ant.
 
@@ -2835,10 +3183,19 @@ ant does not.  It is pointing in the direction.  Believe me, it is not
 very exciting looking.  It is like a dash.  But we draw a dash for the
 ant.
 
+```clojure
+(defn fill-cell [#^Graphics g x y c]
+  (doto g
+    (.setColor c)
+    (.fillRect (* x scale) (* y scale) scale scale)))
+```
 And finally we have a helper function we saw we filled cells in green
 and red and whatever, and so `fill-cell` is a helper function that
 just takes a graphics context and does this.
 
+```clojure
+(defn fill-cell [#^Graphics g x y c]
+```
 This is an interesting thing right here, we have not seen before,
 which is sharp caret [sharp caret meaning `#^`.  That is an older
 syntax that still works fine in 2019, but is more often written `^`
@@ -2866,23 +3223,44 @@ reflection.
 
 [Time 2:02:06]
 
-So what did we say?  We did scale, so fill cell, render an ant, render
-a place, render the whole world.
+So what did we say?  We did `scale`, so `fill-cell`, render an ant
+[`render-ant`], render a place [`render-place`], render the whole
+world [`render`].
 
+```clojure
+(def panel (doto (proxy [JPanel] []
+                        (paint [g] (render g)))
+             (.setPreferredSize (new Dimension 
+                                     (* scale dim) 
+                                     (* scale dim)))))
+```
 I need a `Panel`.  That is a graphics thingy, right?  `JPanel`,
-`paint`.  I have just defined an instance of a derived class of
-`JPanel` and defined the `paint` function.  That is it.  That is all
-it takes.  So you say `proxy`, you put one class, and zero or more
-interfaces, and you will get a proxy class defined that is a derivee
-of that class, and implements those interfaces.  And then you can
-supply closures in here that define the function.  So we only care
-about `paint`.  `paint` is a Java function now.  This is going to be
-called from Java.  It gets passed a graphics context, and it is going
-to call that `render` function.
+`paint`.
+
+```clojure
+(proxy [JPanel] []
+  (paint [g] (render g)))
+```
+I have just defined an instance of a derived class of `JPanel` and
+defined the `paint` function.  That is it.  That is all it takes.  So
+you say `proxy`, you put one class, and zero or more interfaces, and
+you will get a proxy class defined that is a derivee of that class,
+and implements those interfaces.  And then you can supply closures in
+here that define the function.  So we only care about `paint`.
+`paint` is a Java function now.  This is going to be called from Java.
+It gets passed a graphics context, and it is going to call that
+`render` function.
 
 So this little, between here and there, is all it takes to define a
 derived Java class in Clojure, and implement its function.
 
+```clojure
+(def panel (doto (proxy [JPanel] []
+                        (paint [g] (render g)))
+             (.setPreferredSize (new Dimension 
+                                     (* scale dim) 
+                                     (* scale dim)))))
+```
 And then this `doto` is that same thing.  I am going to create a new
 one of these, and then I am going to immediately set its preferred
 size.  So `doto` this new proxy, `setPreferredSize` this dimension.
@@ -2890,6 +3268,9 @@ OK?  So I will make one of those.
 
 So I have to be here.  I have two panels now.
 
+```clojure
+(def frame (doto (new JFrame) (.add panel) .pack .show))
+```
 `frame` is make a new `JFrame`.  So also use `doto`.  Look how fast
 and easy this is.  Not multiple lines.  `doto` a new `JFrame`, add a
 panel, pack it, and show it.
@@ -2912,18 +3293,42 @@ We did not call `setup`.  And we did not start any activities up.
 
 So we saw the `behave` function, which is the main action of the ant
 agent.  We are also going to have an animation agent, whose job it is
-to call `repaint`, essentially.  So we will make an agent for that,
-and he does not really have any useful state.  So `animator` is an
+to call `repaint`, essentially.  So we will make an agent for that.
+
+```clojure
+(def animator (agent nil))
+```
+And he does not really have any useful state.  So `animator` is an
 agent with `nil` as its state.  His job is really just to perform side
 effects.  And this is going to be his main action.
 
-We are ignoring the running part now.  His main action is to call
+```clojure
+(defn animation [x]
+  (when running
+    (send-off *agent* #'animation))
+  (. panel (repaint))
+  (. Thread (sleep animation-sleep-ms))
+  nil)
+```
+We are ignoring the `running` part now.  His main action is to call
 `repaint`, and then sleep.  That is what the `animation` action does.
 
+```clojure
+(def evaporator (agent nil))
+```
 And then there is another agent.  Again, he does not have very useful
 state, because he is mostly being run for side effects.  The
-`evaporator`.  And his main action is `evaporation`.  And he is just
-going to call `evaporate` and then sleep.
+`evaporator`.  And his main action is `evaporation`.
+
+```clojure
+(defn evaporation [x]
+  (when running
+    (send-off *agent* #'evaporation))
+  (evaporate)
+  (. Thread (sleep evap-sleep-ms))
+  nil)
+```
+And he is just going to call `evaporate` and then sleep.
 
 So we have an `animator` agent, with an activity for him, an
 `evaporator` agent and an activity for him.  We already defined the
@@ -2938,9 +3343,16 @@ may want to load this file.  But we will see what happens.
 
 So we can look now at those lines I told you to ignore.  Sorry I am
 scrolling so much.  Which is: now we are inside the `behave`.  Oh
-wait.  There we go.  We are inside `behave`.  And we said `dosync`,
-and we said when we are running, `send-off`, which is one of these
-send an action, `send-off` to `*agent*`.
+wait.  There we go.
+
+```clojure
+    (dosync
+     (when running
+       (send-off *agent* #'behave))
+```
+We are inside `behave`.  And we said `dosync`, and we said when we are
+`running`, `send-off`, which is one of these send an action,
+`send-off` to `*agent*`.
 
 `*agent*` is this agent that is currently running.  Because on any
 particular thread, there can only be one agent at a time.  We know
@@ -2960,11 +3372,19 @@ state changes.  So he is going to `behave` once, and he will have sent
 himself a message or reminder, `behave` again, as long as `running` is
 true.
 
+```clojure
+  (when running
+    (send-off *agent* #'animation))
+```
 Similarly, if we now look at the parts of these other functions we
 were not supposed to look at, the `animation` thing does the same
 thing.  Send the agent that is currently executing `animation`,
 `animation` again.
 
+```clojure
+  (when running
+    (send-off *agent* #'evaporation))
+```
 And the `evaporator` does the same thing.  So these guys are going to
 be in infinite loops, broken by `running`.
 
@@ -2997,6 +3417,9 @@ So normally I would not have done all of this independent evaluation.
 I just would have loaded this file.  I am going to see if I actually
 got everything.
 
+```clojure
+(def ants (setup))
+```
 So we remember -- I do not know if you remember, but up at the top
 when we called `setup`, `setup` distributed food, and set up home, and
 put ants in home, and it returned a sequence of the ant agents.  So if
@@ -3007,6 +3430,9 @@ So I am going to call `setup`, and capture the list of agents into
 `ants`.  Woohoo!  So what is in `ants`?  Wow.  A lot of agents.  Cool.
 So we have 49 ant agents now.
 
+```clojure
+(send-off animator animation)
+```
 Now we have the first use of agent actions.  We are going to send the
 `animator` the action `animation`.
 
@@ -3028,6 +3454,9 @@ But there was a thread created, and that thread is running this
 animation loop.  But nothing is changing yet, because we have not set
 the ants off.
 
+```clojure
+(dorun (map #(send-off % behave) ants))
+```
 So now what I am going to do is, again, this `dorun` is because `map`
 is lazy.  So if I said `map` this function across the `ants`, it would
 do the first one, but if I never consumed the result, none of the
@@ -3039,10 +3468,15 @@ quickie function literal for sending `behave` to each ant.  We are
 mapping this function across the ants, and then forcing it to happen
 with `dorun`.
 
-Woah!  Cool.  There they go.  And then we are going to start the
-evaporator.  So now the evaporator is going.  And if we look here,
-woo!  Now we are top.  68 threads.  We are using more than 100% of the
-CPU, which means we are using 2 CPUs, and we are cranking away there.
+Woah!  Cool.  There they go.
+
+```clojure
+(send-off evaporator evaporation)
+```
+And then we are going to start the evaporator.  So now the evaporator
+is going.  And if we look here, woo!  Now we are top.  68 threads.  We
+are using more than 100% of the CPU, which means we are using 2 CPUs,
+and we are cranking away there.
 
 And there we go.  Ants turn red, remember, when they have food.  So
 there are red ants, and the green is the pheromone build up.  And we
