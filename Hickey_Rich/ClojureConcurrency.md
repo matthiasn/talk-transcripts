@@ -1022,12 +1022,11 @@ So how do you do a hash map tree thing?
 
 
 [Time 0:41:33]
+
 ```
 slide title: Bit-partitioned hash tries
-
-[figure that I will not attempt to make ASCII art for.  Create a file
-with the figure and link to it]
 ```
+![00.41.33 Bit-partitioned hash tries](ClojureConcurrency/Bit-partitioned-hash-tries.png)
 
 with any kind of decent performance.  It is still a tree.  It ends up
 that the way you do a really fast "hash table" is to use a tree, and
@@ -1091,12 +1090,11 @@ The trick is ...
 
 
 [Time 0:44:52]
+
 ```
 slide title: Path Copying
-
-[figure that I will not attempt to make ASCII art for.  Create a file
-with the figure and link to it]
 ```
+![00.44.52 Path Copying](ClojureConcurrency/Path-Copying.png)
 
 ... to share structure.  So what would happen if we took this hash
 table [referring to previous slide], and added something to it.  In
@@ -2588,6 +2586,11 @@ location.
 I did not evaluate this.  Make sure you catch me if I do not evaluate
 something.  I do not think I did this one, either.
 
+[In several parts of the code walkthrough, Rich types expressions into
+his REPL session that are not in the code, to demonstrate various
+behaviors of the code interactively.  I have not attempted to
+reproduce this REPL interaction in this transcript.]
+
 So we get a new location.  We call that delta location function, which
 says the new location is `[22 23]` from where you are, pointing in the
 direction of the ant.  And we find the place there, and that is going
@@ -3502,7 +3505,18 @@ And the drawing is not impeded by the ant motion.  It is not impeded
 by the evaporation.  There are 51 threads associated with this: 49
 ants, an evaporator, and an animator.
 
-We will let that go.  Does anybody have any questions?
+We will let that go.
+
+[Time 2:13:22]
+```
+slide title: Thanks for listening!
+
+[ Clojure logo ]
+
+http://www.clojure.org
+```
+
+Does anybody have any questions?
 
 [Audience member: I remember reading that there was a thread pool for
 agents?]
@@ -3931,13 +3945,3 @@ It has it all.  Good.  You saw it all.  Peace and the Yin Yang.  That
 is right.
 
 [Time 2:32:35]
-
-
-[Time 2:14:21]
-```
-slide title: Thanks for listening!
-
-[ Clojure logo ]
-
-http://www.clojure.org
-```
