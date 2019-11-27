@@ -5,6 +5,7 @@
 * **Video 1: [https://www.youtube.com/watch?v=dGVqrGmwOAw](https://www.youtube.com/watch?v=dGVqrGmwOAw)**
 * **Video 2, side by side video and slides, thus smaller original video: [https://www.youtube.com/watch?v=nDAfZK8m5_8&t=77s](https://www.youtube.com/watch?v=nDAfZK8m5_8&t=77s)**
 * **Slides: [ClojureConcurrency/ClojureConcurrencyTalk.pdf](ClojureConcurrency/ClojureConcurrencyTalk.pdf)**
+* **Source code: [https://github.com/jafingerhut/clojure-ants-simulation/blob/master/src/ants.clj](https://github.com/jafingerhut/clojure-ants-simulation/blob/master/src/ants.clj)**
 
 [Video 1 is somewhat better if you want to try to follow it for the
 discussion of the program, since it is larger and somewhat better
@@ -1975,7 +1976,8 @@ and as you will see, pretty simple.
 [Time 1:18:37]
 
 [One place you can find the source code for the program described here
-is: https://github.com/jafingerhut/clojure-ants-simulation
+is:
+https://github.com/jafingerhut/clojure-ants-simulation/blob/master/src/ants.clj
 
 Names of things in `this font` (inside backquotes in the MarkDown
 source) are symbols that you can search for in the program, or in a
