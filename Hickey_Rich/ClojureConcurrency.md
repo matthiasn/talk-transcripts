@@ -115,7 +115,7 @@ How about Clojure?  Anyone trying or using Clojure?  A couple of
 people in the room, OK.  That is neat.
 
 And then how about multi-threaded programming?  So about half.  So
-those are the people who will groan in ackknowledgement as we get to
+those are the people who will groan in acknowledgment as we get to
 all of these points.
 
 Great!  So it is a great audience.  It seems like the ML, Haskell side
@@ -194,7 +194,7 @@ But it is _not_ Common Lisp or Scheme.  I am not going to have enough
 time in tonight's talk to draw a lot of contrasts.  And the one thing
 I would say is when I get people coming to Clojure that have
 experience with Common Lisp or Scheme, they have to be reminded almost
-continously to not suppose things.  I reuse some of the same names,
+continuously to not suppose things.  I reuse some of the same names,
 some syntax, for different meanings, almost opposite meanings.  It is
 not a superficial thing, and it is not just to be different.  There
 are reasons why I use the names I do.  One of the reasons is: there
@@ -518,7 +518,7 @@ program where things can change out from underneath you.
 It is very hard to test it.  I think it is very interesting and
 telling, all of the emphasis on test driven design.  And I think
 people are driven to this because they know that these systems are
-completely intractible without constant testing.
+completely intractable without constant testing.
 
 But rather than questioning whether they were using a decent language
 in the first place, or maybe this was not a good idea, they are just
@@ -1928,7 +1928,7 @@ Rich Hickey:
 Oh, man.  I am already running at a pretty low res here.  I am not
 sure.  I think you might want to move up if it is a problem, because I
 want to try to get enough on the screen at one time.  It is already
-tought, because I am leaving room for my simulation over here.  There
+tough, because I am leaving room for my simulation over here.  There
 is another seat here if you want.
 
 So, you know, the REPL.  Here is a little Clojure.  It is a Lisp.
@@ -1939,7 +1939,7 @@ paren, but it is the same number of parens.
 
 But Clojure has got literals, as I said.  That is a vector.  That is a
 map.  OK.  Key, value, key, value, key, value.  You see it prints with
-commas?  Commas are whitespace.  I could have typed them in if I
+commas?  Commas are white space.  I could have typed them in if I
 wanted to.  But they do not do anything.
 
 Just a couple of other little quick things.  Maps are functions of
@@ -2191,7 +2191,7 @@ their square root.  So we get a nice square big enough to hold the
 ants.
 
 OK.  We have a setup function that is going to place the initial food
-and ants, and it is going to return a seqeuence of ant agents.  So if
+and ants, and it is going to return a sequence of ant agents.  So if
 we are placing food and ants, we are definitely modifying the world.
 We better be in a transaction.  So there is our `sync`.
 
@@ -2326,7 +2326,7 @@ in a transaction.  So this is saying: you have got to be in a
 transaction.  It ends up being inefficient to constantly recheck for
 the presence of the ant inside `move`, so the decision making process
 of the behavior is going to find that we have a free path here, and
-then call `move`.  Absoluately, we can move, because I already checked
+then call `move`.  Absolutely, we can move, because I already checked
 that there is no ant in the way, thus enforcing the no two ants in the
 same space.
 
@@ -2508,7 +2508,7 @@ take that food.
 Otherwise, exactly the same kind of logic, except -- and the only
 reason I duplicated it is that because I thought I might tweak it, but
 I ended up not.  Same kind of logic, except for I am going to rank the
-choices in front of me by their food content and their pheremone
+choices in front of me by their food content and their pheromone
 content.  So I am looking for food, instead of looking for home.  And
 the pheromones also, I try to stay on the path, because theoretically
 the paths should lead to good things.  That is why all of the ants are
@@ -2598,8 +2598,8 @@ though you will see the ants are going to be moving around, and the
 evaporator is going to be evaporating things, this renderer is going
 to get a consistent view of the world when it does this `dosync` and
 runs through the places.  Always.  You will never see two ants in one
-cell.  You will never see a little criss-cross of ants.  If you
-counted the ants, they would all be there.
+cell.  You will never see a little crisscross of ants.  If you counted
+the ants, they would all be there.
 
 And you will have to trust me on that, but that is the deal.  So we
 will not be holding the transaction open while we are painting,
@@ -2862,7 +2862,7 @@ effects of what would otherwise be a lazy functional thing.
 
 So we are mapping `send-off` to this ant, `behave`.  This is just a
 quickie function literal for sending `behave` to each ant.  We are
-mapping this function acros the ants, and then forcing it to happen
+mapping this function across the ants, and then forcing it to happen
 with `dorun`.
 
 Woah!  Cool.  There they go.  And then we are going to start the
@@ -3108,7 +3108,7 @@ way.
 
 Other questions?  Yes.
 
-In some of Simon Peyton-Jones talks about Haskell, he draws this chart
+In some of Simon Peyton Jones talks about Haskell, he draws this chart
 where you have safe languages.  I do not remember what the axes are,
 but he is talking about features coming over in to C# and Java from
 those other languages, sort of functional stuff coming over.  Do you
