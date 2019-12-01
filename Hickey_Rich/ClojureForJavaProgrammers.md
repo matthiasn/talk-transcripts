@@ -1008,8 +1008,9 @@ https://clojure.org/guides/equality
 TBD: Rich says above that equality comparisons on collections are made
 faster by caching hash values.  I know that it is made faster in most
 cases by quickly returning true if the two collections (or
-sub-collections) being compared are identical objects, but I do not
-think anything in the implementation of equality uses cached hash
+sub-collections) being compared are identical objects by a very fast
+pointer equality check, i.e. Java `==` on object references, but I do
+not think anything in the implementation of equality uses cached hash
 values.  Lookups of collections inside of hash maps and hash sets is
 sped up by caching hash values.]
 
