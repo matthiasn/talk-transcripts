@@ -1160,10 +1160,8 @@ the meaning of the rest.
 [Time 0:48:46]
 ```
 slide title: Traditional evaluation
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
 ```
+![00.48.46 Traditional evaluation](ClojureForJavaProgrammers/Traditional-evaluation.png)
 
 So let us talk a little bit about evaluation.  So how does this all
 work?  This we should all know from Java or many other languages like
@@ -1207,10 +1205,8 @@ please wait for our downage while we fix it.
 [Time 0:50:41]
 ```
 slide title: Clojure Evaluation
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
 ```
+![00.50.41 Clojure Evaluation](ClojureForJavaProgrammers/Clojure-Evaluation.png)
 
 Right.  That is the difference.  If you read about Erlang, which is
 getting a lot of press, they will tell you about phone switches, and
@@ -1310,10 +1306,8 @@ evaluator, we get a couple of things.
 [Time 0:55:22]
 ```
 slide title: Interactivity
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
 ```
+![00.55.22 Interactivity](ClojureForJavaProgrammers/Interactivity.png)
 
 One of the things we get is: we do not have to get the text from a
 file, right?  We can get it right from you.  You just saw me type
@@ -1333,10 +1327,8 @@ What else do we get from this?
 [Time 0:56:01]
 ```
 slide title: Programs writing Programs
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
 ```
+![00.56.01 Programs writing Programs](ClojureForJavaProgrammers/Programs-writing-Programs.png)
 
 Well we get the ability to skip the characters completely.  For
 instance, it is quite possible to write a program that generates the
@@ -1395,10 +1387,8 @@ sauce of all Lisps, ...
 [Time 0:58:23]
 ```
 slide title: Syntactic Abstraction
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
 ```
+![00.58.23 Syntactic Abstraction](ClojureForJavaProgrammers/Syntactic-Abstraction.png)
 
 ... including Clojure, which is: what would happen ...  I mean, it is
 fine to sit standalone and write a program that generates a program.
@@ -1977,7 +1967,7 @@ In fact, it has to be big `Boolean` false.  If it is coming from Java,
 I test to make sure, because an improperly constructed big `Boolean`
 might not be `Boolean.FALSE`.
 
-[Time 1:20:07]
+[Time 1:22:07]
 
 [Audience member: Yeah, new Boolean.]
 
@@ -2130,8 +2120,11 @@ But functions exist, and they are kind of straightforward.
 The first thing about functions you need to know is that they are
 first class values.  They are values like any other.  Methods in Java
 are not first class.  You cannot put a method into a variable.  You
-cannot pass a method to a function.  They are special things.  In
-Lisps, and in fact in most dynamic languages today, functions are
+cannot pass a method to a function.  They are special things.
+
+[Time 1:28:00]
+
+In Lisps, and in fact in most dynamic languages today, functions are
 first class, which means a function is a value.
 
 ```clojure
@@ -3451,10 +3444,8 @@ It means they are iteration safe.  There is no
 [Time 0:27:38]
 ```
 slide title: Path Copying
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
 ```
+![00.27.38 Path Copying](ClojureForJavaProgrammers/Path-Copying.png)
 
 So how does that work?  Well in general it works, and I cannot
 describe the implementation of these things in less than two hours
@@ -3788,12 +3779,8 @@ manual locks for the programmer.
 [Time 0:39:51]
 ```
 slide title: Direct references to Mutable Objects
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
-
-Ensuring a consistent Object is on your head
 ```
+![00.39.51 Direct references to Mutable Objects](ClojureForJavaProgrammers/Direct-references-to-Mutable-Objects.png)
 
 So this is your program today.  You have got a reference directly
 pointing at a data structure, which has random who knows what in it,
@@ -3812,12 +3799,8 @@ unit of work, this fails.
 [Time 0:40:33]
 ```
 slide title: Indirect references to Immutable Objects
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
-
-Never an inconsistent Object
 ```
+![00.40.33 Indirect references to Immutable Objects](ClojureForJavaProgrammers/Indirect-references-to-Immutable-Objects.png)
 
 This is the Clojure way.  Indirect references to immutable objects.
 So we have this box.  It has the reference to a thing.  The thing it
@@ -3839,10 +3822,8 @@ So how do we fake change?
 [Time 0:41:15]
 ```
 slide title: Persistent 'Edit'
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
 ```
+![00.41.15 Persistent 'Edit'](ClojureForJavaProgrammers/Persistent-Edit.png)
 
 Well, we change.  We do an edit, quote unquote edit.  So we know it is
 a persistent data structure.  So I am trying to do an edit.  I read
@@ -3858,10 +3839,8 @@ Then atomically ...
 [Time 0:41:46]
 ```
 slide title: Atomic Update
-
-[TBD: Figure that I will create a PNG format image of from the video,
-as I would prefer not to create an ASCII art version of it.]
 ```
+![00.41.46 Atomic Update](ClojureForJavaProgrammers/Atomic-Update.png)
 
 ... we update.  Which means we change the box from referring to the
 one thing, to referring to the other thing.  And if that change of the
