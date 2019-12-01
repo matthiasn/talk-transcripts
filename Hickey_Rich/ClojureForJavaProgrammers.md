@@ -9,8 +9,7 @@ talk.  In a very few places, there are editor marks in square brackets
 that also give the modern versions, if the ones in the talk did not
 work with Clojure 1.10.1, the latest as of 2019.  There are _very_ few
 examples of this, and it appears that the syntax changes were made
-before Clojure 1.0 was released in 2009.  This talk was given before
-then.
+before Clojure 1.0 was released in 2009, after this talk was given.
 
 This page says the presentation was given in June 2008:
 https://github.com/tallesl/Rich-Hickey-fanclub
@@ -1002,7 +1001,7 @@ Baker's paper on Egal, Clojure implements Egal, finally.  If you have
 not, then do not worry about it.
 
 [This article gets into great detail about what equality means in
-Clojure, including some brief descriptions between small differences
+Clojure, including some brief descriptions of small differences
 between Clojure `=` and Henry Baker's Egal:
 https://clojure.org/guides/equality
 
@@ -1066,9 +1065,10 @@ I think we have got one other Clojure programmer arrived, who can
 possibly attest independent of me how Clojure's performance is.  How
 is Clojure's performance?
 
-[Audience member: Fine for me.  I recognize the voice as that of
-Stuart Sierra, who has written many blog articles and widely used
-libraries for Clojure.]
+[Audience member: Fine for me.]
+
+[Editor note: I recognize the voice as that of Stuart Sierra, who has
+written many articles and widely used libraries for Clojure.]
 
 Yeah.
 
@@ -2975,7 +2975,7 @@ slide title: Swing Example
 	      (str (+ 32 (* 1.8 c)) " Fahrenheit"))))))
     (doto frame
       ;; The original 2008 slides omitted the `.` before each of the
-      ;; method names below.  They are need since Clojure 1.0 in 2009.
+      ;; method names below.  They are needed since Clojure 1.0 in 2009.
       (.setLayout (GridLayout. 2 2 3 3))
       (.add temp-text) (.add celsius-label)
       (.add convert-button) (.add fahrenheit-label)
