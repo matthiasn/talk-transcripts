@@ -931,7 +931,7 @@ sort of like an explosion.
 server requests and responses, that predates the creation of Clojure
 spec.  https://github.com/ring-clojure/ring ]
 
-What we want is the overalla name for the idea of "this herd is coming
+What we want is the overall name for the idea of "this herd is coming
 through", but the herd may start small, and then I walk by with my
 sheep I added to the herd, and you add your sheep to the herd.  We are
 acquiring information.  Acquiring information should not be hard.  And
