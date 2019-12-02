@@ -27,3 +27,4 @@ Talks by Rich Hickey
 * **[Are we there yet? (09/2009)](AreWeThereYet.md)** [[version with text for most slides]](AreWeThereYet-mostly-text.md)
 * **[Clojure - An Introduction for Lisp Programmers (9/2008)](ClojureIntroForLispProgrammers.md)**
 * **[Clojure for Java Programmers (6/2008)](ClojureForJavaProgrammers.md)**
+* **[Clojure Concurrency (3/2008)](ClojureConcurrency.md)**
