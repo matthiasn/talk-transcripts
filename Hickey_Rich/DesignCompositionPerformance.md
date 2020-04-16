@@ -100,7 +100,7 @@ You're going to take apart requirements that are domain side - the system must d
 
 The first thing you have to do when you're trying to fix what's not working is to separate out what's the cause of this problem from what's the symptom of this problem. Somebody says my screen is black. You're not - I would say, okay, I know how to fix black screens and start typing because there's not a generic solution to the black screen problem yet.
 
-And then there are a whole bunch of requirements that are unstated, and these need to always be enumerated, if not taking it apart, but they need to be in mind at all times. Unstated requirements are the things that everybody wants the system to avoid, like I'd like a system that doesn't keep crashing, use up all the memory, cost too much to run, use too much energy, require a lot of manual effort, or the users will hate. And so the unstated requirements are often a set of things that your software is supposed to not do, not cause attributes it's not supposed to have, so we want those on the table.
+And then there are a whole bunch of requirements that are unstated, and these need to always be enumerated, if not taking it apart, but they need to be in mind at all times. Unstated requirements are the things that everybody wants the system to avoid, like I'd like a system that doesn't keep crashing, use up all the memory, cost too much to run, use too much energy, require a lot of manual effort, or the users will hate. And so the unstated requirements are often a set of things that your software is supposed to not do, not cause, attributes it's not supposed to have, so we want those on the table.
 
 ![00.06.42 Take apart time/order/flow](DesignCompositionPerformance/00.06.42.jpg)
 
