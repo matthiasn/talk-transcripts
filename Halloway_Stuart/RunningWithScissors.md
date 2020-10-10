@@ -3,6 +3,7 @@
 * **Speaker: Stuart Halloway**
 * **Conference: [Strange Loop 2018](https://www.thestrangeloop.com/2018/sessions.html) - September 27-28, 2018**
 * **Video: [https://www.youtube.com/watch?v=Qx0-pViyIDU](https://www.youtube.com/watch?v=Qx0-pViyIDU)**
+* **Slides: [https://github.com/stuarthalloway/presentations/blob/master/StrangeLoop2018/RunningWithScissors.pdf](https://github.com/stuarthalloway/presentations/blob/master/StrangeLoop2018/RunningWithScissors.pdf)**
 
 
 [Time 0:00:00]
@@ -10,6 +11,11 @@
 ```
 slide title: 
 
+
+    Running with Scissors:
+    Live Coding with Data
+
+        @stuarthalloway
 ```
 
 My name is Stuart Halloway, and this talk is "Running With Scissors:
@@ -20,7 +26,7 @@ most fun software conferences I have ever been to: Strange Loop.  I
 hope you guys are having a great time so far as well.
 
 
-[Time 0:00:20]
+[Time 0:00:19]
 
 ```
 slide title: About Me
@@ -37,11 +43,11 @@ Developer: Clojure, ClojureScript, Datomic
 ```
 
 I usually do not do a bio slide, but as I was thinking about this one,
-I felt like it was somewhat of a big deal, and I noticed I had been
-doing this for 30 years.  So I have been writing software for 30 years
-in a variety of programming languages, from assembly -- kind of at the
-bottom of the abstraction pyramid -- to Clojure and Smalltalk at the
-top of the abstraction pyramid.
+I felt like it was somewhat of a big deal, and I noticed that I had
+been doing this for 30 years.  So I have been writing software for 30
+years in a variety of programming languages, from assembly -- kind of
+at the bottom of the abstraction pyramid -- to Clojure and Smalltalk,
+maybe at the top of the abstraction pyramid.
 
 And I have taken on just about every role one can have in a software
 project, including often being a developer, founding a couple of
@@ -93,7 +99,7 @@ to believe, and as Clojure continues to succeed, we just keep moving
 the goal posts.
 
 
-[Time 0:02:36]
+[Time 0:02:35]
 
 ```
 slide title: 
@@ -110,7 +116,7 @@ StackOverflow surveys for happiness, for salary, for salary per unit
 experience, Clojure is killing it.
 
 
-[Time 0:02:46]
+[Time 0:02:45]
 
 ```
 slide title: 
@@ -124,10 +130,10 @@ https://redmonk.com/sogrady/2018/08/10/language-rankings-6-18/
 
 If you look at the RedMonk quadrant, nobody would have said 10 years
 ago somebody was going to stick a dynamic functional Lisp in the top
-right of any analyst quadrant of anything.  And that is amazing.  And
+right of any analyst quadrant for anything.  And that is amazing.  And
 I just want to get a quick show of hands.  How many people here have
 programmed Clojure professionally?  Look at that.  Nobody would have
-believed that this would be possible.  Now you can applaud.  Go ahead.
+believed this would be possible.  Now you can applaud.  Go ahead.
 That is good.  Woohoo!
 
 
@@ -155,8 +161,8 @@ And so there is a ton of motivations and reasons to come and give this
 Clojure thing a try.  But there is not a whole lot of: "OK, I am
 sitting at the keyboard.  Now what?"  In fact, if you read the web
 site, it is almost like sort of: OK, boy this hammock is super
-comfortable.  I just hopped out of it, and I have this whole program
-in my head.  What do I do next?
+comfortable.  I just hopped out of it.  I have this whole program in
+my head.  What do I do next?
 
 
 [Time 0:04:04]
@@ -171,8 +177,9 @@ slide title: Running with Scissors:
 And this talk is about that.  So this talk is all about Clojure dev
 work flow that I use.  And I will just say right now: all caveats
 apply.  There is nothing new under the sun.  There is not a single
-thing that I am going to show you today that has not been different,
-better, cooler in some other language, some other person, or whatever.
+thing that I am going to show you today that has not been done
+different, better, cooler in some other language, or some other
+person, or whatever.
 
 But I have also watched people struggle to be effective in Clojure.
 And I think it is good for us to have a conversation about the things
@@ -208,26 +215,27 @@ slide title:
 
 [ drawing of relationship between read, eval, print, loop ]
 ```
+<img alt="read-eval-print-loop" src="RunningWithScissors/read-eval-print-loop.jpg" height="500">
 
 And it is important to deconstruct that a little bit.  It is right
 there in the acronym.  The REPL is a composition of three functions.
 Read, which takes text and returns data.  Eval, which takes programs
-and does something.  And print, which takes output, usually data, and
-turns them back into text again.
+and does something.  And print, which takes outputs, usually data, and
+turns them back to text again.
 
 And when people start looking at Lisp, there is one box on here that
 they usually go to and they get all excited.  Right.  They see that
 box in the middle of eval called "macros", and they are like: "Oh, it
 is on!"  I am going to go in there and do all kinds of crazy things.
 
-And years ago, I made the mistake of saying what the first mistake of
-macro club is, and people took at as dissing of macros.  So I am going
+And years ago, I made the mistake of saying what the first rule of
+macro club is, and people took it as dissing of macros.  So I am going
 to try to amend that today and say that the first rule of macro club
 is: Don't forget all of the other clubs shown on this slide.  Macro
 club is a very cool club and it is fun to hang out there, but it is
 really fun to hang out in these other clubs as well.
 
-And so I am going to give a few examples of a la carte usage of these
+And so I am going to give a few examples of a la carte usage of the
 other functions, the functions that make up the REPL.
 
 
@@ -280,9 +288,8 @@ And then that perform categorization action function is polymorphic
 processing that is driven entirely by data.  So there is never any
 classes or interfaces, or anything like that made.
 
-So that is just a simple example that read is a function that you
-actually call.  It does not just happen on your behalf inside the
-REPL.
+So that is just a simple example that read is a function you actually
+call.  It does not just happen on your behalf inside the REPL.
 
 
 [Time 0:07:44]
@@ -302,7 +309,7 @@ reinstalls your REPL running the pretty printer instead of the regular
 printer.
 
 So I see people all of the time -- I see people -- I have sat down
-with people at Strange Loop in the last 24 hours and had them print
+with people at Strange Loop in the past 24 hours and had them print
 some horrible ugly thing at the REPL, and then stare at it, and try to
 understand what it meant.  And I agree with you -- that would suck.
 Don't do that.
@@ -311,34 +318,33 @@ So this is just the tip of the ice berg of the kinds of things you
 could do if you wanted to customize printing, of course.
 
 
-[Time 0:08:13]
+[Time 0:08:14]
 
 ```
 slide title: Custom Error Printing
-
-[ screen shot of web browser at a page on Maria environment, available
-somewhere on https://maria.cloud ]
 ```
+<img alt="maria.cloud screen shot" src="RunningWithScissors/maria.cloud-screen-shot.jpg" height="500">
 
 This next slide shows maria.cloud.  Now if you followed along efforts
 to teach beginners programming, in particular teach them Clojure, this
-is a nifty little environment.  It is at maria.cloud on the web.  That
-is based on the ideas of Maria Montessori, of Montessori school fame,
-if your kids go to Montessori school, or you did.  And what they have
-done here is: they have built an entire literate web environment.  It
-is commingled text and places where you can type in code.
+is a nifty little environment -- it is at maria.cloud on the web --
+that is based on the ideas of Maria Montessori, of Montessori school
+fame, if your kids go to Montessori school, or if you did.  And what
+they have done here is: they have built an entire literate web
+environment that is commingled text and places where you can type in
+code.
 
 And when you type in code, they send it off to an evaluator.  And then
 they have completely overridden print on the way back so that the
 printing actually does not show you Clojure's error messages, which
 are somewhat famous, shall we say.
 
-And so this says, and I do not know whether you can read it, but I
-will post these slides later.  You type in "(1+1)", and it says:
-"Awww.  I see you have not done prefix notation yet.  That 1 is in
-function position, not what you want."  Instead of whatever Clojure
-would do, which is like: ClassCastException, jump back in the hammock.
-Or something like that.
+And so this says, and I do not know if you can read it, but I will
+post these slides later.  You type in "(1+1)", and it says: "Awww.  I
+see you have not done prefix notation yet.  That 1 is in function
+position, not what you want."  Instead of whatever Clojure would do,
+which is like: ClassCastException, jump back in the hammock.  Or
+something like that.
 
 So the REPL is a powerful thing.
 
@@ -360,10 +366,10 @@ it.  Common concerns that I hear are: "I already have a shell.  Isn't
 this just the same as that?"
 
 Or "Typing into a REPL sucks."  Or "I saw somebody make spaghetti code
-at a REPL once, and I don't want spaghetti code."
+at a REPL once, and I don't want any spaghetti code."
 
 
-[Time 0:09:37]
+[Time 0:09:36]
 
 ```
 slide title: "Just a Shell" is Not Enough
@@ -397,8 +403,8 @@ Everybody drink.
 
 But additionally, you have the ability to turn text to data.  How much
 time do you spend in non-Lisp languages taking data from primitive
-formats that do not have fidelity to your language, and then turning
-it into your language, and then turning that data back out again.
+formats that do not have fidelity to your language, and turning it
+into your language, and then turning that data back out again.
 
 But equally importantly -- and this is the top couple of rows here --
 when you are working at the REPL, your program semantics and your
@@ -414,9 +420,9 @@ elaborate than "evaluate one form at a time".
 
 They tend to have things like: "Well there are preambles, and
 declarations, and you have to consider a whole file before you can
-decide that it is a program."  And there are benefits to that, but I
-think that there are clear benefits to having this environment that
-you dev [develop] in be interactive, and be identical to the
+decide that it is a program."  And so on.  And there are benefits to
+that, but I think that there are clear benefits to having this
+environment that you dev in be interactive, and be identical to the
 environment in which your programs are made.
 
 
@@ -440,7 +446,7 @@ they added it specifically to address the problem that students,
 computer science students, really do not like Java.
 
 And they do not like Java because when they are first -- especially --
-my daughter is taking AP computer science right now, and she was
+my daughter is taking AP computer science right now.  And she was
 exposed to a tiny bit of JavaScript and a tiny bit of Clojure before
 she started her class, which is preparing her for the AP exam, and now
 it is all in Java.  And she is like: "What is this?!?  Why do I have
@@ -452,10 +458,10 @@ is not an interactive environment.  So Java has classes and methods,
 and all of these things that have to be evaluated in a context.  And
 so they had to make up a bunch of rules.
 
-And so there are a dozen or 15 rules about how the shell is not your
-program.  I do not want to write my program in that shell, because
-that is not my program.  It does not provide a suitable environment to
-live in.
+And so there are a dozen or 15 different rules about how the shell is
+not your program.  I do not want to write my program in that shell,
+because that is not my program.  It does not provide a suitable
+environment to live in.
 
 
 [Time 0:12:21]
@@ -463,19 +469,25 @@ live in.
 ```
 slide title: REPL is Not About Text Entry
 
-[ image of computer display showing a window with a text editor split
-into a top and bottom half.  The top half is file containing a Clojure
-program.  The bottom half is a Clojure REPL session. ]
+[ animation of a computer display showing a window with a text editor
+split into a top and bottom half.  The top half is file containing a
+Clojure program.  The bottom half is a Clojure REPL session.  The
+animation shows forms in the top half being highlighted, and
+presumably someone is pressing some key sequence to cause that form to
+be sent to the REPL and evaluated, and then the output of evaluating
+that form in the REPL is printed in the bottom half. ]
+
 ```
 
 The REPL is not about text entry.  And I see this one quite commonly.
 I think this is the very earliest thing that people get over.  But
 when you are working at a REPL, of course you _can_ type at a REPL.
-There is nothing that says there is a law that you cannot.  But that
-is not how Lisp programmers have ever worked.  You work in your
-favorite tool.  You can work in Cursive in IntelliJ, or Emacs, or Vim,
-or Spacemacs, or VScode.  Whatever you want.  And you have all of the
-affordances of a modern editor there.
+There is nothing that says there is a law that you cannot.
+
+But that is not how Lisp programmers have ever worked.  You work in
+your favorite tool.  You can work in Cursive, in IntelliJ, or in
+Emacs, or Vim, or Spacemacs, or VScode.  Whatever you want.  And you
+have all of the affordances of a modern editor there.
 
 And then when you want to evaluate forms, you send them to the REPL.
 
@@ -522,7 +534,7 @@ how they are going to work.  They always work the same way, and you
 can compose them to build your system.
 
 So the spaghetti argument is true, but it is only true when you are
-combining a shell the sort of ball of mud, ball of spaghetti
+combining a shell with the sort of ball of mud, ball of spaghetti
 programming that we are accustomed to in imperative and most object
 oriented programming.
 
@@ -540,8 +552,8 @@ Focus: cut your code and data
 
 What about the scissors part?  When you run your program, what are you
 running?  A lot of programming languages make you think of your
-program as a thing.  That is your program, and you go run it.  And
-maybe you made a special program to evaluate your program.  You run
+program as a _thing_ that is your program, that you go and run.  And
+maybe you make a special program to evaluate your program.  You run
 your unit tests, or whatever.
 
 But this is not really the sort of focused way at all.  So the
@@ -569,19 +581,20 @@ And so the style here is -- I am calling for today, shopping these
 names around -- task-specific dev.  And it begins, quite often, not
 with code, but with example data.
 
-And then it moves, quite often, not from the example data to code, but
+And then it moves, quite often, not from example data to code, but
 from example data to generated data.  So we start with imagining the
-data that our system is going to be manipulating.  And then, and only
-then, interactively at the REPL develop and test functions.  When you
-are doing that, you are not going to write the entire universe from
-scratch.  Load what you need to make your function go.  And load
-precisely what you need to make your function go.  Load just the
-namespaces you need.  It is not your entire program.  It is not
-necessarily what is going to happen when you run main, or whatever,
-when you are in production.
+data that our system is going to manipulate.
+
+And then, and only then, interactively at the REPL develop and test
+functions.  When you are doing that, you are not going to write the
+entire universe from scratch.  Load what you need to make your
+function go.  And load precisely what you need to make your function
+go.  Load just the namespaces you need.  It is not your entire
+program.  It is not necessarily what is going to happen when you run
+main, or whatever, when you are in production.
 
 And if you need to, build a little bit of custom UI to help yourself
-out along the way.  A UI whose only purpose is to assist you as a
+out along the way.  A UI that's purpose is only to assist you as a
 developer.
 
 
@@ -601,7 +614,7 @@ slide title: Example Data
  9   (into #{} (keys dominator)))
 ```
 
-So here is an example from -- this is taken from one of these old Ruby
+So here is an example from -- this is taken from one of the old Ruby
 quizzes still on the web.  I do not know if they are still adding
 them.  This is quite a few years old.  I ported this to Clojure when I
 was first learning Clojure.  And so this is designing and then
@@ -625,7 +638,7 @@ things, and maps and sets can collect things."
 ```
 slide title: Generating Data
 
-[ image of a computer screen containing code in top half:
+[ image of a computer screen containing code in top half]
 
 (defn winner
   "Returns the winning move, or nil if a draw."
@@ -640,14 +653,26 @@ slide title: Generating Data
 
 (s/exercise-fn `winner)
 
-then REPL output in bottom half]
+[Then REPL output in bottom half, the most interesting of which is the
+output of the last exercise-fn call, shown below]
+
+user=> ([(:paper :paper) nil]
+[(:scissors :scissors) nil]
+[(:scissors :rock) :rock]
+[(:rock :scissors) :rock]
+[(:scissors :scissors) nil]
+[(:scissors :scissors) nil]
+[(:scissors :scissors) nil]
+[(:paper :rock) :paper]
+[(:paper :scissors) :scissors]
+[(:rock :scissors) :rock])
 ```
 
 Then when we go to actually develop a function that tells who the
 winner is, we can test that function interactively.  And we can use
-spec to generate a bunch of sample data.  So maybe rather than writing
-any unit tests for a single example, I would rather generate 100
-examples.  Or in this case 10, since that is what fit on the screen.
+spec to generate a bunch of sample data.  So rather than maybe writing
+a unit test for a single example, I would rather generate 100
+examples.  Or in this case 10, because that is what fit on the screen.
 And just eyeball those examples and say: "Hey, does this look right?"
 
 Obviously you could still add tests.  I am not advocating at all that
@@ -682,10 +707,10 @@ slide title: Load What You Need
                              state
 ```
 
-This is the setup stanza I use when I am doing my personal finances.
-So there is a "require" that installs a bunch of namespaces that I
-need.  And then it connects to the database where I have my data.  And
-then I am ready to go.
+This is the setup stanza that I use when I am doing my personal
+finances.  So there is a "require" that installs a bunch of namespaces
+that I need.  And then it connects to the database where I have my
+data.  And then I am ready to go.
 
 And this is not, in some sense -- I have never actually run this
 program from main.  Not that there is anything wrong with that, but
@@ -738,7 +763,7 @@ do not want to try to look at something like this.
 But you do not have to do this.
 
 
-[Time 0:18:05]
+[Time 0:18:03]
 
 ```
 slide title: Inspect It
@@ -746,11 +771,14 @@ slide title: Inspect It
 (require '[clojure.inspector :as ins])
 (ins/inspect-table data)
 
-[ image of window on screen showing what the code above creates ]
+[ image of window on screen showing what the code above creates, which
+is a spreadsheet-like table with two columns of numbers labeled :alpha
+and :beta at the top. ]
 ```
 
 The inspector is six inches away from you when you are programming in
 Clojure.  Stand up the inspector and call inspect or inspect-table.
+
 Now I will tell you that if you are coming from almost any other Lisp,
 Clojure's inspector is quite primitive.  And I am astonished that
 somebody has not made one or even ten more better ones than we have
@@ -778,13 +806,14 @@ slide title: Spreadsheet It
   (map->csv data [:alpha :beta])))
 (sh/sh "open" "temp.csv")
 
-[ image showing screen shot of a spreadsheet window ]
+[ image showing screen shot of a spreadsheet window, again with two
+columns of numbers, again labeled at the top with :alpha and :beta ]
 ```
 
 That is fine.  I like spreadsheets just fine.  The spreadsheet is six
-inches away from you.  Take your data, throw it into a spreadsheet,
-look at it there.  Take your data, throw it into Mathematica, look at
-it there.
+inches away from you.  Take your data, throw it into a spreadsheet.
+Look at it there.  Take your data and throw it into Mathematica.  Look
+at it there.
 
 
 [Time 0:19:00]
@@ -794,10 +823,9 @@ slide title: Picture It
 
 Specviz: generate Graphviz from Clojure spec
 
-[ image of drawing produced by Specviz ]
-
 https://github.com/jebberjeb/specviz
 ```
+<img alt="Specviz example output" src="RunningWithScissors/specviz-example-output.png" height="500">
 
 Take your data and make a picture of it.  This is a coworker of mine
 at Cognitect, Jeb, who has made Specviz.  So Specviz is a program that
@@ -805,13 +833,13 @@ will take Clojure specs and turn them into Graphviz.  And this is the
 example from the site.
 
 There is obviously, these kinds of pictures, there are all kinds of
-fiddly things that you and make them domain specific.  But the thing
-that I would say about this is that the amount of effort to produce
-these data visualizations is small enough to fit inside of a single
-story card.  We are not talking about making a general purpose
-inspect-all-the-things thing.  We are talking about making a special
-purpose, show me exactly what I need to do to help me do what I am
-doing right now.
+fiddly things that you might want to do and make them domain specific.
+But the thing that I would say about this is that the amount of effort
+to produce these data visualizations is small enough to fit inside of
+a single story card.  We are not talking about making a general
+purpose inspect-all-the-things thing.  We are talking about making a
+special purpose, show me exactly what I need to do to help me do what
+I am doing right now.
 
 
 [Time 0:19:45]
@@ -842,8 +870,9 @@ was researching this talk, I went back and found it.  And I found this
 statement.
 
 With the REPL, I have all of this stuff to do, blah, blah, blah, and
-this is not nearly as efficient as an IDE that has been set up.  To
-which I say: "Put all of the stuff that you wrote to make your REPL
+this is not nearly as efficient as an IDE that has been set up.
+
+To which I say: "Put all of the stuff that you wrote to make your REPL
 exactly perfect for you inside of a "do" block.  And now you have a
 single key "get back to where I was, when I want to do that thing
 again".
@@ -912,19 +941,20 @@ slide title: Rich Comments
 ```
 
 And here is just one as an example.  This is a slightly modified
-version of the on that is at the bottom of set.clj.  I have put a "do"
-block around the top, showing that this is the part that is setting up
-the state you would need to try this out.  I think that Rich did not
-even bother -- I hypothesize that he did not even bother when he was
-doing this because he touched it so few times that it just did not
-matter.  But I put the "do" block around just so you could see the
-"advanced" configuration capabilities that Clojure provides.
+version of the one that is at the bottom of set.clj.  I have put a
+"do" block around the top, showing that this is the part that is
+setting up the state you would need to try this out.  I think that
+Rich did not even bother -- I hypothesize that he did not even bother
+when he was doing this because he touched it so few times that it just
+did not matter.  But I have put the "do" block around just so you
+could see the "advanced" configuration capabilities that Clojure
+provides.
 
 And then you have the expedition log.  Writing software is a journey.
-But because I have had to live with the software I have written over
-the last 10 years, I am always coming back and looking at it.  And I
-love having these expedition logs at the bottom of files.  They take
-me right back to where I was when I was doing it.
+Because I have had to live with the software I have written over the
+last 10 years, I am always coming back and looking at it.  And I love
+having these expedition logs at the bottom of files.  They take me
+right back to where I was when I was doing it.
 
 And of course if you put them -- I am not saying you have to put them
 in the file with your shipping code, but if you do, if you choose to
@@ -947,17 +977,18 @@ Instead of testing specialness, lean on language for
   lifecycle / reuse / scope / state / validation
 ```
 
-Well obviously the style I am laying out today could cohabitate with
-any way of writing tests you have ever done.  So I am not necessarily
-saying you have to write tests differently.  But having adopted this
-style of working at the REPL, I write my tests entirely differently.
+Well obviously the style that I am laying out today could cohabitate
+with any way of writing tests you have ever done.  So I am not
+necessarily saying you have to write tests differently.  But having
+adopted this style of working at the REPL, I write my tests entirely
+differently.
 
 After I have made a set of REPL interactions, I add some validation
 checks to those interactions.  And then I have a program that runs
-them as if I were at the REPL.  So it just grabs a file that gives a
-log, and runs through that file, evaluates all of the forms, printing
-out the results, and has maybe some checks and sanity checks where it
-can blow up where things are wrong.
+them as if I were at the REPL.  So it just grabs a file that is a log,
+and runs through that file, evaluates all of the forms, printing out
+the results, and has maybe some checks and sanity checks where it can
+blow up if things are wrong.
 
 And I released this, I do not know, a year or two ago as a Clojure
 library called transcriptor.  Transcriptor's source code is smaller
@@ -965,12 +996,12 @@ than the build file for almost any other testing framework.  I will
 say that again.  Transcriptor's source code is smaller than the build
 file for almost any other testing framework.
 
-https://github.com/cognitect-labs/transcriptor
+[ https://github.com/cognitect-labs/transcriptor ]
 
 And the reason is: it does not do anything.
 
 
-[Time 0:22:31]
+[Time 0:22:30]
 
 ```
 slide title: Transcriptor
@@ -1069,7 +1100,7 @@ language, but I am going to use the keyword struct.  And then in this
 programming language, I make slots.
 
 So the person has a first name and last name.  The Github account has
-an id and the date joined.  And the Twitter account has the id and the
+an id and the date joined.  And the Twitter account has an id and the
 date joined.  Whatever.
 
 Well guess what?  All of your data manipulation scissors are gone now.
@@ -1081,7 +1112,7 @@ gets even worse when you start combining things.  Because all three of
 those maps were information about me.
 
 
-[Time 0:25:45]
+[Time 0:25:44]
 
 ```
 slide title: Ad hoc Merge
@@ -1156,10 +1187,10 @@ slide title: Perfectly Good Fact,
 => {:github/location "Chapel Hill, NC"}
 ```
 
-So what happens if I walk up to the Github information me, and I say:
-"Select my location"?  I say select-keys, return a map of just the
-location.  Is that a perfectly good fact, or a broken struct?  I want
-to work in a world where it is a perfectly good fact.
+So what happens if I walk up to the Github information about me, and I
+say: "Select my location"?  I say select-keys, return a map of just
+the location.  Is that a perfectly good fact, or a broken struct?  I
+want to work in a world where it is a perfectly good fact.
 
 
 [Time 0:27:13]
@@ -1179,16 +1210,17 @@ slide title: Slots vs. Sets
 ```
 
 So to run this down, slots model a closed world.  They undermine
-genericness.  They undermine ad hoc usage.  And scaling the dev effort
+genericness.  They undermine ad hoc usage.  And scaling of dev effort
 is combinatorial.  Because once you find two pieces of information in
-the world are about the same thing, you make a third thing.  That is a
+the world are about the same thing, you make a third thing that is the
 combination of those.  And then you make a fourth thing, and a fifth
 thing, and so on.
 
 Now I have deliberately laid this comparison out as starkly as
 possible.  I am not denying the possibility of middle ground here --
 that there is a broad middle ground.  But I see a lot of people
-working in a style that really looks like the left side of this table.
+working in a style that really looks like the left hand side of this
+table.
 
 And, in fact, so much so that we have a special industry name for that
 unnecessary combinatorial effort.
@@ -1215,7 +1247,7 @@ https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201
 ```
 
 
-[Time 0:28:09]
+[Time 0:28:08]
 
 ```
 slide title: Live Coding
@@ -1234,7 +1266,7 @@ it.  It means that you can transform it.  And it means that you can
 program it.
 
 
-[Time 0:28:20]
+[Time 0:28:19]
 
 ```
 slide title: Query the Program
@@ -1293,7 +1325,7 @@ an interesting experiment.  And without leaving the program.
 
 You can discover a mistake, repair the mistake, evaluate that form
 again, and continue programming without leaving the program.  And
-there are some more advanced carving thing here like removing
+there are some more advanced carving thing here as well, like removing
 namespaces entirely, and so forth, that you might use occasionally.
 
 I want you to imagine what this process is like when you are ...
@@ -1329,9 +1361,10 @@ little tiny programs that help me explore the situation when something
 goes wrong, and make changes one "def" form at a time.
 
 And when I am done, I leave this setup from my exploration in a rich
-comment at the bottom of the file.  I work like this all of the time.
+comment at the bottom of the file.
 
-It has come to my attention that there is another work flow ...
+I work like this all of the time.  It has come to my attention that
+there is another work flow ...
 
 
 [Time 0:30:03]
@@ -1363,12 +1396,12 @@ thinkrelevance.com to cognitect.com, no longer exists. ]
 about 5 years ago when he was working with us at Cognitect, or maybe
 even it was Relevance back at that time.
 
-And it was called workflow, reloaded, and this is the component
+And it was called "workflow, reloaded", and this is the component
 library in Clojure.  And I think there are a half dozen competitors to
 component now.  And that is perfectly fine.  If you were working that
 way, great, but I do want to draw out the contrasts.
 
-Workflow reloaded tends to work at one level of abstraction higher
+Workflow reloaded tends to operate at one level of abstraction higher
 than what I am talking about.  It is working at the level of your
 project, and your files, and your namespaces, and -- and this is
 something that I do not have in this workflow -- it offers tooling to
@@ -1384,18 +1417,19 @@ the namespace.  And if that change is going to cascade other places,
 then I have to think through that.
 
 And often that is not a problem.  Often this technique helps me focus
-enough that I do not have to worry about it.  But let us think about
-the moments when it is a problem.  Let us say I am working in form foo
-in namespace A, and I realize that that is going to have a cascading
-effect.  I might be better off to track that down in my head, and
-think through it, and ask the question: "Why is this effect cascading
-so much?"
+enough that I do not have to worry about it.
+
+But let us think about the moments when it is a problem.  Let us say I
+am working in form foo in namespace A, and I realize that that is
+going to have a cascading effect.  I might be better off to track that
+down in my head, and think through it, and ask the question: "Why is
+this effect cascading so much?"
 
 I think that by working at a lower level, you put yourself -- it is
 that old adage of: "If something hurts, do it all of the time."  When
 I am working at this level, when things slip into becoming
 unnecessarily dependent on each other, it is in my face.  And so it
-provides a pain point that I think, in my experience, leads to have
+provides a pain point that I think, in my experience, leads to having
 less coupled code.
 
 That being said, by all means both of these things have a ton of
@@ -1421,22 +1455,22 @@ Not scissors
 What about GUI debuggers?  Well GUI debuggers are what I call the "off
 the rack" version of what I am talking about here.  They have a lot of
 improved visibility.  They add a lot of visibility.  They give you
-cool widgets.  They tend to have rather limited and special abilities
-to transform things, to say I want to work on my running program while
-I am in here.
+cool widgets.  They tend to have relatively limited and special
+abilities to transform things, to say: "I want to work on my running
+program while I am in here."
 
 Although they certainly do.  There is fix bug and restart at
 breakpoint, and things like that.  But when they have those things,
 they tend to be special.  They are not part of my program.  They are
 not a part of my debugger.  And as a result, they tend to have no, or
-very weak, programmability.  So the UI that is in my debugger are not
+very weak, programmability.  So the UI widgets in my debugger are not
 functions that I can call, typically.
 
 That being said, I can imagine a world where these things come more
 together, and I am sure that there are more programmable debuggers out
 there.  But in my experience, debuggers do not feel like scissors.
-They are not things I can take and write programs out of, and build
-things on top of.
+They are not things that I can take and write programs out of, and
+build things on top of.
 
 
 [Time 0:33:10]
@@ -1457,18 +1491,18 @@ dynamic leverage
 
 The last thing I want to talk about is Clojure spec.  Data is alive in
 your Clojure program.  You are not putting it in slots.  You are
-making it, manipulating it, seeing what it does.  And spec allows you
-to add specificity without throwing away your scissors.  You are still
-using the generic manipulation tools that can cut any kind of data.
-You are still using assoc, and dissoc, and select-keys, and things
-like that.
+making it, manipulating it, and seeing what it does.  And spec allows
+you to add specificity without throwing away your scissors.  You are
+still using the generic manipulation tools that can cut any kind of
+data.  You are still using assoc, and dissoc, and select-keys, and
+things like that.
 
 But you can add specificity when you want to.  And this is terrific
 for brown field development.  So I gave a spec talk at Strange Loop a
 few years ago.  I am not going to recapitulate that now.
 
-[ He is likely referring to his talk "Agility & Robustness: Clojure
-spec" given at Strange Loop in 2016:
+[ He is referring to his talk "Agility & Robustness: Clojure spec"
+given at Strange Loop in 2016:
 
 https://github.com/matthiasn/talk-transcripts/blob/master/Halloway_Stuart/AgilityRobustnessClojureSpec.md ]
 
@@ -1496,7 +1530,7 @@ can I recombine pieces like this?          assertion
 
 I am going to focus on a few aspects of spec that are particularly
 helpful when you are working in an existing code base.  And this is
-based off a sample project that I did last year exploring a Clojure
+based off of a sample project that I did last year exploring a Clojure
 library that wraps a Java library called clj-xchart.
 
 
@@ -1521,13 +1555,13 @@ https://cognitect.com/blog/2017/6/19/improving-on-types-specing-a-java-library
 ```
 
 So clj-xchart wraps a Java library called xchart, and it makes it
-Clojurish, by which I mean it turns all of the interactions with
+Clojure-ish, by which I mean it turns all of the interactions with
 charts into generic data.  Which is a beautiful thing.  This is why I
 picked this library.  There are dozens of Java charting libraries, and
 Clojure wrappers for each.
 
 But this one had a particularly clean: "I solved a problem with this
-library."  Which is: I went from an imperative thing to: you make a
+library."  Which is: I went from an imperative thing, to: you make a
 single call with data and make stuff.
 
 So that is great.  Imagine that I have to be a programmer who is going
@@ -1595,7 +1629,7 @@ ordering of the data.  So one of the axes has to be ordered ascending.
 And so the second thing here is a multimethod saying that for this
 particular style of data, this data has to be ordered.
 
-Once I have written specs like this, I can explore the domain
+Once I have written specs like this, I can explore the domain.
 
 
 [Time 0:36:04]
@@ -1626,9 +1660,8 @@ And, in a few hours ...
 
 ```
 slide title: Exercising Code
-
-[ image of chart created from randomly generated data ]
 ```
+<img alt="clj-xchart example output" src="RunningWithScissors/clj-xchart-example-output.jpg" height="500">
 
 ... I was able to get all the way up to exercising code.  So this is a
 randomly generated chart.  Every aspect of its configuration was
@@ -1701,12 +1734,12 @@ is allowed to do anything.  It is entirely the opposite for that.  In
 particular, the specs work for you, not you for the specs.  When I was
 writing the specs for this library, I was not using them to
 definitively say how the library worked.  I was using them as tools to
-get to exactly one piece of information that I wanted.
+get exactly one piece of information that I wanted.
 
 And so I know -- the specs are clearly marked as, well this spec does
 not actually cover the entire truth of this.  Guess what?
 Specification probably never does.  So might as well admit it up
-front.  And you can use spec to add support where you want and need
+front.  And you can use spec to add support where you want it and need
 it.
 
 Perhaps most amazingly, when I started exercising this, within one
@@ -1715,8 +1748,8 @@ Clojure program, nor in xchart, the Java program, but in the JVM
 itself.  So as soon as I started using generative testing.
 
 So small testing takeaway from today's talk.  If you test only by
-examples, start generating data for your tests, because you are going
-to find things that surprise and pain you.
+examples, start generating data for your tests, because you will find
+things that are going to surprise and pain you.
 
 
 [Time 0:38:36]
