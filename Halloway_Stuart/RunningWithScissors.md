@@ -210,11 +210,6 @@ And this is really the Lisp secret sauce: the read, eval, print, loop.
 
 [Time 0:05:00]
 
-```
-slide title: 
-
-[ drawing of relationship between read, eval, print, loop ]
-```
 <img alt="read-eval-print-loop" src="RunningWithScissors/read-eval-print-loop.jpg" height="500">
 
 And it is important to deconstruct that a little bit.  It is right
