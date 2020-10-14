@@ -20,6 +20,7 @@ Talks by Rich Hickey
 * **[Reducers (06/2012)](Reducers.md)**
 * **[Writing Datomic in Clojure (05/2012)](WritingDatomicInClojure.md)**
 * **[The Value of Values (1 hour version) (05/2012)](ValueOfValuesLong.md)**
+* **[Simplicity Matters (04/2012)](SimplicityMatters.md)**
 * **[Simple Made Easy (9/2011)](SimpleMadeEasy.md)** [[version with text for most slides]](SimpleMadeEasy-mostly-text.md)
 * **[Rich Hickey Q & A (2011)](RichHickeyQandA.md)**
 * **[Hammock Driven Development (10/2010)](HammockDrivenDev.md)** [[version with text for most slides]](HammockDrivenDev-mostly-text.md)
