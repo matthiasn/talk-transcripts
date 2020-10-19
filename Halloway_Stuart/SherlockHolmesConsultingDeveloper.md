@@ -940,7 +940,7 @@ case that I have ever worked on, but: I have written things down.
 
 [Time 0:20:13]
 
-<img src="SherlockHolmesConsultingDeveloper/Map-from-The-Adventure-of-the-Priory-School.png" alt="Drawing of a map of an area investigated by Holmes for a case.">
+<img src="SherlockHolmesConsultingDeveloper/Map-from-The-Adventure-of-the-Priory-School.png" alt="Drawing of a map of an area investigated by Holmes for a case." height="500">
 ```
 The Adventure of the Priory School
 ```
@@ -966,7 +966,7 @@ person accomplishing extraordinary things ...
 
 [Time 0:20:33]
 
-<img src="SherlockHolmesConsultingDeveloper/Encrypted-Message-from-The-Adventure-of-the-Dancing-Men.png" alt="Drawing of stick figures of men in different positions, like dancing.">
+<img src="SherlockHolmesConsultingDeveloper/Encrypted-Message-from-The-Adventure-of-the-Dancing-Men.png" alt="Drawing of stick figures of men in different positions, like dancing." height="500">
 ```
 The Adventure of the Dancing Men
 ```
