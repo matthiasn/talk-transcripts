@@ -839,7 +839,8 @@ right now.
 
 But importantly, there is another break where we get to _trivialisms_
 of problems in programming.  Like typos and just being inconsistent.
-Like, you thought you are going to have a list of strings and you put
+Like, you thought you are going to have a 
+strings and you put
 a number in there.  That happens.  People make those kinds of
 mistakes.  They are pretty inexpensive.
 
@@ -1924,7 +1925,7 @@ true.  It just is not true.  There are thousands of functions that
 take a list of a and return a list of a.  What does that mean?  It
 means nothing.
 
-And checking it ... I mean, if you only had a list of a-s, where are
+And checking it ... I mean, if you only had a list of a's, where are
 you going to get something else to return?  I mean, obviously you are
 going to return a list of a-s, unless you are getting stuff from
 somewhere else.  And if you are functional, you are not.
