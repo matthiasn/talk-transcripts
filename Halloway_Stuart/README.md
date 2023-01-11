@@ -1,6 +1,7 @@
 Talks by Stuart Halloway
 ------------------------
 
+* **[Sherlock Holmes, Consulting Developer (11/2019)](SherlockHolmesConsultingDeveloper.md)**
 * **[Running With Scissors: Live Coding With Data(9/2018)](RunningWithScissors.md)**
 * **[Datomic Ions in Seven Minutes (7/2018)](DatomicIonsInSevenMinutes.md)**
 * **[REPL-Driven Development (6/2017)](REPLDrivenDevelopment.md)**
