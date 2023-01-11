@@ -2,7 +2,7 @@
 
 * **Speaker: Rich Hickey**
 * **Conference: [Strange Loop 2011](http://thestrangeloop.com) - Sept 2011**
-* **Video: [http://www.infoq.com/presentations/Simple-Made-Easy](http://www.infoq.com/presentations/Simple-Made-Easy)**
+* **Video: [https://www.youtube.com/watch?v=SxdOUGdseq4](https://www.youtube.com/watch?v=SxdOUGdseq4)**
 
 ![00:00:00 Simple Made Easy](SimpleMadeEasy/00.00.00.jpg)
 
