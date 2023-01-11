@@ -470,7 +470,7 @@ There's a sense in which we're only going to briefly be novices.
 
 ![00.37.00 Humans are Incredible - build slide](DesignCompositionPerformance/00.37.00.jpg)
 
-You're only a complete beginning at something for an incredibly short period of time, and then you're over it.
+You're only a complete beginner at something for an incredibly short period of time, and then you're over it.
 
 ![00.37.08 Humans are Incredible - build slide](DesignCompositionPerformance/00.37.08.jpg)
 
