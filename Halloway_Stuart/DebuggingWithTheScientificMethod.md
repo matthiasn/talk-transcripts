@@ -10,7 +10,7 @@
 _(Applause)_
 
 Alright, so testing two different mics here, are we all good? Alright.
-So, I guess I should make a couple of clarifications on the introdution, before we begin
+So, I guess I should make a couple of clarifications on the introduction, before we begin
 I'm pretty sure that Alex drew a chain of causality whereby I can say that I'm responsible for Strangeloop.
 So I'm pretty excited to have discovered that, and can't wait to see my checks in the mail.
 
@@ -33,7 +33,7 @@ because bugs. Right? We have bugs, there are some estimates that 50% or more of 
 get to run away an somebody else has to do that, so depending on what you do you might not feel that; but if 
 you own something for a while, you've come to realize that.
 
-That's pretty obvious; the second thing is that debugging is quite a straightforward activity, and so, you know, Alex used some sort of positive adjectives to described my amazing awesomeness at this - or whatever it was that he said - and the fact is, this is not something hard to do, but people think it's hard to do, and so 
+That's pretty obvious; the second thing is that debugging is quite a straightforward activity, and so, you know, Alex used some sort of positive adjectives to describe my amazing awesomeness at this - or whatever it was that he said - and the fact is, this is not something hard to do, but people think it's hard to do, and so 
 you can look disproportionally smart by doing it. And I am continually intimidated by the intellect and the achievements of the people in this room: everytime I talk to somebody, they have some new area of knowledge that I didn't even know existed, about which they're expert; and so, to be able to have something, where without the expenditure of neurons you can _appear_ to be very bright, is a valuable thing to have.
 
 And the final thing - and this is quite subtle, and I won't call this out as much in the talk, I mean, I probably have 8 hours worth of material corked up right now - but there's a follow-on strand, which might lead to an interesting conversation, which is that understanding the way that I - and by proxy Rich - 
@@ -43,7 +43,7 @@ have more than one opinion about how to do things in Clojure community; more tha
 more than one opinion about how to handle Exceptions. We have lots of different ways of doing these things, 
 and I'm not going to lay out a "Here's one way to do it", right, it's fantastic that there are multiple 
 different ways, but I think that the scientific approach to debugging, when you adopt it, it influences what 
-kind of tools and approaches you reach for in other areas. And so, that's very worthwhile of follow-on conversation tonight, those who continue on to office hours (office hours will be help at, you know, whatever local bar stays open the latest).
+kind of tools and approaches you reach for in other areas. And so, that's very worthwhile of follow-on conversation tonight, those who continue on to office hours (office hours will be held at, you know, whatever local bar stays open the latest).
 
 <img src="DebuggingWithTheScientificMethod/0003.jpg" alt="" id="slide-0003">
 
@@ -57,11 +57,11 @@ other people have found that we had, and bugs other people had in their own syst
 helping them out with because of the support relationship. 
 
 Also, I'm going to make a little bit of appeal to authority here: I earned this grey hair. I've been doing 
-this for a long time, and my hair was not grey at all when I first started debugging _(laughter)_. So I'm pretty sure that most of this is directly related somehow. The alternate theory is that is has something to do with children.
+this for a long time, and my hair was not grey at all when I first started debugging _(laughter)_. So I'm pretty sure that most of this is directly related somehow. The alternate theory is that it has something to do with children.
 
 And finally, I am really lazy. I'm not the most terribly lazy person in the world, because you'd have to be 
 competitive to be _that_ lazy _(laughter)_. I really don't want to work hard, and so I want to have an approach to problems that allows me on most days to close up my laptop at 5 o'clock and spend time with my 
-children and have a tasty dinner, and watch whatever HBO most violent show that is currently on TV, and go to bed. So, I'm lazy, and so you can benefit from - you know, programmers we're all about lazyness; we're all 
+children and have a tasty dinner, and watch whatever HBO most violent show that is currently on TV, and go to bed. So, I'm lazy, and so you can benefit from - you know, programmers we're all about laziness; we're all 
 about finding tricks that allow us to do things in easier ways, and so I think these all contribute. 
 
 <img src="DebuggingWithTheScientificMethod/0004.jpg" alt="" id="slide-0004">
@@ -76,7 +76,7 @@ so there's this long thread on Reddit where people talk about this, but this is 
 "well, I had a problem, and I got a cryptic error message", or "I was interacting with a dependency, or a 
 Leiningen plugin of something, and I didn't understand where to even start looking for my problem", or "I had 
 a 'type error' in my system that would have been trivially found if I was working in Java, and I now feel 
-flummoxed". And so, there are lot of people whose experience of debugging Clojure is fraught or unpleasant; and my experience has not been like that. And I'm not saying that they're wrong and I'm right, but I'm saying that, you know, I may have some ideas that can make it pleasant for others, and that's kind of an objective here.
+flummoxed". And so, there are a lot of people whose experience of debugging Clojure is fraught or unpleasant; and my experience has not been like that. And I'm not saying that they're wrong and I'm right, but I'm saying that, you know, I may have some ideas that can make it pleasant for others, and that's kind of an objective here.
 
 Um, before I go further, how many people here - show of hands - have helped to develop tooling in the Clojure 
 ecosystem? Right, worked on any kind of tool? So, a lot of interesting tools in the Clojure ecosystem; 
@@ -112,7 +112,7 @@ had to say about the Scientific Method, and so of course I turned to Google to f
 ... and what I discovered is that the Scientific Method is, apparently, because rainbows _(laughter)_.
 Which, I have no idea why, I'm pretty sure that all the Edward Tufte people out there are just 
 pull their hair out, like "what do these colors even mean?" And so, rather than to use one of the 
-premade graphics with meaningless colors, I've made my own "Scientific Method for Debugging" graphic. 
+pre-made graphics with meaningless colors, I've made my own "Scientific Method for Debugging" graphic. 
 It's not that different from any of these, except it's got all of the colors removed: 
 
 <img src="DebuggingWithTheScientificMethod/0008.jpg" alt="" id="slide-0008">
@@ -126,7 +126,7 @@ So what is debugging all about? Well debugging typically starts with a failure:
 So a failure - and by the way, in the Conj tradition, all the terms I'm introducing I'm going to give you 
 something form the etymology dictionary on them. Advice to future, you know, proposal submitters: 
 if you use 2 or 3 words that are slightly unfamiliar, and make reference to etymology in your abstract, 
-clearly, that's something that is value in this space. 
+clearly, that's something that is valued in this space. 
 
 So what is a failure? A failure is a lack of success, or better it's an omission of expected action. 
 Right, I expected something, and I got something else.
@@ -156,11 +156,11 @@ there's something at should not see; there's some observation O I should not see
 I see O; well, if my thinking has been rigorous and my hypothesis says "if this is true, then 'not O' should happen" and I see O, my hypothesis is now dead. And that's great! I know it's kind of disappointing if you try to get grant money in the kind of regular everyday science, but in debugging this is good news, because we've now killed a possibility, that's good.
 
 The other possibility is that the hypothesis is supported by the experiment, but maybe you still don't have 
-an answer that let's you say "I've isolated it", at which point you need to do refinement: 
+an answer that lets you say "I've isolated it", at which point you need to do refinement: 
 
 <img src="DebuggingWithTheScientificMethod/0014.jpg" alt="" id="slide-0014">
 
-... and refinement is: removing impurity or unwanted elements. Right, it's substractive. 
+... and refinement is: removing impurity or unwanted elements. Right, it's subtractive. 
 So, I have some sort of story here - now my story may have to get bigger to remove elements, so I'm not 
 actually saying the number of words in your hypothesis is going to go up or down - but the conceptual size 
 of it is going to be focusing in on what the actual problem is. And then, you know, eventually - and I'm not 
@@ -185,11 +185,11 @@ And then, once you have this notion that science is a social process, it's opene
 
 <img src="DebuggingWithTheScientificMethod/0018.jpg" alt="" id="slide-0018">
 
-So thse hot button things, you know, they change from decade to decade, on of the hot ones when I was in academia was _The Bell Curve,_  this notion that we were going to use 'science' in to sort of split the human race up into different groups and say "these groups are more intelligent and these groups are less intelligent". That's not the case, certainly not justified by the evidence; but these challenges are real, and here's the funny thing, here's the good news: there's all kind of stuff that I just said that we can have very heated about, and get angry about, and in the context of debugging we don't have to worry about any of that stuff at all. It turns out that debugging - if the Scientific Method is the measure of how science is done, debugging is actually more like science than science: 
+So these hot button things, you know, they change from decade to decade, one of the hot ones when I was in academia was _The Bell Curve,_  this notion that we were going to use 'science' in to sort of split the human race up into different groups and say "these groups are more intelligent and these groups are less intelligent". That's not the case, certainly not justified by the evidence; but these challenges are real, and here's the funny thing, here's the good news: there's all kind of stuff that I just said that we can have very heated about, and get angry about, and in the context of debugging we don't have to worry about any of that stuff at all. It turns out that debugging - if the Scientific Method is the measure of how science is done, debugging is actually more like science than science: 
 
 <img src="DebuggingWithTheScientificMethod/0019.jpg" alt="" id="slide-0019">
 
-Right? Science is hard, it's difficult to imagine how you can take that little process on the side and turn a crank on it and have the theory of gravity, or the theory of evolution, of any of the other most important theories that people have ever thought. But that's not what we're doing: we're doing something that is far more constrained, and debugging is deductive, inductive. We're not trying to come up with a grand theory of everything. We have a grand theory of everything, it's called the software system we're running, we're trying to use that to prove some very concrete thing, right, "this thing happened".
+Right? Science is hard, it's difficult to imagine how you can take that little process on the side and turn a crank on it and have the theory of gravity, or the theory of evolution, or any of the other most important theories that people have ever thought. But that's not what we're doing: we're doing something that is far more constrained, and debugging is deductive, inductive. We're not trying to come up with a grand theory of everything. We have a grand theory of everything, it's called the software system we're running, we're trying to use that to prove some very concrete thing, right, "this thing happened".
 
 Also, there's not a big political problem, right? There's not usually - I mean, in my experience, debugging in and of itself has not been politically fraught. There are people who are experiencing bugs, and they want to see them fixed, and as the developers we want to see them fixed, so we're not having these kinds of arguments, and there's not usually a lot of moral outrage, right, and there's not any kind of like 'Academic left' saying "there is no real reality so we can't actually-" you know _(laughter)_, "you can't actually prove that there was a bug here". There's none of that, so - I mean seriously, this is really good news!
 
@@ -215,12 +215,12 @@ So, I'm going to take this Scientific Method, and I'm going to apply it in a rea
 
 This is a question on StackOverflow: "Why is this partial not working?". 
 
-So I definied `partial-join` as the partial of `clojure.string/join` with `","`, then I call `partial-join` on 
+So I defined `partial-join` as the partial of `clojure.string/join` with `","`, then I call `partial-join` on 
 `["foo" "bar"]`, and I get back _the scary error message:_ "ClassCastException, you cannot cast java.lang.String to clojure.lang.IFn", and there's a scary number in it, so there's no way we could possibly figure out what the problem is with this terrible error message. _(laughter)_ 
 
 <img src="DebuggingWithTheScientificMethod/0024.jpg" alt="" id="slide-0024">
 
-So what should we do? Right, we have a lot of choices. We could make error messages better, we could have an error message that says: "Oh, I see, you were trying to make a partial with `str/join`, " - and you know it has _this exact scenario_, we could anticipate every possible scenario everybody could ever get into. And, not to be unfair to error messages, we could go a long way towards having better error messages without being ridiculously over the top about it. Error message could be made better: sounds like a good plan to be. We could have better docs: maybe there's an answer to this problem in the documentation. We could use a debugger; in fact, in this case, it might be even that syntax highlighting and paren highlighting could have tipped you off as to where the problem was and I didn't give you that. Maybe static typing would have helped, right, in fact static typing _would_ have helped, you could imagine a scenario where static typing would have solved this problem. Using some sort of schema and schema validation would have helped. And in fact, this one is so easy that you might have stared at it and just know what the problem was.
+So what should we do? Right, we have a lot of choices. We could make error messages better, we could have an error message that says: "Oh, I see, you were trying to make a partial with `str/join`, " - and you know it has _this exact scenario_, we could anticipate every possible scenario everybody could ever get into. And, not to be unfair to error messages, we could go a long way towards having better error messages without being ridiculously over the top about it. Error message could be made better: sounds like a good plan to be. We could have better docs: maybe there's an answer to this problem in the documentation. We could use a debugger; in fact, in this case, it might even be that syntax highlighting and parenthesis highlighting could have tipped you off as to where the problem was and I didn't give you that. Maybe static typing would have helped, right, in fact static typing _would_ have helped, you could imagine a scenario where static typing would have solved this problem. Using some sort of schema and schema validation would have helped. And in fact, this one is so easy that you might have stared at it and just know what the problem was.
 
 So all of those things are useful, and all of those things should be part of your toolkit except for maybe 'staring at it' - right, that one's actually really quite weak, and we'll come back to that. 
 
@@ -260,7 +260,7 @@ I'll start with problem statements. Right, the antithesis of a good problem stat
 * what you expected,
 * and what actually happened. 
 
-This slide right there: it's worth a hundred bucks. Send me your checks. Right, this is not a hard thing to do, this is not harder - and in fact, sometimes, saying actually causes you to realize what the problem was. Going from the exercise of verbalizing "it didn't work" to the exercize of verbalizing "I stepped away the car and it started to- ooooh, right, I didn't put it the **???** - whatever". 
+This slide right there: it's worth a hundred bucks. Send me your checks. Right, this is not a hard thing to do, this is not harder - and in fact, sometimes, saying actually causes you to realize what the problem was. Going from the exercise of verbalizing "it didn't work" to the exercise of verbalizing "I stepped away the car and it started to- ooooh, right, I didn't put it the **???** - whatever". 
 
 So, there's a lot I could say about problem statements, this is all you're going to get right now, but this is an order of magnitude better than "it didn't work". So start with this.
 
@@ -274,7 +274,7 @@ How many people remember this guy? Yep, I mean it's Casey Affleck, but it's the 
 - "Yes"
 - "Am I a person"
 - "Yes"
-- "Evel Knivel."
+- "Evel Knievel."
 - "Damn it!"
 
 _(laughter)_
@@ -327,11 +327,11 @@ for their bugs.
 
 <img src="DebuggingWithTheScientificMethod/0032.jpg" alt="" id="slide-0032">
 
-Right, if I showed you  your application stack and something just stopped working, how many of you are gonna guess - _(audience laughs)_ right, how often is it physics? It's pretty rare, right?  Physics is not usually - I mean sometimes it is, and that's exciting. And I have to say that on every open source project I've ever worked on, you know, you get bug reports and some of them are bugs and you fix them, and some of them are not bugs and some of them are bugs inside something underneath you. We've never had a Clojure bug report that we had to forward onto physics. Right, yeah, There hasn't been any of those. I mean, in fact very few even have to do with, you know, JVM, much less OS operation. And you could make other stacks like this, there's there's a whole  conversation we could have about, sort of, developing a notion of what the possible space is, and you know where you can go in it - but my point is you don't have to be that good at it anyway. As long as you can get rid of some proportion of the possible causes with your experiment you're gonna quickly find the answer.
+Right, if I showed you  your application stack and something just stopped working, how many of you are gonna guess - _(audience laughs)_ right, how often is it physics? It's pretty rare, right?  Physics is not usually - I mean sometimes it is, and that's exciting. And I have to say that on every open source project I've ever worked on, you know, you get bug reports and some of them are bugs and you fix them, and some of them are not bugs and some of them are bugs inside something underneath you. We've never had a Clojure bug report that we had to forward onto physics. Right, yeah, There hasn't been any of those. I mean, in fact very few even have to do with, you know, JVM, much less OS operation. And you could make other stacks like this, there's a whole conversation we could have about, sort of, developing a notion of what the possible space is, and you know where you can go in it - but my point is you don't have to be that good at it anyway. As long as you can get rid of some proportion of the possible causes with your experiment you're gonna quickly find the answer.
 
 <img src="DebuggingWithTheScientificMethod/0033.jpg" alt="" id="slide-0033"> 
 
-Now, what is a good experiment? A good experiment is reproducible. You start by reproducing the bug. It's driven by a hypothesis. Right, people say they're experimenting when they're just trying  shit. Right that's not hypothesis-driven: you have an idea this is the case and then you have an experiment that provides more information to help you refine that idea. Also experiments are  small, and when you're when you're making changes to a system, you change one thing at a time right, because if you change two things now you just have to go back to figure out what the impact of that was when when something changes. Right, you haven't actually gained information.
+Now, what is a good experiment? A good experiment is reproducible. You start by reproducing the bug. It's driven by a hypothesis. Right, people say they're experimenting when they're just trying  shit. Right, that's not hypothesis-driven: you have an idea this is the case and then you have an experiment that provides more information to help you refine that idea. Also experiments are  small, and when you're making changes to a system, you change one thing at a time right, because if you change two things now you just have to go back to figure out what the impact of that was when something changes. Right, you haven't actually gained information.
 
 So I'm gonna give you a quiz on this: if you have a bug, let's say you  want to report a bug in your own app, and you know you're handing it off to another member of your team to help you look at it which of the following things should _not_ be in your repro case? 
 
@@ -339,13 +339,13 @@ So I'm gonna give you a quiz on this: if you have a bug, let's say you  want to 
 
 clojure.test / Cursive / prismatic schema /  Midje / Potemkin / nREPL / Leiningen / Leiningen plugins / core.type / test.generative ? Unless you think the bug is in one of these things, which one of these really stands out as "boy you really wouldn't want to have that in a repro case"? And the answer is: it's a trick question. You don't want any of these in your repro case, unless your theory is that, you know, "the shopping cart on my system doesn't work when i'm developing inside Cursive and using clojure.test", then your repro case shouldn't have anything to say about Cursive and clojure.test, and Colin and other people will thank you for that because he doesn't want to get bug reports about Cursive that about that kind of thing either. 
 
-So it's incredibly important to remove things that do not contribute to your hypothesis statement, and it's a freebie. Right I was saying earlier that you have to have this like mental model of the universe, to allow you to narrow down the things that aren't it, right, this is a freebie! In your bug these things are not it, so start by taking them out: make a really tiny thing that shows the problem.
+So it's incredibly important to remove things that do not contribute to your hypothesis statement, and it's a freebie. Right I was saying earlier that you have to have this mental model of the universe, to allow you to narrow down the things that aren't it, right, this is a freebie! In your bug these things are not it, so start by taking them out: make a really tiny thing that shows the problem.
 
 <img src="DebuggingWithTheScientificMethod/0035.jpg" alt="" id="slide-0035">
 
 Now when you're making observations, what's that all about? Well  one thing you need to do is you need to understand all the outputs. If your system has outputs, right, if your system has 4 or 5 outputs that you understand, and then it has one that's unrelated to your current problem and you don't understand it: brakes screech. If you don't understand it, how do you know if it's  related to your problem or not? So you need to understand the outputs from your system, and you need to be suspicious of  correlations. Where's the bug? It's in the last five lines of code you wrote. Quite often - and so if anything correlates with  the problem with a failure appearing then you want to suspect that, and in order to  make observations you need good tools. You need debuggers, you need logging, you need metrics, all the kinds of things that let you - then basically all those things give you more outputs. They turn things that are blackbox into things that are  whitebox and it's amazing that we have this inversion that when you do a Google search for debugging, more than 50% of it is about just this one sub-bullet  of one sub-point. 
 
-It's important right  you need to have tools, and in fact there  are more things that tools can do than just it, so we'll talk about those later.  
+It's important, right, you need to have tools, and in fact there are more things that tools can do than just it, so we'll talk about those later.  
 
 <img src="DebuggingWithTheScientificMethod/0036.jpg" alt="" id="slide-0036">
 
@@ -375,7 +375,7 @@ I mean the history of debugging is just riddled with "Oh my God  this thing has 
 
 <img src="DebuggingWithTheScientificMethod/0042.jpg" alt="" id="slide-0042">
 
-A second piece of software-specific advice: **the failure is not the  defect.** The failure is not the defect, and the way this comes up the most often in software is assuming that the exception has anything to do with the actual problem. I mean, it does have  something to do with it, that's how you know, right, but that it's in some way directly translatable into the problem. 
+A second piece of software-specific advice: **the failure is not the defect.** The failure is not the defect, and the way this comes up the most often in software is assuming that the exception has anything to do with the actual problem. I mean, it does have  something to do with it, that's how you know, right, but that it's in some way directly translatable into the problem. 
 
 <img src="DebuggingWithTheScientificMethod/0043.jpg" alt="" id="slide-0043">
 
@@ -389,7 +389,7 @@ And there's another important philosopher of debugging who can really help us ou
 
 The actual bug is always Garbage Collection - just as in House "it's never Lupus", in Clojure and in Java it's always Garbage Collection. And there's several reasons for that: one is most  applications are not designed to deliberately induce OutOfMemory errors; because they're not designed to deliberately induce those, those code paths are not checked very much. So you're in kind of uncharted territory. 
 
-The second one is OutOfMemory can happen anywhere, so there's no line of code where you can "look oh look there's the critical section where memory doesn't possibly run out" - you can't do that. Also OutOfMemory can appear as almost any other exception, because once something fails to allocate over here you can get a cascading series of reactions where the actual exception that's reported back is radically different. 
+The second one is that OutOfMemory can happen anywhere, so there's no line of code where you can "look oh look there's the critical section where memory doesn't possibly run out" - you can't do that. Also OutOfMemory can appear as almost any other exception, because once something fails to allocate over here you can get a cascading series of reactions where the actual exception that's reported back is radically different. 
 
 Finally - well not even finally, sub-finally - when you get close to OutOfMemory, you get a radical change in thread scheduling as the GC thread is running all the time, and all of a sudden things are happening in orders that they  never happen in everyday life, and so all those race conditions that would normally take your system 2,000 years to expose by accident, all of a sudden it takes them 2,000 seconds to expose by  accident. So lucky you thanks: Garbage Collection for helping us find those race conditions. 
 
@@ -407,7 +407,7 @@ So, if instead of doing experiments we had chosen to read the docs here, we coul
 
 <img src="DebuggingWithTheScientificMethod/0048.jpg" alt="" id="slide-0048">
 
-And now I want to give you one more really piece of interesting information: it happens on Cassandra in production but not on H2 in development. 
+And now I want to give you one more really interesting piece of information: it happens on Cassandra in production but not on H2 in development. 
 
 So what should we do right now? Hmm. If we're going to apply the method, what we need to do right now is look very suspiciously at that last sentence. Is that last sentence an observation? An hypothesis? What is it? It's actually not really anything, right - it doesn't have a subject, alright, it's a sentence without a subject in it. So there's some sort of amorphous 'it' that happens on Cassandra and not on H2. So let's try to define that 'it' a little bit. That certainly sounds suspicious, so let's make the smallest possible thing that could show us that: 
 
@@ -435,7 +435,7 @@ Right? Git bisect is actually partial automation of the scientific method. Right
 
 <img src="DebuggingWithTheScientificMethod/0053.jpg" alt="" id="slide-0053">
 
-_Why programs fail_ by Andreas Zeller, and in particular there's a lot of ideas in this book that have now become standard practice, so there are chapters you can skip, but in particular read chapters 5 through 7 and chapters 11 through 14 which actually lay out algorithms for doing automatic debugging of programs. And so what they're doing is modeling the entire state space of a broken program, and the entire state space of similar programs that don't exhibit the failure, and then shrinking the difference in those state spaces - do we know how to do shrinking in the Clojure world? We're pretty good at that, right? We have `test.check` and `test.generative` - there are algorithms for this so I would love to see, maybe at Clojure/west, or maybe a Clojure/conj next year, somebody giving a talk about taking the ideas in this book and realizing them in Clojure. Most of the ideas in the book are demonstrated with Python code, and Python's a great language but we should not let them have all the fun. Right, this is a problem which is well suited for Clojure, because as you might imagine one of the places where this gets complicated is I can just glibly say "the entire state space of a succeeding application" and "the entire state space of a failing application", but how are you actually going to capture that? Well that's a hard problem, but it's easier in a language that doesn't have very much state. Right, so to the extent that it's possible at all, right, in a ball of mud Python program, it ought to be a lot easier to do in a Clojure program - and oh by the way, having a language that, you know, models code as data and passes everything around as data, we are uniquely in a good position to implement these kinds of algorithms.
+_Why programs fail_ by Andreas Zeller, and in particular there's a lot of ideas in this book that have now become standard practice, so there are chapters you can skip, but in particular read chapters 5 through 7 and chapters 11 through 14 which actually lay out algorithms for doing automatic debugging of programs. And so what they're doing is modelling the entire state space of a broken program, and the entire state space of similar programs that don't exhibit the failure, and then shrinking the difference in those state spaces - do we know how to do shrinking in the Clojure world? We're pretty good at that, right? We have `test.check` and `test.generative` - there are algorithms for this so I would love to see, maybe at Clojure/west, or maybe a Clojure/conj next year, somebody giving a talk about taking the ideas in this book and realizing them in Clojure. Most of the ideas in the book are demonstrated with Python code, and Python's a great language but we should not let them have all the fun. Right, this is a problem which is well suited for Clojure, because as you might imagine one of the places where this gets complicated is I can just glibly say "the entire state space of a succeeding application" and "the entire state space of a failing application", but how are you actually going to capture that? Well that's a hard problem, but it's easier in a language that doesn't have very much state. Right, so to the extent that it's possible at all, right, in a ball of mud Python program, it ought to be a lot easier to do in a Clojure program - and oh by the way, having a language that, you know, models code as data and passes everything around as data, we are uniquely in a good position to implement these kinds of algorithms.
 
 <img src="DebuggingWithTheScientificMethod/0054.jpg" alt="" id="slide-0054">
 
@@ -454,8 +454,9 @@ And you know I've been told that six bullets is too many to remember at the end 
 
 ...and say let's back up and talk about science a little bit. It's really easy: know where you're going, right - remember Yogi Berra:  if you're heading into a particular direction, you have a much better chance of getting there; and then make well-founded choices. This is where developers, both beginner and expert, make the most frequent mistakes: they're under pressure, and something's not working, and you say - and we've all done it - and you say "you know what, I'm gonna try this". Stop and ask yourself: "why should I try that?" Stop and ask Plushy Cthulhu - you don't even have to talk to another person _(picks up a stuffed toy and pretends to talk to it)_, you could say: "Plushy Cthulhu, I had this idea about what's going wrong, and why my Keynote presentation didn't do what it was supposed to do during the middle of the talk, maybe you and I can sit down afterwards, I'm gonna talk you through, I'm gonna give you a hypothesis...".
 
-The effort of doing that, and writing it down - that's the final thing once you've decided you're gonna take any kind of action, justify that in writing first write. These those two steps - making good choices and writing your steps down - are gonna turn a haphazard random walk around the problem into a directed, focused cruise to an easy solution, and an early night relaxing at the bar with your friends. 
+The effort of doing that, and writing it down - that's the final thing once you've decided you're gonna take any kind of action, justify that in writing first write. These two steps - making good choices and writing your steps down - are gonna turn a haphazard random walk around the problem into a directed, focused cruise to an easy solution, and an early night relaxing at the bar with your friends. 
 
 Thank you very much! _(Applause)_
 
 <img src="DebuggingWithTheScientificMethod/0056.jpg" alt="" id="slide-0056">
+

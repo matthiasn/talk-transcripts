@@ -55,8 +55,8 @@ There's nothing about feature... what is feature? Feature is just an attribute o
  
 ![Problem Solving](HammockDrivenDev/08m36s.jpg)
  
-Problem solving is definitely a skill. I think you shouldn't take away from this talk that, you know, there's a certain kind of person who's good at problem solving and they get to this part of the job and we can practice these other things. You can practice this part. Polya wrote this amazing book called, 'How to Solve It' in 1945 or something which is about how to practice _how to practice_, and what are the techniques of solving math problems in this case. It's a terrific book, full of great insight and if you've never read it, go onto Amazon right after my talk and order yourself a copy.
- 
+Problem solving is definitely a skill. I think you shouldn't take away from this talk that, you know, there's a certain kind of person who's good at problem solving and they get to this part of the job and we can practice these other things. You can practice this part. Polya wrote this amazing book called, 'How to Solve It' in 1945 or something which is about how to practice _how to practice_, and what are the techniques of solving math problems in this case. It's a terrific book, full of great insight and if you've never read it, **[go onto Amazon](https://www.amazon.com/gp/product/069111966X/)** right after my talk and order yourself a copy.
+
 One of the things that's not so great about the book is that it is in the Math space, right? In that space, there's this really nice thing that happens. When you're done, you think you have an answer, you have all the techniques of mathematical proof to determine, if you actually have, whereas as software developers, we don't have that. There's no way to prove that you have a good solution to somebody's e-commerce site problem. There's no mathematical techniques and there's not going to be any anytime soon, that will let us do that.
  
 ![Practice](HammockDrivenDev/09m48s.jpg)

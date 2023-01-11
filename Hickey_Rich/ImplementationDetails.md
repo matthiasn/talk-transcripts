@@ -2,7 +2,7 @@
 
 * **Speaker: Rich Hickey**
 * **Conference: [EuroClojure](http://euroclojure.com/2014/) - June 2014**
-* **Video: [https://vimeo.com/100518968](https://vimeo.com/100518968)**
+* **Video: [https://www.youtube.com/watch?v=hMEX6lfBeRM](https://www.youtube.com/watch?v=hMEX6lfBeRM)**
 
 ![00.00.00 Inside](ImplementationDetails/00.00.00.jpg)
 
