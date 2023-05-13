@@ -1879,22 +1879,22 @@ going to take.
 What do you need to know?  Well you you have got maybe an approach you
 are going to take, but not exactly how you are going to implement it.
 Right now is where you would be talking about like, "What is the API
-going to look like?"  We have decided to make an API.  We decide to
-make a library for people to use to do it on their own.  We are not
-going to automate it.  But now you would be talking about like, "What
-is that API going to look like?  What is the signature is going to
-be?"
+going to look like?"  We have decided to make an API.  Or, we have
+decided to make a library for people to use to do it on their own.  We
+are not going to automate it.  But now you would be talking about
+like, "What is that API going to look like?  What is the signatures
+going to be?"
 
 The same thing is going to happen.  Hopefully, you are going to create
 more than one idea.  Then you are going to try to pick the best.  You
 are going to use the same techniques to decide.  Criteria.
 
 The other thing that is new here and different is before with approach
-we want to know in detail what are the user's intentions.  Now we get
-to talk about: as we make implementation decisions, we can go back to
-that use cases sheet and say, "this is how they will accomplish their
-intention, given the solution that we are intending to make."  And the
-implementation decisions we are choosing right now.
+we wanted to know in detail what are the user's intentions.  Now we
+get to talk about: as we make implementation decisions, we can go back
+to that use cases sheet and say, "this is how they will accomplish
+their intention, given the solution that we are intending to make."
+And the implementation decisions we are choosing right now.
 
 [Time 0:55:25]
 
@@ -1921,11 +1921,11 @@ _Where are you going?_
 
 So what do you got?  You have the use cases and you have this DM.  You
 are going to have more DMS.  These can be very light 15-minute
-exercises.  We need to make this choice.  You know we need to do
-something here.  What are our choices?  Boom.  What is the trade-offs
-of these things?  This, that, or the other.  It can be very
-lightweight.  I am not talking about suffering over every decision.  I
-am talking about just trying to be considerate, as often as you can.
+exercises.  We need to make this choice.  We need to do something
+here.  What are our choices?  Boom.  What is the trade-offs of these
+things?  This, that, or the other.  It can be very lightweight.  I am
+not talking about suffering over every decision.  I am talking about
+just trying to be considerate, as often as you can.
 
 This is when you may do diagramming.  You are certainly going to, as
 an outcome of doing these DMS, you are going to make implementation
@@ -1937,14 +1937,14 @@ I do not know if you remember back to the other thing, but we said
 like what are we going to do about this problem?  We are going to have
 these three APIs.  And you are going to be able to do this.
 
-And then you go go back to your use cases and fill in the "How?"
-column.  It is certainly possible that in doing -- I talked about this
-before -- in doing the implementation details, you may actually need
-to go back and alter your scope.  We thought we were going to do this,
-and we did not find a way to implement it that was not going to be too
-much work, or too possibly risky in altering code that we already had.
-And we do not want to take on the risk of that much change.  And then
-you are going to back up.
+And then you are going to go back to your use cases and fill in the
+"How?"  column.  It is certainly possible that in doing -- I talked
+about this before -- in doing the implementation details, you may
+actually need to go back and alter your scope.  We thought we were
+going to do this, and we did not find a way to implement it that was
+not going to be too much work, or too possibly risky in altering code
+that we already had.  And we do not want to take on the risk of that
+much change.  And then you are going to back up.
 
 [Time 0:56:48]
 
@@ -1999,7 +1999,7 @@ The one tip I would give you here is: this is not just about
 diagramming what you are going to do.  You should diagram what is
 wrong.  If you do not know how things are going to flow.  If you have
 this problem of: I only know this here, and in our intention we need
-to know it over there, we will draw the diagram that shows: I have a
+to know it over there, well, draw the diagram that shows: I have a
 question mark about how this gets over there.  Because we presume that
 this knowledge would be here, or would be in this database, and we
 have not decided yet how it gets there.  So diagramming your problem
@@ -2033,10 +2033,12 @@ are the details of the implementation choices you are going to make?
 You know why you are doing things.  You know how you are going to
 build it.  You should have a very high confidence that what you are
 going to build is going to work.  You have a ton of supportive
-material.  This will help you do it.  When you are trying to do it,
-you do not have to remember.  You will look at the work you did
-before.  If you need to grow the team or hand it off to someone else,
-you have a lot of stuff to give them.
+material.
+
+This will help you do it.  When you are trying to do it, you do not
+have to remember.  You will look at the work you did before.  If you
+need to grow the team or hand it off to someone else, you have a lot
+of stuff to give them.
 
 And then the contention I will make in this talk is that: I believe
 very strongly that if you take this kind of rigorous approach to doing
