@@ -1,7 +1,7 @@
 # Design In Practice
 
 * **Speaker: Rich Hickey**
-* **Conference: [Clojure Conj 2023](todo) - April 2023**
+* **Conference: [Clojure Conj 2023](https://clojure.org/events/2023/clojure-conj-2023--1880831835) - April 2023**
 * **Video: [https://www.youtube.com/watch?v=fTtnx1AAJ-c&list=PLZdCLR02grLpIQQkyGLgIyt0eHE56aJqd](https://www.youtube.com/watch?v=fTtnx1AAJ-c&list=PLZdCLR02grLpIQQkyGLgIyt0eHE56aJqd)**
 * **Slides: [https://download.clojure.org/presentations/DesignInPractice.pdf](https://download.clojure.org/presentations/DesignInPractice.pdf)**
 
@@ -1379,9 +1379,8 @@ then how, you will do later.
 
 ```
 slide title: Example: Use Cases
-
-[todo: put slide image here - lots of text]
 ```
+![0:38:25 Example: Use Cases](DesignInPractice/example-use-cases.png)
 
 So this is real.  Again, we really do this.  Everybody heard about
 Morse today, maybe?  REBL's successor?  This is a lot of things you
@@ -1459,9 +1458,8 @@ talk about in a second.
 
 ```
 slide title: Template: DM
-
-TODO: add template here
 ```
+![0:41:05 Template: DM](DesignInPractice/template-DM.png)
 
 So this is a template for a DM.  I do not think I have to zoom this
 one in.  This is not real.  This is just a template.  The upper left
@@ -1671,9 +1669,8 @@ is going to trigger your thinking.
 
 ```
 slide title: Example: DM
-
-[todo: put slide image here - lots of text]
 ```
+![0:48:22 Example: DM](DesignInPractice/example-DM.png)
 
 This is a real DM here we are thinking about.  This is not something
 we are shipping yet.
@@ -1950,9 +1947,8 @@ much change.  And then you are going to back up.
 
 ```
 slide title: Example: Impl DM
-
-[todo: put slide image here - lots of text]
 ```
+![0:56:48 Example: Impl DM](DesignInPractice/example-impl-DM.png)
 
 This is a real implementation DM for something we did already ship.
 We had this problem.  Newcomers to Clojure do not know Java.  They do
