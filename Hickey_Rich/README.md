@@ -1,6 +1,7 @@
 Talks by Rich Hickey
 --------------------
 
+* **[Design In Practice (4/2023)](DesignInPractice.md)**
 * **[Maybe Not (11/2018)](MaybeNot.md)**
 * **[CaSE podcast - Problem Solving and Clojure 1.9 (11/2018)](ProblemSolving.md)**
 * **[Datomic Ions (9/2018)](DatomicIons.md)**
