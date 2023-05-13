@@ -44,9 +44,9 @@ tips and techniques, not a formal method or anything highfalutin
 
 So this is Design In Practice, and the objective here is to demystify
 design somewhat.  I think I have given a few talks in the past that
-are about a lot of the ideas in design, but left the concrete practice
-of it sort of underspecified.  And it has led to maybe a certain
-imagined magicness to design that I wanted to dispel.  I think
+were about a lot of the ideas in design, but left the concrete
+practice of it sort of underspecified.  And it has led to maybe a
+certain imagined magicness to design that I want to dispel.  I think
 design is something that you can learn to do.  I think it is something
 that has concrete activities, practices, or things that we do.
 
@@ -90,7 +90,7 @@ slide title: Design
 
               design - Latin for 'waiting to code'
 
-coding happens throughout
+_coding happens throughout_
 
 performing experiments
 
@@ -110,7 +110,7 @@ will see as we go through the talk that you do coding throughout the
 design process.  Not necessarily starting to write your system, but
 exploring what your system might become, learning about the things
 that are going to be parts of your system, answering questions, and
-things like that.  And that is one of the reasons why I think it is
+things like that.  And it is one of the reasons why I think it is
 important to work in a language where that kind of work has zero
 project-y kind of overhead.  That you do not need to have started your
 thing, or be in a project context to start doing exploratory
@@ -128,15 +128,15 @@ the emphasis in this talk is about supporting your (team's) reasoning _process_,
 
 _writing down_ your thoughts helps you form them
 
-       techniques can guide your thinking and decision-making
+       _techniques can guide your thinking and decision-making_
 
-reified/refined/shared concepts
+  reified/refined/shared concepts
 
-onboarding/resumption
+  onboarding/resumption
 
-validation
+  validation
 
-eventually, documentation
+  eventually, documentation
 ```
 
 No.  So really "design", the word means to "mark out a plan for doing
@@ -162,7 +162,7 @@ paper makes it a thing.  It is something that you can then look at and
 now it becomes an input to you, even though it started in your own
 head.  It also helps you pick things up when you have left them around
 for a while, or allows people to join you in your work.  And then
-maybe eventually you will turn into something that you will use to
+maybe eventually you will turn it into something that you will use to
 document what happened in the end.
 
 [Time 0:04:48]
@@ -175,10 +175,10 @@ slide title: Words
 
 precision in naming == precision in thinking 'before + cut'
 
-           eschew nicknames, superheroes etc.
+          _eschew nicknames, superheroes etc._
                not semantic/meaningful
                give cover to fuzziness
-             don't track evolving thinking
+            don't track evolving thinking
 
 _be succinct_ 'gird/gather up'
 brief, clear and complete
@@ -234,8 +234,8 @@ thoughts.
 ```
 slide title: More Words
 
-      use the dictionary (not just good for writing keynotes)
-                        go right to the origins
+      _use the dictionary_ (not just good for writing keynotes)
+                      _go right to the origins_
                   - most useful/abstract semantics
               - discover the composition within words
 
@@ -245,7 +245,7 @@ a good word later becoming 'wrong' could mean:
 
   you are drifting from your intentions
 
-    your thinking will evolve and your words (story titles etc) should also
+    _your thinking will evolve and your words (story titles etc) should also_
 ```
 
 The other thing is this dictionary thing.  It is not just good for
@@ -280,8 +280,8 @@ and you can pause and pick a better word.
 ```
 slide title: Technique: Glossary
 
-   terms are inevitable in tech
-       valuable shorthand
+        _terms are inevitable in tech_
+             valuable shorthand
 
 don't presume a shared understanding
 
@@ -388,7 +388,7 @@ months or so.  So I encourage you to do this.
 ```
 slide title: Questions
 
-          a most powerful thinking tool
+          _a most powerful thinking tool_
 
 to formulate a question is to reify what you seek
 
@@ -430,7 +430,7 @@ cannot be true.  It is mostly a way we use to rule things out.
 ```
 slide title: Technique: The Socratic Method
 
-              interrogate 'ask together'
+              _interrogate 'ask together'_
             examine an idea dispassionately
    questioning its underlying assumptions, consistency
 
@@ -541,16 +541,16 @@ this is a framework that can be applied throughout the design process
        _note the importance of thinking about your thinking_
                          reflect - 'bend back'
 
-inquiry - advancing knowledge, is the driver
+  inquiry - advancing knowledge, is the driver
 ```
 
 So we are going to break down these four questions into two axes and
 two stages.  One is the understanding axis.  What is happening to our
 understanding?  How is our understanding moving forward?  We
 understood this much.  Now we are going to understand some more.  I
-talked about when we are dev-ing (TODO: developing?), we know when we
-are getting progress because we are creating more code, and maybe more
-features and the software can do more things.
+talked about when we are dev-ing, we know when we are getting progress
+because we are creating more code, and maybe more features and the
+software can do more things.
 
 When we are designing, what are we creating?  I am going to say one
 way to think about design is that you are creating understanding.  You
@@ -576,7 +576,7 @@ and over.
 The other thing I want to talk about here just briefly is: look at how
 this is reflective.  You are thinking about your thinking.  This is
 super important.  Being aware of what you are thinking about helps you
-think.  It also helps agenda-ize your background thinking so that is
+think.  It also helps agenda-ize your background thinking.  So that is
 where it becomes reflective.  So we will call this reflective inquiry.
 
 [Time 0:16:42]
@@ -688,8 +688,8 @@ to that.
 And then the approach.
 
 This talk is going to dig into the details of all these things.  But
-that is what a story is.  And the top story will look like this but it
-will be about the overarching objective.
+that is what a story is.  And the top story will look like this, but
+it will be about the overarching objective.
 
 [Time 0:18:48]
 
@@ -725,7 +725,7 @@ sense in order to move your own understanding forward.
 ```
 slide title: Design Phases
 
-   _not everything with any linearity is a 'waterfall'_
+    _not everything with any linearity is a 'waterfall'_
            nor do you want 'iterative development'
                iterate == Latin for 'do-over'
               better: incremental - 'grow into'
@@ -741,12 +741,12 @@ _be explicit about backtracking_
 ```
 
 So I do think that this moving forward, this linearity, of design is a
-real thing.  There is is tremendous pushback, or there was a
+real thing.  There is this tremendous pushback, or there was a
 tremendous pushback, against waterfall development.  This idea that
-you analyze your Design, you spec, you code the thing, and then you
+you analyze your design, you spec, you code the thing, and then you
 deliver.  And isn't that horrible?  Isn't that awful?
 
-And it was awful because I think there were organizational structures
+And it was awful, because I think there were organizational structures
 put in place that had one person doing this part, and then dumping on
 the next person who did this part, and then dumped on the next person.
 So I get handed this thing that was like: do you realize all these
@@ -772,11 +772,11 @@ development.
 
 So it is OK.  It is not monotonic.  You want to stay open-minded.  You
 will backtrack.  The one thing I will say is: if you are backtracking,
-say so.  So like say: Look, we thought we had an approach that worked.
-We started to look at some of the implementation details.  We found
-another problem, or we found that we did not really understand the
-problem, or we cannot do what we intended.  And now we are going back
-to a prior phase, where we are going to try to find a different
+_say so_.  So like say: Look, we thought we had an approach that
+worked.  We started to look at some of the implementation details.  We
+found another problem, or we found that we did not really understand
+the problem, or we cannot do what we intended.  And now we are going
+back to a prior phase, where we are going to try to find a different
 approach, because there were obstacles in our way.
 
 [Time 0:21:30]
@@ -875,12 +875,12 @@ the description paragraph for that.
 ```
 slide title: Technique: Description
 
-                   one paragraph summary
+                  _one paragraph summary_
                      situation/context
                symptoms/reports/observations
                           requests
 
-don't:
+_don't_:
 
   say what the problem is
 
@@ -895,7 +895,7 @@ reports.  All those things.  You just want to capture the high level
 view of what they are.  You can point to the details.
 
 The very important thing about this is that you are not saying right
-now what the problem is. This is, "I have a headache."  You are not
+now what the problem is.  This is, "I have a headache."  You are not
 saying, "Because I have a brain tumor", because you could have a brain
 tumor, or you could have not had enough water today, or your eyeglass
 prescription could be wrong.
@@ -933,11 +933,11 @@ _Where are you going?_
 
 The next phase is to diagnose the problem.  And "diagnosis", another
 great word.  It is not Latin.  It is Greek, and it means "to know
-across" That across is the "dia" part, like "diagonal" or "diameter".
-Same root.  "nose" is "to know".  Again, I just looked it up, and it
-was super cool that this is what it meant, because I do think that
-this is a crossing.  This is a movement from one possible set of
-knowing to another set of knowing.
+across".  That across is the "dia" part, like "diagonal" or
+"diameter".  Same root.  "nose" is "to know".  Again, I just looked it
+up, and it was super cool that this is what it meant, because I do
+think that this is a crossing.  This is a movement from one possible
+set of knowing to another set of knowing.
 
 And there is two kinds of problems.  I am going to say that we are
 talking about design for both of these.  One kind of problem, though,
@@ -1023,19 +1023,21 @@ I think one of the most powerful tools you have here is to make the
 problem space smaller.  If one of your hypotheses makes the problem
 space smaller, that is often a good thing to explore early.  I am
 often telling programmers that I work with, "Get that into a smaller
-context."  You see a problem in your system.  Well your production
-system is this big hairy monster.  Can you reproduce this problem with
-just this tiny piece of code?  Can you reproduce it not using your
-code at all?  If you think it might be a library.  You think it might
-just be an algorithmic snafu.  Can you just write a little piece of
-Clojure code on the side and reproduce it there?
+context."
+
+You see a problem in your system.  Well your production system is this
+big hairy monster.  Can you reproduce this problem with just this tiny
+piece of code?  Can you reproduce it not using your code at all?  If
+you think it might be a library.  You think it might just be an
+algorithmic snafu.  Can you just write a little piece of Clojure code
+on the side and reproduce it there?
 
 [Time 0:28:48]
 
 ```
 slide title: Technique: Scientific Method
 
-out of scope for this talk
+               _out of scope for this talk_
 
 formulate a supporting/refuting conjecture
 
@@ -1087,14 +1089,14 @@ the answers that you need to do it.
 ```
 slide title: Diagnose: Feature Requests
 
-feature: factura: 'making', of an answer
-_not_ the problem
+               _feature: factura: 'making', of an answer_
+                          _not_ the problem
 
 'we don't have feature X' is never a valid problem statement
 
   recognize and kill all such statements
 
-feature -> problem(s) for what that feature is (one possible) answer
+_feature -> problem(s)_ for what that feature is (one possible) answer
 
   what is the user's intention/objective? (not how)
 
@@ -1108,7 +1110,7 @@ features always, "I wish you had this.  I wish I had that."  You do
 also, right?  You have your own internal feature requests, your
 backlog, and things you thought might be good features.
 
-"We do not have feature X" is never a valid problem statement?  If you
+"We do not have feature X" is never a valid problem statement.  If you
 need proof of this you only need to look at a modern car which has a
 touch screen where no one said, "I need to slide my finger on some
 random piece of glass to a precise point to set my blower in my car
@@ -1168,14 +1170,14 @@ and give it some scope.
 ```
 slide title: Technique: Problem Statement
 
-         Succinct statement of unmet user objectives and cause(s)
+        _Succinct statement of unmet user objectives and cause(s)_
                     not symptoms/anecdotes/desires
          not remedy/solution/feature - challenge is to filter out
 
 modify your top story title from symptom -> problem
 add Problem after the Description in the top story - link to diagnosis work
 
-subject to refinement
+_subject to refinement_
 - as your understanding increases
 - don't let your problems statements get stale
 
@@ -1186,11 +1188,10 @@ subject to refinement
 
 So a problem statement is this succinct statement of unmet objectives.
 We are talking about what is the user's intention, and the cause.  It
-is not the symptoms any more.  We did that in the in the Describe
-phase.  And it is not the remedy.  That is still in front of us: what
-to do about it.  So if that still exists, if any sort of, "what we are
-going to do about it" is still present here, you want to get rid of
-that.
+is not the symptoms any more.  We did that in the Describe phase.  And
+it is not the remedy.  That is still in front of us: what to do about
+it.  So if that still exists, if any sort of, "what we are going to do
+about it" is still present here, you want to get rid of that.
 
 At the point you have got a problem statement, you are going to be
 able to do two things with your top story.  You are going to be able
@@ -1228,7 +1229,7 @@ driving in order to turn up the radio.
 ```
 slide title: Phase: Direction
 
-                         strategy, approach
+                        _strategy, approach_
                    User's intentions and objectives
                   High-level approaches to addressing
    e.g. in-proc/out, lib/app, buy/build, modify/add, automatic/manual etc
@@ -1276,6 +1277,25 @@ approaches.  You are going to try to decide which one is best.  So
 this is a big phase.  And along the way you are going to have to have
 reflected about what matters to you in making this decision.
 
+[Time 0:34:20]
+
+```
+slide title: Phase: Direction (cont.)
+
+_Where are you at?_ Have description and problem statement
+_Where are you going?_
+
+  Enumerating use cases
+
+  Making a strategy DM
+
+    criteria, approaches and tradeoffs
+
+  determining scope
+
+  entering Approach secion on top story
+```
+
 And then what are you going to do about it?  Here have already got the
 description, the problem statement.  You are going to want to walk out
 of this phase with enumerated use cases.  You want to walk out of this
@@ -1313,16 +1333,15 @@ using the solution you've designed
 So use cases.  I think everybody thinks they know how to do use cases.
 And that is usually not what I want to see in a use case, because I
 think again there is two phases.  The best first phase for use cases
-is to talk about only what people intend to accomplish.  What what
-they would like to be different about the world.  What they wish they
-could do, not how.
+is to talk about only what people intend to accomplish.  What they
+would like to be different about the world.  What they wish they could
+do, not how.
 
 So you are going to make a little tiny sheet that says intention,
-intention, intention.  Now it is got a "how" column that is that is
-blank.
+intention, intention.  It has got a "how" column that is blank.
 
 I do not believe in this, "Make a card that says the user should put a
-push a button.  It is going to be this color, and we will do this
+push a button.  It is going to be this color, and it will do this
 thing."  I mean if you want to do that, that is great.  That is not
 what this talk is about.
 
@@ -1372,9 +1391,9 @@ and a lot of ways you might want to connect Morse to your stuff.
 And we were just sort of brainstorming.  And this is not a giant
 thing.  We sat and talked for 40 minutes, and this is what we did
 while we were talking.  We made this sheet.  We filled it out, and we
-talked about what was what.  But in the in this use case phase we
-would only do A, right?  This is a completed story that shows column
-B, the how, as well.
+talked about what was what.  But in this use case phase we would only
+do A, right?  This is a completed story that shows column B, the how,
+as well.
 
 [Time 0:39:08]
 
@@ -1396,20 +1415,21 @@ sheets > docs
 
 So the other big technique in this phase is the decision matrix.  And
 this is the heart of the talk, is to talk about decision matrix.  I
-used to do this when I was mostly designing by myself in Org mode, but
-I am a complete convert that the best way to do this kind of design,
-in this phase of design, and this work, is in a spreadsheet.  And in
-particular, it is in a spreadsheet that is a live editing spreadsheet.
-So we use Google Sheets for this thing.
+used to do this when I was mostly designing by myself in Org mode [an
+editing mode in Emacs https://orgmode.org ], but I am a complete
+convert that the best way to do this kind of design, in this phase of
+design, and this work, is in a spreadsheet.  And in particular, it is
+in a spreadsheet that is a live editing spreadsheet.  So we use Google
+Sheets for this thing [ https://www.google.com/sheets/about ].
 
 So what is a decision matrix?  It is a spreadsheet.  It is a
 spreadsheet that more than one person can see at the same time, and
 edit at the same time.  I do not know if somebody else ... I am sure
 Microsoft has one.
 
-A1 will be: what what decision are you trying to make?  What problem
-are you working on.  Always A1.  If I come up to your project and you
-want some design mentoring, and A1 is not filled in, guess what we are
+A1 will be: what decision are you trying to make?  What problem are
+you working on?  Always A1.  If I come up to your project and you want
+some design mentoring, and A1 is not filled in, guess what we are
 going to be working on?  A1.  Have a good problem statement.
 
 You can copy your problem statement right in here.  Often, though,
@@ -1423,9 +1443,11 @@ external stimulus.  That is also critical.
 All right.  So what are you going to have?  You are going to have
 different approaches to solving the problem.  These will be your
 columns.  The first of the columns will label the rows, but the other
-columns will be your various possible approaches.  You will have
-criteria: how are you going to make this decision?  These will be the
-rows, except the very first row or two labels the columns.
+columns will be your various possible approaches.
+
+You will have criteria: how are you going to make this decision?
+These will be the rows, except the very first row, or two, labels the
+columns.
 
 And finally, you have the interior cells, which is the aspects of a
 particular approach from the perspective of that criteria.  That is
@@ -1441,8 +1463,8 @@ slide title: Template: DM
 TODO: add template here
 ```
 
-So this is a template for a DM.  I do not think I have zoom this one
-in.  This is not real.  This is just a template.  The upper left
+So this is a template for a DM.  I do not think I have to zoom this
+one in.  This is not real.  This is just a template.  The upper left
 corner, A1: what problem are you working on?
 
 [Columns] B C D E are the approaches you want to take.  If you are
@@ -1488,14 +1510,14 @@ one, take a second row and put in a sentence length thing.
 
 You need for what you are talking about to be super clear.  I have
 seen a lot of people just struggle here because they have columns and
-it is not actually clear what this column is about.  What strategy.
-What approach this is about.  Put enough detail in there so you can
+it is not actually clear what this column is about.  What strategy or
+what approach this is about.  Put enough detail in there so you can
 distinguish the two.
 
 And then freeze those rows.  I already talked about using the first
 column, first approach, to be like what you do right now.
 
-You want to think about [what] other people do.  This is stuff from
+You want to think about what other people do.  This is stuff from
 "Hammock-driven Development".
 
 [ Rich Hickey, "Step Away from the Computer, or Hammock-driven
@@ -1556,15 +1578,15 @@ a bunch of other rows, potentially, that are about meta
 characteristics of this approach.  How much development time does it
 take?  Is it compatible with what we have done before?  Is it going to
 possibly break things?  How much does it cost?  How much will it cost
-to operate?  Is it allowed by you know some regulatory thing?
+to operate?  Is it allowed by some regulatory thing?
 
 You are going to have a bunch of things that are candidates for rows,
 but you should never fully enumerate them in advance.  Every time you
 take on a problem, you are going to need to be selective about what
 matters, and only put in what matters.  So you want things that are
 salient or relevant.  Salient means it is an aspect of this thing that
-sticks out right, and relevant means that it is an aspect of this
-thing that matters to our problem.
+sticks out, and relevant means that it is an aspect of this thing that
+matters to our problem.
 
 If you have one of your columns is a live bunny, and another one of
 your columns is a tank in a bunny suit, you are not going to have a
@@ -1572,8 +1594,8 @@ row that is "what color is the fur?" or "how soft is it?"  You are
 going to have a row that says "how much lettuce does it eat?" and "can
 it crush a truck?" and "what kind of ammunition does it need?"  The
 things that really distinguish these two things.  I do not know how
-much does the tank weigh.  We do not want a really, really, heavy
-bunny.  All right.  So it is not characteristics, it is criteria.
+much does a tank weigh?  We do not want a really, really, heavy bunny.
+All right.  So it is not characteristics, it is criteria.
 
 [Time 0:45:31]
 
@@ -1584,7 +1606,7 @@ slide title: DM Cells: Aspects
    _succinct description_ of how approach handles criterion (or doesn't)
           avoid y/n/true/false/numeric-rank criteria, and in cells
 
-avoid judgement in text, instead use (unsaturated!) cell background color
+_avoid judgement in text_, instead use (unsaturated!) cell background color
 
   Neutral - clear
 
@@ -1608,13 +1630,13 @@ Try to say: if it does it, say _how_ it does it, not that yes it does
 it.  Say how it does it, because you are going to have two different
 answers that both have a "yes", but how they do it differs.  Write
 down how they are doing it, not just yes they do it.  Yes, they have
-it.  They have a backup strategy: yes, yes.  Well, one may use floppy
-disks, and one may use replication.  So say that.
+it.  Do they have a backup strategy?  Yes, yes.  Well, one may use
+floppy disks, and one may use replication.  So say that.
 
-The other thing you want to do here is: you want to avoid avoid
-subjective judgment in your text.  Do not do that.  Just write what
-the facts are.  When we look at this from this perspective, this is
-what it has.  Or maybe, it does not have this.
+The other thing you want to do here is: you want to avoid subjective
+judgment in your text.  Do not do that.  Just write what the facts
+are.  When we look at this from this perspective, this is what it has.
+Or maybe, it does not have this.
 
 And then what I would advocate, and what we do, is we use colors,
 which you saw before, some colors on the sheet to show subjectivity.
@@ -1629,20 +1651,21 @@ nice, desirable or better than the others, we will color it green.
 
 You can, as a shorthand, just start with pros and cons rows.  Here is
 my approaches.  Here is the pros of this, and here is the cons of
-this.  But the thing is maybe you are picking between two libraries,
+this.  But the thing is, maybe you are picking between two libraries,
 and one of the libraries says "I have really low latency" and the
 other one says "I really have high throughput".  And these are their
-features well okay that is two pros.
+features.  Well okay, that is two pros.
 
 But you have not looked at the high throughput one on the basis of
 what is its latency, and you have not looked at the low latency one
 from the perspective of how is its throughput.  So until you have
 broken up these things so that every criterion gets its own row, you
-are not going to have the ability to contrast.  What we are trying to
-do is to get things next to each other that are different.  That is
-what makes our mind go.  We love edges.  We love seeing edges.  You
-need to create edges in your ideas that is what is going to trigger
-your thinking.
+are not going to have the ability to contrast.
+
+What we are trying to do is to get things next to each other that are
+different.  That is what makes our mind go.  We love edges.  We love
+seeing edges.  You need to create edges in your ideas.  That is what
+is going to trigger your thinking.
 
 [Time 0:48:22]
 
@@ -1692,7 +1715,7 @@ include questions as soon as they arise!
 
 So some tips about doing a good DM.  Avoid the all green column.  That
 is very unlikely.  That is a sign you might be rationalizing.  Nothing
-is like totally wonderful.
+is totally wonderful.
 
 Avoid undistinguished columns.  If you go through in those two columns
 and they are not different in any way, you are probably missing a row.
@@ -1700,29 +1723,29 @@ You are probably missing some criteria that distinguishes them, and
 you want to find it.
 
 I talked before, you do not want an exhaustive row set.  You do not
-want a predefined row set, and you do not want like every
-characteristic of every possible approach.  You just want the ones
-that matter.  And relentlessly move up.  The other nice thing about a
-spreadsheet is: you can move rows up.  You just drag them and they go
-up.  So keep pushing up on your spreadsheet on the things that most
-distinguish your different approaches.  No one cares about pages and
-pages of everything's the same on this on this from this
-perspective.
+want a predefined row set, and you do not want every characteristic of
+every possible approach.  You just want the ones that matter.
 
-Avoid links or kind of references out as your primary cell content.
-Write something there.  The key here from a thinking standpoint is:
-you are seeing the stuff that matters.  If it is a link, you are
-seeing nothing.  You have got to go break your concentration and go
-follow the link then.  You can have links as supplements.
+And relentlessly move up.  The other nice thing about a spreadsheet
+is: you can move rows up.  You just drag them and they go up.  So keep
+pushing up on your spreadsheet on the things that most distinguish
+your different approaches.  No one cares about pages and pages of
+everything's the same on this from this perspective.
 
-Do not use the features of these things that allow comments.  I see
-like a little triangle in the corner.  What is that?  I have got to
-hover or click and now.  It is over here.  If you have a question
-about something, or you think it is bad or whatever, just write it on
-the cell next to it, or in the notes.  You will see a lot of these
-things have "Notes" columns.  Just write it in the notes so it is in
-someone's face.  Now they have to opt into seeing what you think.  You
-said what you think, and you put it in their way.
+Avoid links or references out as your primary cell content.  Write
+something there.  The key here from a thinking standpoint is: you are
+seeing the stuff that matters.  If it is a link, you are seeing
+nothing.  You have got to go break your concentration and go follow
+the link then.  You can have links as supplements.
+
+Do not use the features of these things that allow comments.  I see a
+little triangle in the corner.  What is that?  I have got to hover or
+click and now it is over here.  If you have a question about
+something, or you think it is bad or whatever, just write it on the
+cell next to it, or in the notes.  You will see a lot of these things
+have "Notes" columns.  Just write it in the notes so it is in
+someone's face.  Now they do not have to opt into seeing what you
+think.  You said what you think, and you put it in their way.
 
 And then avoid phrasing the criteria as questions.  This is because
 you want to be able to write questions in your sheet, and you want to
@@ -1757,15 +1780,16 @@ a good description of the problem.  You are going to have a bunch of
 approaches with good descriptions of those.  You will have made
 decisions about what matters.  You will have done that introspection,
 so it is reflective.  You will have details about how everything
-approaches it.  And you will have an at-a-glance subjective
-assessment, so if I am coming into your thing and you have done this,
-I can quickly see what you think is good or bad, or where you think
-the trade-offs lie.  And all the subjectivity is in one dimension.  If
-I do not agree with you, I can take your sheet, dupe it, and change
-all the colors to blank, and I will be dealing with something with no
-subjectivity left.
+approaches it.
 
-[Time 0:08:38]
+And you will have an at-a-glance subjective assessment, so if I am
+coming into your thing and you have done this, I can quickly see what
+you think is good or bad, or where you think the trade-offs lie.  And
+all the subjectivity is in one dimension.  If I do not agree with you,
+I can take your sheet, dupe it, and change all the colors to blank,
+and I will be dealing with something with no subjectivity left.
+
+[Time 0:52:02]
 
 ```
 slide title: DM: Benefits
@@ -1781,16 +1805,16 @@ promotes shared understanding
 
 _birthplace of abstraction_
 
-               provocation for background thought
+               _provocation for background thought_
                         hammock, sleep
            where new columns and best answers are born
 ```
 
-All right, so what what are the benefits of having done this?
+All right, so what are the benefits of having done this?
 
 Well certainly you get to come back later and resume your work.
 Somebody else can join you in the thought process, and arrive late and
-catch up.  While more than one person is working on this you all can
+catch up.  While more than one person is working on this, you all can
 be looking at the sheet.  This is so much better than just gabbing on
 Zoom and having everybody take independent notes, and then maybe
 trying to reconcile those notes.  We _always_ make a sheet and stick
@@ -1811,7 +1835,7 @@ You could ask the question.
 
 And you are finding characteristics that maybe you want to lift later,
 as abstraction.  And then this is the kind of thing, if you do this
-during the day, I promise you you are going to get new ideas when you
+during the day, I promise you, you are going to get new ideas when you
 hit the hammock or the bed.
 
 [Time 0:53:18]
@@ -1819,7 +1843,7 @@ hit the hammock or the bed.
 ```
 slide title: Phase: Design
 
-                tactics, implementation plan
+               _tactics, implementation plan_
                   the blueprint-like design
 
 _What do you know?_ the problem and the direction we are taking to solve
