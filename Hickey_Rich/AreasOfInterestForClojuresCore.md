@@ -1,25 +1,25 @@
-# Areas of Interest for Clojure's core - Keynote
+# Areas of Interest for Clojure's Core - Keynote
 
 * **Speaker: Rich Hickey**
 * **Conference: [Clojure Conj 2011](https://web.archive.org/web/20111223091202/http://clojure-conj.org/) - November 2011**
 * **Video: [Keynote - Rich Hickey](https://youtu.be/I5iNUtrYQSM)**
-* **Slides: ??**
 
+## Introduction
 [Time 0:00:00]
 
-[Introduction - [Stuart Halloway](https://www.cognitect.com/authors/StuartHalloway.html)]
+[[Stuart Halloway](https://www.cognitect.com/authors/StuartHalloway.html)]
 
 So I'll tell a couple of stories about Rich. I first met Rich at the JVM language summit, it was the first one maybe. And I was already working on [the book](https://web.archive.org/web/20090927081540/http://www.pragprog.com/titles/shcloj/programming-clojure), but we hadn't met. And I had corresponded with him, and had corresponded with many of you in the room who were on the Clojure mailing list back in those days. And I met him at the summit, and he came up and introduced himself and said, it's really exciting that you're working on the book, and he gave me a Clojure pin. So he pinned me! 
 
-[laughter from audience]
+[Laughter from audience]
 
 I called my wife that night, and I was like, wow, I finally met Rich, he's this really nice guy, and he gave me this pin. And she was like, "what?". I mean, given things you've already heard me say, she has reasons to worry about my behavior when when traveling at conferences, and so forth. 
 
 So since then, I have had about the most pleasure you can possibly have writing software in the industry, increasingly getting to work with Rich on a day to day basis, violating all kinds of sacred principles. We have these agile stand ups in the morning that are supposed to last for 15 minutes, and sometimes we'll look up and he and I have been talking about something for two and a half hours. And I'm thinking, don't you guys all wish that you could be doing this? It is it is absolutely a pleasure and an honor. And I just want to get this started right. I'd like to ask everybody to stand up and applaud, before we start this, for Rich and the work he's done to create Clojure.
 
-[applause from audience]  
+[Audience applauds]  
 
-[Camera switches to [Rich Hickey](https://en.wikipedia.org/wiki/Rich_Hickey)]
+[Camera switches to Rich Hickey]
 
 [Time 0:01:55]
 
@@ -69,6 +69,8 @@ o Needs design time and effort
 
 However, I do want to say this is not a roadmap, I have more ideas than I have time. And I would definitely need help. Also, a lot of these things are half baked. I don't know if everybody can read that, it's a half baked guitar pedal, which is pretty cool. But most of these things need more design time and effort, before they even get any kind of implementation time. 
 
+## Leaner Clojure
+
 [Time: 0:04:28]
 ```
 slide title: Leaner
@@ -98,6 +100,8 @@ And I think we do need the notion of a development-less build, for production de
 
 So the shaking of metadata there, but I think the flipside of saying we need to start investigating multiple deployment targets, is that we can go the other way as well. We can say, you know what? There's a bunch of things we sort of said, "Ugh, I don't know if we really want to incur the runtime overhead of that". So no, where we could say, yes, we could say, let's build debug builds or developer builds, with even more stuff, attach the source code to every function, you know, have it explain to you why your macro call wasn't the best thing ever, or various stuff like that. So I think overall, pursuing leaner can have benefits that actually want things to be less lean. But it's definitely an important area for Clojure. 
 
+## Unification with ClojureScript
+
 [Time: 0:08:21]
 ```
 slide title: Unification with ClojureScript
@@ -125,6 +129,8 @@ And the ClojureScript AST, which you saw, I guess, [Chouser may have showed it t
 
 Tools have been desperate for that output. Now, of course, the amount of analysis that the ClojureScript compiler has to do is pretty low. It doesn't have to deal with types and a lot of the other stuff that the Java side does, but it's an open question, right, we can, we can take the current analyzer, which again, Chouser has done work to expose as data structures, and try to expose that output as data structures more similar to the ClojureScript output. So we can start saying, okay, this is a format we can start using for tools in both places. Or we can try to enhance the ClojureScript analysis phase, to do some more of the work that the Clojure one does so it can do more of that job of tracking types, and things like that. 
 
+## Prepping for Clojure in Clojure
+
 [Time: 0:12:32]
 ```
 slide title: Prepping for CinC
@@ -151,6 +157,8 @@ What we found from having had that, is that the promise of being able to build u
 All the abstractions: just defrotocol, defprotocol, defprotocol, defprotocol, right in a row, in a single file, and maybe a 100 lines. You're done with Clojure's abstraction set, and then you can implement it per type with deftype. That's completely great. And the lesson from that, as we want to move forward with Clojure in Clojure, is that we need to move protocols down. We need to make protocols a compiler thing. And the open question there is, do we want to modify the Java compiler one more time, one last time, to move protocols down? Or do we want to try, when we take on Clojure in Clojure, to start with the ClojureScript compiler and build it up with the knowledge of the Clojure compiler. 
 
 And that would require a little bit of refactoring of, I hate that word, changing or something, something other than refactoring, of the ClojureScript compiler, to make it more amenable to having different output targets. Somebody was talking to me in the hall about Objective C, and the ClojureScript compiler is tiny. It's like 500 lines or something. It's really easy to play with, and the emitting part of it is only half of it. So making new emitters should be relatively easy. And in fact, making an emitter that emitted Java would be a good first playground.
+
+## invokedynamic
 
 [Time: 0:16:12]
 ```
@@ -195,6 +203,8 @@ The trade offs, however, with invokedynamic are performance; until the performan
 
 Certainly one of the things is getting ASM out, because once we get ASM out, we desperately need to upgrade. We're using an ancient version of ASM. And the newest versions have support for this. So these things tie together. 
 
+## Leveraging Logic
+
 [Time: 0:23:40]
 ```
 slide title: Leveraging Logic
@@ -210,7 +220,7 @@ o predicate dispatch
 
 Leveraging logic. So we saw some just terrific presentations. I'm going to talk about a very minor application of logic here. But anyone that saw Dan's talk should be thinking about rewriting Clojure as a logic program, and running it backwards and finding startup ideas. 
 
-[laughter from audience]
+[Laughter from audience]
 
 The stuff we saw yesterday was completely amazing. But more modestly, one of the things we saw this morning is moving from pattern matching to predicate dispatch. The other thing we often talk about in the context of using core.logic with Clojure itself as part of a language thing, is doing type checking with it, or some variants of it. 
 
@@ -221,6 +231,8 @@ And then David already laid out how predicate dispatch might work out. And I thi
 In addition, just the kinds of things you'll be able to talk about for dispatch, are categorically different with logic than they are with pattern matching. Pattern matching is this little structural thing. It's really branching in the realm of the programmer's decision. Right? If you had predicate dispatch and a logic system, you could be doing branching in the realm of the business person's decision process, and you'd be able to show them the logic part of the program and say, "Is this what you meant?" And they'll be able to say, "Sure". If you show them a pattern match and say, "Is this what you meant?" What are they gonna say? "Did you just tell me to ..?" Right? That's what they're gonna say.
 
 So, I think this stuff is completely awesome. I'd love to see people help out David and Ambrose, in taking what they've made, and applying it, giving the feedback from using it, so they can work on the underpinnings. And because there's so many areas where you can apply logic. And it really does lift your program up a whole level towards being more declarative. So this is a fantastic addition to Clojure.
+
+## Parallelism
 
 [Time: 0:26:57]
 ```
@@ -254,6 +266,8 @@ So when you have a balanced compute model, again, this question mark comes with 
 
 And then the other side of it is making more parallel algorithms. We had parallel map and parallel reduce. We've had them for a long time. We want to move them to the to the newest model. But we have to understand that, and of course, being a functional language, we do want to keep parallel algorithms out of the collections. And we saw some Scala stuff where they combined it. And there's some cases where that's kind of easy. But we don't attach our functions to our data, we apply our functions to our data. However, we do need data that has a shape that's amenable to parallelism, and lists and sequences are not. So the stuff that we saw presented, that kind of collection is completely awesome for parallel work, whether you use fork/join or not. The vectors have a good shape for that, we do need something that could replace sequences for that purpose, that has a better shape. So much more work can be done there. Data structures that are amenable to parallel usage, and more parallel algorithms, I think would be really, really great.
 
+## Tansients and Beyond
+
 [Time: 0:31:48]
 ```
 slide title: Transients and Beyond
@@ -262,7 +276,7 @@ o Transients do too much
   o Persistent symbiosis and editing
   o and policy
 o And too little
-  o Users muse use linearly
+  o Users must use linearly
 o Btter to have a construct for this
 ```
 
@@ -275,6 +289,8 @@ And we've had them for a while, they're alpha still. And my conclusion about the
 But the other thing about transients, is they do too little in that the promise of transients, while enforced, it only comes true when you use them in a serial fashion, they're not mash-in-place. You actually do have to take the return value of a transient operation and use that for the next operation. It's very clean to do that if you just follow the recipe which is write it functionally, then change it to transient, and the same shaped function will work. But you have to do that, when people take transits right off the shelf, they often try to bash them in place, and then bad things happen when the type changes between two operations, which we should be free to do. And also, they're going to be surprised.
 
 So the first idea is to lift, to provide some construct, to make sure that the user doesn't have to be burdened with thinking about what they're doing.
+
+### Transient-Based Model
 
 [Time: 0:34:15]
 ```
@@ -299,6 +315,8 @@ So I think people have seen the diagrams of the epochal time model. And there's 
 And then the operations on transients, I'll call procs, for now. A proc is a function of a transient to a transient. And you can apply these procs iteratively to produce new versions of the transient. And whenever you're done, you can take the transient and convert back to a value.
 
 And we want to make sure that there's only visibility to the values. Right now, we do that by having the transits not implement the value of accessing methods. But again, the transits are sort of doing these two jobs. If you look at this, there's this nice little box around this, and that box is policy. The box says, I want a value at one end, I want to give you a value at the other end, and I want to be in control of the application of these procs.
+
+### Procs
 
 [Time: 0:35:34]
 ```
@@ -356,6 +374,8 @@ So if you had atomic serialization of activity that involve procs, it would be s
 
 It looks like a pure function by all definitions, because it is one. And everybody knows that. But it's very difficult for a lot of functional languages to accommodate that. Right? A function only guarantees that what you send in isn't impacted by what happens inside. And what you get out is always the same if what you put in is always the same. You can meet all those guarantees and use transients or mutation inside. The trick is, can we provide a construct that makes that work safe and easy to get correct? 
 
+### Pods
+
 [Time: 00:37:59]
 ```
 slide title: Pods
@@ -408,6 +428,8 @@ So imagine, if you just had a recipe that says, you must give me something immut
 
 So that's really cool, because that means that we have the first construct that could apply to ordinary Java stuff. It could let Java stuff play our game.
 
+#### Pod Usage
+
 [Time: 00:40:41]
 ```Clojure
 slide title: Pod Usage
@@ -437,6 +459,8 @@ slide title: Pod Usage
 
 So this is what pods would look look like. You basically wrap a pod around at, well, this is what this version did, you wrap a pod around a persistent data structure, and then it uses protocols to decide how to turn that persistent data structure into something that can be used inside the pod. Then you send procs into the pod. So here we're sending the transient operation conj!, into the into the pod to modify the transient that's inside it. And then when you're done, you deref it, and you get a value out. And the value creation coming in, I mean, this pod could have been created with a giant data structure. And coming out, those are both constant time operations. Then this is an extensible system in that you can say, well, nobody knew about pods when they wrote string. But I can make strings play the pod game by saying the way you get a transient out of a string is to return a StringBuilder. And a way to get a value out of its StringBuilder is to call toString on it. And then you can make things like string cat using pods, where you reduce with append with the pod around the thing. This doesn't seem that interesting, but it actually is still better than the loop and a lot safer. 
 
+#### Pod Power
+
 [Time: 00:41:53]
 ```
 slide title: Pod Power
@@ -462,10 +486,11 @@ The other thing about pods is they give you this interesting algebra of values t
 
 And then you can peek at pods. I don't think this is a good idea. 
 
-[laughter from audience]
+[Laughter from audience]
 
 I mean, I tried it, but I think well, we'll see soon. 
 
+#### Pod Questions
 [Time: 00:44:26]
 ```
 slide title: Pod questions
@@ -483,7 +508,7 @@ So there are a bunch of questions around pods. This is definitely unfinished wor
 
 Would you be able to revisit pods? So earlier slide I showed, you know, you come in, you get a value, you do some transient stuff, you get another value, you take that out. There's another model that says, well, at any point in time you look at it, it's like Schrödingerer's pod.
 
-[laughter from audience]
+[Laughter from audience]
 
 Anytime you look at it, you get a value, but it can keep going. In other words, it might produce the value on deref, and then make a new transient, and then allow more operations and do that. That's very tricky. I did make something that does that. But again, I'm not sure it's a good idea.
 
@@ -492,6 +517,8 @@ The other question is lifting pods up so you can do more composite operations. S
 So there's a notion of pod groups, where you can actually say, inside this set of pods, do this work. And that would do the lock acquisition order part, which would mean that you can safely manipulate more than one thing. This goes way beyond synchronizing. What's the problem with synchronize? It makes each individual method synchronized, you can't actually build anything out of that. Now you can make caches out of things where every operation is atomic, you can't make anything more sophisticated than caches out of that. Because you can't combine two operations, you can't say, if it's not there, make a decision and do something else unless you've turned "if it's not in there" into a special atomic operation. And you can't say "if both these things are there", or "add these three things all at once", or the classic problem, "move this from here to there", and don't make it vanish somewhere in the middle of that. That's the thing traditionally you have to use locks for. But pod groups solve that problem much more cleanly. Again, I think they take care of two thirds of the problems with locks, and they call out and identify and catch the third.
 
 However, if you keep thinking about this, you realize that, that seems like a really fancy thing, the pod, but it might also do too much. Most, most, the vast majority, of the applications you see of things like this, and the things you would think about that would work like this, are in the sort of what I would call the building or birthing category, right? I'm going to start with something empty, I'm going to pile a bunch of stuff into it. And then I'm done. I need to give that to the world. I don't want to do that, in a loop with a functional object can create, you know, a million temporary things nobody ever cared about, and have the overhead of functional programming, when no one could see it. And that visibility thing is really a critical thing. We don't actually care about functional programming for things we can't see. Except for the complexity it gives us in trying to understand how they work. Which is why you still want models like this. 
+
+#### Acumulators
 
 [Time: 00:48:12]
 ```
@@ -507,6 +534,8 @@ o Same front end for accumulators and
 ```
 
 So if you were just thinking about building or birthing, you could have a much simpler contract, where all you say is add or conj, or append, or something like that. Just put the stuff in. And it's a one way street. It's like you can put stuff in, it's a sink. You can put stuff in, you can't actually do anything else. While you're doing that you can't look at it or anything, it's just pile stuff in. I think [Google's Sawzall language](https://en.wikipedia.org/wiki/Sawzall_(programming_language)) has these accumulators. It's very functional, but all these things need outputs. And so you just pour them into something that they can't actually talk to again. And the beautiful thing about something like this, which let's just call an accumulator for the moment, is that that same front end, you could put on some pod-like transient builder thingy, but you could put it also on queues, and a bunch of other things. You could have a more generic construct, which is just about putting stuff someplace. And I think that's potentially interesting. And maybe even if you decide to do pods, you want to make this notion first class, make it the front end of a pod, or the entry points of pod change. 
+
+## Extensitible Reader
 
 [Time: 00:49:24]
 ```
@@ -526,7 +555,7 @@ I agree it's better. But when we saw the enumeration, what was what was on the e
 
 But when you think about it, what are some other examples of serialization formats? So maybe we beat JSON already there. What else have we got? XML. Let's not even compare XML to Clojure data. What does XML have over JSON? X. XML has X. Actually, XML has X, and we don't have X. That's not good. 
 
-[laughter from audience]
+[Laughter from audience]
 
 So what happens when we want something we don't have? Right now, in Clojure data?
 
@@ -534,11 +563,11 @@ When we want to talk about a date, what do we do? All kinds of stuff. That's not
 
 So that's a big thing, right? Having a self describing data structure. What does that mean, for someone, when you have a self describing data structure? It means you can send me stuff I don't really understand, I can actually do a significant amount with it. Because if you send me strings that have dates in it, and some other strings, have URIs in them, and some other strings have some other random stuff in them. And some numbers mean numbers. And some numbers mean dates, what have I now got? I have something I need to understand the schema of in order to correctly process, render, allow the user to edit. If you sent me something, some hybrid data structure, and it had dates in it, and I didn't really know what the bigger picture was, can I give the user an editor for that? 
 
-[audience member] You could wrap it in lambdas.
+[Audience member] You could wrap it in lambdas.
 
 Oh my god! No actually, no, I could not really.
 
-[laughter from audience]
+[Laughter from audience]
 
 The answer is no, you couldn't, so you have to be very careful, right? When you say I could just use a string, ou could just use a string, but when you do, you're moving away from self description. And self description is really valuable. 
 
@@ -563,7 +592,7 @@ o How
 
 The idea that I'm floating right now is that we separate the print/read representation and semantics from the programmatic representation. Right? Stuart showed us #= the other day, he's getting kicked out of #= club, by the way as a result.
 
-[laughter from audience]
+[Laughter from audience]
 
 What's wrong with using #= for this? Why can't I say #=(Date. "blah thing")? That'll work right? It'll give me exactly what I want, right? Is it actually now self describing? Only to what? A Clojure app, maybe. What if I sent that to ClosureScript, a Java constructor call? No, so we can't do this. 
 
@@ -592,6 +621,8 @@ So the next one might be creating an array of ints.
 
 And the last variant here would be the user extension point. I don't know what kind of composite thing you might want to have. Because we have namespaces, we can just use namespaced tags. So we'll say non-namespaced tags are reserved for the language, or will include things we all agree everybody needs. But if you need something else, you can now say this, and the beautiful thing about this is, you're not actually saying I'm calling some specific constructor or anything like that. You now have a way to talk about, semantically, I want send my foos around, and I can build one end which produces foos in Clojure and another end which consumes foos in ClojureScript and another end than that sends them through some event processing system, which is completely, hopefully, language independent. And this is a good recipe for that. I would love for, you know, we have [Neal talked about all the ways to grassroot up](https://youtu.be/2WLgzCkhN2g), I'd love for Clojure data, as a serialization format, to be one of the roots. Because it really does kick butt. And with something like this, I think it's now plainly superior to the other options. So that's the general idea there.
 
+## Q & A
+
 [Time: 01:00:35]
 ```
 slide title: And... ?
@@ -600,156 +631,194 @@ o Q & A
 ```
 And now it's time for questions.
 
-[questioner1] Can I just make the point, that if someone want to go with the extensible reader thing, it's the tag format, is exactly what YAML uses for extensibility. 
+### Question 1 - YAML
 
-[rich] Okay
+[Audience member] Can I just make the point, that if someone want to go with the extensible reader thing, it's the tag format, is exactly what YAML uses for extensibility. 
 
-[questioner1] So if you want to see how that's implemented, and how people do it, you basically reinvented exactly that. 
+[Rich] Okay
 
-[rich] Yeah, I'm not claiming any novelty here, I'm ripping it off from Erlang. But I'm sure that they might have too.
+[Audience member] So if you want to see how that's implemented, and how people do it, you basically reinvented exactly that. 
 
-[questioner2] So print-dup currently, like it, you know, it spits out the classes [inaudible] and the tag, it replaces that, does kind of - 
+[Rich] Yeah, I'm not claiming any novelty here, I'm ripping it off from Erlang. But I'm sure that they might have too.
 
-[rich] Well, so there's a different reason for, I mean, print-dup is used for a bunch of different reasons. If for some reason you super cared - so semantically, there's no difference between array map and hash map, this is a hash map, this is an array map. So it would only be that you somehow cared that you would using print-dup for that. The other real reason to having print-dup is like for things like, well, no actually, you don't need it for strings either. Yeah, that's basically the thing, that where there's some polymorphic nature to what you're supplying. And you don't want to have it erased by the round tripping. I think print-dup is inherently a non-portable concept. But certainly any use of print-dup, or [inaubible] so - also people use print-dup because they want something like more concise for the human interactions, and something really verbose, constructive, otherwise. Yeah, this is definitely better than that. And it's way better than #=. #= is strictly a known stopgap thing, and there's a reason why it's a secret. A really great secret at this point. 
+### Question 2 - print-dup
 
-[laughter from audience]
+[Audience member] So print-dup currently, like it, you know, it spits out the classes [inaudible] and the tag, it replaces that, does kind of - 
 
-[questioner3, refering to last Extensible reader slide] What is the agreement about what goes in and what goes out?
+[Rich] Well, so there's a different reason for, I mean, print-dup is used for a bunch of different reasons. If for some reason you super cared - so semantically, there's no difference between array map and hash map, this is a hash map, this is an array map. So it would only be that you somehow cared that you would using print-dup for that. The other real reason to having print-dup is like for things like, well, no actually, you don't need it for strings either. Yeah, that's basically the thing, that where there's some polymorphic nature to what you're supplying. And you don't want to have it erased by the round tripping. I think print-dup is inherently a non-portable concept. But certainly any use of print-dup, or [inaubible] so - also people use print-dup because they want something like more concise for the human interactions, and something really verbose, constructive, otherwise. Yeah, this is definitely better than that. And it's way better than #=. #= is strictly a known stopgap thing, and there's a reason why it's a secret. A really great secret at this point. 
 
-[rich] What is the agreement about what goes in what comes out? Well, there's not an agreement about what goes in and what comes out. There's an agreement about what instant means, and what data structure will be used to represent instants. Like, there's nothing about, there's nothing else about this. So, you're asking when will the plugging happen? This is no agreement about that. We haven't decided yet what those mechanisms will be. We do want something that you can definitely insert at the bottom of everything, so that you can start a program and have your preferred date be used everywhere, including dates and instants you've embedded inside programs. So even code that's beeing reloaded, will use the same mechanism to rehydrate using the data structure of your choice. But it's really, really critical to not dictate the data structures. As soon as you start, even if it's two Clojure apps, in the same company, you still may have disagreements about how you want to represent things. And you should be able to make an independent decision about that. I don't think we're going to support making independent decisions inside the same program, except through the potentially dynamic binding, but I think we got off on the wrong track. Because as people saw that, and presumed that would be the only way we can do things, which is definitely not the plan.
+[Laughter from audience]
 
-[questioner4] In the computer algebra area, they have the problem of two systems that need to communicate what would look like a normal equation like a polynomial. They have completely different representations and potentially different semantics for what sign means. There is an effort called OpenMath, it's been going on for about 8 to 10 years, to separate syntax and semantics. I think you might find that useful for the kind of communication protocol you're talking about. 
+### Question 3 - Extensible Reader In/Out Agreement
 
-[rich] Yeah, definitely. I mean, that's the that's the idea here.
+[Audience member, refering to last Extensible Reader slide] What is the agreement about what goes in and what goes out?
 
-[questioner5] So is the idea for the extensible reader that my ns foo just gets a stream of characters and produces something from it or there's some data structure that you give it and -
+[Rich] What is the agreement about what goes in what comes out? Well, there's not an agreement about what goes in and what comes out. There's an agreement about what instant means, and what data structure will be used to represent instants. Like, there's nothing about, there's nothing else about this. So, you're asking when will the plugging happen? This is no agreement about that. We haven't decided yet what those mechanisms will be. We do want something that you can definitely insert at the bottom of everything, so that you can start a program and have your preferred date be used everywhere, including dates and instants you've embedded inside programs. So even code that's beeing reloaded, will use the same mechanism to rehydrate using the data structure of your choice. But it's really, really critical to not dictate the data structures. As soon as you start, even if it's two Clojure apps, in the same company, you still may have disagreements about how you want to represent things. And you should be able to make an independent decision about that. I don't think we're going to support making independent decisions inside the same program, except through the potentially dynamic binding, but I think we got off on the wrong track. Because as people saw that, and presumed that would be the only way we can do things, which is definitely not the plan.
 
-[rich] No, no, no you get that data structure as the input to your pluggable function.
+### Question 4 - Extensible Reader and OpenMath 
 
-[questioner6] On another topic, can you elaborate on this idea of querying programs and what that means? What would be an example?
+[Audience member] In the computer algebra area, they have the problem of two systems that need to communicate what would look like a normal equation like a polynomial. They have completely different representations and potentially different semantics for what sign means. There is an effort called OpenMath, it's been going on for about 8 to 10 years, to separate syntax and semantics. I think you might find that useful for the kind of communication protocol you're talking about. 
 
-[rich] What does it mean? Well, there's some really simple things like how often do we use this function is a simple question. Do we ever call this function inside that function? How deeply nested are our calls to this function? Have we ever called this function while holding a lock? With an open file in hand? Where is this data structure used? How is it propagated?
+[Rich] Yeah, definitely. I mean, that's the that's the idea here.
 
-[questioner6] Like program analysis.
+### Question 5 - Extensible Reader Clarification
 
-[rich] Yeah program analysis, that's right. People pay big bucks for datalog systems that analyze Java programs, and they work exactly the same way, except it's all sort of bespoke stuff. They take the output of an analysis phase, and they dump it into a database, and they give you a query engine that can access that database. It's that kind of idea. Anything you might do with Aspect Oriented Programming would fall into this kind of category, or any kind of cross cutting concern, even simple type things, by talking about the relationship between multiple arguments, or arguments to this function, the results of which were subsequently passed to that function. We tried talking about constraints that work like that. It's incredibly difficult, but real systems have those kinds of constraints all the time, type systems are way far away from solving that type of stuff.
+[Audience member] So is the idea for the extensible reader that my ns foo just gets a stream of characters and produces something from it or there's some data structure that you give it and -
 
-[questioner7] Talking about the conditional compiliation as a way to target different platforms, what do you think about the Newspeak case, which is to have communicate with the platform via interfaces or protocols and have the environment supply implementations for those.
+[Rich] No, no, no you get that data structure as the input to your pluggable function.
 
-[rich] I don't like that at all. That basically is reified environments. And I don't see how they can be made performant. Maybe it's my own shortcoming in thinking. You have to really have done that from the bottom, which Newspeak has, but I don't think it's something you could add to a language like Clojure now. We don't have process environments at all.
+### Question 6 - Querying Programs
 
-[questioner8] Speaking of conditional compilation, I was thinking maybe that this extendable reader might actually play into that, because you could add metadata via this and the compiler, because I don't know what that tag means, could ignore it. And if you wanted to attach a reader macro that says, hey I know what this extendable stuff is, and it means insert this debug information here.
+[Audience member] On another topic, can you elaborate on this idea of querying programs and what that means? What would be an example?
 
-[rich] Well, I mean, that you could do with ordinary metadata. I don't think this really comes into play here.
+[Rich] What does it mean? Well, there's some really simple things like how often do we use this function is a simple question. Do we ever call this function inside that function? How deeply nested are our calls to this function? Have we ever called this function while holding a lock? With an open file in hand? Where is this data structure used? How is it propagated?
 
-[questioner8] Right, you could probably pull it out easier, well as far as minimize, well, I guess -
+[audience member] Like program analysis.
 
-[rich] Nah, I think ordinary metadata would cover that case. But I don't think ordinary metada covers all the cases of conditional compilation.
+[Rich] Yeah program analysis, that's right. People pay big bucks for datalog systems that analyze Java programs, and they work exactly the same way, except it's all sort of bespoke stuff. They take the output of an analysis phase, and they dump it into a database, and they give you a query engine that can access that database. It's that kind of idea. Anything you might do with Aspect Oriented Programming would fall into this kind of category, or any kind of cross cutting concern, even simple type things, by talking about the relationship between multiple arguments, or arguments to this function, the results of which were subsequently passed to that function. We tried talking about constraints that work like that. It's incredibly difficult, but real systems have those kinds of constraints all the time, type systems are way far away from solving that type of stuff.
 
-[questioner9] So pods seem to address, you know, throwing a bunch of stuff into a collection, or into a value transient. But one of the issues I've run into is actually needing to be able to iterate over a collection in a more performant - so a sequence, in a more performant way, and I'm wondering if there's some way we can apply, something to do with pods there, to make seqs more performant? 
+### Question 7 - Conditionals handled by Environments 
 
-[rich] Yeah, it depends on what you're doing. I mean, if you have access to the original data structure, there are definitely faster ways, like reduce is definitely much faster. And there's an optimized pass path for reducing to call internal reduce. The next thing I'd like to do in that area would be to have reducers that are able to terminate the reduction, because that's where we want to do a partial iteration, that's difficult to do with reduce. Reduce basically says, the whole thing. But as soon as you have a partial reduce, then what you do is basically hand off the job of doing the work to something that knows the internals of the data structure, which does it efficiently without creating seqs and gives you an answer back. That's ultimately the answer. The higher level things like Haskell does this amazing stuff with stream fusion, I actually think is a good example of something for which type systems really help you, and we would struggle trying to emulate.
+[Audience member] Talking about the conditional compiliation as a way to target different platforms, what do you think about the Newspeak case, which is to have communicate with the platform via interfaces or protocols and have the environment supply implementations for those.
 
-[questioner10] In the previous talk, Stu talked about striving for platform power. You talked about things like access to safe points, dev-less builds, etc. That all seem to be ways of getting closer to there. What would you indentify as the major, or maybe the largest, couple of things that are standing between us and getting closer platform power.
+[Rich] I don't like that at all. That basically is reified environments. And I don't see how they can be made performant. Maybe it's my own shortcoming in thinking. You have to really have done that from the bottom, which Newspeak has, but I don't think it's something you could add to a language like Clojure now. We don't have process environments at all.
 
-[rich] Wow, I mean, I think we have a great platform power. Most of this has to do with the nesting our utilization of the platform to be more efficient. Not actual access. And so - so when you think about power, not to add to Stu's talk, but, right, it's work over time. What's the worst value for time? Never, infinite, no, the worst answer is no. So, like, you can't do that. And there are very few things for which that's true anymore. So I don't think, I don't consider most of the structure platform power as much as more efficient. Those things, you know, like making a leaner build doesn't really change how you're using the platform. Of course, leveraging invokedynamic, now that it's shipped, is an example of platform power we're not leveraging yet. So we did that. That would be one. Fork/join just came out. Same thing. So those two, there you go, they're already there.
+### Question 8 - Extendable Reader and Metadata 
 
-[questioner11] I think it was last year, you talked about maybe introducing some kind of new scopes for variables, and there was an example where you might have done a computation with a resource and built up some kind of lazy seq structure, that escapes, and your resource is gone. Has anything happened in there, or?
+[Audience member] Speaking of conditional compilation, I was thinking maybe that this extendable reader might actually play into that, because you could add metadata via this and the compiler, because I don't know what that tag means, could ignore it. And if you wanted to attach a reader macro that says, hey I know what this extendable stuff is, and it means insert this debug information here.
 
-[rich] Yes. I've realized that it's harder than I thought and I'm not close to solving it. The fundamental problem is, you have this nested composition problem, right? How can anyone know they can delimit the scope of something? Effectively what happens is you've done some lazy stuff, potentially dependent on resources. And maybe you consumed part of it, or maybe you didn't. But the problem is, you can't recognize what about what you have, has these issues. How could you decide this is a scope that's going to cause them to go away, if you return anything. Because the thing you return might be using some parts of that. You don't know exactly how all the tree is interconnect. And so that's sort of one of the fundamental problems. It ends up that in the field, what ends up happening for people is, they will casually use something like map, on something like a connection to an IMAP server, and want to return results. And actually, what they really want is to return fully realized results. They actually do not want that connection left open. Whereas most of the problems come from people who do not want the lazy the evaluation in the end. And so our near term solution is actually give you mapv, which maps into a vector, and it just does all the work. And it's not lazy. And so if you're going to like read nested parts of a tree, and you really do want to fully give a fully realized tree, you'll just do that instead of something lazy. For the bigger problem, I think there's no library style answer, because the answer is gonna be different in different places. But I'm happy for somebody to think of something, but I haven't.
+[Rich] Well, I mean, that you could do with ordinary metadata. I don't think this really comes into play here.
 
-[questioner12] When you say that platform protocols are slow, [inaudible]
+[Audience member] Right, you could probably pull it out easier, well as far as minimize, well, I guess -
 
-[rich] When I say which is slow?
+[Rich] Nah, I think ordinary metadata would cover that case. But I don't think ordinary metada covers all the cases of conditional compilation.
 
-[questioner12] When you say platform integration protocols, instead of conditional compilation is too slow, wouldn't [inaudible] save us from the slow problem?
+### Question 9 - Can Pods be Applied to Seq Performance? 
 
-[rich] We don't have reified environments, we would have to add them. And then so how do you get them around?
+[Audience member] So pods seem to address, you know, throwing a bunch of stuff into a collection, or into a value transient. But one of the issues I've run into is actually needing to be able to iterate over a collection in a more performant - so a sequence, in a more performant way, and I'm wondering if there's some way we can apply, something to do with pods there, to make seqs more performant? 
 
-[questioner12] Ya but [???] build tools [???] leiningen
+[Rich] Yeah, it depends on what you're doing. I mean, if you have access to the original data structure, there are definitely faster ways, like reduce is definitely much faster. And there's an optimized pass path for reducing to call internal reduce. The next thing I'd like to do in that area would be to have reducers that are able to terminate the reduction, because that's where we want to do a partial iteration, that's difficult to do with reduce. Reduce basically says, the whole thing. But as soon as you have a partial reduce, then what you do is basically hand off the job of doing the work to something that knows the internals of the data structure, which does it efficiently without creating seqs and gives you an answer back. That's ultimately the answer. The higher level things like Haskell does this amazing stuff with stream fusion, I actually think is a good example of something for which type systems really help you, and we would struggle trying to emulate.
 
-[rich] Yah but they are is still a reified part of the execution environment
+### Question 10 - Platform Power 
 
-[questioner12] Ya kind of. Yes this concept of the language, but it's not really like you can take an environment and pass it around in the language
+[Audience member] In the previous talk, Stu talked about striving for platform power. You talked about things like access to safe points, dev-less builds, etc. That all seem to be ways of getting closer to there. What would you indentify as the major, or maybe the largest, couple of things that are standing between us and getting closer platform power.
 
-[rich] No but it's happening in the runtime on your behalf. We're not, I mean, Clojure has decided way way, way back there was not gonna have an extra argument to every function which is going to be extra stuff, for me, to use for stuff like that. So we don't have that, and we call through things we don't control. It's very difficult to do that, without a bottom up kind of support for it. Maybe there's some hybrid in between what you're saying, I mean, maybe I don't understand what you speak of, but that was my understanding of it.
+[Rich] Wow, I mean, I think we have a great platform power. Most of this has to do with the nesting our utilization of the platform to be more efficient. Not actual access. And so - so when you think about power, not to add to Stu's talk, but, right, it's work over time. What's the worst value for time? Never, infinite, no, the worst answer is no. So, like, you can't do that. And there are very few things for which that's true anymore. So I don't think, I don't consider most of the structure platform power as much as more efficient. Those things, you know, like making a leaner build doesn't really change how you're using the platform. Of course, leveraging invokedynamic, now that it's shipped, is an example of platform power we're not leveraging yet. So we did that. That would be one. Fork/join just came out. Same thing. So those two, there you go, they're already there.
 
-[questioner12] Probably could start custom pilots when deciding platform to target for a specific build, and just [inaudible]
+### Question 11 - Variable Scoping 
 
-[rich] I don't know, if you could prototype it - I'm not gonna.
+[Audience member] I think it was last year, you talked about maybe introducing some kind of new scopes for variables, and there was an example where you might have done a computation with a resource and built up some kind of lazy seq structure, that escapes, and your resource is gone. Has anything happened in there, or?
 
-[questioner13] Does the hashtag ints vector type thing found a new way of writing the to-array of ints pass for all those interop forms? 
+[Rich] Yes. I've realized that it's harder than I thought and I'm not close to solving it. The fundamental problem is, you have this nested composition problem, right? How can anyone know they can delimit the scope of something? Effectively what happens is you've done some lazy stuff, potentially dependent on resources. And maybe you consumed part of it, or maybe you didn't. But the problem is, you can't recognize what about what you have, has these issues. How could you decide this is a scope that's going to cause them to go away, if you return anything. Because the thing you return might be using some parts of that. You don't know exactly how all the tree is interconnect. And so that's sort of one of the fundamental problems. It ends up that in the field, what ends up happening for people is, they will casually use something like map, on something like a connection to an IMAP server, and want to return results. And actually, what they really want is to return fully realized results. They actually do not want that connection left open. Whereas most of the problems come from people who do not want the lazy the evaluation in the end. And so our near term solution is actually give you mapv, which maps into a vector, and it just does all the work. And it's not lazy. And so if you're going to like read nested parts of a tree, and you really do want to fully give a fully realized tree, you'll just do that instead of something lazy. For the bigger problem, I think there's no library style answer, because the answer is gonna be different in different places. But I'm happy for somebody to think of something, but I haven't.
 
-[rich] Wow, I hope so. That's really [inaudible] right now, right?
+### Question 12 - Conditional Compilation & Environments 
 
-[questioner14] the [inaudible]
+[Audience member] When you say that platform protocols are slow, [inaudible]
 
-[rich] That depends, right? Depends on whether or not it's something that compiler has decided to also understand. It's an orthogonal question whether or not the compiler will understand how it is. If the compiler does, it may actually allow you to say something else in code.
+[Rich] When I say which is slow?
 
-[questioner15] Along those lines, if when you open up, when you apply this, you're going to apply a hook to say, I want some kind of other persistent map implementation on the on the built in types?
+[Audience member] When you say platform integration protocols, instead of conditional compilation is too slow, wouldn't [inaudible] save us from the slow problem?
 
-[rich] No, because we're not going to add this tag to it.
+[Rich] We don't have reified environments, we would have to add them. And then so how do you get them around?
 
-[questioner15] No, but I'm saying is, if the reader now becomes extensible says, if I recall, you said, you're gonna register, this says, the tag instant gets this kind of construct, you know, here's -
+[Audience member] Ya, but [???] build tools [???] leiningen
 
-[rich] You'd have to fabricate magic special tags for the things that it already knows about.
+[Rich] Yah but they are is still a reified part of the execution environment
 
-[questioner15] But, as well, just, I dunno, I was thinking if the reader was allowing you to register structures for various types, would it be worthwhile or not worthwhile to add, you already got a hook there say, we have a constructor now for our standard map or standard, you know.
+[Audience member] Ya kind of. Yes this concept of the language, but it's not really like you can take an environment and pass it around in the language
 
-[rich] Have you gotten better maps that you'd like to share? 
+[Rich] No but it's happening in the runtime on your behalf. We're not, I mean, Clojure has decided way way, way back there was not gonna have an extra argument to every function which is going to be extra stuff, for me, to use for stuff like that. So we don't have that, and we call through things we don't control. It's very difficult to do that, without a bottom up kind of support for it. Maybe there's some hybrid in between what you're saying, I mean, maybe I don't understand what you speak of, but that was my understanding of it.
 
-[questioner15] I don't know. Where I'm going with talking about this -
+[Audience member] Probably could start custom pilots when deciding platform to target for a specific build, and just [inaudible]
 
-[rich] The answer to your question is yes, I'm just - 
+[Rich] I don't know, if you could prototype it - I'm not gonna.
 
-[questioner15] You know, obviously, we're talking about serialization. Like, just start with, for example, you may want to pull it in, Java pulls it in, and may want it to be, heaven forbid, mutable, right. But you can just use it that way and say, just suck in that data structure and give me mutable HashMaps whenever you see a map.
+### Question 13 - Interop Opportunity? 
 
-[rich] In the binding context, I can see something like that, potentially, yeah. But we don't want to change the maps before [inaudible]
+[Audience member] Does the hashtag ints vector type thing found a new way of writing the to-array of ints pass for all those interop forms? 
 
-[questioner15] No, no, that's not what I was saying just -
+[Rich] Wow, I hope so. That's really [inaudible] right now, right?
 
-[rich] Well then so that means you'd have to have a magic function for the things that it already knows about, which don't have tags.
+### Question 14 - [inaudible] 
 
-[questioner15] Correct. Right. But it's just built in with [???] 
+[Audience member] the [inaudible]
 
-[rich] It would definitely be possible. 
+[Rich] That depends, right? Depends on whether or not it's something that compiler has decided to also understand. It's an orthogonal question whether or not the compiler will understand how it is. If the compiler does, it may actually allow you to say something else in code.
 
-[questioner16] [inaudible] an interface?
+### Question 15 - Extensible Reader & Choosing Concrete Types 
 
-[rich] I think that's what I'm talking about with queryable programs. I think that's exactly what that is. But I wouldn't want to limit your imagination to what type systems do. That's all. I think that's exactly what I'm talking about when I'm talking about that. Because that's what that is right? You take a program, it doesn't necessarily indicate much. I would like to be able to say, "you didn't bother to annotate your types, but I could for you over the logic side". Why not? You let the lazy guys do what they want to do. And then scrupulous guys can do what they want to do. I wouldn't fault them that.
+[Audience member] Along those lines, if when you open up, when you apply this, you're going to apply a hook to say, I want some kind of other persistent map implementation on the on the built in types?
 
-[laughter from audience]
+[Rich] No, because we're not going to add this tag to it.
 
-[questioner17] For Clojure data, did you consider binary encoding like ASN.1 where it automaticaly inserts metadata and automatic skips unwanted data in constant time?
+[Audience member] No, but I'm saying is, if the reader now becomes extensible says, if I recall, you said, you're gonna register, this says, the tag instant gets this kind of construct, you know, here's -
 
-[rich] So, no about that. That's very, you know, I understand completely what you're asking for there. It may be the case that certain tags would have that characteristic, right? In other words, they'd have a way like you would say, if it's a really huge thing, part of the agreed upon format would be that there's a count at the front of it that makes it skippable. But making a full skippable thing that supports nesting, so the trick is usually nesting and things like that. Have you ever looked at like chunk file formats and stuff like that? That gets much more involved, right? Because you want to be able to say, you know, depending on which level I'm at, I want to skip the entire set of different things to get over to the next thing. As soon as you expand your scope beyond one datum, right, or one structure, to a composite thing that requires a set of these things, or a nested set of these things, then the skipping job becomes much more difficult, right? If I, you know, you can always be done to say, I'm just gonna skip one thing, and you'll only have the ability to skip one thing. Usually that's insufficient in the end, but it will be a starting point. You certainly could say there are really large things I'm going to require they be late prefixed.
+[Rich] You'd have to fabricate magic special tags for the things that it already knows about.
 
-[questioner18] Seq is the basic list abstraction that we use in the language, right. Now, [Phil Bagwell showed us](https://youtu.be/K2NYwP90bNs) that we may be able to use those extensible array structures and systems structures as implementations for lists. Does that mean that you will then have kind of a vector instead of the basic primitive that you could use for your [inaudible] abstraction?
+[audience member] But, as well, just, I dunno, I was thinking if the reader was allowing you to register structures for various types, would it be worthwhile or not worthwhile to add, you already got a hook there say, we have a constructor now for our standard map or standard, you know.
 
-[rich] You could definitely consider that. And the beautiful thing is there are all those abstractions between us and, and the representations. So yeah. 
+[Rich] Have you gotten better maps that you'd like to share? 
 
-[questioner19] One of the challenges that other serializations systems have run into is versioning. Right? You have two different versions of your software, and one of them we put in the date one way, and one you did very slightly differently. Have you thought about how you might include versioning in this?
+[Audience member] I don't know. Where I'm going with talking about this -
 
-[rich] Yes, you can never change your mind.
+[Rich] The answer to your question is yes, I'm just - 
 
-[laughter from audience]
+[Audience member] You know, obviously, we're talking about serialization. Like, just start with, for example, you may want to pull it in, Java pulls it in, and may want it to be, heaven forbid, mutable, right. But you can just use it that way and say, just suck in that data structure and give me mutable HashMaps whenever you see a map.
 
-[rich] For your own types, you can do whatever you like. For the for the agreed upon types, no, I think it's gonna be one of these, we'll have to think carefully about it, because we'll have to live with it. Of course, we have metadata. So to the extent the representation part you used, was a type that accepted metadata, the string stuff, like this instant here, that would be a possible path for that kind of adaptation. Otherwise,no. Are you talking about like a global level on the file level?
+[Rich] In the binding context, I can see something like that, potentially, yeah. But we don't want to change the maps before [inaudible]
 
-[questioner18] I'm talking about,let's say that you had my ns foo. And you had a bunch of code out there that stored a bunch of that data somewhere moving across systems. Now you've put out a version, a new version of my ns foo that changes the meaning of bar, but you still want to be able to leave the old version when it comes in, and sort of upgrade it to the to the current version, and keep going. [inaudible] does something like this and so does [inaudible] systems. And it's built in, it's baked in, simply say, oh no my version of foo is foo.1, and you could stick it into the name, but I think something deeper would be nice.
+[Audience member] No, no, that's not what I was saying just -
 
-[rich] Well, I mean, is there is a reason why metadata doesn't work for this?
+[Rich] Well then so that means you'd have to have a magic function for the things that it already knows about, which don't have tags.
 
-[questioner18] Not necessarily. 
+[Audience member] Correct. Right. But it's just built in with [inaudible] 
 
-[rich] Okay. I would try that first. 
+[Rich] It would definitely be possible. 
 
-[laughter from audience]
+### Question 16 - Queryable Programs
 
-[rich] I mean that's the cool thing about metadata. It ends up being so useful to have because things like this would have been hard, oh when we forgot to put a slot in for versions. Okay, slap some metadata on there and now you have a slot. You can have as many slots as you want, you can call them whatever you want. 
+[Audience member] [inaudible] an interface?
 
-[rich] Alrigth, I want to thank everyone again, both for using Closure and for coming, and I hope you're having a good time, and continue to do so.
+[Rich] I think that's what I'm talking about with queryable programs. I think that's exactly what that is. But I wouldn't want to limit your imagination to what type systems do. That's all. I think that's exactly what I'm talking about when I'm talking about that. Because that's what that is right? You take a program, it doesn't necessarily indicate much. I would like to be able to say, "you didn't bother to annotate your types, but I could for you over the logic side". Why not? You let the lazy guys do what they want to do. And then scrupulous guys can do what they want to do. I wouldn't fault them that.
 
-[audience applauds]
+[Laughter from audience]
 
+### Question 17 - Extensible Reader and Skipping Unwanted Data
 
+[Audience member] For Clojure data, did you consider binary encoding like [ASN.1](https://en.wikipedia.org/wiki/ASN.1) where it automaticaly inserts metadata and automatic skips unwanted data in constant time?
+
+[Rich] So, no about that. That's very, you know, I understand completely what you're asking for there. It may be the case that certain tags would have that characteristic, right? In other words, they'd have a way like you would say, if it's a really huge thing, part of the agreed upon format would be that there's a count at the front of it that makes it skippable. But making a full skippable thing that supports nesting, so the trick is usually nesting and things like that. Have you ever looked at like chunk file formats and stuff like that? That gets much more involved, right? Because you want to be able to say, you know, depending on which level I'm at, I want to skip the entire set of different things to get over to the next thing. As soon as you expand your scope beyond one datum, right, or one structure, to a composite thing that requires a set of these things, or a nested set of these things, then the skipping job becomes much more difficult, right? If I, you know, you can always be done to say, I'm just gonna skip one thing, and you'll only have the ability to skip one thing. Usually that's insufficient in the end, but it will be a starting point. You certainly could say there are really large things I'm going to require they be late prefixed.
+
+### Question 18 - Seq Abstractions 
+
+[Audience member] Seq is the basic list abstraction that we use in the language, right. Now, [Phil Bagwell showed us](https://youtu.be/K2NYwP90bNs) that we may be able to use those extensible array structures and systems structures as implementations for lists. Does that mean that you will then have kind of a vector instead of the basic primitive that you could use for your [inaudible] abstraction?
+
+[Rich] You could definitely consider that. And the beautiful thing is there are all those abstractions between us and, and the representations. So yeah. 
+
+### Question 19 - Extendable Reader & Versioning 
+
+[Audience member] One of the challenges that other serializations systems have run into is versioning. Right? You have two different versions of your software, and one of them we put in the date one way, and one you did very slightly differently. Have you thought about how you might include versioning in this?
+
+[Rich] Yes, you can never change your mind.
+
+[Laughter from audience]
+
+[Rich] For your own types, you can do whatever you like. For the for the agreed upon types, no, I think it's gonna be one of these, we'll have to think carefully about it, because we'll have to live with it. Of course, we have metadata. So to the extent the representation part you used, was a type that accepted metadata, the string stuff, like this instant here, that would be a possible path for that kind of adaptation. Otherwise,no. Are you talking about like a global level on the file level?
+
+[Audience member] I'm talking about,let's say that you had my ns foo. And you had a bunch of code out there that stored a bunch of that data somewhere moving across systems. Now you've put out a version, a new version of my ns foo that changes the meaning of bar, but you still want to be able to leave the old version when it comes in, and sort of upgrade it to the to the current version, and keep going. [inaudible] does something like this and so does [inaudible] systems. And it's built in, it's baked in, simply say, oh no my version of foo is foo.1, and you could stick it into the name, but I think something deeper would be nice.
+
+[Rich] Well, I mean, is there is a reason why metadata doesn't work for this?
+
+[Audience member] Not necessarily. 
+
+[Rich] Okay. I would try that first. 
+
+[Laughter from audience]
+ 
+[Rich] I mean that's the cool thing about metadata. It ends up being so useful to have because things like this would have been hard, oh when we forgot to put a slot in for versions. Okay, slap some metadata on there and now you have a slot. You can have as many slots as you want, you can call them whatever you want. 
+
+## Closing Remarks
+
+[Rich] Alrigth, I want to thank everyone again, both for using Closure and for coming, and I hope you're having a good time, and continue to do so.
+
+[Audience applauds]
