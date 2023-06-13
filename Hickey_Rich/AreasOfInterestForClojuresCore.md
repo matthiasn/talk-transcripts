@@ -7,7 +7,7 @@
 ## Introduction
 [Time 0:00:00]
 
-[[Stuart Halloway](https://www.cognitect.com/authors/StuartHalloway.html)]
+[[Stuart Halloway](/Halloway_Stuart/)]
 
 So I'll tell a couple of stories about Rich. I first met Rich at the JVM language summit. It was the first one maybe. And I was already working on [the book](https://web.archive.org/web/20090927081540/http://www.pragprog.com/titles/shcloj/programming-clojure), but we hadn't met. And I had corresponded with him and had corresponded with many of you in the room who were on the Clojure mailing list back in those days. And I met him at the summit, and he came up and introduced himself and said, "It's really exciting that you're working on the book", and he gave me a Clojure pin. So he pinned me! 
 
