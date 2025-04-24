@@ -2,7 +2,7 @@
 
 * **Speaker: Rich Hickey**
 * **Conference: [Clojure Conj 2023](https://clojure.org/events/2023/clojure-conj-2023--1880831835) - April 2023**
-* **Video: [https://www.youtube.com/watch?v=fTtnx1AAJ-c&list=PLZdCLR02grLpIQQkyGLgIyt0eHE56aJqd](https://www.youtube.com/watch?v=fTtnx1AAJ-c&list=PLZdCLR02grLpIQQkyGLgIyt0eHE56aJqd)**
+* **Video: [https://www.youtube.com/watch?v=c5QF2HjHLSE](https://www.youtube.com/watch?v=c5QF2HjHLSE)**
 * **Slides: [https://download.clojure.org/presentations/DesignInPractice.pdf](https://download.clojure.org/presentations/DesignInPractice.pdf)**
 
 
