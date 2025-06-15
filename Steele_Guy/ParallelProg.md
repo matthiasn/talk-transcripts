@@ -120,7 +120,7 @@ But, back in those days, stacks weren't really a well-understood thing when thes
 
 ![00:12:00 Write Character to Printer](ParallelProg/00.12.00.jpg)
 
-So we come at CHPRT, shifted character left by eight, store the character at location CHAR, which is address one, and they do an XIO instruction. This is execute IO. It uses an IO command block at location right, which is at address four, which contains the address of a place where I had the character, and then 0900 is the command to the console printer, print this character. Hoorah!
+So we come at CHPRT, shifted character left by eight, store the character at location CHAR, which is address one, and they do an XIO instruction. This is execute IO. It uses an IO command block at location write, which is at address four, which contains the address of a place where I had the character, and then 0900 is the command to the console printer, print this character. Hoorah!
 
 ![00:12:23 Wait for Interrupt](ParallelProg/00.12.23.jpg)
 
