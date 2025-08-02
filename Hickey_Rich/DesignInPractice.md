@@ -559,7 +559,7 @@ expanding your understanding.
 
 You are going to take the two questions in each thing and say one is a
 status question.  Right?  What do we know right now?  What have we got
-in hand, for both axes?
+in hand? For both axes.
 
 And then the other is: what do we want to do next?  And we are going
 to drive what we do next -- that activity side -- from what we want to
