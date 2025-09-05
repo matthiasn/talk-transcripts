@@ -549,17 +549,17 @@ two stages.  One is the understanding axis.  What is happening to our
 understanding?  How is our understanding moving forward?  We
 understood this much.  Now we are going to understand some more.  I
 talked about when we are dev-ing, we know when we are getting progress
-because we are creating more code, and maybe more features and the
+because we are accreting more code, and maybe more features and the
 software can do more things.
 
-When we are designing, what are we creating?  I am going to say one
-way to think about design is that you are creating understanding.  You
+When we are designing, what are we accreting?  I am going to say one
+way to think about design is that you are accreting understanding.  You
 are expanding your understanding.  The driver for activity should be
 expanding your understanding.
 
 You are going to take the two questions in each thing and say one is a
 status question.  Right?  What do we know right now?  What have we got
-in hand, for both axes?
+in hand? For both axes.
 
 And then the other is: what do we want to do next?  And we are going
 to drive what we do next -- that activity side -- from what we want to
